@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import Column from './column';
+import { Column } from './column';
 
 describe('Column', () => {
   it('should render successfully', () => {
