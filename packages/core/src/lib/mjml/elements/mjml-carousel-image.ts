@@ -2,7 +2,7 @@ import React from 'react';
 import { ClassNameProps, HrefProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlCarouselImageProps = {
+export type CarouselImageProps = {
   children?: React.ReactNode;
   src?: string | undefined;
   thumbnailsSrc?: string | undefined;
@@ -11,5 +11,5 @@ export type MjmlCarouselImageProps = {
 } & ClassNameProps &
   HrefProps;
 
-export const MjmlCarouselImage =
-  createMjmlElement<MjmlCarouselImageProps>('mj-carousel-image');
+export const CarouselImage =
+  createMjmlElement<CarouselImageProps>('mj-carousel-image');

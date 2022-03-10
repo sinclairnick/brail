@@ -2,7 +2,7 @@ import React from 'react';
 import { ClassNameProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlDividerProps = {
+export type DividerProps = {
   borderColor?: React.CSSProperties['borderColor'] | undefined;
   borderStyle?: React.CSSProperties['borderStyle'] | undefined;
   borderWidth?: string | number | undefined;
@@ -12,4 +12,4 @@ export type MjmlDividerProps = {
 } & ClassNameProps &
   PaddingProps;
 
-export const MjmlDivider = createMjmlElement<MjmlDividerProps>('mj-divider');
+export const Divider = createMjmlElement<DividerProps>('mj-body');

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlRawProps = { children?: React.ReactNode };
+export type RawProps = { children?: React.ReactNode };
 
-export const MjmlRaw = createMjmlElement<MjmlRawProps>('mj-raw');
+export const Raw = createMjmlElement<RawProps>('mj-body');

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { node } from 'prop-types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 import { ClassNameProps, PaddingProps } from '../types';
 
-export type MjmlAccordionTitleProps = {
+export type AccordionTitleProps = {
   children?: React.ReactNode;
   color?: React.CSSProperties['color'] | undefined;
   backgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
@@ -12,5 +12,5 @@ export type MjmlAccordionTitleProps = {
 } & PaddingProps &
   ClassNameProps;
 
-export const MjmlAccordionTitle =
-  createMjmlElement<MjmlAccordionTitleProps>('mj-accordion-title');
+export const AccordionTitle =
+  createMjmlElement<AccordionTitleProps>('mj-accordion-title');

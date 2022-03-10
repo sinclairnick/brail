@@ -1,10 +1,9 @@
-import React from 'react';
-
 import { ClassNameProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
-import { MjmlAccordionProps } from './mjml-accordion';
+import { AccordionProps } from './mjml-accordion';
 
-export type MjmlAccordionElementProps = MjmlAccordionProps & ClassNameProps;
+export type AccordionElementProps = AccordionProps & ClassNameProps;
 
-export const MjmlAccordionElement =
-  createMjmlElement<MjmlAccordionElementProps>('mj-accordion-element');
+export const AccordionElement = createMjmlElement<AccordionElementProps>(
+  'mj-accordion-element'
+);

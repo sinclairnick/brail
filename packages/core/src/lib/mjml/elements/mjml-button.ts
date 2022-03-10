@@ -2,7 +2,7 @@ import React from 'react';
 import { BorderProps, ClassNameProps, HrefProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlButtonProps = {
+export type ButtonProps = {
   backgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
   children?: React.ReactNode;
   containerBackgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
@@ -25,4 +25,4 @@ export type MjmlButtonProps = {
   HrefProps &
   BorderProps;
 
-export const MjmlButton = createMjmlElement<MjmlButtonProps>('mj-button');
+export const Button = createMjmlElement<ButtonProps>('mj-body');

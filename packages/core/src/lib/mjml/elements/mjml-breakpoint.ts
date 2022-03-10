@@ -1,7 +1,7 @@
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlBreakpointProps = {
+export type BreakpointProps = {
   width?: string | number | undefined;
 };
-export const MjmlBreakpoint =
-  createMjmlElement<MjmlBreakpointProps>('mj-breakpoint');
+export const Breakpoint =
+  createMjmlElement<BreakpointProps>('mj-breakpoint');

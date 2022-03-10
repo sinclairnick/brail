@@ -1,7 +1,7 @@
 import { HrefProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlSocialElementProps = {
+export type SocialElementProps = {
   borderRadius?: string | number | undefined;
   backgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
   children?: React.ReactNode;
@@ -45,5 +45,5 @@ export type MjmlSocialElementProps = {
 } & HrefProps &
   PaddingProps;
 
-export const MjmlSocialElement =
-  createMjmlElement<MjmlSocialElementProps>('mj-social-element');
+export const SocialElement =
+  createMjmlElement<SocialElementProps>('mj-social-element');

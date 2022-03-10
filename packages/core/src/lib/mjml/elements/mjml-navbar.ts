@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlNavbarProps = {
+export type NavbarProps = {
   baseUrl?: string | undefined;
   children?: React.ReactNode;
   hamburger?: 'hamburger' | undefined;
@@ -21,4 +21,4 @@ export type MjmlNavbarProps = {
   icoLineHeight?: string | undefined;
 };
 
-export const MjmlNavbar = createMjmlElement<MjmlNavbarProps>('mj-navbar');
+export const Navbar = createMjmlElement<NavbarProps>('mj-body');

@@ -1,9 +1,9 @@
 import React from 'react';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlAttributesProps = {
+export type AttributesProps = {
   children?: React.ReactNode;
 };
 
-export const MjmlAttributes =
-  createMjmlElement<MjmlAttributesProps>('mj-attributes');
+export const Attributes =
+  createMjmlElement<AttributesProps>('mj-attributes');

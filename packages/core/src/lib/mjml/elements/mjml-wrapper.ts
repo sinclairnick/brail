@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BorderProps, ClassNameProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlWrapperProps = {
+export type WrapperProps = {
   children?: React.ReactNode;
   fullWidth?: boolean | undefined;
   backgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
@@ -18,4 +18,4 @@ export type MjmlWrapperProps = {
   PaddingProps &
   ClassNameProps;
 
-export const MjmlWrapper = createMjmlElement<MjmlWrapperProps>('mj-wrapper');
+export const Wrapper = createMjmlElement<WrapperProps>('mj-body');

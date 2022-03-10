@@ -1,7 +1,7 @@
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlFontProps = {
+export type FontProps = {
   href?: string | undefined;
   name?: string | undefined;
 };
-export const MjmlFont = createMjmlElement<MjmlFontProps>('mj-font');
+export const Font = createMjmlElement<FontProps>('mj-body');

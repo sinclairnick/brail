@@ -1,7 +1,7 @@
 import { ClassNameProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlAccordionTextProps = {
+export type AccordionTextProps = {
   children?: React.ReactNode;
   color?: React.CSSProperties['color'] | undefined;
   fontFamily?: string | undefined;
@@ -10,5 +10,5 @@ export type MjmlAccordionTextProps = {
 } & PaddingProps &
   ClassNameProps;
 
-export const MjmlAccordionText =
-  createMjmlElement<MjmlAccordionTextProps>('mj-accordion-text');
+export const AccordionText =
+  createMjmlElement<AccordionTextProps>('mj-accordion-text');

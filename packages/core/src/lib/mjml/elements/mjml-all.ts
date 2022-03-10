@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
 export type MjmAllProps = {
@@ -6,4 +6,4 @@ export type MjmAllProps = {
   children?: React.ReactNode | undefined;
 };
 
-export const MjmlAll = createMjmlElement<MjmAllProps>('mj-all');
+export const All = createMjmlElement<MjmAllProps>('mj-all');

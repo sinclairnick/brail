@@ -1,3 +1,3 @@
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export const MjmlHead = createMjmlElement('mj-head');
+export const Head = createMjmlElement('mj-head');

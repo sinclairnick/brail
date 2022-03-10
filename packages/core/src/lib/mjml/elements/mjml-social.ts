@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { PaddingProps, ClassNameProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlSocialProps = {
+export type SocialProps = {
   borderRadius?: string | number | undefined;
   children?: React.ReactNode;
   fontFamily?: string | undefined;
@@ -20,4 +20,4 @@ export type MjmlSocialProps = {
 } & PaddingProps &
   ClassNameProps;
 
-export const MjmlSocial = createMjmlElement<MjmlSocialProps>('mj-social');
+export const Social = createMjmlElement<SocialProps>('mj-body');

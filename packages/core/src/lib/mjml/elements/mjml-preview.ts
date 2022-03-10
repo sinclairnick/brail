@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlPreviewProps = {
+export type PreviewProps = {
   children?: React.ReactNode;
 };
 
-export const MjmlPreview = createMjmlElement<MjmlPreviewProps>('mj-preview');
+export const Preview = createMjmlElement<PreviewProps>('mj-body');

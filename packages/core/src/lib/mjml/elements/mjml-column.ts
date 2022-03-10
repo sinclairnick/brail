@@ -7,7 +7,7 @@ import {
 } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlColumnProps = {
+export type ColumnProps = {
   children?: React.ReactNode;
   width?: string | number | undefined;
   verticalAlign?: React.CSSProperties['verticalAlign'] | undefined;
@@ -18,4 +18,4 @@ export type MjmlColumnProps = {
   BorderProps &
   InnerBorderProps;
 
-export const MjmlColumn = createMjmlElement<MjmlColumnProps>('mj-column');
+export const Column = createMjmlElement<ColumnProps>('mj-body');

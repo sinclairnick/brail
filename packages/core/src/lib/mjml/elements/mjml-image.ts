@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { PaddingProps, ClassNameProps, HrefProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlImageProps = {
+export type ImageProps = {
   children?: React.ReactNode;
   containerBackgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
   border?: React.CSSProperties['border'] | undefined;
@@ -19,4 +19,4 @@ export type MjmlImageProps = {
   ClassNameProps &
   HrefProps;
 
-export const MjmlImage = createMjmlElement<MjmlImageProps>('mj-image');
+export const Image = createMjmlElement<ImageProps>('mj-body');

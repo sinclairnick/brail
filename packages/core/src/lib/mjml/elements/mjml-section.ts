@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BorderProps, ClassNameProps, PaddingProps } from '../types';
 
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlSectionProps = {
+export type SectionProps = {
   children?: React.ReactNode;
   fullWidth?: boolean | undefined;
   backgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
@@ -20,4 +20,4 @@ export type MjmlSectionProps = {
   PaddingProps &
   ClassNameProps;
 
-export const MjmlSection = createMjmlElement('mj-section');
+export const Section = createMjmlElement('mj-section');

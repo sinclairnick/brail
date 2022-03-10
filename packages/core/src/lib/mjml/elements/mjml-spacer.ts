@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BorderProps, PaddingProps, ClassNameProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlSpacerProps = {
+export type SpacerProps = {
   children?: React.ReactNode;
   height?: string | number | undefined;
   width?: string | number | undefined;
@@ -12,4 +12,4 @@ export type MjmlSpacerProps = {
   PaddingProps &
   ClassNameProps;
 
-export const MjmlSpacerProps = createMjmlElement<MjmlSpacerProps>('mj-spacer');
+export const SpacerProps = createMjmlElement<SpacerProps>('mj-body');

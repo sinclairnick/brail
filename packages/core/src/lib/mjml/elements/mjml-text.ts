@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { PaddingProps, ClassNameProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlTextProps = {
+export type TextProps = {
   children?: React.ReactNode;
   color?: React.CSSProperties['color'] | undefined;
   fontFamily?: string | undefined;
@@ -19,4 +19,4 @@ export type MjmlTextProps = {
 } & PaddingProps &
   ClassNameProps;
 
-export const MjmlText = createMjmlElement<MjmlTextProps>('mj-text');
+export const Text = createMjmlElement<TextProps>('mj-body');

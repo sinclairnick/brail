@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { PaddingProps, ClassNameProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlTableProps = {
+export type TableProps = {
   children?: React.ReactNode;
   color?: React.CSSProperties['color'] | undefined;
   cellpadding?: string | undefined;
@@ -20,4 +20,4 @@ export type MjmlTableProps = {
 } & PaddingProps &
   ClassNameProps;
 
-export const MjmlTable = createMjmlElement<MjmlTableProps>('mj-table');
+export const Table = createMjmlElement<TableProps>('mj-body');

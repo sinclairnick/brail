@@ -3,7 +3,7 @@ import React from 'react';
 import { ClassNameProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlHeroProps = {
+export type HeroProps = {
   children?: React.ReactNode;
   width?: string | number | undefined;
   height?: string | number | undefined;
@@ -17,4 +17,4 @@ export type MjmlHeroProps = {
 } & ClassNameProps &
   PaddingProps;
 
-export const MjmlHero = createMjmlElement<MjmlHeroProps>('mj-hero');
+export const Hero = createMjmlElement<HeroProps>('mj-body');

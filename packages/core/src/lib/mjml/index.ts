@@ -19,4 +19,4 @@ export function renderToMjml(email: any) {
   return ReactDOMServer.renderToStaticMarkup(email);
 }
 
-export * from './elements';
+export * as Mj from './elements';

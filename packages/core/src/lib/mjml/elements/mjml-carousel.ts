@@ -2,7 +2,7 @@ import React from 'react';
 import { ClassNameProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlCarouselProps = {
+export type CarouselProps = {
   backgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
   align?: string | undefined;
   borderRadius?: string | number | undefined;
@@ -18,4 +18,4 @@ export type MjmlCarouselProps = {
   iconWidth?: string | undefined;
 } & ClassNameProps;
 
-export const MjmlCarousel = createMjmlElement<MjmlCarouselProps>('mj-carousel');
+export const Carousel = createMjmlElement<CarouselProps>('mj-body');

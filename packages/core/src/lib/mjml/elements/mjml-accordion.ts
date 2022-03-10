@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export type MjmlAccordionProps = {
+export type AccordionProps = {
   children?: React.ReactNode;
   fontFamily?: string | undefined;
   iconAlign?: string | undefined;
@@ -16,4 +16,4 @@ export type MjmlAccordionProps = {
   backgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
 };
 
-export const MjmlAccordion = createMjmlElement('mj-accordion');
+export const Accordion = createMjmlElement('mj-accordion');
