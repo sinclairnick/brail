@@ -13,8 +13,13 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@brail/core": ["packages/core/src/index.ts"],
+      "@brail/core2": ["packages/core2/src/index.ts"],
+      "@brail/react": ["packages/react/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

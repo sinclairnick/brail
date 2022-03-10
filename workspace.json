@@ -1,4 +1,8 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "apps-example": "packages/apps/example",
+    "core": "packages/core",
+    "react": "packages/react"
+  }
 }
