@@ -1,4 +1,4 @@
-import { TemplatePage } from '@brail/core';
+import { TemplatePage } from '@brail/react';
 
 export { getStaticProps } from './index.template';
 export default TemplatePage;

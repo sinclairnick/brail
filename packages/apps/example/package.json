@@ -9,6 +9,7 @@
   "author": "Nick Sinclair",
   "license": "ISC",
   "dependencies": {
-    "@brail/core": "*"
+    "@brail/core": "*",
+    "@brail/react": "*"
   }
 }

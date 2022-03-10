@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 import { Object } from 'ts-toolbelt';
-import { TextProps } from '../text/text';
+import { TextProps } from '../components/text/text';
 
 export type TypographyVariant =
   | 'h1'

@@ -1,33 +1,27 @@
 import { GetStaticProps } from 'next';
-import { PropType, RenderOptions, TemplatePageStaticProps } from './types';
-import { render as renderToHtml } from '../mjml';
-import { Mjml2HtmlOptions, MjmlError } from '../mjml/types';
+import {
+  CreateTemplateOptions,
+  EmailTemplate,
+  PropType,
+  RenderFn,
+  TemplatePageStaticProps,
+} from './types';
+import { render as renderToHtml, MjType } from '@brail/mjml';
+import { createHandler } from '../server/server';
 
-const defaultMjmlOptions: Mjml2HtmlOptions = {
+const defaultMjmlOptions: MjType.Mjml2HtmlOptions = {
   beautify: true,
   validationLevel: 'soft',
   keepComments: false,
   minify: false,
 };
-export type CreateTemplateOptions<P extends PropType> = {
-  previewData: P;
-  renderOptions?: Omit<RenderOptions<P>, 'props'>;
-};
-
-export type RenderFn<P extends PropType> = (
-  options: RenderOptions<P>
-) => Promise<{ html: string; errors: MjmlError[] }>;
-
-export type EmailTemplate<P extends PropType> = {
-  getStaticProps: GetStaticProps<TemplatePageStaticProps>;
-  render: RenderFn<P>;
-};
 
 export function createTemplate<P extends PropType>(
   Template: (props: P) => JSX.Element,
   options: CreateTemplateOptions<P>
-) {
-  const render: RenderFn<P> = async (options) => {
+): EmailTemplate<P> {
+  const render: RenderFn<P> = (options) => {
+    console.log('[brail] Rendering html...');
     const { props, ...mjmlOptions } = options;
 
     return renderToHtml(<Template {...props} />, {
@@ -36,8 +30,8 @@ export function createTemplate<P extends PropType>(
     });
   };
 
-  const getStaticProps: GetStaticProps<TemplatePageStaticProps> = async () => {
-    const res = await render({
+  const getStaticProps: GetStaticProps<TemplatePageStaticProps> = () => {
+    const res = render({
       props: options.previewData,
       ...options.renderOptions,
     });
@@ -46,8 +40,11 @@ export function createTemplate<P extends PropType>(
     };
   };
 
+  const handler = createHandler(render);
+
   return {
     getStaticProps,
-    render,
+    handler,
+    name: options.name,
   };
 }
