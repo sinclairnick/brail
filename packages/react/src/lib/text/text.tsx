@@ -1,7 +1,7 @@
-import { MjmlText, MjmlTextProps } from '@brail/core';
+import { Mj } from '@brail/core';
 import { theme } from '../theme/theme';
 
-export type TextProps = MjmlTextProps & {
+export type TextProps = Mj.TextProps & {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2';
 };
 
@@ -11,7 +11,7 @@ export const Text = (props: TextProps) => {
   const variantProps = theme.typography[variant];
 
   return (
-    <MjmlText
+    <Mj.Text
       fontFamily={theme.typography?.allVariants?.fontFamily}
       {...variantProps}
       {...rest}

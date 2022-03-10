@@ -21,4 +21,4 @@ export type NavbarProps = {
   icoLineHeight?: string | undefined;
 };
 
-export const Navbar = createMjmlElement<NavbarProps>('mj-body');
+export const Navbar = createMjmlElement<NavbarProps>('mj-navbar');

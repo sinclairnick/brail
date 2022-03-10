@@ -20,4 +20,4 @@ export type SocialProps = {
 } & PaddingProps &
   ClassNameProps;
 
-export const Social = createMjmlElement<SocialProps>('mj-body');
+export const Social = createMjmlElement<SocialProps>('mj-social');

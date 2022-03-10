@@ -19,4 +19,4 @@ export type ImageProps = {
   ClassNameProps &
   HrefProps;
 
-export const Image = createMjmlElement<ImageProps>('mj-body');
+export const Image = createMjmlElement<ImageProps>('mj-image');

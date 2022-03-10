@@ -20,4 +20,4 @@ export type SectionProps = {
   PaddingProps &
   ClassNameProps;
 
-export const Section = createMjmlElement('mj-section');
+export const Section = createMjmlElement<SectionProps>('mj-section');

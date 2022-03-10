@@ -19,4 +19,4 @@ export type TextProps = {
 } & PaddingProps &
   ClassNameProps;
 
-export const Text = createMjmlElement<TextProps>('mj-body');
+export const Text = createMjmlElement<TextProps>('mj-text');

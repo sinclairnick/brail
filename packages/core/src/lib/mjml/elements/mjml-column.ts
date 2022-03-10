@@ -18,4 +18,4 @@ export type ColumnProps = {
   BorderProps &
   InnerBorderProps;
 
-export const Column = createMjmlElement<ColumnProps>('mj-body');
+export const Column = createMjmlElement<ColumnProps>('mj-column');

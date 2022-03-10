@@ -7,4 +7,4 @@ export type ClassProps = {
   name: string;
 };
 
-export const Class = createMjmlElement<ClassProps>('mj-body');
+export const Class = createMjmlElement<ClassProps>('mj-class');

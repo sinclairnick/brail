@@ -18,4 +18,4 @@ export type CarouselProps = {
   iconWidth?: string | undefined;
 } & ClassNameProps;
 
-export const Carousel = createMjmlElement<CarouselProps>('mj-body');
+export const Carousel = createMjmlElement<CarouselProps>('mj-carousel');

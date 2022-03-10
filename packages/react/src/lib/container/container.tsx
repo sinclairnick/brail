@@ -1,8 +1,7 @@
-import { MjmlWrapper } from '../../../../core/src/lib/mjml/mjml-wrapper';
-import { MjmlType } from '../types';
+import { Mj } from '@brail/core';
 
-export type ContainerProps = MjmlType<MjmlWrapper>;
+export type ContainerProps = Mj.WrapperProps;
 
 export const Container = (props: ContainerProps) => {
-  return <MjmlWrapper padding={0} {...props} />;
+  return <Mj.Wrapper padding={0} {...props} />;
 };

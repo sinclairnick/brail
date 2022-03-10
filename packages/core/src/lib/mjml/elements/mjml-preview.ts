@@ -6,4 +6,4 @@ export type PreviewProps = {
   children?: React.ReactNode;
 };
 
-export const Preview = createMjmlElement<PreviewProps>('mj-body');
+export const Preview = createMjmlElement<PreviewProps>('mj-preview');

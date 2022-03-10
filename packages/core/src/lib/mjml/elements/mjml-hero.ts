@@ -17,4 +17,4 @@ export type HeroProps = {
 } & ClassNameProps &
   PaddingProps;
 
-export const Hero = createMjmlElement<HeroProps>('mj-body');
+export const Hero = createMjmlElement<HeroProps>('mj-hero');

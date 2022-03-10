@@ -1,7 +1,7 @@
-import { MjmlGroup, MjmlColumnProps } from '@brail/core';
+import { Mj } from '@brail/core';
 
-export type ColumnProps = MjmlColumnProps;
+export type ColumnProps = Mj.ColumnProps;
 
 export const Column = (props: ColumnProps) => {
-  return <MjmlGroup padding={0} {...props} />;
+  return <Mj.Column padding={0} {...props} />;
 };

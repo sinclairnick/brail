@@ -1,7 +1,7 @@
-import { MjmlGroupProps, MjmlGroup } from '@brail/core';
+import { Mj } from '@brail/core';
 
-export type GroupProps = MjmlGroupProps;
+export type GroupProps = Mj.GroupProps;
 
 export const ColumnGroup = (props: GroupProps) => {
-  return <MjmlGroup {...props} />;
+  return <Mj.Group {...props} />;
 };

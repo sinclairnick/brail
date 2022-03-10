@@ -1,15 +1,10 @@
 import React from 'react';
-import { node } from 'prop-types';
+import { createMjmlElement } from '../utils/create-mjml-element';
 
-import { handleMjmlProps } from './utils';
+export type MjmlProps = {
+  children?: React.ReactNode;
+  lang?: string | undefined;
+  owa?: string | undefined;
+};
 
-export class Mjml extends Component {
-  static propTypes = {
-    children: node,
-  };
-
-  render() {
-    const { children, ...rest } = this.props;
-    return React.createElement('mjml', handleMjmlProps(rest), children);
-  }
-}
+export const Mjml = createMjmlElement<MjmlProps>('mjml');

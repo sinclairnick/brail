@@ -1,4 +1,3 @@
-export * from '../../core/src/lib/mjml/mjml';
 export * from './lib/emal-template/emal-template';
 export * from './lib/button/button';
 export * from './lib/text/text';

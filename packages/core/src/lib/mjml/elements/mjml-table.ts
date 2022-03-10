@@ -20,4 +20,4 @@ export type TableProps = {
 } & PaddingProps &
   ClassNameProps;
 
-export const Table = createMjmlElement<TableProps>('mj-body');
+export const Table = createMjmlElement<TableProps>('mj-table');

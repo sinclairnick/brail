@@ -9,4 +9,4 @@ export type GroupProps = {
   backgroundColor?: React.CSSProperties['backgroundColor'] | undefined;
 } & ClassNameProps;
 
-export const Group = createMjmlElement<GroupProps>('mj-body');
+export const Group = createMjmlElement<GroupProps>('mj-group');

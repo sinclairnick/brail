@@ -1,8 +1,7 @@
-import { MjmlSection } from '../../../../core/src/lib/mjml';
-import { MjmlSectionProps } from '../../../../core/src/lib/mjml/mjml-section';
+import { Mj } from '@brail/core';
 
-export type RowProps = MjmlSectionProps;
+export type RowProps = Mj.SectionProps;
 
 export const Row = (props: RowProps) => {
-  return <MjmlSection padding={0} {...props} />;
+  return <Mj.Section padding={0} {...props} />;
 };

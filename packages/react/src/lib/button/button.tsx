@@ -1,12 +1,27 @@
-/* eslint-disable-next-line */
-export interface ButtonProps {}
+import { Mj } from '@brail/core';
+import { theme, ThemeColor } from '../theme/theme';
 
-export function Button(props: ButtonProps) {
+export type ButtonProps = Omit<Mj.ButtonProps, 'color'> & {
+  color?: ThemeColor;
+  variant?: 'contained' | 'outlined';
+};
+
+export const Button = (props: ButtonProps) => {
+  const { color = 'primary', variant = 'outlined' } = props;
+
+  const lightColor = theme.palette[color].light;
+  const darkColor = theme.palette[color].dark;
+
+  const backgroundColor = variant === 'outlined' ? lightColor : darkColor;
+  const fontColor = variant === 'outlined' ? darkColor : lightColor;
+
   return (
-    <div>
-      <h1>Welcome to Button!</h1>
-    </div>
+    <Mj.Button
+      borderRadius={1000}
+      fontSize={18}
+      backgroundColor={backgroundColor}
+      color={fontColor}
+      {...props}
+    />
   );
-}
-
-export default Button;
+};

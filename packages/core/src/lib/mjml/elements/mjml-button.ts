@@ -25,4 +25,4 @@ export type ButtonProps = {
   HrefProps &
   BorderProps;
 
-export const Button = createMjmlElement<ButtonProps>('mj-body');
+export const Button = createMjmlElement<ButtonProps>('mj-button');

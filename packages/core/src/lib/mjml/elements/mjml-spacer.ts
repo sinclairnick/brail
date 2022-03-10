@@ -12,4 +12,4 @@ export type SpacerProps = {
   PaddingProps &
   ClassNameProps;
 
-export const SpacerProps = createMjmlElement<SpacerProps>('mj-body');
+export const SpacerProps = createMjmlElement<SpacerProps>('mj-spacer');

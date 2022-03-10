@@ -7,7 +7,8 @@ export type NotificationEmailTemplateProps = {
 
 const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
   return (
-    <EmailTemplate title="New notifications" preview="We found ">
+    <>
+      <EmailTemplate title="New notifications" preview="We found ">
       <Row>
         <Column>
           <Text variant="h1">You've got notifcations!</Text>
@@ -27,7 +28,8 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
           </Row>
         );
       })}
-    </EmailTemplate>
+      </EmailTemplate>
+    </>
   );
 };
 

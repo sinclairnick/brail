@@ -1,7 +1,6 @@
-import { MjmlImage } from '@brail/core';
-import { MjmlType } from '../types';
+import { Mj } from '@brail/core';
 
-export type ImageProps = MjmlType<MjmlImage>;
+export type ImageProps = Mj.ImageProps;
 
 const vercelUrl =
   process.env['NODE_ENV'] === 'development'
@@ -14,7 +13,7 @@ export const Image = (props: ImageProps) => {
   const _src = src?.startsWith('/') ? `${vercelUrl}${src}` : src;
 
   return (
-    <MjmlImage
+    <Mj.Image
       paddingBottom={0}
       paddingTop={0}
       paddingLeft={0}

@@ -1,3 +1,5 @@
 import { createMjmlElement } from '../utils/create-mjml-element';
 
-export const Head = createMjmlElement('mj-head');
+export type HeadProps = { children?: React.ReactNode };
+
+export const Head = createMjmlElement<HeadProps>('mj-head');

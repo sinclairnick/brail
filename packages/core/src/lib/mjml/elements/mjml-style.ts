@@ -5,4 +5,4 @@ export type StyleProps = {
   inline?: boolean | undefined;
 };
 
-export const Style = createMjmlElement<StyleProps>('mj-body');
+export const Style = createMjmlElement<StyleProps>('mj-style');

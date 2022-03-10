@@ -12,4 +12,4 @@ export type DividerProps = {
 } & ClassNameProps &
   PaddingProps;
 
-export const Divider = createMjmlElement<DividerProps>('mj-body');
+export const Divider = createMjmlElement<DividerProps>('mj-divider');

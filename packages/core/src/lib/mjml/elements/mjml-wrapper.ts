@@ -18,4 +18,4 @@ export type WrapperProps = {
   PaddingProps &
   ClassNameProps;
 
-export const Wrapper = createMjmlElement<WrapperProps>('mj-body');
+export const Wrapper = createMjmlElement<WrapperProps>('mj-wrapper');
