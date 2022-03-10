@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "projects": {
-    "apps-example": "packages/apps/example",
-    "core": "packages/core",
-    "mjml": "packages/mjml",
-    "react": "packages/react"
-  }
-}

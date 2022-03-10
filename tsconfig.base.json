@@ -1,12 +1,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
+    "preserveSymlinks": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "declarationMap": true,
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
@@ -15,11 +16,12 @@
     "skipDefaultLibCheck": true,
     "strict": true,
     "baseUrl": ".",
+    "resolveJsonModule": true,
+    "allowJs": true,
     "paths": {
-      "@brail/core": ["packages/core/src/index.ts"],
-      "@brail/mjml": ["packages/mjml/src/index.ts"],
-      "@brail/react": ["packages/react/src/index.ts"]
+      "@brail/core": ["packages/core"],
+      "@brail/mjml": ["packages/mjml"],
+      "@brail/react": ["packages/react"]
     }
-  },
-  "exclude": ["node_modules", "tmp"]
+  }
 }
