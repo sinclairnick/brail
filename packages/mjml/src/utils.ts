@@ -1,4 +1,4 @@
-const Color = require('color');
+import Color from 'color';
 
 const handlers = {
   inline: boolToString,
@@ -63,7 +63,7 @@ function handleColor(name: any, value: any) {
   const color = parseColor(value);
   if (color) {
     if (value[0] === '#' && value.length === 9) {
-      const alpha = color.alpha().toFixed(2);
+      const alpha = Number(color.alpha().toFixed(2));
       return color.rgb().alpha(alpha).toString();
     }
     return value;

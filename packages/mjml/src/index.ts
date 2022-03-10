@@ -1,5 +1,6 @@
 import ReactDOMServer from 'react-dom/server';
 import { MjmlError } from './types';
+import mjmlToHtml from "mjml-core"
 
 export { renderToJSON } from './utils/render-to-json';
 export { renderToJSON2 } from './utils/render-to-json2';

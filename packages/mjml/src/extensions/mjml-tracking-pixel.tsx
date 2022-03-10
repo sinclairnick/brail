@@ -8,7 +8,7 @@ export class MjmlTrackingPixel extends Component {
     src: string.isRequired,
   };
 
-  override render() {
+  render() {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'src' does not exist on type 'Readonly<{}... Remove this comment to see the full error message
     const { src } = this.props;
     const trackingPixelStyle = {

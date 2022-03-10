@@ -13,7 +13,7 @@ export class MjmlConditionalComment extends Component {
     condition: 'if gte mso 9',
   };
 
-  override render() {
+  render() {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'condition' does not exist on type 'Reado... Remove this comment to see the full error message
     const { children, condition, ...rest } = this.props;
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'trim' does not exist on type 'true | Rea... Remove this comment to see the full error message
