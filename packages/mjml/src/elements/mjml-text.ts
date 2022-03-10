@@ -1,10 +1,11 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { PaddingProps, ClassNameProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
+import CSS from 'csstype';
 
 export type TextProps = {
   children?: ReactNode;
-  color?: CSSProperties['color'] | undefined;
+  color?: CSS.Properties['color'] | undefined;
   fontFamily?: string | undefined;
   fontSize?: string | number | undefined;
   fontStyle?: string | undefined;
@@ -15,7 +16,7 @@ export type TextProps = {
   textDecoration?: string | undefined;
   textTransform?: string | undefined;
   align?: string | undefined;
-  containerBackgroundColor?: CSSProperties['backgroundColor'] | undefined;
+  containerBackgroundColor?: CSS.Properties['backgroundColor'] | undefined;
 } & PaddingProps &
   ClassNameProps;
 

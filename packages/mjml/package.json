@@ -1,4 +1,24 @@
 {
   "name": "@brail/mjml",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "scripts": {
+    "types:build": "tsc --declaration --emitDeclarationOnly -p tsconfig.json",
+    "types:watch": "tsc --declaration --emitDeclarationOnly -p tsconfig.json -w",
+    "compile": "swc ./src -d dist",
+    "compile:watch": "swc ./src -d dist -w",
+    "build": "concurrently \"pnpm run types:build\" \"pnpm run compile\"",
+    "dev": "concurrently \"pnpm run types:watch\" \"pnpm run compile:watch\""
+  },
+  "dependencies": {
+    "mjml": "^4.12.0",
+    "mjml-browser": "^4.12.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^17.0.13",
+    "csstype": "^3.0.11",
+    "lerna": "^4.0.0"
+  }
 }

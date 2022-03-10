@@ -1,11 +1,12 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import CSS from 'csstype';
 
 import { HrefProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
 export type NavbarLinkProps = {
   children?: ReactNode;
-  color?: CSSProperties['color'] | undefined;
+  color?: CSS.Properties['color'] | undefined;
   fontFamily?: string | undefined;
   fontSize?: string | number | undefined;
   fontStyle?: string | undefined;
@@ -16,5 +17,4 @@ export type NavbarLinkProps = {
 } & HrefProps &
   PaddingProps;
 
-export const NavbarLink =
-  createMjmlElement<NavbarLinkProps>('mj-navbar-link');
+export const NavbarLink = createMjmlElement<NavbarLinkProps>('mj-navbar-link');

@@ -2,6 +2,6 @@
   "name": "@brail/react",
   "version": "0.0.1",
   "dependencies": {
-    "@brail/mjml": "*"
+    "@brail/mjml": "workspace:*"
   }
 }

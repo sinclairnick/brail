@@ -1,10 +1,11 @@
-import { CSSProperties, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { HrefProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
+import CSS from 'csstype';
 
 export type SocialElementProps = {
   borderRadius?: string | number | undefined;
-  backgroundColor?: CSSProperties['backgroundColor'] | undefined;
+  backgroundColor?: CSS.Properties['backgroundColor'] | undefined;
   children?: ReactNode;
   fontFamily?: string | undefined;
   fontSize?: string | number | undefined;
@@ -14,7 +15,7 @@ export type SocialElementProps = {
   mode?: 'vertical' | 'horizontal' | undefined;
   textDecoration?: string | undefined;
   align?: string | undefined;
-  color?: CSSProperties['color'] | undefined;
+  color?: CSS.Properties['color'] | undefined;
   name?:
     | 'facebook'
     | 'facebook-noshare'

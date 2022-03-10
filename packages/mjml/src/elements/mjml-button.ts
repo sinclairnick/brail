@@ -1,21 +1,22 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { BorderProps, ClassNameProps, HrefProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
+import CSS from 'csstype';
 
 export type ButtonProps = {
-  backgroundColor?: CSSProperties['backgroundColor'] | undefined;
+  backgroundColor?: CSS.Properties['backgroundColor'] | undefined;
   children?: ReactNode;
-  containerBackgroundColor?: CSSProperties['backgroundColor'] | undefined;
+  containerBackgroundColor?: CSS.Properties['backgroundColor'] | undefined;
   fontStyle?: string | undefined;
   fontSize?: string | number | undefined;
   fontWeight?: number | undefined;
   fontFamily?: string | undefined;
-  color?: CSSProperties['color'] | undefined;
-  textAlign?: CSSProperties['textAlign'] | undefined;
+  color?: CSS.Properties['color'] | undefined;
+  textAlign?: CSS.Properties['textAlign'] | undefined;
   textDecoration?: string | undefined;
   textTransform?: string | undefined;
   align?: string | undefined;
-  verticalAlign?: CSSProperties['verticalAlign'] | undefined;
+  verticalAlign?: CSS.Properties['verticalAlign'] | undefined;
   lineHeight?: string | number | undefined;
   innerPadding?: string | undefined;
   width?: string | number | undefined;

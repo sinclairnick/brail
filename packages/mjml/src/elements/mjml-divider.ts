@@ -1,14 +1,15 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ClassNameProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
+import CSS from 'csstype';
 
 export type DividerProps = {
-  borderColor?: CSSProperties['borderColor'] | undefined;
-  borderStyle?: CSSProperties['borderStyle'] | undefined;
+  borderColor?: CSS.Properties['borderColor'] | undefined;
+  borderStyle?: CSS.Properties['borderStyle'] | undefined;
   borderWidth?: string | number | undefined;
   children?: ReactNode;
   width?: string | number | undefined;
-  containerBackgroundColor?: CSSProperties['backgroundColor'] | undefined;
+  containerBackgroundColor?: CSS.Properties['backgroundColor'] | undefined;
 } & ClassNameProps &
   PaddingProps;
 

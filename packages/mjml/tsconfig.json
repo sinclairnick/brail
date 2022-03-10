@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
     "jsx": "react-jsx",
+    "module": "ESNext",
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -13,14 +16,6 @@
     "noFallthroughCasesInSwitch": true,
     "declaration": true
   },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
