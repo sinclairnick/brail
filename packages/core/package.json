@@ -2,7 +2,12 @@
   "name": "@brail/core",
   "version": "0.0.1",
   "scripts": {
-    "dev": "tsc --watch"
+    "types:build": "tsc --declaration --emitDeclarationOnly -p tsconfig.json",
+    "types:watch": "tsc --declaration --emitDeclarationOnly -p tsconfig.json -w",
+    "compile": "swc ./src -d dist",
+    "compile:watch": "swc ./src -d dist -w",
+    "build": "concurrently \"pnpm run types:build\" \"pnpm run compile\"",
+    "dev": "concurrently \"pnpm run types:watch\" \"pnpm run compile:watch\""
   },
   "dependencies": {
     "@brail/mjml": "workspace:*"
