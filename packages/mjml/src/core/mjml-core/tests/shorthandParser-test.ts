@@ -1,8 +1,10 @@
+
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'chai'.
 const chai = require('chai')
 const helper = require('../lib/helpers/shorthandParser')
 
 const shorthandParser = helper && helper.default
+
 
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'testValues... Remove this comment to see the full error message
 const testValues = [
@@ -29,6 +31,7 @@ testValues.forEach(testUnit => {
   const directions = ['top', 'right', 'bottom', 'left']
   directions.forEach(dir => {
     chai.expect(shorthandParser(input, dir), `shorthandParser test failed`)
+
         // @ts-expect-error ts-migrate(7015) FIXME: Element implicitly has an 'any' type because index... Remove this comment to see the full error message
         .to.deep.equal(output[dir])
   })

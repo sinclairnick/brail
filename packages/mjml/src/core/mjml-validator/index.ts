@@ -13,13 +13,16 @@ export { rulesCollection, registerRule }
 
 export { dependencies, registerDependencies, assignDependencies }
 
+
 // @ts-expect-error ts-migrate(7023) FIXME: 'MJMLValidator' implicitly has return type 'any' b... Remove this comment to see the full error message
 export default function MJMLValidator(element: any, options = {}) {
   const { children, tagName } = element
   const errors = []
 
+
   // @ts-expect-error ts-migrate(2339) FIXME: Property 'skipElements' does not exist on type '{}... Remove this comment to see the full error message
   const skipElements = options.skipElements || SKIP_ELEMENTS
+
 
   // @ts-expect-error ts-migrate(2339) FIXME: Property 'dependencies' does not exist on type '{}... Remove this comment to see the full error message
   if (options.dependencies == null) {

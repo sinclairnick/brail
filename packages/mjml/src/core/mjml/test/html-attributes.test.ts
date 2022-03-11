@@ -1,8 +1,8 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'chai'.
+
 const chai = require('chai')
 const cheerio = require('cheerio')
 const { sortBy } = require('lodash')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'mjml'.
+
 const mjml = require('../lib')
 
 const input = `
@@ -37,7 +37,7 @@ const input = `
 </mjml>
 `
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'html'.
+
 const { html } = mjml(input)
 const $ = cheerio.load(html)
 

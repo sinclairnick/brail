@@ -1,11 +1,11 @@
 const { template } = require('lodash')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'MJMLParser... Remove this comment to see the full error message
+
 const MJMLParser = require('../lib')
 const mjml2html = require('../../mjml/lib')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'components... Remove this comment to see the full error message
+
 const { components } = require('../../mjml-core/lib')
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'parse'.
+
 const parse = (mjml: any) => MJMLParser(mjml, {
   keepComments: true,
   components,
@@ -20,7 +20,7 @@ const parse = (mjml: any) => MJMLParser(mjml, {
   ],
 })
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'xml'.
+
 const xml = `<mjml>
 <mj-body>
   <mj-section mj-class="content">
@@ -32,9 +32,9 @@ const xml = `<mjml>
 </mjml>
 `
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'json'.
+
 const json = parse(xml)
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'html'.
+
 const { html } = mjml2html(json)
 
 console.log(html) // eslint-disable-line no-console

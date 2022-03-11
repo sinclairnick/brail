@@ -5,4 +5,4 @@ import presetCore from '../mjml-preset-core';
 assignComponents(components, presetCore.components);
 assignDependencies(dependencies, presetCore.dependencies);
 
-export default mjml2html;
+export const mjmlToHtml = mjml2html;

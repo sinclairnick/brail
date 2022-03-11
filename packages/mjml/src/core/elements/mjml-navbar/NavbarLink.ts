@@ -1,13 +1,11 @@
+import { BodyComponent, suffixCssClasses } from '../../mjml-core';
 
-import { BodyComponent, suffixCssClasses } from 'mjml-core'
-
-
-import conditionalTag from 'mjml-core/lib/helpers/conditionalTag'
+import conditionalTag from '../../mjml-core/helpers/conditionalTag';
 
 export default class MjNavbarLink extends BodyComponent {
-  static componentName = 'mj-navbar-link'
+  static componentName = 'mj-navbar-link';
 
-  static endingTag = true
+  static endingTag = true;
 
   static allowedAttributes = {
     color: 'color',
@@ -28,7 +26,7 @@ export default class MjNavbarLink extends BodyComponent {
     padding: 'unit(px,%){1,4}',
     'text-decoration': 'string',
     'text-transform': 'string',
-  }
+  };
 
   static defaultAttributes = {
     color: '#000000',
@@ -40,7 +38,7 @@ export default class MjNavbarLink extends BodyComponent {
     target: '_blank',
     'text-decoration': 'none',
     'text-transform': 'uppercase',
-  }
+  };
 
   getAttribute: any;
 
@@ -74,17 +72,17 @@ export default class MjNavbarLink extends BodyComponent {
         'padding-right': this.getAttribute('padding-right'),
         'padding-bottom': this.getAttribute('padding-bottom'),
       },
-    }
+    };
   }
 
   renderContent() {
-    const href = this.getAttribute('href')
-    const navbarBaseUrl = this.getAttribute('navbarBaseUrl')
-    const link = navbarBaseUrl ? `${navbarBaseUrl}${href}` : href
+    const href = this.getAttribute('href');
+    const navbarBaseUrl = this.getAttribute('navbarBaseUrl');
+    const link = navbarBaseUrl ? `${navbarBaseUrl}${href}` : href;
 
     const cssClass = this.getAttribute('css-class')
       ? ` ${this.getAttribute('css-class')}`
-      : ''
+      : '';
 
     return `
       <a
@@ -99,7 +97,7 @@ export default class MjNavbarLink extends BodyComponent {
       >
         ${this.getContent()}
       </a>
-    `
+    `;
   }
 
   render() {
@@ -110,7 +108,7 @@ export default class MjNavbarLink extends BodyComponent {
               style: 'td',
               class: suffixCssClasses(
                 this.getAttribute('css-class'),
-                'outlook',
+                'outlook'
               ),
             })}
           >
@@ -119,6 +117,6 @@ export default class MjNavbarLink extends BodyComponent {
         ${conditionalTag(`
           </td>
         `)}
-      `
+      `;
   }
 }

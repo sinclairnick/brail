@@ -1,8 +1,9 @@
+
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'chai'.
 const chai = require('chai')
 const jsonToXml = require('../lib/helpers/jsonToXML')
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'json'.
+
 const json = {
   line: 1,
   includedIn: [],
@@ -37,7 +38,7 @@ const json = {
        attributes: {} } ],
   attributes: {} }
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'xml'.
+
 const xml = jsonToXml(json)
 
 const validXml = '<mjml><mj-body><mj-section><mj-column><mj-text font-size="20px" color="#F45E43" font-family="helvetica">Hello World</mj-text></mj-column></mj-section></mj-body></mjml>'

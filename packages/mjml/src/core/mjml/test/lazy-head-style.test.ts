@@ -1,7 +1,6 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'chai'.
-const chai = require('chai')
+
 const spies = require('chai-spies')
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'mjml'.
+
 const mjml = require('../lib')
 
 chai.use(spies)

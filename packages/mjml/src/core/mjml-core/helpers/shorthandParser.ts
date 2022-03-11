@@ -1,4 +1,4 @@
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'loda... Remove this comment to see the full error message
+
 import { get } from 'lodash'
 
 export default function (cssValue: any, direction: any) {
@@ -21,6 +21,7 @@ export default function (cssValue: any, direction: any) {
     default:
       return parseInt(cssValue, 10)
   }
+
 
   // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
   return parseInt(splittedCssValue[directions[direction]] || 0, 10)

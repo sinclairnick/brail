@@ -12,21 +12,23 @@
     "dev": "concurrently \"pnpm run types:watch\" \"pnpm run compile:watch\""
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
     "color": "^4.2.1",
-    "mjml": "^4.12.0",
-    "mjml-browser": "^4.12.0",
-    "mjml-core": "^4.12.0",
-    "mjml-web": "^4.10.0",
+    "glob": "^7.2.0",
+    "html-minifier": "^4.0.0",
+    "htmlparser2": "^7.2.0",
+    "js-beautify": "^1.14.0",
+    "juice": "^8.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-reconciler": "^0.26.2"
   },
   "devDependencies": {
     "@types/color": "^3.0.3",
-    "@types/mjml-core": "^4.7.1",
+    "@types/glob": "^7.2.0",
+    "@types/js-beautify": "^1.13.3",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
-    "csstype": "^3.0.11",
-    "lerna": "^4.0.0"
+    "csstype": "^3.0.11"
   }
 }

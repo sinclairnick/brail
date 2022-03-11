@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 import fs from 'fs'
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'yargs' or its corresponding ty... Remove this comment to see the full error message
+
 import yargs from 'yargs'
-import migrate from './migrate'
-// @ts-expect-error ts-migrate(2732) FIXME: Cannot find module '../package.json'. Consider usi... Remove this comment to see the full error message
+import migrate from '.'
+
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../package.json' or its corres... Remove this comment to see the full error message
 import { version } from '../package.json'
 
 const program = yargs

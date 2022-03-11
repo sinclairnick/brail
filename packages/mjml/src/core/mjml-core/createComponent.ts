@@ -8,49 +8,45 @@ import {
   find,
   filter,
   isNil,
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'loda... Remove this comment to see the full error message
-} from 'lodash'
+} from 'lodash';
 
-import MJMLParser from 'mjml-parser-xml'
+import MJMLParser from '../mjml-parser-xml';
 
-import shorthandParser, { borderParser } from './helpers/shorthandParser'
-import formatAttributes from './helpers/formatAttributes'
-import jsonToXML from './helpers/jsonToXML'
+import shorthandParser, { borderParser } from './helpers/shorthandParser';
+import formatAttributes from './helpers/formatAttributes';
+import jsonToXML from './helpers/jsonToXML';
 
-export function initComponent({
-  initialDatas,
-  name,
-}: any) {
-  const Component = initialDatas.context.components[name]
+export function initComponent({ initialDatas, name }: any) {
+  const Component = initialDatas.context.components[name];
 
   if (Component) {
-    const component = new Component(initialDatas)
+    const component = new Component(initialDatas);
 
     if (component.headStyle) {
-      component.context.addHeadStyle(name, component.headStyle)
+      component.context.addHeadStyle(name, component.headStyle);
     }
     if (component.componentHeadStyle) {
-      component.context.addComponentHeadSyle(component.componentHeadStyle)
+      component.context.addComponentHeadSyle(component.componentHeadStyle);
     }
 
-    return component
+    return component;
   }
 
-  return null
+  return null;
 }
 
 class Component {
   static getTagName() {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'componentName' does not exist on type 't... Remove this comment to see the full error message
-    return this.componentName || kebabCase(this.name)
+    return this.componentName || kebabCase(this.name);
   }
 
   static isRawElement() {
     // @ts-expect-error ts-migrate(2551) FIXME: Property 'rawElement' does not exist on type 'type... Remove this comment to see the full error message
-    return !!this.rawElement
+    return !!this.rawElement;
   }
 
-  static defaultAttributes = {}
+  static defaultAttributes = {};
 
   attributes: any;
 
@@ -66,26 +62,32 @@ class Component {
     const {
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'attributes' does not exist on type '{}'.
       attributes = {},
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'children' does not exist on type '{}'.
       children = [],
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type '{}'.
       content = '',
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'context' does not exist on type '{}'.
       context = {},
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'props' does not exist on type '{}'.
       props = {},
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'globalAttributes' does not exist on type... Remove this comment to see the full error message
       globalAttributes = {},
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'absoluteFilePath' does not exist on type... Remove this comment to see the full error message
       absoluteFilePath = null,
-    } = initialDatas
+    } = initialDatas;
 
     this.props = {
       absoluteFilePath,
       ...props,
       children,
       content,
-    }
+    };
 
     this.attributes = formatAttributes(
       {
@@ -94,24 +96,25 @@ class Component {
         ...globalAttributes,
         ...attributes,
       },
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'allowedAttributes' does not exist on typ... Remove this comment to see the full error message
-      this.constructor.allowedAttributes,
-    )
-    this.context = context
 
-    return this
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'allowedAttributes' does not exist on typ... Remove this comment to see the full error message
+      this.constructor.allowedAttributes
+    );
+    this.context = context;
+
+    return this;
   }
 
   getChildContext() {
-    return this.context
+    return this.context;
   }
 
   getAttribute(name: any) {
-    return this.attributes[name]
+    return this.attributes[name];
   }
 
   getContent() {
-    return this.props.content.trim()
+    return this.props.content.trim();
   }
 
   renderMJML(mjml: any, options = {}) {
@@ -121,13 +124,14 @@ class Component {
         ...options,
         components: this.context.components,
         ignoreIncludes: true,
-      })
+      });
+      // @ts-expect-error
       return partialMjml.children
         .map((child: any) => this.context.processing(child, this.context))
-        .join('')
+        .join('');
     }
 
-    return this.context.processing(mjml, this.context)
+    return this.context.processing(mjml, this.context);
   }
 }
 
@@ -138,82 +142,82 @@ export class BodyComponent extends Component {
 
   // eslint-disable-next-line class-methods-use-this
   getStyles() {
-    return {}
+    return {};
   }
 
   getShorthandAttrValue(attribute: any, direction: any) {
-    const mjAttributeDirection = this.getAttribute(`${attribute}-${direction}`)
-    const mjAttribute = this.getAttribute(attribute)
+    const mjAttributeDirection = this.getAttribute(`${attribute}-${direction}`);
+    const mjAttribute = this.getAttribute(attribute);
 
     if (mjAttributeDirection) {
-      return parseInt(mjAttributeDirection, 10)
+      return parseInt(mjAttributeDirection, 10);
     }
 
     if (!mjAttribute) {
-      return 0
+      return 0;
     }
 
-    return shorthandParser(mjAttribute, direction)
+    return shorthandParser(mjAttribute, direction);
   }
 
   getShorthandBorderValue(direction: any) {
     const borderDirection =
-      direction && this.getAttribute(`border-${direction}`)
-    const border = this.getAttribute('border')
+      direction && this.getAttribute(`border-${direction}`);
+    const border = this.getAttribute('border');
 
-    return borderParser(borderDirection || border || '0')
+    return borderParser(borderDirection || border || '0');
   }
 
   getBoxWidths() {
-    const { containerWidth } = this.context
-    const parsedWidth = parseInt(containerWidth, 10)
+    const { containerWidth } = this.context;
+    const parsedWidth = parseInt(containerWidth, 10);
 
     const paddings =
       this.getShorthandAttrValue('padding', 'right') +
-      this.getShorthandAttrValue('padding', 'left')
+      this.getShorthandAttrValue('padding', 'left');
 
     const borders =
       this.getShorthandBorderValue('right') +
-      this.getShorthandBorderValue('left')
+      this.getShorthandBorderValue('left');
 
     return {
       totalWidth: parsedWidth,
       borders,
       paddings,
       box: parsedWidth - paddings - borders,
-    }
+    };
   }
 
   htmlAttributes(attributes: any) {
     const specialAttributes = {
       style: (v: any) => this.styles(v),
       default: identity,
-    }
+    };
 
     return reduce(
       attributes,
       (output: any, v: any, name: any) => {
         // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
-        const value = (specialAttributes[name] || specialAttributes.default)(v)
+        const value = (specialAttributes[name] || specialAttributes.default)(v);
 
         if (!isNil(value)) {
-          return `${output} ${name}="${value}"`
+          return `${output} ${name}="${value}"`;
         }
 
-        return output
+        return output;
       },
-      '',
-    )
+      ''
+    );
   }
 
   styles(styles: any) {
-    let stylesObject
+    let stylesObject;
 
     if (styles) {
       if (typeof styles === 'string') {
-        stylesObject = get(this.getStyles(), styles)
+        stylesObject = get(this.getStyles(), styles);
       } else {
-        stylesObject = styles
+        stylesObject = styles;
       }
     }
 
@@ -221,42 +225,47 @@ export class BodyComponent extends Component {
       stylesObject,
       (output: any, value: any, name: any) => {
         if (!isNil(value)) {
-          return `${output}${name}:${value};`
+          return `${output}${name}:${value};`;
         }
-        return output
+        return output;
       },
-      '',
-    )
+      ''
+    );
   }
 
   renderChildren(children: any, options = {}) {
     const {
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'props' does not exist on type '{}'.
       props = {},
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'renderer' does not exist on type '{}'.
       renderer = (component: any) => component.render(),
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'attributes' does not exist on type '{}'.
       attributes = {},
+
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'rawXML' does not exist on type '{}'.
       rawXML = false,
-    } = options
+    } = options;
 
-    children = children || this.props.children
+    children = children || this.props.children;
 
     if (rawXML) {
-      return children.map((child: any) => jsonToXML(child)).join('\n')
+      return children.map((child: any) => jsonToXML(child)).join('\n');
     }
 
-    const sibling = children.length
+    const sibling = children.length;
 
-    const rawComponents = filter(this.context.components, (c: any) => c.isRawElement(),
-    )
+    const rawComponents = filter(this.context.components, (c: any) =>
+      c.isRawElement()
+    );
     const nonRawSiblings = children.filter(
-      (child: any) => !find(rawComponents, (c: any) => c.getTagName() === child.tagName),
-    ).length
+      (child: any) =>
+        !find(rawComponents, (c: any) => c.getTagName() === child.tagName)
+    ).length;
 
-    let output = ''
-    let index = 0
+    let output = '';
+    let index = 0;
 
     forEach(children, (children: any) => {
       const component = initComponent({
@@ -277,16 +286,16 @@ export class BodyComponent extends Component {
             nonRawSiblings,
           },
         },
-      })
+      });
 
       if (component !== null) {
-        output += renderer(component)
+        output += renderer(component);
       }
 
-      index++ // eslint-disable-line no-plusplus
-    })
+      index++; // eslint-disable-line no-plusplus
+    });
 
-    return output
+    return output;
   }
 }
 
@@ -297,11 +306,11 @@ export class HeadComponent extends Component {
 
   static getTagName() {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'componentName' does not exist on type 't... Remove this comment to see the full error message
-    return this.componentName || kebabCase(this.name)
+    return this.componentName || kebabCase(this.name);
   }
 
   handlerChildren() {
-    const { children } = this.props
+    const { children } = this.props;
 
     return children.map((children: any) => {
       const component = initComponent({
@@ -310,22 +319,22 @@ export class HeadComponent extends Component {
           ...children,
           context: this.getChildContext(),
         },
-      })
+      });
 
       if (!component) {
         // eslint-disable-next-line no-console
-        console.error(`No matching component for tag : ${children.tagName}`)
-        return null
+        console.error(`No matching component for tag : ${children.tagName}`);
+        return null;
       }
 
       if (component.handler) {
-        component.handler()
+        component.handler();
       }
 
       if (component.render) {
-        return component.render()
+        return component.render();
       }
-      return null
-    })
+      return null;
+    });
   }
 }
