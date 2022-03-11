@@ -8,10 +8,10 @@ import { nextTelemetry } from 'next/dist/cli/next-telemetry';
 
 import { getProjectDir } from 'next/dist/lib/get-project-dir';
 import { findPagesDir } from 'next/dist/lib/find-pages-dir';
-import { collectPages } from 'next/dist/build/utils';
+import { collectPages, getNamedExports } from 'next/dist/build/utils';
 import { defaultConfig, NextConfig } from 'next/dist/server/config-shared';
 import { TemplatePage } from '../template/types';
-import  * as path from 'path';
+import * as path from 'path';
 
 const defaultPageExt = defaultConfig.pageExtensions ?? [];
 
@@ -31,12 +31,18 @@ export const registerHandlers = async () => {
 
   for (const templatePath of templatePaths) {
     const fullPath = path.join(pagesDir, templatePath);
-    const template: TemplatePage<any> = require(fullPath);
+    
+    // const template: TemplatePage<any> = require(fullPath);
 
-    console.log(template);
+    // console.log(template);
   }
 };
 
+/** TODO: Not currently operational due to Module error */
+// When importing via both require(...) in next.config.js
+// and via import .. from .. elsewhere, an error is thrown
+// saying cannot not import outside of a module.
+// Not sure how to fix
 export const withBrail = (config: NextConfig) => {
   registerHandlers();
 
@@ -50,3 +56,5 @@ export const withBrail = (config: NextConfig) => {
     pageExtensions: exts,
   };
 };
+
+export default withBrail;

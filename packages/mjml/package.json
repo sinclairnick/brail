@@ -1,8 +1,6 @@
 {
   "name": "@brail/mjml",
   "version": "0.0.1",
-  "main": "dist/cjs/index.js",
-  "module": "dist/mjs/index.js",
   "exports": {
     "require": "./dist/cjs/index.js",
     "default": "./dist/esm/index.js"
@@ -10,10 +8,11 @@
   "scripts": {
     "build:esm": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build": "npm-run-all build:*",
-    "watch:esm": "tsc -p tsconfig.json -w",
-    "watch:cjs": "tsc -p tsconfig.cjs.json -w",
-    "watch": "npm-run-all watch:*"
+    "clean": "rimraf dist",
+    "build": "pnpm run clean && npm-run-all --parallel build:*",
+    "dev:esm": "tsc -p tsconfig.json -w",
+    "dev:cjs": "tsc -p tsconfig.cjs.json -w",
+    "dev": "npm-run-all --parallel dev:*"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
@@ -25,7 +24,8 @@
     "lodash": "^4.17.21",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-reconciler": "^0.26.2"
+    "react-reconciler": "^0.26.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
@@ -35,6 +35,7 @@
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
     "@types/react-reconciler": "^0.26.4",
+    "@types/uuid": "^8.3.4",
     "csstype": "^3.0.11"
   }
 }

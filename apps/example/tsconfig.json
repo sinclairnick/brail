@@ -2,28 +2,15 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
+    "module": "CommonJS",
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": [
-      "node",
-      "react",
-      "react-dom"
-    ],
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "incremental": true,
-    "declarationMap": false
+    "types": ["node", "react", "react-dom"]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "next.config.js"]
 }

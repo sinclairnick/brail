@@ -1,4 +1,4 @@
-const unavailableTags = ['mj-html', 'mj-invoice', 'mj-list', 'mj-location']
+const unavailableTags = ['mj-html', 'mj-invoice', 'mj-list', 'mj-location'];
 
 const attributesWithUnit = [
   'background-size',
@@ -28,9 +28,5 @@ const attributesWithUnit = [
   'tb-border-radius',
   'tb-width',
   'width',
-]
-
-module.exports = {
-  unavailableTags,
-  attributesWithUnit,
-}
+];
+export { unavailableTags, attributesWithUnit };

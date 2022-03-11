@@ -5,6 +5,7 @@
     "rootDir": "./src",
     "declaration": true,
     "module": "CommonJS",
+    "isolatedModules": false,
     "types": ["node", "react", "react-dom"]
   },
   "include": ["./src/**/*"],

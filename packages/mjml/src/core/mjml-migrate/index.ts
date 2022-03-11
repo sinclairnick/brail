@@ -8,7 +8,6 @@ import { components } from '../mjml-core';
 
 import { html as htmlBeautify } from 'js-beautify';
 
-// @ts-expect-error ts-migrate(2306) FIXME: File '/Users/nick/Documents/code/brail/packages/mj... Remove this comment to see the full error message
 import { unavailableTags, attributesWithUnit } from './config';
 
 const beautifyOptions = {

@@ -1,0 +1,31 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1,
+    "total": 5,
+    "workspacePrefix": "/Users/nick/Documents/code/brail"
+  },
+  "1 info pnpm": {
+    "err": {
+      "name": "Error",
+      "message": "@brail/core@0.0.1 build: `pnpm run clean && npm-run-all --parallel build:*`\nExit status 1",
+      "code": "ELIFECYCLE",
+      "stack": "Error: @brail/core@0.0.1 build: `pnpm run clean && npm-run-all --parallel build:*`\nExit status 1\n    at EventEmitter.<anonymous> (/Users/nick/pnpm-global/5/node_modules/.pnpm/pnpm@6.25.1/node_modules/pnpm/dist/pnpm.cjs:104843:20)\n    at EventEmitter.emit (events.js:315:20)\n    at ChildProcess.<anonymous> (/Users/nick/pnpm-global/5/node_modules/.pnpm/pnpm@6.25.1/node_modules/pnpm/dist/pnpm.cjs:91921:18)\n    at ChildProcess.emit (events.js:315:20)\n    at maybeClose (internal/child_process.js:1048:16)\n    at Process.ChildProcess._handle.onexit (internal/child_process.js:288:5)"
+    }
+  },
+  "2 error pnpm": {
+    "errno": 1,
+    "code": "ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL",
+    "pkgid": "@brail/core@0.0.1",
+    "stage": "build",
+    "script": "pnpm run clean && npm-run-all --parallel build:*",
+    "pkgname": "@brail/core",
+    "prefix": "/Users/nick/Documents/code/brail/packages/core",
+    "err": {
+      "name": "pnpm",
+      "message": "@brail/core@0.0.1 build: `pnpm run clean && npm-run-all --parallel build:*`\nExit status 1",
+      "code": "ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL",
+      "stack": "Error: @brail/core@0.0.1 build: `pnpm run clean && npm-run-all --parallel build:*`\nExit status 1\n    at EventEmitter.<anonymous> (/Users/nick/pnpm-global/5/node_modules/.pnpm/pnpm@6.25.1/node_modules/pnpm/dist/pnpm.cjs:104843:20)\n    at EventEmitter.emit (events.js:315:20)\n    at ChildProcess.<anonymous> (/Users/nick/pnpm-global/5/node_modules/.pnpm/pnpm@6.25.1/node_modules/pnpm/dist/pnpm.cjs:91921:18)\n    at ChildProcess.emit (events.js:315:20)\n    at maybeClose (internal/child_process.js:1048:16)\n    at Process.ChildProcess._handle.onexit (internal/child_process.js:288:5)"
+    }
+  },
+  "3 warn pnpm:global": " Local package.json exists, but node_modules missing, did you mean to install?"
+}

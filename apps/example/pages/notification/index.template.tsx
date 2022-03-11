@@ -1,4 +1,3 @@
-import { createTemplate } from '@brail/core';
 import {
   Column,
   ColumnGroup,
@@ -8,6 +7,7 @@ import {
   Row,
   Text,
 } from '@brail/react';
+import { createTemplate } from '@brail/core';
 
 export type NotificationEmailTemplateProps = {
   notifications: Array<{ title: string; from: string }>;

@@ -2,7 +2,7 @@
   "name": "@brail/react",
   "version": "0.0.1",
   "main": "dist/cjs/index.js",
-  "module": "dist/mjs/index.js",
+  "module": "dist/esm/index.js",
   "exports": {
     "require": "./dist/cjs/index.js",
     "default": "./dist/esm/index.js"
@@ -10,10 +10,11 @@
   "scripts": {
     "build:esm": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build": "npm-run-all build:*",
-    "watch:esm": "tsc -p tsconfig.json -w",
-    "watch:cjs": "tsc -p tsconfig.cjs.json -w",
-    "watch": "npm-run-all watch:*"
+    "clean": "rimraf dist",
+    "build": "pnpm run clean && npm-run-all --parallel build:*",
+    "dev:esm": "tsc -p tsconfig.json -w",
+    "dev:cjs": "tsc -p tsconfig.cjs.json -w",
+    "dev": "npm-run-all --parallel dev:*"
   },
   "dependencies": {
     "@brail/mjml": "workspace:*",

@@ -1,7 +1,7 @@
 import { BodyComponent } from '../../mjml-core';
 
 import { range, repeat, min, map } from 'lodash';
-import * as crypto from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 
 import { msoConditionalTag } from '../../mjml-core/helpers/conditionalTag';
 
@@ -57,7 +57,7 @@ export default class MjCarousel extends BodyComponent {
 
   constructor(initialDatas = {}) {
     super(initialDatas);
-    this.carouselId = crypto.randomBytes(6).toString('hex');
+    this.carouselId = uuidv4();
   }
 
   componentHeadStyle = () => {

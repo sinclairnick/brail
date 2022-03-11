@@ -10,6 +10,7 @@
     "experimentalDecorators": true,
     // Creates errors when compiling libraries otherwise
     "allowSyntheticDefaultImports": false,
+    "isolatedModules": true,
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
@@ -19,11 +20,6 @@
     "strict": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
-    "allowJs": true,
-    "paths": {
-      "@brail/core": ["packages/core"],
-      "@brail/mjml": ["packages/mjml"],
-      "@brail/react": ["packages/react"]
-    }
+    "allowJs": true
   }
 }

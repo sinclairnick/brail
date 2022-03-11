@@ -1,5 +1,5 @@
 import { BodyComponent } from '../../mjml-core';
-import * as crypto from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 
 import conditionalTag, {
   msoConditionalTag,
@@ -112,7 +112,7 @@ export default class MjNavbar extends BodyComponent {
   }
 
   renderHamburger() {
-    const key = crypto.randomBytes(8).toString('hex');
+    const key = uuidv4();
 
     return `
       ${msoConditionalTag(

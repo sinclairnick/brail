@@ -46,6 +46,9 @@ export const createHandler = (renderFn: RenderFn<any>) => {
 };
 
 export const createServer = (suppliedTemplates?: SuppliedTemplateMap) => {
+  
+
+  
   const _suppliedTemplates = suppliedTemplates ?? {};
   for (const path in _suppliedTemplates) {
     const template = _suppliedTemplates[path];

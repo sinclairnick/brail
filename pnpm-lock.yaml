@@ -31,6 +31,7 @@ importers:
       parcel: ^2.3.2
       path-browserify: ^1.0.1
       process: ^0.11.10
+      rimraf: ^3.0.2
       ts-jest: 27.0.5
       ts-migrate: ^0.1.28
       tslib: ^2.0.0
@@ -66,6 +67,7 @@ importers:
       lerna: 4.0.0
       path-browserify: 1.0.1
       process: 0.11.10
+      rimraf: 3.0.2
       ts-jest: 27.0.5_e0ee76ac955ca87073c8e94c47148cf6
       typescript: 4.6.2
 
@@ -114,6 +116,7 @@ importers:
       '@types/react': ^17.0.40
       '@types/react-dom': ^17.0.13
       '@types/react-reconciler': ^0.26.4
+      '@types/uuid': ^8.3.4
       cheerio: ^1.0.0-rc.10
       color: ^4.2.1
       csstype: ^3.0.11
@@ -125,6 +128,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2
       react-reconciler: ^0.26.2
+      uuid: ^8.3.2
     dependencies:
       cheerio: 1.0.0-rc.10
       color: 4.2.1
@@ -136,6 +140,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-reconciler: 0.26.2_react@17.0.2
+      uuid: 8.3.2
     devDependencies:
       '@babel/core': 7.17.5
       '@types/color': 3.0.3
@@ -144,6 +149,7 @@ importers:
       '@types/react': 17.0.40
       '@types/react-dom': 17.0.13
       '@types/react-reconciler': 0.26.4
+      '@types/uuid': 8.3.4
       csstype: 3.0.11
 
   packages/react:
@@ -4290,6 +4296,10 @@ packages:
 
   /@types/stack-utils/2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
+    dev: true
+
+  /@types/uuid/8.3.4:
+    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
     dev: true
 
   /@types/yargs-parser/21.0.0:
@@ -12386,6 +12396,11 @@ packages:
     deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
     hasBin: true
     dev: true
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
 
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
