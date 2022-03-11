@@ -1,94 +1,107 @@
-
+![Brail](./static/brail.png)
 
 # Brail
 
-This project was generated using [Nx](https://nx.dev).
+> Transactional email that feels different
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+[![NPM Version][npm-image]][npm-url]
 
-🔎 **Smart, Fast and Extensible Build System**
+Brail is a framework built on NextJS for developing email templates in React, and returning HTML that is compatible with major email clients. It aims to seperate the concerns of generating the emails and delivering them.
 
-## Adding capabilities to your workspace
+## Installation
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+### NPM
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+```sh
+npm i @brail/core
+npm i @brail/react @brail/mjml # useful, optional, packages
+```
 
-Below are our core plugins:
+### Yarn
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+```sh
+yarn add @brail/core
+yarn add @brail/react @brail/mjml # useful, optional, packages
+```
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+### PNPM
 
-## Generate an application
+```sh
+pnpm add @brail/core
+pnpm add @brail/react @brail/mjml # useful, optional, packages
+```
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+## Usage example
 
-> You can use any of the plugins above to generate applications as well.
+```tsx
+export type ProductsTemplateProps = {
+  products: Array<{ name: string; price: string }>;
+};
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+const ReusableHeader = () => {
+  return (
+    <Row>
+      <Column>
+        <Text>Used apple products!</Text>
+      </Column>
+    </Row>
+  );
+};
 
-## Generate a library
+const ProductsTemplate = (props: ProductsTemplateProps) => {
+  return (
+    <>
+      <EmailTemplate
+        title="New products"
+        preview={`${props.products.length} products`}
+      >
+        <ReusableHeader />
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+        <Container paddingTop={100} color={theme.red}>
+          {props.products.map((p) => {
+            return (
+              <Row>
+                <ColumnGroup>
+                  <Column>
+                    <Text variant="h3">{p.name}</Text>
+                  </Column>
+                  <Column>
+                    <Text>{p.price}</Text>
+                  </Column>
+                </ColumnGroup>
+              </Row>
+            );
+          })}
+        </Container>
+      </EmailTemplate>
+    </>
+  );
+};
 
-> You can also use any of the plugins above to generate libraries as well.
+export const template = createTemplate(NotificationEmailTemplate, {
+  name: 'notification',
+  previewData: {
+    products: [
+      { name: 'iPhone 4', price: '$100' },
+      { name: 'iPhone 8', price: '$1,000' },
+      { name: 'iPhone 16', price: '$10,000' },
+    ],
+  },
+});
 
-Libraries are shareable across libraries and applications. They can be imported from `@brail/mylib`.
+export const getStaticProps = template.getStaticProps;
+```
 
-## Development server
+## Author
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Nick Sinclair
 
-## Code scaffolding
+Distributed under the MIT license. See `LICENSE` for more information.
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+[https://github.com/sinclairnick](https://github.com/sinclairnick)
 
-## Build
+<!-- Markdown link & img dfn's -->
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[wiki]: https://github.com/yourname/yourproject/wiki
