@@ -11,16 +11,33 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@nrwl/cli": "latest",
+    "@nrwl/eslint-plugin-nx": "13.8.6",
+    "@nrwl/jest": "13.8.6",
+    "@nrwl/js": "13.8.6",
+    "@nrwl/linter": "13.8.6",
+    "@nrwl/tao": "latest",
+    "@nrwl/workspace": "latest",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.152",
+    "@types/jest": "27.0.2",
     "@types/react": "^17.0.40",
+    "@typescript-eslint/eslint-plugin": "~5.10.0",
+    "@typescript-eslint/parser": "~5.10.0",
     "chokidar": "^3.5.3",
     "concurrently": "^7.0.0",
     "esbuild": "^0.14.25",
+    "eslint": "~8.7.0",
+    "eslint-config-prettier": "8.1.0",
+    "jest": "27.2.3",
     "lerna": "^4.0.0",
-    "tslib": "^2.3.1"
+    "ts-jest": "27.0.5",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.2"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "ts-migrate": "^0.1.28",
+    "tslib": "^2.0.0"
   }
 }
