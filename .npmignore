@@ -1,0 +1,14 @@
+# source
+**/*.ts
+*.ts
+
+# definitions
+!**/*.d.ts
+!*.d.ts
+
+# configuration
+pnpm-lock.yaml
+pnpm-workspace.yaml
+tslint.json
+tsconfig.json
+.prettierrc
