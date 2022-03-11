@@ -1,14 +1,11 @@
-import React from 'react';
-import { GetStaticProps } from 'next';
+import * as React from 'react';
 import {
   CreateTemplateOptions,
-  EmailTemplate,
   PropType,
   RenderFn,
-  TemplatePageStaticProps,
+  TemplatePage,
 } from './types';
 import { render as renderToHtml, MjType } from '@brail/mjml';
-import { createHandler } from '../server/server';
 
 const defaultMjmlOptions: MjType.Mjml2HtmlOptions = {
   beautify: true,
@@ -20,7 +17,7 @@ const defaultMjmlOptions: MjType.Mjml2HtmlOptions = {
 export function createTemplate<P extends PropType>(
   Template: (props: P) => JSX.Element,
   options: CreateTemplateOptions<P>
-): EmailTemplate<P> {
+): TemplatePage<P> {
   const render: RenderFn<P> = (options) => {
     console.log('[brail] Rendering html...');
     const { props, ...mjmlOptions } = options;
@@ -31,21 +28,19 @@ export function createTemplate<P extends PropType>(
     });
   };
 
-  const getStaticProps: GetStaticProps<TemplatePageStaticProps> = () => {
-    const res = render({
-      props: options.previewData,
-      ...options.renderOptions,
-    });
-    return {
-      props: { ...res },
-    };
-  };
+  const TemplatePage: TemplatePage<P> = Object.assign(
+    () => {
+      const { previewData, ...mjmlOptions } = options;
 
-  const handler = createHandler(render);
+      const { html } = renderToHtml(<Template {...previewData} />, {
+        ...defaultMjmlOptions,
+        ...mjmlOptions,
+      });
+      // TODO: Add more Layout
+      return <div dangerouslySetInnerHTML={{ __html: html }} />;
+    },
+    { render }
+  );
 
-  return {
-    getStaticProps,
-    handler,
-    name: options.name,
-  };
+  return TemplatePage;
 }

@@ -1,12 +1,30 @@
-import { getNextManifest } from '../next';
-import { EmailTemplate, RenderFn } from '../template/types';
-import { HandlerFn, HandlersMap } from './server.types';
+import { RenderFn, TemplatePage } from '../template/types';
+import { HandlerFn, HandlersMap, SuppliedTemplateMap } from './server.types';
 
 const trimSlashes = (str: string) => {
   return str
     .split(/\/+/)
     .filter((x) => x === undefined || x.length === 0)
     .join('/');
+};
+
+const handlerMap: HandlersMap = {};
+
+const pathHasHandler = (path: string) => {
+  const name = trimSlashes(path);
+  const existing = handlerMap[name];
+
+  return existing !== undefined;
+};
+
+export const registerTemplate = <T extends Pick<TemplatePage<any>, 'render'>>(
+  pathName: string,
+  template: T
+) => {
+  const sanitisedName = trimSlashes(pathName);
+  const handler = createHandler(template.render);
+  handlerMap[sanitisedName] = handler;
+  return handler;
 };
 
 export const createHandler = (renderFn: RenderFn<any>) => {
@@ -27,17 +45,23 @@ export const createHandler = (renderFn: RenderFn<any>) => {
   return handler;
 };
 
-export const createServer = (templates: EmailTemplate<any>[] = []) => {
+export const createServer = (suppliedTemplates?: SuppliedTemplateMap) => {
+  const _suppliedTemplates = suppliedTemplates ?? {};
+  for (const path in _suppliedTemplates) {
+    const template = _suppliedTemplates[path];
+    const handlerAlreadyExists = pathHasHandler(path);
+    if (handlerAlreadyExists) {
+      throw new Error(
+        `A template with name ${path} has already been registered`
+      );
+    }
+    registerTemplate(path, template);
+  }
+
+  const handlerKeys = Object.keys(handlerMap);
+  console.log(`Found ${handlerKeys.length} handlers`);
+
   const rootHandler: HandlerFn = async (req, res) => {
-    const manifest = await getNextManifest();
-    console.log('MANIFEST', manifest);
-    console.log(`Found ${templates} templates`);
-
-    const handlers = templates.reduce((obj: HandlersMap, t) => {
-      const sanitisedName = trimSlashes(t.name);
-      return { ...obj, [sanitisedName]: t.handler };
-    }, {});
-
     const url = req.url;
 
     if (url === undefined) {
@@ -48,7 +72,7 @@ export const createServer = (templates: EmailTemplate<any>[] = []) => {
     const handlerNameRaw = url.replace('/api', '');
     const handlerName = trimSlashes(handlerNameRaw);
 
-    const handler = handlers[handlerName];
+    const handler = handlerMap[handlerName];
 
     if (handler === undefined) {
       console.warn('Handler not found');

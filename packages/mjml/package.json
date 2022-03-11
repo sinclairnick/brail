@@ -1,34 +1,40 @@
 {
   "name": "@brail/mjml",
   "version": "0.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "default": "./dist/esm/index.js"
+  },
   "scripts": {
-    "types:build": "tsc --declaration --emitDeclarationOnly -p tsconfig.json",
-    "types:watch": "tsc --declaration --emitDeclarationOnly -p tsconfig.json -w",
-    "compile": "swc ./src -d dist",
-    "compile:watch": "swc ./src -d dist -w",
-    "build": "concurrently \"pnpm run types:build\" \"pnpm run compile\"",
-    "dev": "concurrently \"pnpm run types:watch\" \"pnpm run compile:watch\""
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "npm-run-all build:*",
+    "watch:esm": "tsc -p tsconfig.json -w",
+    "watch:cjs": "tsc -p tsconfig.cjs.json -w",
+    "watch": "npm-run-all watch:*"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
     "color": "^4.2.1",
     "glob": "^7.2.0",
-    "html-minifier": "^4.0.0",
     "htmlparser2": "^7.2.0",
     "js-beautify": "^1.14.0",
     "juice": "^8.0.0",
+    "lodash": "^4.17.21",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-reconciler": "^0.26.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.0",
     "@types/color": "^3.0.3",
     "@types/glob": "^7.2.0",
     "@types/js-beautify": "^1.13.3",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
+    "@types/react-reconciler": "^0.26.4",
     "csstype": "^3.0.11"
   }
 }

@@ -1,7 +1,6 @@
-import React, { createElement } from 'react';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'reac... Remove this comment to see the full error message
-import ReactReconciler from 'react-reconciler';
-import ReactDOMServer from 'react-dom/server';
+import { createElement } from 'react';
+import * as ReactReconciler from 'react-reconciler';
+import * as ReactDOMServer from 'react-dom/server';
 
 import { noop, escapeTextForBrowser, trimContent } from './render-utils';
 
@@ -9,11 +8,14 @@ const reconciler = ReactReconciler({
   supportsMutation: true,
   isPrimaryRenderer: true,
   createTextInstance(
-    text: any /* rootContainerInstance, hostContext, internalInstanceHandle,*/,
+    text: any /* rootContainerInstance, hostContext, internalInstanceHandle,*/
   ) {
     return text;
   },
-  createInstance(type: any, props: any /* rootContainerInstance, hostContext */) {
+  createInstance(
+    type: any,
+    props: any /* rootContainerInstance, hostContext */
+  ) {
     const { children, dangerouslySetInnerHTML, ...rest } = props;
     const res = {
       tagName: type,
@@ -75,17 +77,29 @@ const reconciler = ReactReconciler({
       parent.children.push(child);
     }
   },
-  prepareForCommit: noop,
+  prepareForCommit: () => null,
   resetAfterCommit: noop,
   clearContainer: noop,
   appendChild: noop,
-  finalizeInitialChildren: noop,
+  finalizeInitialChildren: () => false,
   getChildHostContext: noop,
   getRootHostContext: noop,
-  shouldSetTextContent: noop,
+  shouldSetTextContent: () => false,
+  getPublicInstance() {},
+  cancelTimeout() {},
+  noTimeout() {},
+  now() {
+    return Date.now();
+  },
+  preparePortalMount() {},
+  prepareUpdate() {},
+  scheduleTimeout() {},
+  supportsHydration: false,
+  supportsPersistence: false,
 });
 
 export function renderToJSON(whatToRender: any) {
+  // @ts-expect-error
   const container = reconciler.createContainer({}, false, false);
   reconciler.updateContainer(whatToRender, container, null, null);
   return container.containerInfo.resultObj;
@@ -98,7 +112,8 @@ function toReactElement(element: any) {
   return createElement(
     element.type,
     element.props,
-    element.children.map((child: any) => typeof child === 'string' ? child : toReactElement(child),
-    ),
+    element.children.map((child: any) =>
+      typeof child === 'string' ? child : toReactElement(child)
+    )
   );
 }

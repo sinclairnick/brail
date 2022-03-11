@@ -1,21 +1,18 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./dist/esm",
     "rootDir": "./src",
-    "jsx": "react-jsx",
     "module": "ESNext",
-    "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "declaration": true,
     "types": ["node", "react", "react-dom"]
   },
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist", "src/core/**/test"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "./src/**/test",
+    "./src/**/tests",
+    "./src/cli"
+  ]
 }

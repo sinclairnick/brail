@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Mj } from '@brail/mjml';
 import { FC } from 'react';
 import { theme } from '../../theme/theme';

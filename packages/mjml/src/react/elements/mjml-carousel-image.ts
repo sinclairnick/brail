@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ClassNameProps, HrefProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 

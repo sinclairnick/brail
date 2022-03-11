@@ -1,7 +1,7 @@
 import { BodyComponent } from '../../mjml-core';
 
 import { range, repeat, min, map } from 'lodash';
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 
 import { msoConditionalTag } from '../../mjml-core/helpers/conditionalTag';
 

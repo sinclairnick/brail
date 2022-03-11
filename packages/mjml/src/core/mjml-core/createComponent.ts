@@ -136,10 +136,6 @@ class Component {
 }
 
 export class BodyComponent extends Component {
-  context: any;
-
-  props: any;
-
   // eslint-disable-next-line class-methods-use-this
   getStyles() {
     return {};

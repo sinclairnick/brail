@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import CSS from 'csstype';
+import { CSSProperties, ReactNode } from 'react';
 import { ClassNameProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
@@ -11,9 +10,9 @@ export type HeroProps = {
   backgroundWidth?: string | undefined;
   backgroundHeight?: string | undefined;
   backgroundUrl?: string | undefined;
-  backgroundPosition?: CSS.Properties['backgroundPosition'] | undefined;
-  verticalAlign?: CSS.Properties['verticalAlign'] | undefined;
-  backgroundColor?: CSS.Properties['backgroundColor'] | undefined;
+  backgroundPosition?: CSSProperties['backgroundPosition'] | undefined;
+  verticalAlign?: CSSProperties['verticalAlign'] | undefined;
+  backgroundColor?: CSSProperties['backgroundColor'] | undefined;
 } & ClassNameProps &
   PaddingProps;
 

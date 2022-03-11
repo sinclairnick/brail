@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { string } from 'prop-types';
 
 import { MjmlComment } from './mjml-comment';
 
-export class MjmlConditionalComment extends Component {
+export class MjmlConditionalComment extends React.Component {
   static propTypes = {
     children: string.isRequired,
     condition: string.isRequired,

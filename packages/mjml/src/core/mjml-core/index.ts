@@ -10,7 +10,7 @@ import {
   each,
   isEmpty,
 } from 'lodash';
-import juice from 'juice';
+import * as juice from 'juice';
 
 import { html as htmlBeautify } from 'js-beautify';
 import cheerio from 'cheerio';

@@ -1,5 +1,5 @@
 import { BodyComponent } from '../../mjml-core';
-import crypto from 'crypto';
+import * as crypto from 'crypto';
 
 import conditionalTag, {
   msoConditionalTag,

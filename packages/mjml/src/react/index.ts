@@ -1,4 +1,4 @@
-import ReactDOMServer from 'react-dom/server';
+import * as ReactDOMServer from 'react-dom/server';
 import { MjmlError } from './types';
 import { mjmlToHtml } from '../core/mjml';
 

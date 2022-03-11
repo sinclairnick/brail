@@ -1,15 +1,19 @@
 {
   "name": "@brail/react",
   "version": "0.0.1",
-  "main": "dist/index.js",
-  "types:": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "default": "./dist/esm/index.js"
+  },
   "scripts": {
-    "types:build": "tsc --declaration --emitDeclarationOnly -p tsconfig.json",
-    "types:watch": "tsc --declaration --emitDeclarationOnly -p tsconfig.json -w",
-    "compile": "swc ./src -d dist",
-    "compile:watch": "swc ./src -d dist -w",
-    "build": "concurrently \"pnpm run types:build\" \"pnpm run compile\"",
-    "dev": "concurrently \"pnpm run types:watch\" \"pnpm run compile:watch\""
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "npm-run-all build:*",
+    "watch:esm": "tsc -p tsconfig.json -w",
+    "watch:cjs": "tsc -p tsconfig.cjs.json -w",
+    "watch": "npm-run-all watch:*"
   },
   "dependencies": {
     "@brail/mjml": "workspace:*",

@@ -1,6 +1,4 @@
-import { GetStaticProps } from 'next';
 import { MjType, RenderResult } from '@brail/mjml';
-import { HandlerFn } from '../server/server.types';
 
 export type RenderingError = MjType.MjmlError;
 
@@ -16,7 +14,6 @@ export type RenderOptions<P extends PropType> = MjType.Mjml2HtmlOptions & {
 };
 
 export type CreateTemplateOptions<P extends PropType> = {
-  name: string;
   previewData: P;
   renderOptions?: Omit<RenderOptions<P>, 'props'>;
 };
@@ -25,8 +22,7 @@ export type RenderFn<P extends PropType> = (
   options: RenderOptions<P>
 ) => RenderResult;
 
-export type EmailTemplate<P extends PropType> = {
-  getStaticProps: GetStaticProps<TemplatePageStaticProps>;
-  name: string;
-  handler: HandlerFn;
+export type TemplatePage<P extends PropType> = {
+  (): JSX.Element;
+  render: RenderFn<P>;
 };

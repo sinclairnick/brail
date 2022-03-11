@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import CSS from 'csstype';
+import { CSSProperties, ReactNode } from 'react';
 
 import { PaddingProps, ClassNameProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
@@ -15,9 +14,9 @@ export type SocialProps = {
   mode?: 'vertical' | 'horizontal' | undefined;
   textDecoration?: string | undefined;
   align?: string | undefined;
-  color?: CSS.Properties['color'] | undefined;
+  color?: CSSProperties['color'] | undefined;
   innerPadding?: string | undefined;
-  containerBackgroundColor?: CSS.Properties['backgroundColor'] | undefined;
+  containerBackgroundColor?: CSSProperties['backgroundColor'] | undefined;
 } & PaddingProps &
   ClassNameProps;
 

@@ -60,8 +60,7 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
   );
 };
 
-export const template = createTemplate(NotificationEmailTemplate, {
-  name: 'notification',
+export default createTemplate(NotificationEmailTemplate, {
   previewData: {
     notifications: [
       { title: 'Jennie liked your post', from: 'Jennie Smith' },
@@ -70,5 +69,3 @@ export const template = createTemplate(NotificationEmailTemplate, {
     ],
   },
 });
-
-export const getStaticProps = template.getStaticProps;

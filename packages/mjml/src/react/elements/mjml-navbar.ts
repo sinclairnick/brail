@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import { createMjmlElement } from '../utils/create-mjml-element';
-import CSS from 'csstype';
 
 export type NavbarProps = {
   baseUrl?: string | undefined;
@@ -15,7 +14,7 @@ export type NavbarProps = {
   icoPaddingBottom?: string | undefined;
   icoPaddingLeft?: string | undefined;
   icoAlign?: string | undefined;
-  icoColor?: CSS.Properties['color'] | undefined;
+  icoColor?: CSSProperties['color'] | undefined;
   icoFontSize?: string | undefined;
   icoTextTransform?: string | undefined;
   icoTextDecoration?: string | undefined;

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { string } from 'prop-types';
 
 import { Raw } from '../elements/mjml-raw';
 
-export class MjmlYahooStyle extends Component {
+export class MjmlYahooStyle extends React.Component {
   static propTypes = {
     children: string.isRequired,
   };

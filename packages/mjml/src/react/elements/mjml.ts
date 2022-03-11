@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
 export type MjmlProps = {

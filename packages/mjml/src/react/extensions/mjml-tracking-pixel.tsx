@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { string } from 'prop-types';
 
 import { Raw } from '../elements/mjml-raw';
 
-export class MjmlTrackingPixel extends Component {
+export class MjmlTrackingPixel extends React.Component {
   static propTypes = {
     src: string.isRequired,
   };

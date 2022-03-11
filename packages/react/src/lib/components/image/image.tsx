@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Mj } from '@brail/mjml';
 
 export type ImageProps = Omit<Mj.ImageProps, 'src'> & { src: string };

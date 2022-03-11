@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import fs from 'fs'
+import * as fs from 'fs'
 
-import yargs from 'yargs'
+import * as yargs from 'yargs'
 import migrate from '.'
 
 // @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../package.json' or its corres... Remove this comment to see the full error message

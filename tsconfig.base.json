@@ -2,12 +2,14 @@
   "compileOnSave": false,
   "compilerOptions": {
     "preserveSymlinks": true,
+    "jsx": "react",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "declarationMap": true,
+    // Creates errors when compiling libraries otherwise
+    "allowSyntheticDefaultImports": false,
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",

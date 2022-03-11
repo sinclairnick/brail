@@ -1,5 +1,4 @@
-import React, { CSSProperties, ReactNode } from 'react';
-import CSS from 'csstype';
+import { CSSProperties, ReactNode } from 'react';
 
 import { createMjmlElement } from '../utils/create-mjml-element';
 
@@ -14,7 +13,7 @@ export type AccordionProps = {
   iconPosition?: 'left' | 'right' | undefined;
   iconHeight?: string | undefined;
   iconWidth?: string | undefined;
-  backgroundColor?: CSS.Properties['backgroundColor'] | undefined;
+  backgroundColor?: CSSProperties['backgroundColor'] | undefined;
 };
 
 export const Accordion = createMjmlElement('mj-accordion');

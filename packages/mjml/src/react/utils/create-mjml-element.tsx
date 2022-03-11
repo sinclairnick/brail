@@ -1,4 +1,4 @@
-import React, { createElement } from 'react';
+import * as React from 'react';
 import { handleMjmlProps } from '../utils';
 
 export const createMjmlElement = <P extends { [key: string]: any } = {}>(
@@ -6,6 +6,6 @@ export const createMjmlElement = <P extends { [key: string]: any } = {}>(
 ) => {
   return (props: P) => {
     const { children = null, ...rest } = props;
-    return createElement(name, handleMjmlProps(rest), children);
+    return React.createElement(name, handleMjmlProps(rest), children);
   };
 };

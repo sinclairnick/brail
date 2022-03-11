@@ -1,20 +1,19 @@
-import React, { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import { BorderProps, ClassNameProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
-import CSS from 'csstype';
 
 export type WrapperProps = {
   children?: ReactNode;
   fullWidth?: boolean | undefined;
-  backgroundColor?: CSS.Properties['backgroundColor'] | undefined;
+  backgroundColor?: CSSProperties['backgroundColor'] | undefined;
   backgroundUrl?: string | undefined;
-  backgroundRepeat?: CSS.Properties['backgroundRepeat'] | undefined;
-  backgroundSize?: CSS.Properties['backgroundSize'] | undefined;
-  backgroundPosition?: CSS.Properties['backgroundPosition'] | undefined;
-  backgroundPositionX?: CSS.Properties['backgroundPositionX'] | undefined;
-  backgroundPositionY?: CSS.Properties['backgroundPositionY'] | undefined;
-  verticalAlign?: CSS.Properties['verticalAlign'] | undefined;
-  textAlign?: CSS.Properties['textAlign'] | undefined;
+  backgroundRepeat?: CSSProperties['backgroundRepeat'] | undefined;
+  backgroundSize?: CSSProperties['backgroundSize'] | undefined;
+  backgroundPosition?: CSSProperties['backgroundPosition'] | undefined;
+  backgroundPositionX?: CSSProperties['backgroundPositionX'] | undefined;
+  backgroundPositionY?: CSSProperties['backgroundPositionY'] | undefined;
+  verticalAlign?: CSSProperties['verticalAlign'] | undefined;
+  textAlign?: CSSProperties['textAlign'] | undefined;
 } & BorderProps &
   PaddingProps &
   ClassNameProps;

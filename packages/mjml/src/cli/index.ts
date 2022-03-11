@@ -1,5 +1,5 @@
-import path from 'path';
-import yargs from 'yargs';
+import * as path from 'path';
+import * as yargs from 'yargs';
 import { flow, pick, isNil, negate, pickBy } from 'lodash/fp';
 import { isArray, isEmpty, map, get, omit } from 'lodash';
 import { html as htmlBeautify } from 'js-beautify';
@@ -89,7 +89,6 @@ export default async () => {
       },
       c: {
         alias: 'config',
-        // @ts-expect-error ts-migrate(2322) FIXME: Type '"object"' is not assignable to type '"array"... Remove this comment to see the full error message
         type: 'object',
         describe: 'Option to pass to mjml-core',
       },
@@ -110,7 +109,6 @@ export default async () => {
 
   try {
     juiceOptions =
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
       argv.c && argv.c.juiceOptions && JSON.parse(argv.c.juiceOptions);
   } catch (e) {
     error(`Failed to decode JSON for config.juiceOptions argument`);
@@ -118,7 +116,6 @@ export default async () => {
 
   try {
     minifyOptions =
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
       argv.c && argv.c.minifyOptions && JSON.parse(argv.c.minifyOptions);
   } catch (e) {
     error(`Failed to decode JSON for config.minifyOptions argument`);
@@ -126,35 +123,28 @@ export default async () => {
 
   try {
     juicePreserveTags =
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
       argv.c &&
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
       argv.c.juicePreserveTags &&
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
       JSON.parse(argv.c.juicePreserveTags);
   } catch (e) {
     error(`Failed to decode JSON for config.juicePreserveTags argument`);
   }
 
   try {
-    // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
     fonts = argv.c && argv.c.fonts && JSON.parse(argv.c.fonts);
   } catch (e) {
     error(`Failed to decode JSON for config.fonts argument`);
   }
 
-  // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
   const filePath = argv.c && argv.c.filePath;
 
   const config = Object.assign(
     DEFAULT_OPTIONS,
-    // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
     argv.c,
     fonts && { fonts },
     minifyOptions && { minifyOptions },
     juiceOptions && { juiceOptions },
     juicePreserveTags && { juicePreserveTags },
-    // @ts-expect-error ts-migrate(4111) FIXME: Property 'c' comes from an index signature, so it ... Remove this comment to see the full error message
     argv.c && argv.c.keepComments === 'false' && { keepComments: false }
   );
 
@@ -167,20 +157,14 @@ export default async () => {
     [Object.keys(inputArgs).length > 1, 'Too many input arguments received'],
     [Object.keys(outputArgs).length > 1, 'Too many output arguments received'],
     [
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'w' comes from an index signature, so it ... Remove this comment to see the full error message
       argv.w && argv.w.length > 1 && !argv.o,
       'Need an output option when watching files',
     ],
     [
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'w' comes from an index signature, so it ... Remove this comment to see the full error message
       argv.w &&
-        // @ts-expect-error ts-migrate(2571) FIXME: Object is of type 'unknown'.
         argv.w.length > 1 &&
-        // @ts-expect-error ts-migrate(4111) FIXME: Property 'o' comes from an index signature, so it ... Remove this comment to see the full error message
         argv.o &&
-        // @ts-expect-error ts-migrate(4111) FIXME: Property 'o' comes from an index signature, so it ... Remove this comment to see the full error message
         !isDirectory(argv.o) &&
-        // @ts-expect-error ts-migrate(4111) FIXME: Property 'o' comes from an index signature, so it ... Remove this comment to see the full error message
         argv.o !== '',
       'Need an output option when watching files',
     ],
@@ -327,25 +311,18 @@ export default async () => {
 
   switch (outputOpt) {
     case 'o': {
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'o' comes from an index signature, so it ... Remove this comment to see the full error message
       if (inputs.length > 1 && !isDirectory(argv.o) && argv.o !== '') {
         error(
-          `Multiple input files, but output option should be either an existing directory or an empty string: ${
-            // @ts-expect-error ts-migrate(4111) FIXME: Property 'o' comes from an index signature, so it ... Remove this comment to see the full error message
-            argv.o
-          } given`
+          `Multiple input files, but output option should be either an existing directory or an empty string: ${argv.o} given`
         );
       }
 
-      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'unknown' is not assignable to pa... Remove this comment to see the full error message
       const fullOutputPath = path.parse(path.resolve(process.cwd(), argv.o));
 
       if (inputs.length === 1 && !isDirectory(fullOutputPath.dir)) {
-        // @ts-expect-error ts-migrate(4111) FIXME: Property 'o' comes from an index signature, so it ... Remove this comment to see the full error message
         error(`Output directory doesn’t exist for path : ${argv.o}`);
       }
 
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'o' comes from an index signature, so it ... Remove this comment to see the full error message
       Promise.all(convertedStream.map(outputToFile(argv.o)))
         .then(() => {
           if (!KEEP_OPEN) {
@@ -360,7 +337,6 @@ export default async () => {
       break;
     }
     case 's': {
-      // @ts-expect-error ts-migrate(4111) FIXME: Property 'noStdoutFileComment' comes from an index... Remove this comment to see the full error message
       const addFileHeaderComment = !argv.noStdoutFileComment;
 
       Promise.all(

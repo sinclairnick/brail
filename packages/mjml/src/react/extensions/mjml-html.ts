@@ -1,4 +1,4 @@
-import React, { Component, createElement } from 'react';
+import { Component, createElement } from 'react';
 import { string } from 'prop-types';
 
 export class MjmlHtml extends Component {

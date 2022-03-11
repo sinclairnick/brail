@@ -1,12 +1,11 @@
-import React, { ReactNode } from 'react';
-import CSS from 'csstype';
+import { CSSProperties, ReactNode } from 'react';
 
 import { HrefProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
 
 export type NavbarLinkProps = {
   children?: ReactNode;
-  color?: CSS.Properties['color'] | undefined;
+  color?: CSSProperties['color'] | undefined;
   fontFamily?: string | undefined;
   fontSize?: string | number | undefined;
   fontStyle?: string | undefined;

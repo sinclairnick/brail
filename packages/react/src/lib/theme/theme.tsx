@@ -1,4 +1,4 @@
-import merge from 'lodash/merge';
+import { merge } from 'lodash';
 import { Object } from 'ts-toolbelt';
 import { TextProps } from '../components/text/text';
 

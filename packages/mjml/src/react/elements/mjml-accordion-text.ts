@@ -1,14 +1,14 @@
 import { ReactNode } from 'react';
 import { ClassNameProps, PaddingProps } from '../types';
 import { createMjmlElement } from '../utils/create-mjml-element';
-import CSS from 'csstype';
+import { CSSProperties } from 'react';
 
 export type AccordionTextProps = {
   children?: ReactNode;
-  color?: CSS.Properties['color'] | undefined;
+  color?: CSSProperties['color'] | undefined;
   fontFamily?: string | undefined;
   fontSize?: string | number | undefined;
-  backgroundColor?: CSS.Properties['backgroundColor'] | undefined;
+  backgroundColor?: CSSProperties['backgroundColor'] | undefined;
 } & PaddingProps &
   ClassNameProps;
 
