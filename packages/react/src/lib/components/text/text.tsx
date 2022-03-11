@@ -1,3 +1,4 @@
+import React from 'react';
 import { Mj } from '@brail/mjml';
 import { theme } from '../../theme/theme';
 

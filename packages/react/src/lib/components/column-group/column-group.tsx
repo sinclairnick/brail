@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Mj } from '@brail/mjml';
 
 export type GroupProps = Mj.GroupProps;

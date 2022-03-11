@@ -1,4 +1,4 @@
-/* eslint-disable-next-line */
+import React from 'react';
 export interface TemplatePageProps {
   html: string;
 }

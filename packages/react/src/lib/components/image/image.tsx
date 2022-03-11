@@ -1,3 +1,4 @@
+import React from 'react';
 import { Mj } from '@brail/mjml';
 
 export type ImageProps = Omit<Mj.ImageProps, 'src'> & { src: string };
@@ -20,7 +21,7 @@ const getSrcUrl = (url: string) => {
   if (NODE_ENV === 'development') {
     if (PORT === undefined) {
       throw new Error(
-        'Please specify the PORT env variable to allow absolute image paths'
+        'Please specify the NEXT_PUBLIC_PORT env variable to allow absolute image paths'
       );
     }
     return `http://localhost:${PORT}${url}`;
