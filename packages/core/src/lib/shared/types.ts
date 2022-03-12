@@ -14,6 +14,7 @@ export type RenderOptions<P extends PropType> = MjType.Mjml2HtmlOptions & {
 };
 
 export type CreateTemplateOptions<P extends PropType> = {
+  pathName: string;
   previewData: P;
   renderOptions?: Omit<RenderOptions<P>, 'props'>;
 };
@@ -23,6 +24,7 @@ export type RenderFn<P extends PropType> = (
 ) => RenderResult;
 
 export type TemplatePage<P extends PropType> = {
+  pathName: string;
   (): JSX.Element;
   render: RenderFn<P>;
 };

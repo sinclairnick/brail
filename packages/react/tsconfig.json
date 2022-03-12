@@ -4,7 +4,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "module": "CommonJS",
-    "declaration": true,
+    "declaration": true
   },
   "include": ["./src/**/*"],
   "exclude": [

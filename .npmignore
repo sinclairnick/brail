@@ -12,3 +12,7 @@ pnpm-workspace.yaml
 tslint.json
 tsconfig.json
 .prettierrc
+
+src/
+tsconfig.*
+jest.*

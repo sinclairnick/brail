@@ -19,6 +19,7 @@
     "strict": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
-    "allowJs": true
+    "allowJs": true,
+    "preserveWatchOutput": true
   }
 }

@@ -4,7 +4,8 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "module": "CommonJS",
-    "declaration": true
+    "declaration": true,
+    "moduleResolution": "node"
   },
   "include": ["./src/**/*"],
   "exclude": [
@@ -12,6 +13,7 @@
     "dist",
     "./src/**/test",
     "./src/**/tests",
-    "./src/cli"
+    "./src/cli",
+    "./*d.ts"
   ]
 }

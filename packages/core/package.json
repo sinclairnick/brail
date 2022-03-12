@@ -1,11 +1,15 @@
 {
   "name": "@brail/core",
   "version": "0.0.1",
-  "main": "./dist/index.server.js",
+  "main": "./dist/client.js",
   "exports": {
     ".": {
-      "require": "./dist/index.server.js",
-      "default": "./dist/esm/index.client.js"
+      "require": "./dist/client.js",
+      "default": "./dist/esm/client.js"
+    },
+    "./server": {
+      "require": "./server.js",
+      "default": "./dist/esm/server.js"
     }
   },
   "scripts": {
@@ -13,14 +17,15 @@
     "build:cjs": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
     "build": "run-p build:*",
-    "dev:esm": "tsc -p tsconfig.esm.json -w",
+    "dev:esm": "tsc -p tsconfig.esm.json -w --preserveWatchOutput",
     "dev:cjs": "tsc -p tsconfig.json -w",
     "dev": "npm-run-all --parallel dev:*"
   },
   "dependencies": {
     "@brail/mjml": "workspace:*",
     "next": "12.1.0",
-    "react": "17.0.2"
+    "react": "17.0.2",
+    "webpack": "^5.70.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",

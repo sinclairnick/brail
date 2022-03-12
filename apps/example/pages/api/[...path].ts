@@ -1,3 +1,4 @@
-import { createServer } from '@brail/core';
+import { createServer } from '@brail/core/server';
+import { NotificationTemplate } from '../notification/index.template';
 
-export default createServer();
+export default createServer([NotificationTemplate]);

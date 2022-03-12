@@ -1,3 +1,4 @@
+import { createTemplate } from '@brail/core';
 import {
   Column,
   ColumnGroup,
@@ -7,7 +8,6 @@ import {
   Row,
   Text,
 } from '@brail/react';
-import { createTemplate } from '@brail/core';
 
 export type NotificationEmailTemplateProps = {
   notifications: Array<{ title: string; from: string }>;
@@ -60,7 +60,8 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
   );
 };
 
-export default createTemplate(NotificationEmailTemplate, {
+export const NotificationTemplate = createTemplate(NotificationEmailTemplate, {
+  pathName: 'notification',
   previewData: {
     notifications: [
       { title: 'Jennie liked your post', from: 'Jennie Smith' },
@@ -69,3 +70,5 @@ export default createTemplate(NotificationEmailTemplate, {
     ],
   },
 });
+
+export default NotificationTemplate;
