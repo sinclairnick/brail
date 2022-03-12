@@ -38,7 +38,7 @@ export default class MjImage extends BodyComponent {
     usemap: 'string',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     align: 'center',
     border: '0',
     height: 'auto',
@@ -47,13 +47,13 @@ export default class MjImage extends BodyComponent {
     'font-size': '13px',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getBoxWidths: any;
+  override getBoxWidths: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     const width = this.getContentWidth();
     const fullWidth = this.getAttribute('full-width') === 'full-width';
 

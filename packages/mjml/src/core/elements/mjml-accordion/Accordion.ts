@@ -22,7 +22,7 @@ export default class MjAccordion extends BodyComponent {
     padding: 'unit(px,%){1,4}',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     border: '2px solid black',
     'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
     'icon-align': 'middle',
@@ -36,13 +36,13 @@ export default class MjAccordion extends BodyComponent {
     padding: '10px 25px',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
   headStyle = () =>
     `
@@ -66,7 +66,7 @@ export default class MjAccordion extends BodyComponent {
       @goodbye { @gmail }
     `;
 
-  getStyles() {
+  override getStyles() {
     return {
       table: {
         width: '100%',

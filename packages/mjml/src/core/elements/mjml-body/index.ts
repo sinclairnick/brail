@@ -8,26 +8,26 @@ export default class MjBody extends BodyComponent {
     'background-color': 'color',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     width: '600px',
   };
 
-  context: any;
+  override context: any;
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
-  getChildContext() {
+  override getChildContext() {
     return {
       ...this.context,
       containerWidth: this.getAttribute('width'),
     };
   }
 
-  getStyles() {
+  override getStyles() {
     return {
       div: {
         'background-color': this.getAttribute('background-color'),

@@ -1,4 +1,9 @@
-const { default: withBrail } = require('@brail/core');
-const nextConfig = {};
+const { withBrail } = require('@brail/core');
 
-module.exports = withBrail(nextConfig);
+let nextConfig = {
+  pageExtensions: ['template.tsx'],
+};
+
+nextConfig = withBrail(nextConfig);
+
+module.exports = nextConfig;

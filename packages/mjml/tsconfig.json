@@ -1,11 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist/esm",
+    "outDir": "./dist",
     "rootDir": "./src",
-    "module": "ESNext",
+    "module": "CommonJS",
     "declaration": true,
-    "types": ["node", "react", "react-dom"]
   },
   "include": ["./src/**/*"],
   "exclude": [

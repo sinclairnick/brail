@@ -132,7 +132,7 @@ export default class MjSocialElement extends BodyComponent {
     'vertical-align': 'enum(top,middle,bottom)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     align: 'left',
     color: '#000',
     'border-radius': '3px',
@@ -146,13 +146,13 @@ export default class MjSocialElement extends BodyComponent {
     'vertical-align': 'middle',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getContent: any;
+  override getContent: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     const {
       'icon-size': iconSize,
 

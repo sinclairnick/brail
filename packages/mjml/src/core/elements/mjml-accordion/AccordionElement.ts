@@ -21,7 +21,7 @@ export default class MjAccordionElement extends BodyComponent {
     'icon-position': 'enum(left,right)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     title: {
       img: {
         width: '32px',
@@ -30,17 +30,17 @@ export default class MjAccordionElement extends BodyComponent {
     },
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getChildContext: any;
+  override getChildContext: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
-  getStyles() {
+  override getStyles() {
     return {
       td: {
         padding: '0px',

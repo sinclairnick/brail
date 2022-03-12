@@ -7,7 +7,7 @@ export class MjmlHtml extends Component {
     html: string.isRequired,
   };
 
-  render() {
+  override render() {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'tag' does not exist on type 'Readonly<{}... Remove this comment to see the full error message
     const { tag, html } = this.props;
     return createElement(tag || 'mj-raw', {

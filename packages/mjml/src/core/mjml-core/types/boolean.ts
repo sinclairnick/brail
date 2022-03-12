@@ -4,9 +4,9 @@ export const matcher = /^boolean/gim
 
 export default () =>
   (class Boolean extends Type {
-    matchers: any;
+    override matchers: any;
 
-    value: any;
+    override value: any;
 
     constructor(boolean: any) {
       super(boolean)
@@ -14,7 +14,7 @@ export default () =>
       this.matchers = [/^true$/i, /^false$/i]
     }
 
-    isValid() {
+    override isValid() {
       return this.value === true || this.value === false
     }
   })

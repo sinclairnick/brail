@@ -32,7 +32,7 @@ export default class MjSection extends BodyComponent {
     'text-padding': 'unit(px,%){1,4}',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     'background-repeat': 'repeat',
     'background-size': 'auto',
     'background-position': 'top center',
@@ -42,19 +42,19 @@ export default class MjSection extends BodyComponent {
     'text-padding': '4px 4px 4px 0',
   };
 
-  context: any;
+  override context: any;
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getBoxWidths: any;
+  override getBoxWidths: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
-  getChildContext() {
+  override getChildContext() {
     const { box } = this.getBoxWidths();
 
     return {
@@ -63,7 +63,7 @@ export default class MjSection extends BodyComponent {
     };
   }
 
-  getStyles() {
+  override getStyles() {
     const { containerWidth } = this.context;
 
     const fullWidth = this.isFullWidth();

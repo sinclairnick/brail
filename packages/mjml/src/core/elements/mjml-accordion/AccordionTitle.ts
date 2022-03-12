@@ -18,18 +18,18 @@ export default class MjAccordionTitle extends BodyComponent {
     padding: 'unit(px,%){1,4}',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     'font-size': '13px',
     padding: '16px',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getContent: any;
+  override getContent: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     return {
       td: {
         width: '100%',

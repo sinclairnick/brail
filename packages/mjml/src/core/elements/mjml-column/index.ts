@@ -30,26 +30,26 @@ export default class MjColumn extends BodyComponent {
     width: 'unit(px,%)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     direction: 'ltr',
     'vertical-align': 'top',
   };
 
-  context: any;
+  override context: any;
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getBoxWidths: any;
+  override getBoxWidths: any;
 
-  getShorthandAttrValue: any;
+  override getShorthandAttrValue: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
-  getChildContext() {
+  override getChildContext() {
     const { containerWidth: parentWidth } = this.context;
     const { nonRawSiblings } = this.props;
     const { borders, paddings } = this.getBoxWidths();
@@ -81,7 +81,7 @@ export default class MjColumn extends BodyComponent {
     };
   }
 
-  getStyles() {
+  override getStyles() {
     const tableStyle = {
       'background-color': this.getAttribute('background-color'),
       border: this.getAttribute('border'),

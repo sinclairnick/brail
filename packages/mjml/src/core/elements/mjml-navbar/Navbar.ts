@@ -33,7 +33,7 @@ export default class MjNavbar extends BodyComponent {
     'ico-line-height': 'unit(px,%,)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     align: 'center',
     'base-url': null,
     hamburger: null,
@@ -49,13 +49,13 @@ export default class MjNavbar extends BodyComponent {
     'ico-line-height': '30px',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
   headStyle = (breakpoint: any) => `
     noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
@@ -70,7 +70,7 @@ export default class MjNavbar extends BodyComponent {
     }
   `;
 
-  getStyles() {
+  override getStyles() {
     return {
       div: {
         align: this.getAttribute('align'),

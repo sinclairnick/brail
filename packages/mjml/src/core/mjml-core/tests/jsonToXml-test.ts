@@ -4,6 +4,7 @@ const chai = require('chai')
 const jsonToXml = require('../lib/helpers/jsonToXML')
 
 
+//@ts-expect-error
 const json = {
   line: 1,
   includedIn: [],
@@ -38,7 +39,7 @@ const json = {
        attributes: {} } ],
   attributes: {} }
 
-
+//@ts-expect-error
 const xml = jsonToXml(json)
 
 const validXml = '<mjml><mj-body><mj-section><mj-column><mj-text font-size="20px" color="#F45E43" font-family="helvetica">Hello World</mj-text></mj-column></mj-section></mj-body></mjml>'

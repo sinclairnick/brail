@@ -18,15 +18,15 @@ export default class MjSpacer extends BodyComponent {
     height: 'unit(px,%)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     height: '20px',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     return {
       div: {
         height: this.getAttribute('height'),

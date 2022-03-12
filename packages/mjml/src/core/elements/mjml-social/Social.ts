@@ -29,7 +29,7 @@ export default class MjSocial extends BodyComponent {
     'vertical-align': 'enum(top,bottom,middle)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     align: 'center',
     'border-radius': '3px',
     color: '#333333',
@@ -43,16 +43,16 @@ export default class MjSocial extends BodyComponent {
     'text-decoration': 'none',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
   // eslint-disable-next-line class-methods-use-this
-  getStyles() {
+  override getStyles() {
     return {
       tableVertical: {
         margin: '0px',

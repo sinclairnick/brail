@@ -19,7 +19,7 @@ export default class MjDivider extends BodyComponent {
     align: 'enum(left,center,right)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     'border-color': '#000000',
     'border-style': 'solid',
     'border-width': '4px',
@@ -28,15 +28,15 @@ export default class MjDivider extends BodyComponent {
     align: 'center',
   };
 
-  context: any;
+  override context: any;
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getShorthandAttrValue: any;
+  override getShorthandAttrValue: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     let computeAlign = '0px auto';
     if (this.getAttribute('align') === 'left') {
       computeAlign = '0px';

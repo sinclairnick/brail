@@ -11,7 +11,7 @@ export default class MjRaw extends BodyComponent {
     position: 'enum(file-start)',
   };
 
-  getContent: any;
+  override getContent: any;
 
   render() {
     return this.getContent();

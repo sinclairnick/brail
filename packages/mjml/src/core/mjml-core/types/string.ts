@@ -4,7 +4,7 @@ export const matcher = /^string/gim
 
 export default () =>
   (class NString extends Type {
-    matchers: any;
+    override matchers: any;
 
     constructor(value: any) {
       super(value)

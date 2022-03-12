@@ -296,11 +296,11 @@ export class BodyComponent extends Component {
 }
 
 export class HeadComponent extends Component {
-  componentName: any;
+  override componentName: any;
 
-  props: any;
+  override props: any;
 
-  static getTagName() {
+  static override getTagName() {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'componentName' does not exist on type 't... Remove this comment to see the full error message
     return this.componentName || kebabCase(this.name);
   }

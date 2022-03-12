@@ -31,7 +31,7 @@ export const registerHandlers = async () => {
 
   for (const templatePath of templatePaths) {
     const fullPath = path.join(pagesDir, templatePath);
-    
+
     // const template: TemplatePage<any> = require(fullPath);
 
     // console.log(template);
@@ -43,7 +43,7 @@ export const registerHandlers = async () => {
 // and via import .. from .. elsewhere, an error is thrown
 // saying cannot not import outside of a module.
 // Not sure how to fix
-export const withBrail = (config: NextConfig) => {
+export const withBrailConfig = (config: NextConfig) => {
   registerHandlers();
 
   // Register brail page extensions
@@ -57,4 +57,4 @@ export const withBrail = (config: NextConfig) => {
   };
 };
 
-export default withBrail;
+export default withBrailConfig;

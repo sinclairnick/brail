@@ -51,7 +51,7 @@ export default async () => {
       pickBy((e: any) => negate(isNil)(e) && !(isArray(e) && isEmpty(e)))
     );
 
-  const { argv } = yargs
+  const { argv }: any = yargs
     .version(false) // cf. https://github.com/yargs/yargs/issues/961
     .options({
       r: {
@@ -89,7 +89,7 @@ export default async () => {
       },
       c: {
         alias: 'config',
-        type: 'object',
+        type: 'object' as any,
         describe: 'Option to pass to mjml-core',
       },
       version: {

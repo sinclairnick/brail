@@ -33,7 +33,7 @@ export default class MjHero extends BodyComponent {
     'vertical-align': 'enum(top,bottom,middle)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     mode: 'fixed-height',
     height: '0px',
     'background-url': null,
@@ -47,19 +47,19 @@ export default class MjHero extends BodyComponent {
     'vertical-align': 'top',
   };
 
-  context: any;
+  override context: any;
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getShorthandAttrValue: any;
+  override getShorthandAttrValue: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
-  getChildContext() {
+  override getChildContext() {
     // Refactor -- removePaddingFor(width, ['padding', 'inner-padding'])
     const { containerWidth } = this.context;
     const paddingSize =
@@ -86,7 +86,7 @@ export default class MjHero extends BodyComponent {
     };
   }
 
-  getStyles() {
+  override getStyles() {
     const { containerWidth } = this.context;
     const backgroundRatio = Math.round(
       (parseInt(this.getAttribute('background-height'), 10) /

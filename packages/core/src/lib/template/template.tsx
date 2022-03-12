@@ -1,15 +1,15 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   CreateTemplateOptions,
   PropType,
   RenderFn,
   TemplatePage,
-} from './types';
-import { render as renderToHtml, MjType } from '@brail/mjml';
+} from "./types";
+import { render as renderToHtml, MjType } from "@brail/mjml";
 
 const defaultMjmlOptions: MjType.Mjml2HtmlOptions = {
   beautify: true,
-  validationLevel: 'soft',
+  validationLevel: "soft",
   keepComments: false,
   minify: false,
 };
@@ -19,7 +19,7 @@ export function createTemplate<P extends PropType>(
   options: CreateTemplateOptions<P>
 ): TemplatePage<P> {
   const render: RenderFn<P> = (options) => {
-    console.log('[brail] Rendering html...');
+    console.log("[brail] Rendering html...");
     const { props, ...mjmlOptions } = options;
 
     return renderToHtml(<Template {...props} />, {

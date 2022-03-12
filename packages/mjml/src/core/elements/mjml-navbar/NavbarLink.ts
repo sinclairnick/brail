@@ -28,7 +28,7 @@ export default class MjNavbarLink extends BodyComponent {
     'text-transform': 'string',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     color: '#000000',
     'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
     'font-size': '13px',
@@ -40,13 +40,13 @@ export default class MjNavbarLink extends BodyComponent {
     'text-transform': 'uppercase',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getContent: any;
+  override getContent: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     return {
       a: {
         display: 'inline-block',

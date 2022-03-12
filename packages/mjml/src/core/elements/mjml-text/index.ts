@@ -29,7 +29,7 @@ export default class MjText extends BodyComponent {
     'vertical-align': 'enum(top,bottom,middle)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     align: 'left',
     color: '#000000',
     'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
@@ -38,13 +38,13 @@ export default class MjText extends BodyComponent {
     padding: '10px 25px',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getContent: any;
+  override getContent: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     return {
       text: {
         'font-family': this.getAttribute('font-family'),

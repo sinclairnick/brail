@@ -1,12 +1,11 @@
-
-import { HeadComponent } from '../../mjml-core'
+import { HeadComponent } from '../../mjml-core';
 
 export default class MjHead extends HeadComponent {
-  static componentName = 'mj-head'
+  static componentName = 'mj-head';
 
-  handlerChildren: any;
+  override handlerChildren: any;
 
   handler() {
-    return this.handlerChildren()
+    return this.handlerChildren();
   }
 }

@@ -31,7 +31,7 @@ export default class MjTable extends BodyComponent {
     width: 'unit(px,%)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     align: 'left',
     border: 'none',
     cellpadding: '0',
@@ -45,13 +45,13 @@ export default class MjTable extends BodyComponent {
     width: '100%',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getContent: any;
+  override getContent: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     return {
       table: {
         color: this.getAttribute('color'),

@@ -4,7 +4,7 @@ export const matcher = /^integer/gim
 
 export default () =>
   (class NInteger extends Type {
-    matchers: any;
+    override matchers: any;
 
     constructor(value: any) {
       super(value)

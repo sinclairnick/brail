@@ -28,7 +28,7 @@ export default class MjCarousel extends BodyComponent {
     'tb-width': 'unit(px,%)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     align: 'center',
     'border-radius': '6px',
     'icon-width': '44px',
@@ -45,15 +45,15 @@ export default class MjCarousel extends BodyComponent {
 
   children: any;
 
-  context: any;
+  override context: any;
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
   constructor(initialDatas = {}) {
     super(initialDatas);
@@ -212,7 +212,7 @@ export default class MjCarousel extends BodyComponent {
     return `${carouselCss}\n${fallback}`;
   };
 
-  getStyles() {
+  override getStyles() {
     return {
       carousel: {
         div: {

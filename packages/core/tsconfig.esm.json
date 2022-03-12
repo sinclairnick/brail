@@ -1,11 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist/cjs",
+    "outDir": "./dist/esm",
     "rootDir": "./src",
     "declaration": true,
-    "module": "CommonJS",
-    "types": ["node", "react", "react-dom"]
+    "module": "ES6",
   },
   "include": ["./src/**/*"],
   "exclude": [

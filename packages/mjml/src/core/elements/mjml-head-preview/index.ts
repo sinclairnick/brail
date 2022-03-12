@@ -5,9 +5,9 @@ export default class MjPreview extends HeadComponent {
 
   static endingTag = true;
 
-  context: any;
+  override context: any;
 
-  getContent: any;
+  override getContent: any;
 
   handler() {
     const { add } = this.context;

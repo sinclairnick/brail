@@ -19,21 +19,21 @@ export default class MjCarouselImage extends BodyComponent {
     'tb-border-radius': 'unit(px,%){1,4}',
   }
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     target: '_blank',
   }
 
-  attributes: any;
+  override attributes: any;
 
-  context: any;
+  override context: any;
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  props: any;
+  override props: any;
 
-  getStyles() {
+  override getStyles() {
     return {
       images: {
         img: {

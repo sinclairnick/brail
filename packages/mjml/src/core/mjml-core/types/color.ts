@@ -9,9 +9,9 @@ const replaceOutput = '#$1$1$2$2$3$3'
 
 export default () =>
   (class Color extends Type {
-    matchers: any;
+    override matchers: any;
 
-    value: any;
+    override value: any;
 
     constructor(color: any) {
       super(color)
@@ -24,7 +24,7 @@ export default () =>
       ]
     }
 
-    getValue() {
+    override getValue() {
       if (typeof this.value === 'string' && this.value.match(shorthandRegex)) {
         return this.value.replace(replaceInputRegex, replaceOutput)
       }

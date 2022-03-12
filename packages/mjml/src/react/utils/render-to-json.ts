@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import * as ReactReconciler from 'react-reconciler';
+import ReactReconciler from 'react-reconciler';
 import * as ReactDOMServer from 'react-dom/server';
 
 import { noop, escapeTextForBrowser, trimContent } from './render-utils';

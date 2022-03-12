@@ -1,24 +1,20 @@
 {
   "name": "@brail/core",
   "version": "0.0.1",
-  "main": "./dist/cjs/index.js",
+  "main": "./dist/index.server.js",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
-      "default": "./dist/esm/index.js"
-    },
-    "./next-plugin": {
-      "require": "./dist/cjs/lib/next-plugin.js",
-      "default": "./dist/esm/lib/next-plugin/index.js"
+      "require": "./dist/index.server.js",
+      "default": "./dist/esm/index.client.js"
     }
   },
   "scripts": {
-    "build:esm": "tsc -p tsconfig.json",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
-    "build": "pnpm run clean && npm-run-all --parallel build:*",
-    "dev:esm": "tsc -p tsconfig.json -w",
-    "dev:cjs": "tsc -p tsconfig.cjs.json -w",
+    "build": "run-p build:*",
+    "dev:esm": "tsc -p tsconfig.esm.json -w",
+    "dev:cjs": "tsc -p tsconfig.json -w",
     "dev": "npm-run-all --parallel dev:*"
   },
   "dependencies": {

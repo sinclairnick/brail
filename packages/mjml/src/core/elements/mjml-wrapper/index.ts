@@ -3,15 +3,15 @@ import MjSection from '../mjml-section';
 import { suffixCssClasses } from '../../mjml-core';
 
 export default class MjWrapper extends MjSection {
-  static componentName = 'mj-wrapper';
+  static override componentName = 'mj-wrapper';
 
-  context: any;
+  override context: any;
 
-  props: any;
+  override props: any;
 
-  renderChildren: any;
+  override renderChildren: any;
 
-  renderWrappedChildren() {
+  override renderWrappedChildren() {
     const { children } = this.props;
     const { containerWidth } = this.context;
 

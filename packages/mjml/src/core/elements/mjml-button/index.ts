@@ -43,7 +43,7 @@ export default class MjButton extends BodyComponent {
     width: 'unit(px,%)',
   };
 
-  static defaultAttributes = {
+  static override defaultAttributes = {
     align: 'center',
     'background-color': '#414141',
     border: 'none',
@@ -61,17 +61,17 @@ export default class MjButton extends BodyComponent {
     'vertical-align': 'middle',
   };
 
-  getAttribute: any;
+  override getAttribute: any;
 
-  getBoxWidths: any;
+  override getBoxWidths: any;
 
-  getContent: any;
+  override getContent: any;
 
-  getShorthandAttrValue: any;
+  override getShorthandAttrValue: any;
 
-  htmlAttributes: any;
+  override htmlAttributes: any;
 
-  getStyles() {
+  override getStyles() {
     return {
       table: {
         'border-collapse': 'separate',
