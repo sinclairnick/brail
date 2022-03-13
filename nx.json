@@ -26,19 +26,9 @@
         "projects": "dependencies"
       }
     ],
-    "prepare": [
-      {
-        "target": "prepare",
-        "projects": "dependencies"
-      },
-      {
-        "target": "clean",
-        "projects": "self"
-      }
-    ],
     "publish": [
       {
-        "target": "prepare",
+        "target": "build",
         "projects": "self"
       }
     ]
