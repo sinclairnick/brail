@@ -3,9 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
-    "module": "CommonJS",
     "declaration": true,
-    "moduleResolution": "node"
   },
   "include": ["./src/**/*"],
   "exclude": [

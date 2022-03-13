@@ -2,24 +2,10 @@
   "name": "@brail/core",
   "version": "0.0.1",
   "main": "./dist/client.js",
-  "exports": {
-    ".": {
-      "require": "./dist/client.js",
-      "default": "./dist/esm/client.js"
-    },
-    "./server": {
-      "require": "./server.js",
-      "default": "./dist/esm/server.js"
-    }
-  },
   "scripts": {
-    "build:esm": "tsc -p tsconfig.esm.json",
-    "build:cjs": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
-    "build": "run-p build:*",
-    "dev:esm": "tsc -p tsconfig.esm.json -w --preserveWatchOutput",
-    "dev:cjs": "tsc -p tsconfig.json -w",
-    "dev": "npm-run-all --parallel dev:*",
+    "dev": "tsc -p tsconfig.esm.json -w --preserveWatchOutput",
     "version:patch": "pnpm version patch",
     "version:minor": "pnpm version minor",
     "version:major": "pnpm version major",

@@ -4,15 +4,11 @@
     "jsx": "react",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
     "isolatedModules": true,
     "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
@@ -20,6 +16,10 @@
     "baseUrl": ".",
     "resolveJsonModule": true,
     "allowJs": true,
-    "preserveWatchOutput": true
+    "preserveWatchOutput": true,
+    "module": "esnext",
+    "target": "ES2017",
+    "esModuleInterop": true,
+    "moduleResolution": "node"
   }
 }
