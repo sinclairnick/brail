@@ -4,14 +4,14 @@ import { FC } from 'react';
 import { theme } from '../../theme/theme';
 import { Container, ContainerProps } from '../container/container';
 
-export type EmailLayoutProps = {
+export type EmailTemplateProps = {
   title?: string;
   preview?: string;
   bodyProps?: Mj.BodyProps;
   containerProps?: ContainerProps;
 };
 
-export const EmailTemplate: FC<EmailLayoutProps> = (props) => {
+export const EmailTemplate: FC<EmailTemplateProps> = (props) => {
   const { title, preview, children } = props;
 
   return (
