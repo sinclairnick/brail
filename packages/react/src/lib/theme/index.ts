@@ -1,6 +1,7 @@
 import { merge } from 'lodash';
 import { Object } from 'ts-toolbelt';
 import { TextProps } from '../components/text/text';
+import { setTheme, theme } from './theme';
 
 export type TypographyVariant =
   | 'h1'
@@ -150,9 +151,8 @@ export type Theme = {
 
 export type ThemeOptions = Object.Partial<Theme, 'deep'>;
 
-export let theme = defaultTheme;
-
 export const createTheme = (options: ThemeOptions) => {
-  theme = merge(theme, options);
+  const newTheme = merge(theme, options);
+  setTheme(newTheme);
   return theme;
 };

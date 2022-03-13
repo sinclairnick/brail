@@ -88,3 +88,7 @@ const defaultTheme: Theme = {
 };
 
 export let theme = defaultTheme;
+
+export const setTheme = (newTheme: typeof theme) => {
+  theme = newTheme;
+};
