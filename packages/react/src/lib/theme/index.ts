@@ -1,4 +1,20 @@
-import { Palette, Theme } from '.';
+import { merge } from 'lodash';
+import { Object } from 'ts-toolbelt';
+import { TextProps } from '../components/text/text';
+
+export type TypographyVariant =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'body1'
+  | 'body2';
+
+export const createPalette = <P extends PaletteOptions>(options: P) => {
+  return merge(defaultPalette, options);
+};
 
 const defaultPalette: Palette = {
   primary: {
@@ -87,4 +103,56 @@ const defaultTheme: Theme = {
   palette: defaultPalette,
 };
 
+type Typography = { [key in TypographyVariant]?: Partial<TextProps> } & {
+  allVariants: Partial<TextProps>;
+  a: Partial<TextProps>;
+};
+export type TypographyOptions = Object.Partial<Typography, 'deep'>;
+
+type Color = {
+  main: string;
+  light: string;
+  dark: string;
+  contrastText: string;
+};
+type GradedColor = {
+  50: string;
+  100: string;
+  200: string;
+  300: string;
+  400: string;
+  500: string;
+  600: string;
+  700: string;
+  800: string;
+  900: string;
+  A100: string;
+  A200: string;
+  A400: string;
+  A700: string;
+};
+export type ThemeColor =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'warning'
+  | 'error'
+  | 'success';
+
+export type Palette = { [key in ThemeColor]: Color } & { grey: GradedColor };
+
+export type PaletteOptions = Object.Partial<Palette, 'deep'>;
+
+export type Theme = {
+  typography: Typography;
+  palette: Palette;
+};
+
+export type ThemeOptions = Object.Partial<Theme, 'deep'>;
+
 export let theme = defaultTheme;
+
+export const createTheme = (options: ThemeOptions) => {
+  theme = merge(theme, options);
+  return theme;
+};
