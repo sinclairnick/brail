@@ -7,8 +7,9 @@
     "apps/*"
   ],
   "dependencies": {
+    "@nrwl/react": "^13.8.8",
     "lodash": "^4.17.21",
-    "ts-toolbelt": "^9.6.0"
+    "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
     "@nrwl/cli": "latest",

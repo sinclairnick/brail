@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4444",
     "build": "next build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
