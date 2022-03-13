@@ -12,7 +12,13 @@ export type EmailTemplateProps = {
 };
 
 export const EmailTemplate: FC<EmailTemplateProps> = (props) => {
-  const { title, preview, children } = props;
+  const {
+    title,
+    preview,
+    children,
+    bodyProps = {},
+    containerProps = {},
+  } = props;
 
   return (
     <Mj.Mjml>
@@ -25,10 +31,12 @@ export const EmailTemplate: FC<EmailTemplateProps> = (props) => {
 			}
 		`}</Mj.Style>
       </Mj.Head>
-      <Mj.Body backgroundColor={theme.palette.grey[100]} width={700}>
-        <Container backgroundColor={'hsl(168, 100%, 99.4%)'}>
-          {children}
-        </Container>
+      <Mj.Body
+        backgroundColor={theme.palette.grey[100]}
+        width={700}
+        {...bodyProps}
+      >
+        <Container {...containerProps}>{children}</Container>
       </Mj.Body>
     </Mj.Mjml>
   );
