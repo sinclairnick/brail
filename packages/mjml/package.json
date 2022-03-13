@@ -19,7 +19,8 @@
     "prepare": "run-s clean build",
     "version:patch": "pnpm version patch",
     "version:minor": "pnpm version minor",
-    "version:major": "pnpm version major"
+    "version:major": "pnpm version major",
+    "publish": "pnpm publish"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",

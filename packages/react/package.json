@@ -19,7 +19,8 @@
     "prepare": "run-s clean build",
     "version:patch": "pnpm version patch",
     "version:minor": "pnpm version minor",
-    "version:major": "pnpm version major"
+    "version:major": "pnpm version major",
+    "publish": "pnpm publish"
   },
   "dependencies": {
     "@brail/mjml": "workspace:*"
