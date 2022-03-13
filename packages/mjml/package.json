@@ -16,7 +16,10 @@
     "dev:esm": "tsc -p tsconfig.esm.json -w",
     "dev:cjs": "tsc -p tsconfig.json -w",
     "dev": "npm-run-all --parallel dev:*",
-    "prepare": "run-s clean build"
+    "prepare": "run-s clean build",
+    "version:patch": "pnpm version patch",
+    "version:minor": "pnpm version minor",
+    "version:major": "pnpm version major"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
