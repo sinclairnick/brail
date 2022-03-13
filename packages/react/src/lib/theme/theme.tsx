@@ -1,4 +1,5 @@
-import { Palette, Theme } from '.';
+import { merge } from 'lodash';
+import { Palette, PaletteOptions, Theme, ThemeOptions } from './types';
 
 const defaultPalette: Palette = {
   primary: {
@@ -89,6 +90,11 @@ const defaultTheme: Theme = {
 
 export let theme = defaultTheme;
 
-export const setTheme = (newTheme: typeof theme) => {
-  theme = newTheme;
+export const createPalette = <P extends PaletteOptions>(options: P) => {
+  return merge(defaultPalette, options);
+};
+
+export const createTheme = (options: ThemeOptions) => {
+  theme = merge(theme, options);
+  return theme;
 };

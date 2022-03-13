@@ -36,7 +36,9 @@ export const EmailTemplate: FC<EmailTemplateProps> = (props) => {
         width={700}
         {...bodyProps}
       >
-        <Container {...containerProps}>{children}</Container>
+        <Container backgroundColor={'white'} {...containerProps}>
+          {children}
+        </Container>
       </Mj.Body>
     </Mj.Mjml>
   );

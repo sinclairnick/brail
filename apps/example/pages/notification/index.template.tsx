@@ -1,5 +1,6 @@
 import { createTemplate } from '@brail/core';
 import {
+  Button,
   Column,
   ColumnGroup,
   Container,
@@ -8,6 +9,7 @@ import {
   Row,
   Text,
 } from '@brail/react';
+import { theme } from '../../lib/theme';
 
 export type NotificationEmailTemplateProps = {
   notifications: Array<{ title: string; from: string }>;
@@ -31,7 +33,7 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
         preview={`We found ${props.notifications.length} notifications`}
       >
         <ReusableHeader />
-        <Row>
+        <Row paddingTop={20}>
           <Column>
             <Text variant="h1">
               You've got {props.notifications.length} new notifications!
@@ -45,7 +47,9 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
               <Row>
                 <ColumnGroup>
                   <Column>
-                    <Text variant="h3">{noti.title}</Text>
+                    <Text variant="h3" color={theme.palette.info.main}>
+                      {noti.title}
+                    </Text>
                   </Column>
                   <Column>
                     <Text>{noti.from}</Text>
@@ -55,6 +59,12 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
             );
           })}
         </Container>
+
+        <Row paddingTop={50}>
+          <Column>
+            <Button>View</Button>
+          </Column>
+        </Row>
       </EmailTemplate>
     </>
   );

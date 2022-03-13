@@ -10,13 +10,12 @@ const palette = createPalette({
 
 const serif = 'Georgia, Times,Times New Roman,serif';
 
-createTheme({
+export const theme = createTheme({
   typography: {
     allVariants: {
       fontFamily: 'Lato, Arial',
     },
     h1: {
-      color: palette.primary.dark,
       fontFamily: serif,
       lineHeight: '42px',
     },
