@@ -15,7 +15,8 @@
     "build": "run-s clean  && run-p build:*",
     "dev:esm": "tsc -p tsconfig.esm.json -w",
     "dev:cjs": "tsc -p tsconfig.json -w",
-    "dev": "npm-run-all --parallel dev:*"
+    "dev": "npm-run-all --parallel dev:*",
+    "prepare": "run-s clean build"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",
