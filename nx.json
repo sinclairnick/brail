@@ -10,6 +10,12 @@
     }
   },
   "targetDependencies": {
+    "clean": [
+      {
+        "target": "clean",
+        "projects": "self"
+      }
+    ],
     "build": [
       {
         "target": "build",
@@ -29,10 +35,6 @@
       }
     ],
     "publish": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      },
       {
         "target": "prepare",
         "projects": "self"

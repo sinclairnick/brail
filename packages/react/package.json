@@ -12,7 +12,7 @@
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:cjs": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
-    "build": "run-s clean  && run-p build:*",
+    "build": "run-p build:*",
     "dev:esm": "tsc -p tsconfig.esm.json -w",
     "dev:cjs": "tsc -p tsconfig.json -w",
     "dev": "npm-run-all --parallel dev:*",
