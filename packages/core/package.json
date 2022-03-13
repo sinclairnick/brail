@@ -23,7 +23,7 @@
     "version:patch": "pnpm version patch",
     "version:minor": "pnpm version minor",
     "version:major": "pnpm version major",
-    "publish": "pnpm publish"
+    "publish": "pnpm publish --access=public"
   },
   "dependencies": {
     "@brail/mjml": "workspace:*",
