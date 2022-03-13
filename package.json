@@ -6,11 +6,6 @@
     "packages/*",
     "apps/*"
   ],
-  "dependencies": {
-    "@nrwl/react": "^13.8.8",
-    "lodash": "^4.17.21",
-    "tiny-invariant": "^1.2.0"
-  },
   "devDependencies": {
     "@nrwl/cli": "latest",
     "@nrwl/tao": "latest",

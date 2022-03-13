@@ -22,7 +22,8 @@
     "publish-pkg": "pnpm publish --access=public"
   },
   "dependencies": {
-    "@brail/mjml": "workspace:*"
+    "@brail/mjml": "workspace:*",
+    "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.4"
