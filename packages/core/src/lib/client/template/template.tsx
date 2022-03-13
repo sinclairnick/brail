@@ -19,7 +19,6 @@ export function createTemplate<P extends PropType>(
   options: CreateTemplateOptions<P>
 ): TemplatePage<P> {
   const render: RenderFn<P> = (options) => {
-    console.log('[brail] Rendering html...');
     const { props, ...mjmlOptions } = options;
 
     return renderToHtml(<Template {...props} />, {
@@ -31,8 +30,6 @@ export function createTemplate<P extends PropType>(
   const TemplatePage: TemplatePage<P> = Object.assign(
     () => {
       const { previewData, ...mjmlOptions } = options;
-
-      console.log({ previewData });
 
       const { html } = renderToHtml(<Template {...previewData} />, {
         ...defaultMjmlOptions,
