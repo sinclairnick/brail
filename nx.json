@@ -28,10 +28,14 @@
         "projects": "dependencies"
       }
     ],
-    "package": [
+    "publish": [
       {
-        "target": "package",
+        "target": "build",
         "projects": "dependencies"
+      },
+      {
+        "target": "prepare",
+        "projects": "self"
       }
     ]
   },
