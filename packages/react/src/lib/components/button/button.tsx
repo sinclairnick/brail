@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Mj } from '@brail/mjml';
-import { theme, ThemeColor } from '../../theme/theme';
+import { theme } from '../../theme/theme';
+import { ThemeColor } from '../../theme';
 
 export type ButtonProps = Omit<Mj.ButtonProps, 'color'> & {
   color?: ThemeColor;
