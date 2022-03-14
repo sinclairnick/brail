@@ -1,6 +1,6 @@
 import { RenderFn, TemplatePage } from '../types';
 import { trimSlashes } from '../constants/constants';
-import { HandlerFn, HandlersMap } from './types';
+import { HandlerFn, HandlersMap } from './handler.types';
 
 export class HandlerManager {
   private static handlerMap: HandlersMap = {};
@@ -19,29 +19,37 @@ export class HandlerManager {
   };
 
   public static registerTemplate = <
-    T extends Pick<TemplatePage<any>, 'render' | 'pathName'>
+    T extends Pick<TemplatePage<any>, 'render' | 'pathName' | 'generateMeta'>
   >(
     template: T
   ) => {
     const sanitisedName = trimSlashes(template.pathName);
-    const handler = this.createHandler(template.render);
+    const handler = this.createHandler(template);
     this.handlerMap[sanitisedName] = handler;
     console.log({ sanitisedName });
     return handler;
   };
 
-  public static createHandler = (renderFn: RenderFn<any>) => {
+  public static createHandler = <
+    T extends Pick<TemplatePage<any>, 'generateMeta' | 'render'>
+  >(
+    template: T
+  ) => {
+    const { render, generateMeta } = template;
     const handler: HandlerFn = (req, res) => {
       const body: { [key: string]: any } = req.body;
+      const props = body['data'];
+
+      const meta = generateMeta(props);
 
       // TODO: Validate/sanitise body
-      const { html, errors } = renderFn({
+      const { html, errors } = render({
         props: body['data'],
       });
-
-      res.setHeader('content-type', 'text/html');
-      res.status(200);
-      res.send(html);
+      res.status(200).json({
+        html,
+        meta,
+      });
       return;
     };
 

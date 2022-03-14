@@ -1,7 +1,7 @@
 import { HandlerManager } from '../../shared/handler/handler';
-import { HandlerFn } from '../../shared/handler/types';
-import { TemplatePage } from '../../shared/types';
+import { HandlerFn } from '../../shared/handler/handler.types';
 import { Logger } from '../../shared/logger/logger';
+import { TemplatePage } from '../../shared/types';
 
 const logHandlers = () => {
   const handlerKeys = HandlerManager.getKeys();

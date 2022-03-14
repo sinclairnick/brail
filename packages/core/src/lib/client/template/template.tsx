@@ -38,7 +38,7 @@ export function createTemplate<P extends PropType>(
       // TODO: Add more Layout
       return <div dangerouslySetInnerHTML={{ __html: html }} />;
     },
-    { render, pathName: options.pathName }
+    { render, pathName: options.pathName, generateMeta: options.generateMeta }
   );
 
   return TemplatePage;

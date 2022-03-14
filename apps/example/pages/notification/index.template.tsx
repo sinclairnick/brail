@@ -47,7 +47,7 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
             <Container paddingTop={20}>
               {props.notifications.map((noti) => {
                 return (
-                  <Row>
+                  <Row key={noti.title}>
                     <ColumnGroup>
                       <Column>
                         <Text variant="h3" color={theme.palette.info.main}>
@@ -91,6 +91,11 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
 
 export const NotificationTemplate = createTemplate(NotificationEmailTemplate, {
   pathName: 'notification',
+  generateMeta: (props) => {
+    return {
+      subject: `You have ${props.notifications.length} notification(s)`,
+    };
+  },
   previewData: {
     notifications: [
       { title: 'Jennie liked your post', from: 'Jennie Smith' },
