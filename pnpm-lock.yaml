@@ -59,11 +59,13 @@ importers:
       '@brail/mjml': workspace:*
       '@types/node': ^17.0.21
       '@types/react': ^17.0.40
+      chalk: ^4.0.0
       next: 12.1.0
       react: 17.0.2
       webpack: ^5.70.0
     dependencies:
       '@brail/mjml': link:../mjml
+      chalk: 4.1.2
       next: 12.1.0_@babel+core@7.17.5+react@17.0.2
       react: 17.0.2
       webpack: 5.70.0
@@ -1660,7 +1662,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       color-convert: 2.0.1
-    dev: true
 
   /ansi-styles/5.2.0:
     resolution: {integrity: sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==}
@@ -1866,7 +1867,6 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
-    dev: true
 
   /char-regex/1.0.2:
     resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
@@ -4650,7 +4650,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       has-flag: 4.0.0
-    dev: true
 
   /supports-color/8.1.1:
     resolution: {integrity: sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==}

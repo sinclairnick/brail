@@ -1,12 +1,24 @@
 import { HandlerManager } from '../../shared/handler/handler';
 import { HandlerFn } from '../../shared/handler/types';
 import { TemplatePage } from '../../shared/types';
+import { Logger } from '../../shared/logger/logger';
+
+const logHandlers = () => {
+  const handlerKeys = HandlerManager.getKeys();
+  if (handlerKeys.length === 0) {
+    Logger.warn('Found no email templates!');
+    return;
+  }
+
+  Logger.log(`Found ${handlerKeys.length} email templates`);
+  handlerKeys.forEach((key) => {
+    Logger.log(` -/${key}`);
+  });
+};
 
 export function createServer(suppliedTemplates?: TemplatePage<any>[]) {
   HandlerManager.extendHandlers(suppliedTemplates ?? []);
-
-  const handlerKeys = HandlerManager.getKeys();
-  console.log(`Found ${handlerKeys.length} handlers`);
+  logHandlers();
 
   const rootHandler: HandlerFn = async (req, res) => {
     const url = req.url;

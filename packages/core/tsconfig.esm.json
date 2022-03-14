@@ -1,10 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./dist/esm",
     "rootDir": "./src",
     "declaration": true,
-    "module": "CommonJS"
+    "module": "ESNext"
   },
   "include": ["./src/**/*"],
   "exclude": [
@@ -12,7 +12,6 @@
     "dist",
     "./src/**/test",
     "./src/**/tests",
-    "./src/cli",
-    "./*d.ts"
+    "./src/cli"
   ]
 }

@@ -19,14 +19,14 @@ export class HandlerManager {
   };
 
   public static registerTemplate = <
-    T extends Pick<TemplatePage<any>, 'render'>
+    T extends Pick<TemplatePage<any>, 'render' | 'pathName'>
   >(
-    pathName: string,
     template: T
   ) => {
-    const sanitisedName = trimSlashes(pathName);
+    const sanitisedName = trimSlashes(template.pathName);
     const handler = this.createHandler(template.render);
     this.handlerMap[sanitisedName] = handler;
+    console.log({ sanitisedName });
     return handler;
   };
 
@@ -53,15 +53,14 @@ export class HandlerManager {
   }
 
   public static extendHandlers(suppliedTemplates: TemplatePage<any>[]) {
-    for (const path in suppliedTemplates ?? {}) {
-      const template = suppliedTemplates[path];
-      const handlerAlreadyExists = this.hasPath(path);
+    for (const template of suppliedTemplates ?? {}) {
+      const handlerAlreadyExists = this.hasPath(template.pathName);
       if (handlerAlreadyExists) {
         throw new Error(
-          `A template with name ${path} has already been registered`
+          `A template with name ${template.pathName} has already been registered`
         );
       }
-      this.registerTemplate(path, template);
+      this.registerTemplate(template);
     }
   }
 }

@@ -34,9 +34,13 @@ export const collectExportedHandlers = async () => {
 
   for (const templatePath of templatePaths) {
     const fullPath = path.join(pagesDir, templatePath);
+    const relPath = path.join(pagesRelative, templatePath);
 
     const fstat = fs.statSync(fullPath);
     const fileExists = fstat.isFile();
+
+    const mod = require('./' + relPath);
+    console.log(mod)
   }
 };
 
