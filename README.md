@@ -11,12 +11,8 @@ Brail is a framework built on NextJS for developing email templates in React, an
 ## Installation
 
 ```sh
-# npm
-npm i @brail/core @brail/react @brail/mjml
-# yarn
-yarn add @brail/core @brail/react @brail/mjml
-# pnpm
-pnpm add @brail/core @brail/react @brail/mjml
+# npm i / yarn add / pnpm add
+@brail/core @brail/react @brail/mjml
 ```
 
 ## Packages
