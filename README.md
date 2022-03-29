@@ -44,7 +44,7 @@ export type ProductsTemplateProps = {
 };
 
 // Create template component
-const ProductsTemplate = (props: ProductsTemplateProps) => {
+const ProductsTemplateComponent = (props: ProductsTemplateProps) => {
   return (
     <EmailTemplate>
       <MyHeader />
@@ -65,8 +65,8 @@ const ProductsTemplate = (props: ProductsTemplateProps) => {
 };
 
 // Create template and defined meta
-const ProductsTemplate = createTemplate(NotificationEmailTemplate, {
-  name: 'notification',
+const ProductsTemplate = createTemplate(ProductsTemplateComponent, {
+  name: '/products/new',
   generateMeta: (props) => ({
     subject: `${props.products.length} new products!`,
   }),
@@ -79,15 +79,22 @@ const ProductsTemplate = createTemplate(NotificationEmailTemplate, {
   },
 });
 
-export default ProductsTemplate;
+export default ProductsTemplate; // Expose page to Nextjs
 ```
 
 `pages/api/[...email].ts:`
 
 ```ts
 import { createServer } from '@brail/core/server';
-// Register template
+
+// Register template so it can be generated via API
 export default createServer([ProductsTemplate]);
+```
+
+Then consume the emails via API, dynamically generating transactional content
+
+```sh
+curl -X POST --data <email_data> <host>/api/products/new | email-sender
 ```
 
 ## Motivation
