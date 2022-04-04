@@ -22,7 +22,7 @@ In a few lines of code, Brail lets you turn a nextjs app into an email templatin
 
 > 📦 Leaves email delivery up to you
 
-### Brail is currently in Alpha, and may recieve breaking changes
+### Brail is currently in Alpha, and may receive breaking changes at any time.
 
 <br/>
 
