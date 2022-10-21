@@ -36,13 +36,13 @@ export default class MjAccordion extends BodyComponent {
     padding: '10px 25px',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
-  override props: any;
+  declare props: any;
 
-  override renderChildren: any;
+  declare renderChildren: any;;
 
   headStyle = () =>
     `

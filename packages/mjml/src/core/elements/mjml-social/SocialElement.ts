@@ -146,11 +146,11 @@ export default class MjSocialElement extends BodyComponent {
     'vertical-align': 'middle',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getContent: any;
+  declare getContent: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     const {

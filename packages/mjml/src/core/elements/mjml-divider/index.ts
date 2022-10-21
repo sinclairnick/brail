@@ -28,13 +28,13 @@ export default class MjDivider extends BodyComponent {
     align: 'center',
   };
 
-  override context: any;
+  declare context: any;;
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getShorthandAttrValue: any;
+  declare getShorthandAttrValue: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     let computeAlign = '0px auto';

@@ -45,11 +45,11 @@ export default class MjTable extends BodyComponent {
     width: '100%',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getContent: any;
+  declare getContent: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     return {

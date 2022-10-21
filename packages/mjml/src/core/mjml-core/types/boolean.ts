@@ -4,9 +4,9 @@ export const matcher = /^boolean/gim
 
 export default () =>
   (class Boolean extends Type {
-    override matchers: any;
+    declare matchers: any;;
 
-    override value: any;
+    declare value: any;;
 
     constructor(boolean: any) {
       super(boolean)

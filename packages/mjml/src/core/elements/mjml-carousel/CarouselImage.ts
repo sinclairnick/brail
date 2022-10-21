@@ -23,15 +23,15 @@ export default class MjCarouselImage extends BodyComponent {
     target: '_blank',
   }
 
-  override attributes: any;
+  declare attributes: any;;
 
-  override context: any;
+  declare context: any;;
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
-  override props: any;
+  declare props: any;
 
   override getStyles() {
     return {

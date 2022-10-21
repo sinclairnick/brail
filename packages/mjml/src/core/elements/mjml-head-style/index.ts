@@ -9,11 +9,11 @@ export default class MjStyle extends HeadComponent {
     inline: 'string',
   };
 
-  override context: any;
+  declare context: any;;
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getContent: any;
+  declare getContent: any;;
 
   handler() {
     const { add } = this.context;

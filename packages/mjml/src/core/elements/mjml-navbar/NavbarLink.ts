@@ -40,11 +40,11 @@ export default class MjNavbarLink extends BodyComponent {
     'text-transform': 'uppercase',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getContent: any;
+  declare getContent: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     return {

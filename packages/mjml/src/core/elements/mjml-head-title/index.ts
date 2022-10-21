@@ -5,9 +5,9 @@ export default class MjTitle extends HeadComponent {
 
   static endingTag = true;
 
-  override context: any;
+  declare context: any;;
 
-  override getContent: any;
+  declare getContent: any;;
 
   handler() {
     const { add } = this.context;

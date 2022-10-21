@@ -5,9 +5,9 @@ import { HeadComponent } from '../../mjml-core';
 export default class MjHtmlAttributes extends HeadComponent {
   static componentName = 'mj-html-attributes';
 
-  override context: any;
+  declare context: any;;
 
-  override props: any;
+  declare props: any;
 
   handler() {
     const { add } = this.context;
