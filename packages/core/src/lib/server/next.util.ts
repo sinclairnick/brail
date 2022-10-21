@@ -1,12 +1,11 @@
 import { getProjectDir } from 'next/dist/lib/get-project-dir';
 import { findPagesDir } from 'next/dist/lib/find-pages-dir';
-import { getNamedExports } from 'next/dist/build/utils';
-import { defaultConfig, NextConfig } from 'next/dist/server/config-shared';
-import { loadComponents } from 'next/dist/server/load-components';
-import * as path from 'path';
-import webpack from 'webpack';
+import { recursiveReadDir } from 'next/dist/lib/recursive-readdir';
+import path from 'path';
 import fs from 'fs';
-import { pathToFileURL } from 'url';
+import { parseModule } from 'next/dist/build/analysis/parse-module';
+import * as ts from 'typescript';
+import { loadComponents } from 'next/dist/server/load-components';
 
 export const brailExtensions: string[] = [
   'template.tsx',
@@ -19,25 +18,32 @@ export const brailExtensions: string[] = [
 // Future feature
 export const collectExportedHandlers = async () => {
   const dir = getProjectDir();
-  const pagesDir = findPagesDir(dir);
-  // const pagesRelative = pagesDir.replace(dir, '');
+  const { pages: pagesDir } = findPagesDir(dir);
 
-  // const templatePaths = await collectPages(pagesDir, brailExtensions);
-  // console.log('Dir', dir);
-  // console.log('Pages dir', pagesDir);
-  // console.log('Pages rel', pagesRelative);
-  // console.log('Dirname', __dirname);
-  // console.log('CWD', process.cwd());
-  // console.log('Template paths', templatePaths);
+  if (pagesDir == null) {
+    throw new Error('Failed to find any templates');
+  }
 
-  // for (const templatePath of templatePaths) {
-  // const fullPath = path.join(pagesDir, templatePath);
-  // const relPath = path.join(pagesRelative, templatePath);
-  // const fstat = fs.statSync(fullPath);
-  // const fileExists = fstat.isFile();
-  // const mod = require('./' + relPath);
-  // console.log(mod);
-  // }
+  const pagesPaths = await recursiveReadDir(
+    pagesDir,
+    new RegExp(`\\.(?:${brailExtensions.join('|')})$`)
+  );
+
+  for (const templatePath of pagesPaths) {
+    const fullPath = path.join(pagesDir, templatePath);
+    const exists = fs.existsSync(fullPath);
+    if (!exists) {
+      throw new Error('File does not exist');
+    }
+    const fileContents = fs.readFileSync(fullPath, 'utf-8');
+    const components = await loadComponents({
+      distDir: dir + '/dist',
+      hasServerComponents: false,
+      isAppPath: false,
+      pathname: fullPath,
+      serverless: false,
+    });
+  }
 };
 
 // Note: TypeORM has import TS stuff code to learn from

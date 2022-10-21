@@ -1,1 +1,1 @@
-export { createServer } from './lib/server';
+export { createServer, collectExportedHandlers } from './lib/server';
