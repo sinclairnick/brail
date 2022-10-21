@@ -1,4 +1,6 @@
 import { createServer } from '@brail/core/server';
 import { NotificationTemplate } from '../notification/index.template';
 
-export default createServer([NotificationTemplate]);
+const server = createServer([NotificationTemplate]);
+
+export default server;
