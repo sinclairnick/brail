@@ -11,10 +11,21 @@ import {
 } from '@brail/react';
 import { getAbsoluteSrc } from 'apps/example/lib/path';
 import { theme } from '../../lib/theme';
+import { Type } from 'class-transformer';
+import { IsString, ValidateNested } from 'class-validator';
 
-export type NotificationEmailTemplateProps = {
-  notifications: Array<{ title: string; from: string }>;
-};
+class Notification {
+  @IsString()
+  title: string;
+  @IsString()
+  from: string;
+}
+
+export class NotificationEmailTemplateProps {
+  @ValidateNested({ each: true })
+  @Type(() => Notification)
+  notifications: Notification[];
+}
 
 const ReusableHeader = () => {
   return (
@@ -89,20 +100,16 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
   );
 };
 
-export const NotificationTemplate = createTemplate(NotificationEmailTemplate, {
-  pathName: 'notification',
-  generateMeta: (props) => {
-    return {
-      subject: `You have ${props.notifications.length} notification(s)`,
-    };
+export const NotificationTemplate = createTemplate(
+  {
+    template: NotificationEmailTemplate,
+    meta: (props) => ({}),
+    path: '/notification',
+    preview: () => ({
+      notifications: [{ from: 'Elon Musk', title: 'New tweet' }],
+    }),
   },
-  previewData: {
-    notifications: [
-      { title: 'Jennie liked your post', from: 'Jennie Smith' },
-      { title: 'Walmart replied', from: 'Walmart NY' },
-      { title: 'Update security settings', from: 'Facebook Security' },
-    ],
-  },
-});
+  NotificationEmailTemplateProps
+);
 
 export default NotificationTemplate;

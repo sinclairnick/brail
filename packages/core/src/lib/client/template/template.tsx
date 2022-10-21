@@ -1,45 +1,44 @@
 import * as React from 'react';
-import {
-  CreateTemplateOptions,
-  PropType,
-  RenderFn,
-  TemplatePage,
-} from '../../shared/types';
 import { render as renderToHtml, MjType } from '@brail/mjml';
+import {
+  CreateTemplateArgs,
+  CreateTemplateReturn,
+  TemplateMethods,
+} from '../../types/template.types';
+import 'reflect-metadata';
 
-const defaultMjmlOptions: MjType.Mjml2HtmlOptions = {
+const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
   beautify: true,
   validationLevel: 'soft',
   keepComments: false,
   minify: false,
 };
 
-export function createTemplate<P extends PropType>(
-  Template: (props: P) => JSX.Element,
-  options: CreateTemplateOptions<P>
-): TemplatePage<P> {
-  const render: RenderFn<P> = (options) => {
-    const { props, ...mjmlOptions } = options;
+export function createTemplate<P extends { [key: string]: any } = any>(
+  args: CreateTemplateArgs<P>,
+  propType?: { new (...args: any[]): P }
+): CreateTemplateReturn<P> {
+  const TemplatePage = () => {
+    const previewProps = args.preview();
 
-    return renderToHtml(<Template {...props} />, {
-      ...defaultMjmlOptions,
-      ...mjmlOptions,
-    });
+    const { html } = renderToHtml(
+      <args.template {...previewProps} />,
+      DEFAULT_MJML_OPTIONS
+    );
+
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
   };
 
-  const TemplatePage: TemplatePage<P> = Object.assign(
-    () => {
-      const { previewData, ...mjmlOptions } = options;
+  const methods: TemplateMethods<P> = {
+    render: (props, options) =>
+      renderToHtml(<args.template {...props} />, {
+        ...DEFAULT_MJML_OPTIONS,
+        ...options,
+      }),
+    meta: args.meta,
+    path: () => args.path,
+    propType: propType ?? class {},
+  };
 
-      const { html } = renderToHtml(<Template {...previewData} />, {
-        ...defaultMjmlOptions,
-        ...mjmlOptions,
-      });
-      // TODO: Add more Layout
-      return <div dangerouslySetInnerHTML={{ __html: html }} />;
-    },
-    { render, pathName: options.pathName, generateMeta: options.generateMeta }
-  );
-
-  return TemplatePage;
+  return Object.assign(TemplatePage, methods);
 }
