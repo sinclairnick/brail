@@ -15,8 +15,7 @@ const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
 };
 
 export function createTemplate<P extends { [key: string]: any } = any>(
-  args: CreateTemplateArgs<P>,
-  propType?: { new (...args: any[]): P }
+  args: CreateTemplateArgs<P>
 ): CreateTemplateReturn<P> {
   const TemplatePage = () => {
     const previewProps = args.preview();
@@ -37,7 +36,7 @@ export function createTemplate<P extends { [key: string]: any } = any>(
       }),
     meta: args.meta,
     path: () => args.path,
-    propType: propType ?? class {},
+    propType: args.propType ?? class {},
   };
 
   return Object.assign(TemplatePage, methods);

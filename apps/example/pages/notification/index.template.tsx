@@ -100,16 +100,14 @@ const NotificationEmailTemplate = (props: NotificationEmailTemplateProps) => {
   );
 };
 
-export const NotificationTemplate = createTemplate(
-  {
-    template: NotificationEmailTemplate,
-    meta: (props) => ({}),
-    path: '/notification',
-    preview: () => ({
-      notifications: [{ from: 'Elon Musk', title: 'New tweet' }],
-    }),
-  },
-  NotificationEmailTemplateProps
-);
+export const NotificationTemplate = createTemplate({
+  template: NotificationEmailTemplate,
+  meta: (props) => ({}),
+  path: '/notification',
+  preview: () => ({
+    notifications: [{ from: 'Elon Musk', title: 'New tweet' }],
+  }),
+  propType: NotificationEmailTemplateProps,
+});
 
 export default NotificationTemplate;
