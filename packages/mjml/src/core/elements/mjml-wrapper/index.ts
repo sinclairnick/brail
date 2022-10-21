@@ -5,11 +5,11 @@ import { suffixCssClasses } from '../../mjml-core';
 export default class MjWrapper extends MjSection {
   static override componentName = 'mj-wrapper';
 
-  override context: any;
+  declare context: any;;
 
-  override props: any;
+  declare props: any;
 
-  override renderChildren: any;
+  declare renderChildren: any;;
 
   override renderWrappedChildren() {
     const { children } = this.props;

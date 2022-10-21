@@ -9,9 +9,9 @@ const replaceOutput = '#$1$1$2$2$3$3'
 
 export default () =>
   (class Color extends Type {
-    override matchers: any;
+    declare matchers: any;;
 
-    override value: any;
+    declare value: any;;
 
     constructor(color: any) {
       super(color)

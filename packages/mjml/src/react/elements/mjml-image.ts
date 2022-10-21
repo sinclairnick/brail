@@ -14,7 +14,7 @@ export type ImageProps = {
   alt?: string | undefined;
   align?: string | undefined;
   title?: string | undefined;
-  fluidOnMobile?: string | undefined;
+  fluidOnMobile?: 'true' | undefined;
 } & PaddingProps &
   ClassNameProps &
   HrefProps;

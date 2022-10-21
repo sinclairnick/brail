@@ -8,9 +8,9 @@ export default class MjFont extends HeadComponent {
     href: 'string',
   };
 
-  override context: any;
+  declare context: any;;
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
   handler() {
     const { add } = this.context;

@@ -61,15 +61,15 @@ export default class MjButton extends BodyComponent {
     'vertical-align': 'middle',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getBoxWidths: any;
+  declare getBoxWidths: any;;
 
-  override getContent: any;
+  declare getContent: any;;
 
-  override getShorthandAttrValue: any;
+  declare getShorthandAttrValue: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     return {

@@ -47,11 +47,11 @@ export default class MjImage extends BodyComponent {
     'font-size': '13px',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getBoxWidths: any;
+  declare getBoxWidths: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     const width = this.getContentWidth();

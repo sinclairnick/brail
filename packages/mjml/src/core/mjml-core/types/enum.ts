@@ -12,7 +12,7 @@ export default (params: any) => {
       ', ',
     )}`
 
-    override matchers: any;
+    declare matchers: any;;
 
     constructor(value: any) {
       super(value)

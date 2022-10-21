@@ -35,19 +35,19 @@ export default class MjColumn extends BodyComponent {
     'vertical-align': 'top',
   };
 
-  override context: any;
+  declare context: any;;
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getBoxWidths: any;
+  declare getBoxWidths: any;;
 
-  override getShorthandAttrValue: any;
+  declare getShorthandAttrValue: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
-  override props: any;
+  declare props: any;
 
-  override renderChildren: any;
+  declare renderChildren: any;;
 
   override getChildContext() {
     const { containerWidth: parentWidth } = this.context;

@@ -12,13 +12,13 @@ export default class MjBody extends BodyComponent {
     width: '600px',
   };
 
-  override context: any;
+  declare context: any;;
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
-  override renderChildren: any;
+  declare renderChildren: any;;
 
   override getChildContext() {
     return {

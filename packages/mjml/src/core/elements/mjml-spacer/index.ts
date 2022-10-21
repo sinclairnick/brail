@@ -22,9 +22,9 @@ export default class MjSpacer extends BodyComponent {
     height: '20px',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     return {

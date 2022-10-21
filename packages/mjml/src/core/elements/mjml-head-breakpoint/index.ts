@@ -9,9 +9,9 @@ export default class MjBreakpoint extends HeadComponent {
     width: 'unit(px)',
   };
 
-  override context: any;
+  declare context: any;;
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
   handler() {
     const { add } = this.context;

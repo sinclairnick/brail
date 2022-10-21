@@ -23,11 +23,11 @@ export default class MjAccordionTitle extends BodyComponent {
     padding: '16px',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getContent: any;
+  declare getContent: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     return {

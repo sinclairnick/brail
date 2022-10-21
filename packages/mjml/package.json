@@ -30,20 +30,25 @@
     "js-beautify": "^1.14.0",
     "juice": "^8.0.0",
     "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-reconciler": "^0.26.2",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yargs": "^17.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
     "@types/color": "^3.0.3",
     "@types/glob": "^7.2.0",
     "@types/js-beautify": "^1.13.3",
+    "@types/node": "^17.0.21",
+    "@types/prop-types": "^15.7.5",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
     "@types/react-reconciler": "^0.26.4",
     "@types/uuid": "^8.3.4",
+    "@types/yargs": "^17.0.13",
     "csstype": "^3.0.11"
   }
 }

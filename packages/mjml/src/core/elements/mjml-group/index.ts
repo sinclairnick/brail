@@ -16,17 +16,17 @@ export default class MjGroup extends BodyComponent {
     direction: 'ltr',
   };
 
-  override context: any;
+  declare context: any;;
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getShorthandAttrValue: any;
+  declare getShorthandAttrValue: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
-  override props: any;
+  declare props: any;
 
-  override renderChildren: any;
+  declare renderChildren: any;;
 
   override getChildContext() {
     const { containerWidth: parentWidth } = this.context;

@@ -296,9 +296,9 @@ export class BodyComponent extends Component {
 }
 
 export class HeadComponent extends Component {
-  override componentName: any;
+  declare componentName: any;;
 
-  override props: any;
+  declare props: any;
 
   static override getTagName() {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'componentName' does not exist on type 't... Remove this comment to see the full error message

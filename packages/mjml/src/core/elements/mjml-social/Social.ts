@@ -43,13 +43,13 @@ export default class MjSocial extends BodyComponent {
     'text-decoration': 'none',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
-  override props: any;
+  declare props: any;
 
-  override renderChildren: any;
+  declare renderChildren: any;;
 
   // eslint-disable-next-line class-methods-use-this
   override getStyles() {

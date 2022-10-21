@@ -49,13 +49,13 @@ export default class MjNavbar extends BodyComponent {
     'ico-line-height': '30px',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
-  override props: any;
+  declare props: any;
 
-  override renderChildren: any;
+  declare renderChildren: any;;
 
   headStyle = (breakpoint: any) => `
     noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }

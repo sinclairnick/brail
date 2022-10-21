@@ -30,15 +30,15 @@ export default class MjAccordionElement extends BodyComponent {
     },
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getChildContext: any;
+  declare getChildContext: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
-  override props: any;
+  declare props: any;
 
-  override renderChildren: any;
+  declare renderChildren: any;;
 
   override getStyles() {
     return {

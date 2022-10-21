@@ -38,11 +38,11 @@ export default class MjText extends BodyComponent {
     padding: '10px 25px',
   };
 
-  override getAttribute: any;
+  declare getAttribute: any;;
 
-  override getContent: any;
+  declare getContent: any;;
 
-  override htmlAttributes: any;
+  declare htmlAttributes: any;;
 
   override getStyles() {
     return {
