@@ -1,4 +1,7 @@
-import { routingControllersToSpec } from 'routing-controllers-openapi';
+import {
+  ResponseSchema,
+  routingControllersToSpec,
+} from 'routing-controllers-openapi';
 import {
   Controller,
   Post,
@@ -9,29 +12,47 @@ import {
 import { CreateTemplateReturn } from '../types/template.types';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
 const { defaultMetadataStorage } = require('class-transformer/cjs/storage');
-import { Express } from 'express';
+import type { Express } from 'express';
+import { Type } from 'class-transformer';
+import { IsOptional, IsString, ValidateNested } from 'class-validator';
+import { Logger } from './logging.util';
+import chalk from 'chalk';
+import next from 'next';
 
 class Meta {
+  @IsString()
+  @IsOptional()
   subject?: string | null;
+  @IsString()
+  @IsOptional()
   preview?: string | null;
 }
-class Response {
+class BrailResponse {
+  @IsString()
   html: string;
+  @ValidateNested()
+  @Type(() => Meta)
   meta: Meta;
 }
 
 export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
   return templates.map((t) => {
     const { propType } = t;
+    const operationName = propType.name.replace('Props', '');
+    const pathName = t.path();
 
-    @Controller(t.path())
+    Logger.log(
+      `Registered template ${chalk.green.bold(operationName)} (${pathName}).`
+    );
+
+    @Controller(pathName)
     class _Controller {
       @Post()
-      handle(
-        @Body({ type: propType, validate: true })
-        body: typeof propType
-      ): Response {
-        const _body = body as any;
+      @ResponseSchema(BrailResponse)
+      async [operationName](
+        @Body({ type: propType, required: true, validate: true })
+        _body: typeof propType
+      ): Promise<any> {
         const { html } = t.render(_body, {});
         const meta = t.meta(_body);
         return { html, meta };
@@ -58,28 +79,51 @@ export const generateOpenApiSpec = (
       routePrefix: '/api',
       validation: true,
     },
-    { components: { schemas } }
+    { info: { title: 'Brail' }, components: { schemas } }
   );
 
   @Controller('/')
   class OpenApiController {
     @Post('openapi.json')
-    handle() {
+    getOpenApiSchema() {
       return spec;
     }
   }
 
+  Logger.log('Open API endpoint enabled. POST /api/openapi.json.');
+
   return { spec, OpenApiController };
 };
 
-export const createApp = (templates: CreateTemplateReturn<any>[]) => {
-  const controllers = createControllers(templates);
-  const { OpenApiController, spec } = generateOpenApiSpec(controllers);
+export type CreateAppOptions = {
+  disableOpenApi?: boolean;
+  disableLogging?: boolean;
+};
+
+export const createApp = (
+  templates: CreateTemplateReturn<any>[],
+  options?: CreateAppOptions
+) => {
+  if (options?.disableLogging) {
+    Logger.disable();
+  }
+
+  const appControllers = createControllers(templates);
+
+  let controllers: any[] = [];
+  if (!options?.disableOpenApi) {
+    const { OpenApiController } = generateOpenApiSpec(appControllers);
+    controllers = [...appControllers, OpenApiController];
+  }
 
   const app: Express = createExpressServer({
-    controllers: controllers.concat(OpenApiController),
+    controllers,
     routePrefix: '/api',
+    validation: true,
+    classTransformer: true,
   });
+
+  Logger.log('Brail app initialization complete.');
 
   return app;
 };

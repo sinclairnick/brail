@@ -7,16 +7,14 @@ describe('Template', () => {
     class A {
       b: number;
     }
-    createTemplate(
-      {
-        path: '',
-        meta(props) {
-          return {};
-        },
-        preview: () => ({ b: 0 }),
-        template: () => <></>,
+    createTemplate({
+      path: '',
+      meta(props) {
+        return {};
       },
-      A
-    );
+      preview: () => ({ b: 0 }),
+      template: () => <></>,
+      propType: A,
+    });
   });
 });

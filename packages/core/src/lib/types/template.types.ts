@@ -19,6 +19,9 @@ export type CreateTemplateArgs<T> = {
   template: (props: T) => JSX.Element;
   meta: (props: T) => Partial<EmailMeta>;
   preview: () => T;
+  propType?: {
+    new (...args: any[]): any;
+  };
 };
 
 export type CreateTemplateReturn<T> = (() => JSX.Element) & TemplateMethods<T>;
