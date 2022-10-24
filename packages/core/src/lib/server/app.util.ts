@@ -8,6 +8,7 @@ import {
   Body,
   getMetadataArgsStorage,
   createExpressServer,
+  Get,
 } from 'routing-controllers';
 import { CreateTemplateReturn } from '../types/template.types';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
@@ -17,7 +18,6 @@ import { Type } from 'class-transformer';
 import { IsOptional, IsString, ValidateNested } from 'class-validator';
 import { Logger } from './logging.util';
 import chalk from 'chalk';
-import next from 'next';
 
 class Meta {
   @IsString()
@@ -38,7 +38,7 @@ class BrailResponse {
 export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
   return templates.map((t) => {
     const { propType } = t;
-    const operationName = propType.name.replace('Props', '');
+    const operationName = t.templateName();
     const pathName = t.path();
 
     Logger.log(
@@ -95,8 +95,37 @@ export const generateOpenApiSpec = (
   return { spec, OpenApiController };
 };
 
+/** Controller is used for meta/introspecting the templates */
+const createIntrospectionController = (
+  templates: CreateTemplateReturn<any>[]
+) => {
+  @Controller('/__introspect')
+  class IntrospectionController {
+    @Get('/templates')
+    getTemplates() {
+      return templates.map((template) => {
+        return {
+          name: template.templateName(),
+          path: template.path(),
+        };
+      });
+    }
+  }
+
+  Logger.log('Introspection controller mapped to /api/__introspect');
+
+  return IntrospectionController;
+};
+
 export type CreateAppOptions = {
+  /** Disables broadcasting an open api endpoint */
   disableOpenApi?: boolean;
+  /**
+   *  Disables broadcasting introspection endpoints.
+   *  If disabled,features like BrailLayout (@brail/web) may break.
+   */
+  disableIntrospection?: boolean;
+  /** Disable all brail-internal logging */
   disableLogging?: boolean;
 };
 
@@ -110,10 +139,16 @@ export const createApp = (
 
   const appControllers = createControllers(templates);
 
-  let controllers: any[] = [];
+  let controllers = appControllers;
+
   if (!options?.disableOpenApi) {
     const { OpenApiController } = generateOpenApiSpec(appControllers);
-    controllers = [...appControllers, OpenApiController];
+    controllers = controllers.concat(OpenApiController);
+  }
+
+  if (!options?.disableIntrospection) {
+    const introspectionController = createIntrospectionController(templates);
+    controllers = controllers.concat(introspectionController);
   }
 
   const app: Express = createExpressServer({

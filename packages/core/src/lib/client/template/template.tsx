@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render as renderToHtml, MjType } from '@brail/mjml';
+import { renderToHtml, MjType, renderToMjml, renderToJSON2 } from '@brail/mjml';
 import {
   CreateTemplateArgs,
   CreateTemplateReturn,
@@ -9,7 +9,7 @@ import 'reflect-metadata';
 
 const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
   beautify: true,
-  validationLevel: 'soft',
+  validationLevel: 'skip',
   keepComments: false,
   minify: false,
 };
@@ -20,15 +20,16 @@ export function createTemplate<P extends { [key: string]: any } = any>(
   const TemplatePage = () => {
     const previewProps = args.preview();
 
-    const { html } = renderToHtml(
-      <args.template {...previewProps} />,
-      DEFAULT_MJML_OPTIONS
-    );
+    const { html } = renderToHtml(<args.template {...previewProps} />);
 
     return <div dangerouslySetInnerHTML={{ __html: html }} />;
   };
 
   const methods: TemplateMethods<P> = {
+    templateName: () =>
+      args.name ??
+      args.propType?.name.replace('Props', '') ??
+      'UnknownTemplate',
     render: (props, options) =>
       renderToHtml(<args.template {...props} />, {
         ...DEFAULT_MJML_OPTIONS,
@@ -37,6 +38,25 @@ export function createTemplate<P extends { [key: string]: any } = any>(
     meta: args.meta,
     path: () => args.path,
     propType: args.propType ?? class {},
+
+    // --- These methods are used for dev previewing largely ---
+    generatePreviewHtml: () => {
+      const { html } = renderToHtml(<args.template {...args.preview()} />, {
+        beautify: true,
+        keepComments: true,
+        minify: false,
+        validationLevel: 'skip',
+      });
+      return html;
+    },
+    generatePreviewMjml: () => {
+      return renderToMjml(<args.template {...args.preview()} />, {
+        prettify: true,
+      });
+    },
+    generatePreviewJson: () => {
+      return renderToJSON2(<args.template {...args.preview()} />);
+    },
   };
 
   return Object.assign(TemplatePage, methods);

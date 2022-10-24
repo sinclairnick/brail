@@ -14,15 +14,17 @@
   "dependencies": {
     "@brail/core": "workspace:*",
     "@brail/react": "workspace:*",
+    "@brail/web": "workspace:*",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
-    "next": "12.3.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "next": "^12.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
-    "@types/react": "^17.0.40"
+    "@types/react": "^17.0.50",
+    "@types/react-dom": "^17.0.17"
   }
 }
