@@ -15,6 +15,7 @@
     "publish": "turbo run publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.25.0",
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.179",
     "jest": "^27.5.1",
