@@ -30,7 +30,7 @@ export default class MjNavbarLink extends BodyComponent {
 
   static override defaultAttributes = {
     color: '#000000',
-    'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
+    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
     'font-size': '13px',
     'font-weight': 'normal',
     'line-height': '22px',

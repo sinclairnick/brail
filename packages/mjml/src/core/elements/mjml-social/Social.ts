@@ -33,7 +33,7 @@ export default class MjSocial extends BodyComponent {
     align: 'center',
     'border-radius': '3px',
     color: '#333333',
-    'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
+    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
     'font-size': '13px',
     'icon-size': '20px',
     'inner-padding': null,

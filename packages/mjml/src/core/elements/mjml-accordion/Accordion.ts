@@ -24,7 +24,7 @@ export default class MjAccordion extends BodyComponent {
 
   static override defaultAttributes = {
     border: '2px solid black',
-    'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
+    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
     'icon-align': 'middle',
     'icon-wrapped-url': 'https://i.imgur.com/bIXv1bk.png',
     'icon-wrapped-alt': '+',

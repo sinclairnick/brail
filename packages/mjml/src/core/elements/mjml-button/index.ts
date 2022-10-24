@@ -49,7 +49,7 @@ export default class MjButton extends BodyComponent {
     border: 'none',
     'border-radius': '3px',
     color: '#ffffff',
-    'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
+    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
     'font-size': '13px',
     'font-weight': 'normal',
     'inner-padding': '10px 25px',

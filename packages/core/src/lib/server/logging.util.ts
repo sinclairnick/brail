@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-const brand = chalk.magenta.bold`:: brail`;
+const brand = chalk.magenta.bold`::: brail`;
 let isEnabled = true;
 
 export class Logger {

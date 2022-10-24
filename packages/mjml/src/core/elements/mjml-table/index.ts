@@ -37,7 +37,7 @@ export default class MjTable extends BodyComponent {
     cellpadding: '0',
     cellspacing: '0',
     color: '#000000',
-    'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
+    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
     'font-size': '13px',
     'line-height': '22px',
     padding: '10px 25px',

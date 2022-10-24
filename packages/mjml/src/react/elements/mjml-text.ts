@@ -5,16 +5,16 @@ import { createMjmlElement } from '../utils/create-mjml-element';
 export type TextProps = {
   children?: ReactNode;
   color?: CSSProperties['color'] | undefined;
-  fontFamily?: string | undefined;
-  fontSize?: string | number | undefined;
-  fontStyle?: string | undefined;
-  fontWeight?: number | undefined;
-  lineHeight?: string | undefined;
-  letterSpacing?: string | undefined;
-  height?: string | number | undefined;
-  textDecoration?: string | undefined;
-  textTransform?: string | undefined;
-  align?: string | undefined;
+  fontFamily?: CSSProperties['fontFamily'] | undefined;
+  fontSize?: CSSProperties['fontSize'] | undefined;
+  fontStyle?: CSSProperties['fontStyle'] | undefined;
+  fontWeight?: CSSProperties['fontWeight'] | undefined;
+  lineHeight?: CSSProperties['lineHeight'] | undefined;
+  letterSpacing?: CSSProperties['letterSpacing'] | undefined;
+  height?: CSSProperties['height'] | undefined;
+  textDecoration?: CSSProperties['textDecoration'] | undefined;
+  textTransform?: CSSProperties['textTransform'] | undefined;
+  align?: CSSProperties['textAlign'] | undefined;
   containerBackgroundColor?: CSSProperties['backgroundColor'] | undefined;
 } & PaddingProps &
   ClassNameProps;

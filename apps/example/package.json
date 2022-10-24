@@ -7,7 +7,8 @@
     "clean": "rimraf .next",
     "dev": "next dev -p 4444",
     "start": "next start -p 4444",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client:generate": "openapi -i 'http://localhost:4444/api/openapi.json' -o out --client axios --useOptions --indent 2"
   },
   "author": "Nick Sinclair",
   "license": "ISC",
@@ -20,11 +21,13 @@
     "next": "^12.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.50",
-    "@types/react-dom": "^17.0.17"
+    "@types/react-dom": "^17.0.17",
+    "openapi-typescript-codegen": "^0.23.0"
   }
 }

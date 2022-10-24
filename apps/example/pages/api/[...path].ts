@@ -1,14 +1,10 @@
 import { createServer, getBrailApiConfig } from '@brail/core/server';
-import AnotherNotificationTemplate from '../another-notification/index.template';
-import { NotificationTemplate } from '../notification/index.template';
+import WelcomeTemplate from '../welcome/index.template';
 
 // Optional: Provide Nextjs API Route configuration to silence unneeded warnings
 export const config = getBrailApiConfig();
 
 // Register the email templates, so they can be served via Next API
-const server = createServer([
-  NotificationTemplate,
-  AnotherNotificationTemplate,
-]);
+const server = createServer([WelcomeTemplate]);
 
 export default server;
