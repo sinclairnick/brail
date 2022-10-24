@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { Text } from './text';
+import { Typography } from './typography';
 
-describe('Text', () => {
+describe('Typography', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Text />);
+    const { baseElement } = render(<Typography />);
     expect(baseElement).toBeTruthy();
   });
 });

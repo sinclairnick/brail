@@ -1,6 +1,6 @@
 export * from './email-template/email-template';
 export * from './button/button';
-export * from './text/text';
+export * from './typography/typography';
 export * from './row/row';
 export * from './image/image';
 export * from './container/container';

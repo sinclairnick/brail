@@ -45,8 +45,8 @@ export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
       `Registered template ${chalk.green.bold(operationName)} (${pathName}).`
     );
 
-    @Controller(pathName)
-    class _Controller {
+    @Controller(`/templates${pathName}`)
+    class Base {
       @Post()
       @ResponseSchema(BrailResponse)
       async [operationName](
@@ -59,40 +59,54 @@ export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
       }
     }
 
-    return _Controller;
+    const classes: Record<string, { new (): any }> = {};
+
+    const className =
+      operationName.slice(0, 1).toUpperCase() +
+      operationName.slice(1) +
+      'Controller';
+
+    // Dynamically name class
+    classes[className] = class extends Base {};
+
+    return classes[className];
   });
 };
 
 export const generateOpenApiSpec = (
   controllers: ReturnType<typeof createControllers>
 ) => {
-  const schemas = validationMetadatasToSchemas({
-    classTransformerMetadataStorage: defaultMetadataStorage,
-    refPointerPrefix: '#/components/schemas/',
-  });
+  const getSpec = () => {
+    const schemas = validationMetadatasToSchemas({
+      classTransformerMetadataStorage: defaultMetadataStorage,
+      refPointerPrefix: '#/components/schemas/',
+    });
 
-  const storage = getMetadataArgsStorage();
-  const spec = routingControllersToSpec(
-    storage,
-    {
-      controllers,
-      routePrefix: '/api',
-      validation: true,
-    },
-    { info: { title: 'Brail' }, components: { schemas } }
-  );
+    const storage = getMetadataArgsStorage();
+    const spec = routingControllersToSpec(
+      storage,
+      {
+        controllers,
+        routePrefix: '/api',
+        validation: true,
+      },
+      { info: { title: 'Brail' }, components: { schemas } }
+    );
+
+    return spec;
+  };
 
   @Controller('/')
   class OpenApiController {
-    @Post('openapi.json')
+    @Get('openapi.json')
     getOpenApiSchema() {
-      return spec;
+      return getSpec();
     }
   }
 
   Logger.log('Open API endpoint enabled. POST /api/openapi.json.');
 
-  return { spec, OpenApiController };
+  return { OpenApiController };
 };
 
 /** Controller is used for meta/introspecting the templates */

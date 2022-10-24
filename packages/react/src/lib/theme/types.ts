@@ -1,4 +1,4 @@
-import { TextProps } from '../components/text/text';
+import { TypographyProps } from '../components/typography/typography';
 
 type DeepPartial<T> = T extends object
   ? {
@@ -16,12 +16,14 @@ export type TypographyVariant =
   | 'body1'
   | 'body2';
 
-export type Typography = { [key in TypographyVariant]?: Partial<TextProps> } & {
-  allVariants: Partial<Omit<TextProps, 'children'>>;
-  a: Partial<Omit<TextProps, 'children'>>;
+export type ITypography = {
+  [key in TypographyVariant]?: Partial<TypographyProps>;
+} & {
+  allVariants: Partial<Omit<TypographyProps, 'children'>>;
+  a: Partial<Omit<TypographyProps, 'children'>>;
 };
 
-export type TypographyOptions = DeepPartial<Typography>;
+export type TypographyOptions = DeepPartial<ITypography>;
 
 type Color = {
   main: string;
@@ -29,6 +31,7 @@ type Color = {
   dark: string;
   contrastText: string;
 };
+
 type GradedColor = {
   50: string;
   100: string;
@@ -45,6 +48,7 @@ type GradedColor = {
   A400: string;
   A700: string;
 };
+
 export type ThemeColor =
   | 'primary'
   | 'secondary'
@@ -53,13 +57,13 @@ export type ThemeColor =
   | 'error'
   | 'success';
 
-export type Palette = { [key in ThemeColor]: Color } & { grey: GradedColor };
+export type IPalette = { [key in ThemeColor]: Color } & { grey: GradedColor };
 
-export type PaletteOptions = DeepPartial<Palette>;
+export type IPaletteOptions = DeepPartial<IPalette>;
 
-export type Theme = {
-  typography: Typography;
-  palette: Palette;
+export type ITheme = {
+  typography: ITypography;
+  palette: IPalette;
 };
 
-export type ThemeOptions = DeepPartial<Theme>;
+export type IThemeOptions = DeepPartial<ITheme>;

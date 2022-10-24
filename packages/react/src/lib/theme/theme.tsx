@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
-import { Palette, PaletteOptions, Theme, ThemeOptions } from './types';
+import { IPalette, IPaletteOptions, ITheme, IThemeOptions } from './types';
 
-const defaultPalette: Palette = {
+const defaultPalette: IPalette = {
   primary: {
     main: '#019C53',
     dark: '#12472C',
@@ -56,7 +56,7 @@ const defaultPalette: Palette = {
   },
 };
 
-const defaultTheme: Theme = {
+const defaultTheme: ITheme = {
   typography: {
     allVariants: {},
     h1: {
@@ -90,11 +90,11 @@ const defaultTheme: Theme = {
 
 export let theme = defaultTheme;
 
-export const createPalette = <P extends PaletteOptions>(options: P) => {
+export const createPalette = <P extends IPaletteOptions>(options: P) => {
   return merge(defaultPalette, options);
 };
 
-export const createTheme = (options: ThemeOptions) => {
+export const createTheme = (options: IThemeOptions) => {
   theme = merge(theme, options);
   return theme;
 };

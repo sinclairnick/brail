@@ -12,7 +12,6 @@ export function createServer(
 
   return (req, res) => {
     const result = app(req, res);
-    console.log(result);
     return result;
   };
 }

@@ -32,7 +32,7 @@ export default class MjText extends BodyComponent {
   static override defaultAttributes = {
     align: 'left',
     color: '#000000',
-    'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
+    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
     'font-size': '13px',
     'line-height': '1',
     padding: '10px 25px',
