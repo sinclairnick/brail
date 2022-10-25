@@ -17,8 +17,8 @@
       "dependsOn": ["build", "test", "lint"],
       "outputs": []
     },
-    "publish": {
-      "dependsOn": ["build", "test", "lint"],
+    "publish-pkg": {
+      "dependsOn": ["build"],
       "outputs": []
     }
   }
