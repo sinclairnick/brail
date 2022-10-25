@@ -2,23 +2,16 @@ import * as React from 'react';
 import { Mj } from '@brail/mjml';
 import { FC } from 'react';
 import { theme } from '../../theme/theme';
-import { Container, ContainerProps } from '../container/container';
+import { ContainerProps } from '../container/container';
 
 export type EmailTemplateProps = {
   title?: string;
   preview?: string;
   bodyProps?: Mj.BodyProps;
-  containerProps?: ContainerProps;
 };
 
 export const EmailTemplate: FC<EmailTemplateProps> = (props) => {
-  const {
-    title,
-    preview,
-    children,
-    bodyProps = {},
-    containerProps = {},
-  } = props;
+  const { title, preview, children, bodyProps = {} } = props;
 
   return (
     <Mj.Mjml>
@@ -33,12 +26,10 @@ export const EmailTemplate: FC<EmailTemplateProps> = (props) => {
       </Mj.Head>
       <Mj.Body
         backgroundColor={theme.palette.grey[100]}
-        width={700}
+        width={600}
         {...bodyProps}
       >
-        <Container backgroundColor={'white'} {...containerProps}>
-          {children}
-        </Container>
+        {children}
       </Mj.Body>
     </Mj.Mjml>
   );
