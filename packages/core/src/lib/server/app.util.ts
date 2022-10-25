@@ -233,8 +233,6 @@ export const createApp = (
     classTransformer: true,
   });
 
-  console.log(app._router);
-
   Logger.log('Brail app initialization complete.');
 
   return app;
