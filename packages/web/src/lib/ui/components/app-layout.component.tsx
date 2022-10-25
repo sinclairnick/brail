@@ -12,9 +12,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ErrorDrawer } from './error-drawer.component';
-import dynamic from 'next/dynamic';
-
-const SwaggerUI = dynamic(import('swagger-ui-react'), { ssr: false });
+import SwaggerUI from 'swagger-ui-react';
 
 const useBrailLayout = (
   template: NextComponentType<NextPageContext, any, any>
