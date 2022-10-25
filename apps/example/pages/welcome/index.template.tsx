@@ -38,6 +38,26 @@ const WelcomeTemplateView = (props: WelcomeTemplateProps) => {
         );
       })}
 
+      <Row>
+        <Column>
+          <Row>
+            <Column>
+              <Typography>hi</Typography>
+            </Column>
+          </Row>
+          <Row>
+            <Column>
+              <Typography>hi</Typography>
+            </Column>
+          </Row>
+          <Row>
+            <Column>
+              <Typography>hi</Typography>
+            </Column>
+          </Row>
+        </Column>
+      </Row>
+
       <Signature />
       <Footer />
     </EmailTemplate>
