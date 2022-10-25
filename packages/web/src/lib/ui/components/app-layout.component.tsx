@@ -118,6 +118,7 @@ export const BrailLayout: FC<BrailLayoutProps> = (props) => {
                 ].map(([name, x]) => {
                   return (
                     <Stack
+                      key={name}
                       display={name === tab ? 'flex' : 'none'}
                       component="pre"
                       p={2}
