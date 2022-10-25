@@ -9,7 +9,7 @@ export type ButtonProps = Omit<Mj.ButtonProps, 'color'> & {
 };
 
 export const Button = (props: ButtonProps) => {
-  const { color = 'primary', variant = 'outlined' } = props;
+  const { color = 'primary', variant = 'outlined', ...mjmlProps } = props;
 
   const lightColor = theme.palette[color].light;
   const darkColor = theme.palette[color].dark;
@@ -23,7 +23,7 @@ export const Button = (props: ButtonProps) => {
       fontSize={18}
       backgroundColor={backgroundColor}
       color={fontColor}
-      {...props}
+      {...mjmlProps}
     />
   );
 };
