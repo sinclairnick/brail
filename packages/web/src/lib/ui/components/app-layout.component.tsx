@@ -25,12 +25,16 @@ const useBrailLayout = (
   const methods: Partial<
     Pick<
       CreateTemplateReturn<any>,
-      'generatePreviewHtml' | 'generatePreviewJson' | 'generatePreviewMjml'
+      | 'generatePreviewHtml'
+      | 'generatePreviewJson'
+      | 'generatePreviewMjml'
+      | 'getErrors'
     >
   > = {
     generatePreviewHtml: template['generatePreviewHtml' as never],
     generatePreviewJson: template['generatePreviewJson' as never],
     generatePreviewMjml: template['generatePreviewMjml' as never],
+    getErrors: template['getErrors' as never],
   };
   const [isLayoutVisible, setIsLayoutVisible] = useState(true);
 
@@ -66,6 +70,7 @@ const useBrailLayout = (
     jsonPreview,
     toggleLayoutVisible: () => setIsLayoutVisible((x) => !x),
     isLayoutVisible,
+    getErrors: methods.getErrors,
   };
 };
 
@@ -89,6 +94,7 @@ export const BrailLayout: FC<BrailLayoutProps> = (props) => {
     mjmlPreview,
     toggleLayoutVisible,
     isLayoutVisible,
+    getErrors,
   } = useBrailLayout(template);
 
   return (
@@ -153,7 +159,7 @@ export const BrailLayout: FC<BrailLayoutProps> = (props) => {
             <IconButton onClick={toggleLayoutVisible}>
               {isLayoutVisible ? <VisibilityOff /> : <Visibility />}
             </IconButton>
-            <ErrorDrawer getErrors={template['getErrors' as never]} />
+            {getErrors && <ErrorDrawer getErrors={getErrors} />}
           </Stack>
         </Stack>
       </ThemeProvider>
