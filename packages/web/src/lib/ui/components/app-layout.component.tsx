@@ -159,7 +159,7 @@ export const BrailLayout: FC<BrailLayoutProps> = (props) => {
             <IconButton onClick={toggleLayoutVisible}>
               {isLayoutVisible ? <VisibilityOff /> : <Visibility />}
             </IconButton>
-            {getErrors && <ErrorDrawer getErrors={getErrors} />}
+            {getErrors != null && <ErrorDrawer getErrors={getErrors} />}
           </Stack>
         </Stack>
       </ThemeProvider>
