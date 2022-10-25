@@ -114,7 +114,7 @@ export const UtilityDrawer = () => {
                     <Stack maxHeight={700} overflow="scroll">
                       {templates.map((t) => {
                         return (
-                          <Link href={t.path} passHref key={t.path}>
+                          <Link href={`/${t.path}`} passHref key={t.path}>
                             <Button
                               sx={{ justifyContent: 'space-between' }}
                               endIcon={<ChevronRight />}
