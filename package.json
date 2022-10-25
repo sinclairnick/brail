@@ -12,7 +12,7 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "dev": "turbo run dev",
-    "publish": "turbo run publish"
+    "publish": "turbo run publish-pkg"
   },
   "devDependencies": {
     "@changesets/cli": "^2.25.0",
