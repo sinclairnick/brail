@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { BrailLayout } from '@brail/web';
 import './styles.css';
+import 'swagger-ui-react/swagger-ui.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (

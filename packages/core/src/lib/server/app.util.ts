@@ -9,67 +9,125 @@ import {
   getMetadataArgsStorage,
   createExpressServer,
   Get,
+  QueryParam,
+  QueryParams,
 } from 'routing-controllers';
 import { CreateTemplateReturn } from '../types/template.types';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
 const { defaultMetadataStorage } = require('class-transformer/cjs/storage');
 import type { Express } from 'express';
 import { Type } from 'class-transformer';
-import { IsOptional, IsString, ValidateNested } from 'class-validator';
+import {
+  IsBoolean,
+  IsEnum,
+  IsInt,
+  IsNumber,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 import { Logger } from './logging.util';
 import chalk from 'chalk';
+import { MjType } from '@brail/mjml';
+import { stripeTrailingSlashes } from './path.util';
 
 class Meta {
   @IsString()
   @IsOptional()
   subject?: string | null;
+
   @IsString()
   @IsOptional()
   preview?: string | null;
 }
+
+class RenderError implements MjType.MjmlError {
+  @IsString()
+  tagName: string;
+  @IsString()
+  message: string;
+  @IsInt()
+  line: number;
+  @IsString()
+  formattedMessage: string;
+}
 class BrailResponse {
   @IsString()
   html: string;
+
   @ValidateNested()
   @Type(() => Meta)
   meta: Meta;
+
+  @ValidateNested({ each: true })
+  @Type(() => RenderError)
+  errors: RenderError[];
+}
+
+enum ValidationLevel {
+  Strict = 'strict',
+  Soft = 'soft',
+  Skip = 'skip',
+}
+
+class RenderOptions {
+  @IsBoolean()
+  @IsOptional()
+  beautify?: boolean;
+
+  @IsEnum(ValidationLevel)
+  @IsOptional()
+  validationLevel?: 'skip';
+
+  @IsOptional()
+  @IsBoolean()
+  keepComments?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  minify?: boolean;
 }
 
 export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
   return templates.map((t) => {
     const { propType } = t;
     const operationName = t.templateName();
-    const pathName = t.path();
+    const pathName = stripeTrailingSlashes(t.path());
 
     Logger.log(
-      `Registered template ${chalk.green.bold(operationName)} (${pathName}).`
+      `Registered template ${chalk.green.bold(
+        operationName
+      )} (/api/templates/${pathName}).`
     );
 
-    @Controller(`/templates${pathName}`)
+    @Controller(`/templates/${pathName}`)
     class Base {
       @Post()
       @ResponseSchema(BrailResponse)
       async [operationName](
+        @QueryParams({ required: false, type: RenderOptions })
+        options: RenderOptions,
         @Body({ type: propType, required: true, validate: true })
         _body: typeof propType
-      ): Promise<any> {
-        const { html } = t.render(_body, {});
-        const meta = t.meta(_body);
-        return { html, meta };
+      ): Promise<BrailResponse> {
+        Logger.log(
+          `Generating email from template: ${chalk.green.bold(operationName)}`
+        );
+        const { html, errors } = t.render(_body, options);
+        const meta = t.meta?.(_body);
+        return { html, meta: { ...meta }, errors };
       }
     }
-
-    const classes: Record<string, { new (): any }> = {};
 
     const className =
       operationName.slice(0, 1).toUpperCase() +
       operationName.slice(1) +
       'Controller';
 
-    // Dynamically name class
-    classes[className] = class extends Base {};
-
-    return classes[className];
+    return Object.defineProperty(Base, 'name', {
+      writable: true,
+      value: className,
+    });
   });
 };
 
@@ -99,14 +157,15 @@ export const generateOpenApiSpec = (
   @Controller('/')
   class OpenApiController {
     @Get('openapi.json')
+    @Post('openapi.json')
     getOpenApiSchema() {
       return getSpec();
     }
   }
 
-  Logger.log('Open API endpoint enabled. POST /api/openapi.json.');
+  Logger.log('Open API endpoint enabled. GET/POST /api/openapi.json.');
 
-  return { OpenApiController };
+  return { OpenApiController, getSpec };
 };
 
 /** Controller is used for meta/introspecting the templates */
@@ -154,10 +213,12 @@ export const createApp = (
   const appControllers = createControllers(templates);
 
   let controllers = appControllers;
+  let spec: any | undefined;
 
   if (!options?.disableOpenApi) {
-    const { OpenApiController } = generateOpenApiSpec(appControllers);
+    const { OpenApiController, getSpec } = generateOpenApiSpec(appControllers);
     controllers = controllers.concat(OpenApiController);
+    spec = getSpec();
   }
 
   if (!options?.disableIntrospection) {
@@ -171,6 +232,8 @@ export const createApp = (
     validation: true,
     classTransformer: true,
   });
+
+  console.log(app._router);
 
   Logger.log('Brail app initialization complete.');
 

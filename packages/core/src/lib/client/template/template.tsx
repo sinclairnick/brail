@@ -9,7 +9,7 @@ import 'reflect-metadata';
 
 const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
   beautify: true,
-  validationLevel: 'skip',
+  validationLevel: 'soft',
   keepComments: false,
   minify: false,
 };
@@ -17,10 +17,15 @@ const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
 export function createTemplate<P extends { [key: string]: any } = any>(
   args: CreateTemplateArgs<P>
 ): CreateTemplateReturn<P> {
+  const defaultOptions = Object.assign(DEFAULT_MJML_OPTIONS, args.options);
+
   const TemplatePage = () => {
     const previewProps = args.preview();
 
-    const { html } = renderToHtml(<args.template {...previewProps} />);
+    const { html } = renderToHtml(
+      <args.template {...previewProps} />,
+      defaultOptions
+    );
 
     return <div dangerouslySetInnerHTML={{ __html: html }} />;
   };
@@ -32,7 +37,7 @@ export function createTemplate<P extends { [key: string]: any } = any>(
       'UnknownTemplate',
     render: (props, options) =>
       renderToHtml(<args.template {...props} />, {
-        ...DEFAULT_MJML_OPTIONS,
+        ...defaultOptions,
         ...options,
       }),
     meta: args.meta,
@@ -48,6 +53,15 @@ export function createTemplate<P extends { [key: string]: any } = any>(
         validationLevel: 'skip',
       });
       return html;
+    },
+    getErrors: () => {
+      const { errors } = renderToHtml(<args.template {...args.preview()} />, {
+        beautify: false,
+        keepComments: true,
+        minify: false,
+        validationLevel: 'soft',
+      });
+      return errors;
     },
     generatePreviewMjml: () => {
       return renderToMjml(<args.template {...args.preview()} />, {

@@ -11,6 +11,8 @@ import { IconButton, Stack } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import SwaggerUI from 'swagger-ui-react';
+import { ErrorDrawer } from './error-drawer.component';
 
 const useBrailLayout = (
   template: NextComponentType<NextPageContext, any, any>
@@ -128,10 +130,18 @@ export const BrailLayout: FC<BrailLayoutProps> = (props) => {
                     </Stack>
                   );
                 })}
+                {tab === 'openapi' && (
+                  <Stack flex={1}>
+                    <SwaggerUI tryItOutEnabled url="/api/openapi.json" />
+                  </Stack>
+                )}
               </Stack>
             </Stack>
           </Stack>
           <Stack
+            direction="row"
+            gap={1}
+            alignItems="center"
             sx={{
               position: 'absolute',
               right: 8,
@@ -141,6 +151,7 @@ export const BrailLayout: FC<BrailLayoutProps> = (props) => {
             <IconButton onClick={toggleLayoutVisible}>
               {isLayoutVisible ? <VisibilityOff /> : <Visibility />}
             </IconButton>
+            <ErrorDrawer getErrors={template['getErrors' as never]} />
           </Stack>
         </Stack>
       </ThemeProvider>

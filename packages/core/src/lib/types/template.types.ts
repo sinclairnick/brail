@@ -1,5 +1,4 @@
 import { MjType, RenderResult } from '@brail/mjml';
-import { GetStaticPropsResult } from 'next';
 
 export type EmailMeta = {
   subject: string;
@@ -10,13 +9,14 @@ export type TemplateMethods<T> = {
   templateName: () => string;
   path: () => string;
   render: (props: T, options: MjType.Mjml2HtmlOptions) => RenderResult;
-  generatePreviewHtml: () => string;
-  generatePreviewMjml: () => string;
-  generatePreviewJson: () => string;
-  meta: (props: T) => Partial<EmailMeta>;
+  meta?: (props: T) => Partial<EmailMeta>;
   propType: {
     new (...args: any[]): any;
   };
+  generatePreviewHtml: () => string;
+  generatePreviewMjml: () => string;
+  generatePreviewJson: () => string;
+  getErrors: () => MjType.MjmlError[];
 };
 
 export type CreateTemplateArgs<T> = {
@@ -38,6 +38,8 @@ export type CreateTemplateArgs<T> = {
   propType?: {
     new (...args: any[]): any;
   };
+  /** Set the default options for rendering email templates */
+  options?: Partial<MjType.Mjml2HtmlOptions>;
 };
 
 export type CreateTemplateReturn<T> = ((props: {

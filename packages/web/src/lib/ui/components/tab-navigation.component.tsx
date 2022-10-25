@@ -1,7 +1,7 @@
 import { ToggleButton, ToggleButtonGroup, Stack } from '@mui/material';
 import * as React from 'react';
 
-export type Tab = 'html' | 'mjml' | 'json' | 'preview';
+export type Tab = 'html' | 'mjml' | 'json' | 'preview' | 'openapi';
 
 export type TabNavigationProps = {
   hasMjml: boolean;
@@ -40,6 +40,7 @@ export const TabNavigation = (props: TabNavigationProps) => {
           {hasMjml && <ToggleButton value="mjml">MJML</ToggleButton>}
           {hasHtml && <ToggleButton value="html">HTML</ToggleButton>}
           {hasJson && <ToggleButton value="json">JSON</ToggleButton>}
+          {hasJson && <ToggleButton value="openapi">Open API</ToggleButton>}
         </ToggleButtonGroup>
       </Stack>
     </Stack>
