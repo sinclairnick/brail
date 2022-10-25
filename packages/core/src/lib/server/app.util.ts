@@ -9,7 +9,6 @@ import {
   getMetadataArgsStorage,
   createExpressServer,
   Get,
-  QueryParam,
   QueryParams,
 } from 'routing-controllers';
 import { CreateTemplateReturn } from '../types/template.types';
@@ -21,7 +20,6 @@ import {
   IsBoolean,
   IsEnum,
   IsInt,
-  IsNumber,
   IsOptional,
   IsString,
   ValidateNested,
@@ -156,8 +154,12 @@ export const generateOpenApiSpec = (
 
   @Controller('/')
   class OpenApiController {
-    @Get('openapi.json')
     @Post('openapi.json')
+    getOpenApiSchema_post() {
+      return getSpec();
+    }
+
+    @Get('openapi.json')
     getOpenApiSchema() {
       return getSpec();
     }
