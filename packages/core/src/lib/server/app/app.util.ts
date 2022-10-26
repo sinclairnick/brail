@@ -39,9 +39,9 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
     const pathName = stripTrailingSlashes(t.path());
 
     Logger.log(
-      `Registered template ${chalk.green.bold(t.templateName())}
-				(/api/templates/${pathName})
-				 .
+      `Registered template ${chalk.green.bold(
+        t.templateName()
+      )} (/api/templates/${pathName}).
 			`
     );
 
