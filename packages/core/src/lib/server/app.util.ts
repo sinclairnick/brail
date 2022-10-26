@@ -142,7 +142,7 @@ export const generateOpenApiSpec = (
         routePrefix: '/api',
         validation: true,
       },
-      { info: { title: 'Brail' }, components: { schemas } }
+      { info: { title: 'Brail', version: '1.0' }, components: { schemas } }
     );
 
     return spec;
