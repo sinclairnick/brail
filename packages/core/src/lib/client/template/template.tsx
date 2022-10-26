@@ -27,7 +27,12 @@ export function createTemplate<P extends { [key: string]: any } = any>(
       defaultOptions
     );
 
-    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+    return (
+      <div
+        key={new Date().getTime()}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    );
   };
 
   const methods: TemplateMethods<P> = {
