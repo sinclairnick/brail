@@ -47,7 +47,7 @@ npm install @brail/react @brail/web
 ```tsx
 // (Optionally) define props
 class WelcomeTemplateProps {
-  @IsString()
+  @IsString() // Decorators allow for type-safe API generation
   firstName: string;
 }
 
@@ -93,10 +93,13 @@ export default WelcomeTemplate;
 `pages/api/[...email].ts:`
 
 ```ts
-import { createServer } from '@brail/core/server';
+import { createServer, getBrailApiConfig } from '@brail/core/server';
+
+export const config = getBrailApiConfig();
 
 // Register template so it can be generated via API
-export default createServer([WelcomeTemplate]);
+const server = createServer([WelcomeTemplate]);
+export default server;
 ```
 
 Then consume the emails via API, dynamically generating transactional content
@@ -112,6 +115,8 @@ To view a full example, visit the `apps/example` directory.
 Brail was created so I never have to use a drag-and-drop editor again. It puts emails back into the "coding ecosystem" where theming, composition and dynamically generating content are standard. Version control? Git. Consistent theming and composition? React components. Vendor lock in? No thanks.
 
 With brail, my emails are portable, consistent, easy and more fun to make.
+
+[Get Started](https://brail.vercel.app)
 
 ## Packages
 
