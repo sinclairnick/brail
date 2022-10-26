@@ -81,6 +81,7 @@ importers:
       kcors: ^2.2.2
       multer: 1.4.5-lts.1
       next: ^12.3.1
+      openapi3-ts: ^3.1.1
       react: ^17.0.2
       react-dom: ^17.0.2
       reflect-metadata: ^0.1.13
@@ -116,6 +117,7 @@ importers:
       '@types/react': 17.0.50
       '@types/react-dom': 17.0.17
       next: 12.3.1_tjezdj2cz5djnduyhfh3jev7gi
+      openapi3-ts: 3.1.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       tslib: 2.4.0
@@ -9505,6 +9507,12 @@ packages:
       yaml: 1.10.2
     dev: false
 
+  /openapi3-ts/3.1.1:
+    resolution: {integrity: sha512-lNUS87ncFqm1m8W21sbTGIeD7sydkQ4nnRUrkBiGlAzTngr50eBKU2suUXhdEk51z6m4cCgaXdB1SFgXtyn81Q==}
+    dependencies:
+      yaml: 2.1.3
+    dev: true
+
   /opener/1.5.2:
     resolution: {integrity: sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==}
     hasBin: true
@@ -13362,6 +13370,11 @@ packages:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
     dev: false
+
+  /yaml/2.1.3:
+    resolution: {integrity: sha512-AacA8nRULjKMX2DvWvOAdBZMOfQlypSFkjcOcu9FalllIDJ1kvlREzcdIZmidQUqqeMv7jorHjq2HlLv/+c2lg==}
+    engines: {node: '>= 14'}
+    dev: true
 
   /yargs-parser/18.1.3:
     resolution: {integrity: sha512-o50j0JeToy/4K6OZcaQmW6lyXXKhq7csREXcDwk2omFPJEwUNOVtJKvmDr9EI1fAJZUyZcRF7kxGBWmRXudrCQ==}
