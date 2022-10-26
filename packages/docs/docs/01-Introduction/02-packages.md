@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+title: Monorepo Packages
 ---
 
 # Overview of Brail Packages
@@ -12,11 +12,11 @@ Brail is a monorepo broken into several packages.
 
 As the name implies, Brail Core is the core of Brail, which powers functionality like the templating server and API generation.
 
-## Optional
-
 ### [@brail/mjml](https://github.com/sinclairnick/brail/tree/main/packages/mjml): Email-safe primitive components
 
 MJML is an HTML-like markup language create by MailJet, intended to make email-safe html code more accessible. Brail MJML is a fork of the now unmaintained [mjml-react](https://github.com/wix-incubator/mjml-react) wrapper for MJML. Brail MJML adds type definitions and browser-compatibility (instead of just node), among other improvements.
+
+## Optional
 
 ### [@brail/react](https://github.com/sinclairnick/brail/tree/main/packages/react): Components built on @brail/mjml
 

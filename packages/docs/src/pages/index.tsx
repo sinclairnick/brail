@@ -21,7 +21,7 @@ function HomepageHeader() {
               'button button--secondary button--lg',
               styles.startButton
             )}
-            to="/docs/intro"
+            to="/docs/introduction/intro"
           >
             Get Started
           </Link>

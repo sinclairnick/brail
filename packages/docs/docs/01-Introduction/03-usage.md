@@ -1,8 +1,14 @@
----
-sidebar_position: 3
----
+# Usage
 
-# Example
+To generate emails with Brail we must:
+
+1. Create an email template, using React
+2. Register the template for use in NextJS API routes
+3. Call the API endpoint, with any dynamic data
+
+We can also generate a type-safe API, using an OpenAPI generator.
+
+Below is an example of how one might use Brail in practice.
 
 ```tsx title="welcome/index.template.tsx"
 // Define props
