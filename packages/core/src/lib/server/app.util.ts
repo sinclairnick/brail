@@ -87,7 +87,10 @@ class RenderOptions {
 }
 
 export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
-  return templates.map((t) => {
+  class Original {}
+  let currentClass = Original;
+
+  for (const t of templates) {
     const { propType } = t;
     const operationName = t.templateName();
     const pathName = stripeTrailingSlashes(t.path());
@@ -98,9 +101,9 @@ export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
       )} (/api/templates/${pathName}).`
     );
 
-    @Controller(`/templates/${pathName}`)
-    class Base {
-      @Post()
+    @Controller(`/templates`)
+    class TemplatesController extends currentClass {
+      @Post('/' + pathName)
       @ResponseSchema(BrailResponse)
       async [operationName](
         @QueryParams({ required: false, type: RenderOptions })
@@ -116,17 +119,10 @@ export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
         return { html, meta: { ...meta }, errors };
       }
     }
+    currentClass = TemplatesController;
+  }
 
-    const className =
-      operationName.slice(0, 1).toUpperCase() +
-      operationName.slice(1) +
-      'Controller';
-
-    return Object.defineProperty(Base, 'name', {
-      writable: true,
-      value: className,
-    });
-  });
+  return [currentClass];
 };
 
 export const generateOpenApiSpec = (
