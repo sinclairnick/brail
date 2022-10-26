@@ -10,12 +10,23 @@ import {
 import { Footer } from 'apps/example/components/footer';
 import { ReusableHeader } from 'apps/example/components/reusable-header';
 import { Signature } from 'apps/example/components/signature';
-import { IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsInt, IsString, ValidateNested } from 'class-validator';
+
+class Pet {
+  @IsString()
+  name: string;
+  @IsInt()
+  age: number;
+}
 
 // Props class for type-safe API generation
 class WelcomeTemplateProps {
   @IsString()
   firstName: string;
+  @ValidateNested()
+  @Type(() => Pet)
+  pet: Pet;
 }
 
 // Create the template view
@@ -65,7 +76,7 @@ const WelcomeTemplate = createTemplate({
   name: 'Welcome',
   path: '/welcome',
   template: WelcomeTemplateView,
-  preview: () => ({ firstName: 'Steve' }),
+  preview: () => ({ firstName: 'Steve', pet: { age: 2, name: 'Spot' } }),
   meta: (props) => ({ subject: `Welcome, ${props.firstName}!` }),
   propType: WelcomeTemplateProps,
 });

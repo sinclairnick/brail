@@ -1,4 +1,5 @@
 import {
+  OpenAPI,
   ResponseSchema,
   routingControllersToSpec,
 } from 'routing-controllers-openapi';
@@ -11,89 +12,31 @@ import {
   Get,
   QueryParams,
 } from 'routing-controllers';
-import { CreateTemplateReturn } from '../types/template.types';
+import { CreateTemplateReturn } from '../../types/template.types';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
-const { defaultMetadataStorage } = require('class-transformer/cjs/storage');
+// @ts-ignore
+import { defaultMetadataStorage } from 'class-transformer/cjs/storage.js';
 import type { Express } from 'express';
-import { Type } from 'class-transformer';
-import {
-  IsBoolean,
-  IsEnum,
-  IsInt,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
-import { Logger } from './logging.util';
+import { Logger } from '../logging.util';
 import chalk from 'chalk';
-import { MjType } from '@brail/mjml';
-import { stripeTrailingSlashes } from './path.util';
+import { stripTrailingSlashes } from '../path.util';
+import { BrailResponse, RenderOptions } from './app.types';
+import { classToJsonSchema } from './json-schema/json-schema.util';
+import { SchemaObject } from 'openapi3-ts';
+import { camelCase } from 'lodash';
 
-class Meta {
-  @IsString()
-  @IsOptional()
-  subject?: string | null;
-
-  @IsString()
-  @IsOptional()
-  preview?: string | null;
-}
-
-class RenderError implements MjType.MjmlError {
-  @IsString()
-  tagName: string;
-  @IsString()
-  message: string;
-  @IsInt()
-  line: number;
-  @IsString()
-  formattedMessage: string;
-}
-class BrailResponse {
-  @IsString()
-  html: string;
-
-  @ValidateNested()
-  @Type(() => Meta)
-  meta: Meta;
-
-  @ValidateNested({ each: true })
-  @Type(() => RenderError)
-  errors: RenderError[];
-}
-
-enum ValidationLevel {
-  Strict = 'strict',
-  Soft = 'soft',
-  Skip = 'skip',
-}
-
-class RenderOptions {
-  @IsBoolean()
-  @IsOptional()
-  beautify?: boolean;
-
-  @IsEnum(ValidationLevel)
-  @IsOptional()
-  validationLevel?: 'skip';
-
-  @IsOptional()
-  @IsBoolean()
-  keepComments?: boolean;
-
-  @IsBoolean()
-  @IsOptional()
-  minify?: boolean;
-}
-
-export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
+export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
   class Original {}
   let currentClass = Original;
+
+  // Manually setting schema on this object so all schema are flat,
+  // to reduce naming conflict issues
+  let schema: Record<string, SchemaObject> = {};
 
   for (const t of templates) {
     const { propType } = t;
     const operationName = t.templateName();
-    const pathName = stripeTrailingSlashes(t.path());
+    const pathName = stripTrailingSlashes(t.path());
 
     Logger.log(
       `Registered template ${chalk.green.bold(
@@ -101,11 +44,14 @@ export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
       )} (/api/templates/${pathName}).`
     );
 
+    const bodySchema = classToJsonSchema(propType);
+    schema[propType.name] = bodySchema;
+
     @Controller(`/templates`)
     class TemplatesController extends currentClass {
       @Post('/' + pathName)
       @ResponseSchema(BrailResponse)
-      async [operationName](
+      async [camelCase(operationName)](
         @QueryParams({ required: false, type: RenderOptions })
         options: RenderOptions,
         @Body({ type: propType, required: true, validate: true })
@@ -122,17 +68,26 @@ export const createControllers = (templates: CreateTemplateReturn<any>[]) => {
     currentClass = TemplatesController;
   }
 
-  return [currentClass];
+  return { controller: currentClass, schema };
 };
 
 export const generateOpenApiSpec = (
-  controllers: ReturnType<typeof createControllers>
+  controllers: Function[],
+  flattenedSchema: Record<string, SchemaObject>
 ) => {
   const getSpec = () => {
-    const schemas = validationMetadatasToSchemas({
+    const allSchema = validationMetadatasToSchemas({
       classTransformerMetadataStorage: defaultMetadataStorage,
       refPointerPrefix: '#/components/schemas/',
     });
+
+    // Picking off only a select few schemas
+    const selectedSchemas = {
+      RenderOptions: allSchema['RenderOptions'],
+      RenderError: allSchema['RenderError'],
+      Meta: allSchema['Meta'],
+      BrailResponse: allSchema['BrailResponse'],
+    };
 
     const storage = getMetadataArgsStorage();
     const spec = routingControllersToSpec(
@@ -142,7 +97,15 @@ export const generateOpenApiSpec = (
         routePrefix: '/api',
         validation: true,
       },
-      { info: { title: 'Brail', version: '1.0' }, components: { schemas } }
+      {
+        info: { title: 'Brail', version: '1.0' },
+        components: {
+          schemas: {
+            ...selectedSchemas,
+            ...flattenedSchema,
+          },
+        },
+      }
     );
 
     return spec;
@@ -208,15 +171,12 @@ export const createApp = (
     Logger.disable();
   }
 
-  const appControllers = createControllers(templates);
-
-  let controllers = appControllers;
-  let spec: any | undefined;
+  const { controller, schema } = registerTemplates(templates);
+  let controllers = [controller];
 
   if (!options?.disableOpenApi) {
-    const { OpenApiController, getSpec } = generateOpenApiSpec(appControllers);
+    const { OpenApiController } = generateOpenApiSpec(controllers, schema);
     controllers = controllers.concat(OpenApiController);
-    spec = getSpec();
   }
 
   if (!options?.disableIntrospection) {

@@ -1,6 +1,6 @@
 import { CreateTemplateReturn } from '../types/template.types';
 import { NextApiHandler } from 'next';
-import { createApp, CreateAppOptions } from './app.util';
+import { createApp, CreateAppOptions } from './app/app.util';
 
 export type CreateServerOptions = {} & CreateAppOptions;
 
