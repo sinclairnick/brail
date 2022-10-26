@@ -1,5 +1,4 @@
 import {
-  OpenAPI,
   ResponseSchema,
   routingControllersToSpec,
 } from 'routing-controllers-openapi';
@@ -23,7 +22,7 @@ import { stripTrailingSlashes } from '../path.util';
 import { BrailResponse, RenderOptions } from './app.types';
 import { classToJsonSchema } from './json-schema/json-schema.util';
 import { SchemaObject } from 'openapi3-ts';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
   class Original {}
