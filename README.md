@@ -30,10 +30,10 @@ In a few lines of code, Brail lets you turn a nextjs app into an email templatin
 ## Installation
 
 ```sh
-npm install @brail/core
+npm install @brail/core @brail/mjml
 
 # Optional helper packages
-npm install @brail/react @brail/mjml @brail/web
+npm install @brail/react @brail/web
 ```
 
 ## Usage example

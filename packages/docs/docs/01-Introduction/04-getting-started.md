@@ -1,16 +1,12 @@
----
-sidebar_position: 4
----
-
 # Getting Started
 
 ### Install Packages
 
 ```sh
-npm install @brail/core
+npm install @brail/core @brail/mjml
 
 # Optional
-npm install @brail/mjml @brail/react @brail/web
+npm install @brail/react @brail/web
 ```
 
 ### Create a new NextJS App

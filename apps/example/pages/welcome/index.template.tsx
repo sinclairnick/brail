@@ -1,5 +1,12 @@
 import { createTemplate } from '@brail/core';
-import { Column, EmailTemplate, Row, Typography } from '@brail/react';
+import {
+  Button,
+  Column,
+  Container,
+  EmailTemplate,
+  Row,
+  Typography,
+} from '@brail/react';
 import { Footer } from 'apps/example/components/footer';
 import { ReusableHeader } from 'apps/example/components/reusable-header';
 import { Signature } from 'apps/example/components/signature';
@@ -19,46 +26,35 @@ const WelcomeTemplateView = (props: WelcomeTemplateProps) => {
     <EmailTemplate title={`Welcome ${firstName}!`}>
       <ReusableHeader />
 
-      <Row paddingTop={16} paddingBottom={16}>
-        <Column>
-          <Typography variant="h1">Welcome to Brail, {firstName}!</Typography>
-          <Typography variant="body1">Check out our features</Typography>
-        </Column>
-      </Row>
+      <Container backgroundColor="white">
+        <Row paddingTop={16} paddingBottom={16}>
+          <Column>
+            <Typography variant="h1">Welcome to Brail, {firstName}!</Typography>
+            <Typography variant="body1">Check out our features</Typography>
+          </Column>
+        </Row>
 
-      {['Feature 1', 'Feature 2', 'Feature 3'].map((x) => {
-        return (
-          <Row key={x}>
-            <Column>
-              <Typography variant="h2" align="center">
-                {x}...
-              </Typography>
-            </Column>
-          </Row>
-        );
-      })}
+        <Row paddingTop={16} paddingBottom={16}>
+          {['Feature 1', 'Feature 2', 'Feature 3'].map((x) => {
+            return (
+              <Column key={x}>
+                <Typography variant="h2" align="center">
+                  {x}...
+                </Typography>
+              </Column>
+            );
+          })}
+        </Row>
 
-      <Row>
-        <Column>
-          <Row>
-            <Column>
-              <Typography>hi</Typography>
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Typography>hi</Typography>
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Typography>hi</Typography>
-            </Column>
-          </Row>
-        </Column>
-      </Row>
+        <Row paddingTop={16} paddingBottom={16}>
+          <Column>
+            <Button>Where do I sign up?</Button>
+          </Column>
+        </Row>
 
-      <Signature />
+        <Signature />
+      </Container>
+
       <Footer />
     </EmailTemplate>
   );
