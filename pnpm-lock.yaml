@@ -246,6 +246,7 @@ importers:
       '@types/react': ^17.0.50
       '@types/react-dom': ^17.0.17
       '@types/swagger-ui-react': ^4.11.0
+      btoa: ^1.2.1
       next: ^12.3.1
       react: ^17.0.2
       react-dom: ^17.0.2
@@ -260,6 +261,7 @@ importers:
       '@emotion/styled': 11.10.4_usunuwcvhl5v5e5zqilibnvsti
       '@mui/icons-material': 5.10.9_kgh4x5puvrwh7hf7y5qzmwmmwm
       '@mui/material': 5.10.10_c6qugj3z5tv63b4vyg6k5kxs7y
+      btoa: 1.2.1
       react-query: 3.39.2_sfoxds7t5ydpegc3knd667wn6m
       swagger-ui-react: 4.8.1_sfoxds7t5ydpegc3knd667wn6m
       tslib: 2.4.0
@@ -4960,6 +4962,12 @@ packages:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
     dependencies:
       node-int64: 0.4.0
+
+  /btoa/1.2.1:
+    resolution: {integrity: sha512-SB4/MIGlsiVkMcHmT+pSmIPoNDoHg+7cMzmt3Uxt628MTz2487DKSqK/fuhFBrkuqrYv5UCEnACpF4dTFNKc/g==}
+    engines: {node: '>= 0.4.0'}
+    hasBin: true
+    dev: false
 
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
