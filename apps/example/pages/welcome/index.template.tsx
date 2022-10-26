@@ -11,11 +11,12 @@ import { Footer } from 'apps/example/components/footer';
 import { ReusableHeader } from 'apps/example/components/reusable-header';
 import { Signature } from 'apps/example/components/signature';
 import { Type } from 'class-transformer';
-import { IsInt, IsString, ValidateNested } from 'class-validator';
+import { IsEnum, IsIn, IsInt, IsString, ValidateNested } from 'class-validator';
 
 class Pet {
   @IsString()
   name: string;
+
   @IsInt()
   age: number;
 }
@@ -24,9 +25,13 @@ class Pet {
 class WelcomeTemplateProps {
   @IsString()
   firstName: string;
+
   @ValidateNested()
   @Type(() => Pet)
   pet: Pet;
+
+  @IsIn(['yellow', 'blue', 'red'])
+  favColor: 'yellow' | 'blue' | 'red';
 }
 
 // Create the template view
@@ -76,7 +81,11 @@ const WelcomeTemplate = createTemplate({
   name: 'Welcome',
   path: '/welcome',
   template: WelcomeTemplateView,
-  preview: () => ({ firstName: 'Steve', pet: { age: 2, name: 'Spot' } }),
+  preview: () => ({
+    firstName: 'Steve',
+    pet: { age: 2, name: 'Spot' },
+    favColor: 'blue' as const,
+  }),
   meta: (props) => ({ subject: `Welcome, ${props.firstName}!` }),
   propType: WelcomeTemplateProps,
 });
