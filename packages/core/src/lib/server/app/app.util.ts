@@ -23,6 +23,7 @@ import { stripTrailingSlashes } from '../path.util';
 import { BrailResponse, RenderOptions } from './app.types';
 import { classToJsonSchema } from './json-schema/json-schema.util';
 import { SchemaObject } from 'openapi3-ts';
+import startCase from 'lodash/startCase';
 
 export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
   class Original {}
@@ -34,7 +35,7 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
 
   for (const t of templates) {
     const { propType } = t;
-    const operationName = t.templateName().replace(/ +/, '');
+    const operationName = startCase(t.templateName()).replace(/ +/, '');
     const pathName = stripTrailingSlashes(t.path());
 
     Logger.log(
