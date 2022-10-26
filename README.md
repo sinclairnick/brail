@@ -27,6 +27,10 @@ In a few lines of code, Brail lets you turn a nextjs app into an email templatin
 
 <br/>
 
+### Read the [docs](https://brail.vercel.app)
+
+---
+
 ## Installation
 
 ```sh
