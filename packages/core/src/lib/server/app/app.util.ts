@@ -1,4 +1,5 @@
 import {
+  OpenAPI,
   ResponseSchema,
   routingControllersToSpec,
 } from 'routing-controllers-openapi';
@@ -22,7 +23,6 @@ import { stripTrailingSlashes } from '../path.util';
 import { BrailResponse, RenderOptions } from './app.types';
 import { classToJsonSchema } from './json-schema/json-schema.util';
 import { SchemaObject } from 'openapi3-ts';
-import camelCase from 'lodash/camelCase';
 
 export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
   class Original {}
@@ -34,13 +34,14 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
 
   for (const t of templates) {
     const { propType } = t;
-    const operationName = t.templateName();
+    const operationName = t.templateName().replace(/ +/, '');
     const pathName = stripTrailingSlashes(t.path());
 
     Logger.log(
-      `Registered template ${chalk.green.bold(
-        operationName
-      )} (/api/templates/${pathName}).`
+      `Registered template ${chalk.green.bold(t.templateName())}
+				(/api/templates/${pathName})
+				 .
+			`
     );
 
     const bodySchema = classToJsonSchema(propType);
@@ -48,16 +49,24 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
 
     @Controller(`/templates`)
     class TemplatesController extends currentClass {
+      @OpenAPI((source) => ({
+        ...source,
+        operationId:
+          source.operationId?.replace('TemplatesController.', '') ??
+          t.templateName(),
+      }))
       @Post('/' + pathName)
       @ResponseSchema(BrailResponse)
-      async [camelCase(operationName)](
+      async [operationName](
         @QueryParams({ required: false, type: RenderOptions })
         options: RenderOptions,
         @Body({ type: propType, required: true, validate: true })
         _body: typeof propType
       ): Promise<BrailResponse> {
         Logger.log(
-          `Generating email from template: ${chalk.green.bold(operationName)}`
+          `Generating email from template: ${chalk.green.bold(
+            t.templateName()
+          )}`
         );
         const { html, errors } = t.render(_body, options);
         const meta = t.meta?.(_body);
