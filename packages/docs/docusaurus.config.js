@@ -67,6 +67,7 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/sinclairnick/brail',
             label: 'GitHub',
@@ -86,19 +87,19 @@ const config = {
               },
             ],
           },
-          // {
-          //   title: 'More',
-          //   items: [
-          //     {
-          //       label: 'Blog',
-          //       to: '/blog',
-          //     },
-          //     {
-          //       label: 'GitHub',
-          //       href: 'https://github.com/facebook/docusaurus',
-          //     },
-          //   ],
-          // },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'Blog',
+                to: '/blog',
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/sinclairnick/brail',
+              },
+            ],
+          },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Brail`,
       },
