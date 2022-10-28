@@ -20,6 +20,7 @@
     "publish-pkg": {
       "dependsOn": ["build"],
       "outputs": []
-    }
+    },
+    "dev": {}
   }
 }

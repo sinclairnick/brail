@@ -11,7 +11,7 @@
     "build:force": "turbo run build --force",
     "test": "turbo run test",
     "lint": "turbo run lint",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel",
     "publish": "turbo run publish-pkg"
   },
   "devDependencies": {
