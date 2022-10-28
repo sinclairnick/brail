@@ -19,6 +19,7 @@ import { useQuery } from 'react-query';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Close from '@mui/icons-material/Close';
 import { useQueryParam } from '../hooks/use-query-param.hook';
+import { useRouter } from 'next/router';
 
 const useTemplates = () => {
   const templatesQuery = useQuery('templates', async () => {
@@ -32,11 +33,14 @@ const useTemplates = () => {
 const useUtilityDrawer = () => {
   const templatesQuery = useTemplates();
   const [filter, setFilter] = useState('');
+  const router = useRouter();
   const [_isDrawerOpen, setIsDrawerOpen] = useQueryParam(
     'isDrawerOpen',
-    'false'
+    'true'
   );
-  const isDrawerOpen = _isDrawerOpen.toLowerCase() === 'true';
+  const isDrawerOpen = router.isReady
+    ? _isDrawerOpen.toLowerCase() === 'true'
+    : false;
 
   const templates = templatesQuery.data ?? [];
 
