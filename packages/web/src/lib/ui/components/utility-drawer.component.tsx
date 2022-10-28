@@ -14,10 +14,11 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Close from '@mui/icons-material/Close';
+import { useQueryParam } from '../hooks/use-query-param.hook';
 
 const useTemplates = () => {
   const templatesQuery = useQuery('templates', async () => {
@@ -31,7 +32,11 @@ const useTemplates = () => {
 const useUtilityDrawer = () => {
   const templatesQuery = useTemplates();
   const [filter, setFilter] = useState('');
-  const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+  const [_isDrawerOpen, setIsDrawerOpen] = useQueryParam(
+    'isDrawerOpen',
+    'false'
+  );
+  const isDrawerOpen = _isDrawerOpen.toLowerCase() === 'true';
 
   const templates = templatesQuery.data ?? [];
 
@@ -82,7 +87,7 @@ export const UtilityDrawer = () => {
           minWidth: 0,
           px: 1,
         }}
-        onClick={() => setIsDrawerOpen((x) => !x)}
+        onClick={() => setIsDrawerOpen(isDrawerOpen ? 'false' : 'true')}
       >
         {isDrawerOpen ? <ChevronLeft /> : <ChevronRight />}
       </Button>
