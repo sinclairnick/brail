@@ -13,6 +13,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ErrorDrawer } from './error-drawer.component';
 import SwaggerUI from 'swagger-ui-react';
+import { useQueryParam } from '../hooks/use-query-param.hook';
 
 const useBrailLayout = (
   template: NextComponentType<NextPageContext, any, any>
@@ -34,7 +35,11 @@ const useBrailLayout = (
     generatePreviewMjml: template['generatePreviewMjml' as never],
     getErrors: template['getErrors' as never],
   };
-  const [isLayoutVisible, setIsLayoutVisible] = useState(true);
+  const [_isLayoutVisible, setIsLayoutVisible] = useQueryParam(
+    'layoutVisible',
+    'true'
+  );
+  const isLayoutVisible = _isLayoutVisible.toLowerCase() === 'true';
 
   const htmlPreview = methods.generatePreviewHtml?.();
   const mjmlPreview = methods.generatePreviewMjml?.();
@@ -66,7 +71,8 @@ const useBrailLayout = (
     mjmlPreview,
     hasJson,
     jsonPreview,
-    toggleLayoutVisible: () => setIsLayoutVisible((x) => !x),
+    toggleLayoutVisible: () =>
+      setIsLayoutVisible(isLayoutVisible ? 'false' : 'true'),
     isLayoutVisible,
     getErrors: methods.getErrors,
   };
