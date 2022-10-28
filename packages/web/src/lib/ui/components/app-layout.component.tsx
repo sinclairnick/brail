@@ -1,4 +1,4 @@
-import { FC, useState, useMemo } from 'react';
+import { FC, useState } from 'react';
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
@@ -131,6 +131,14 @@ export const BrailLayout: FC<BrailLayoutProps> = (props) => {
                       component="pre"
                       p={2}
                       flex={1}
+                      sx={{
+                        backgroundColor: 'rgba(55, 65, 81, 1)',
+                        borderRadius: '0.25rem',
+                        color: 'rgba(229, 231, 235, 1)',
+                        fontFamily: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace`,
+                        overflow: 'scroll',
+                        padding: '0.5rem 0.75rem',
+                      }}
                     >
                       {x}
                     </Stack>
