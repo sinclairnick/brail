@@ -113,7 +113,6 @@ importers:
       class-validator-jsonschema: ^3.1.1
       cors: ^2.8.5
       express: 4.18.2
-      html-react-parser: ^3.0.4
       kcors: ^2.2.2
       multer: 1.4.5-lts.1
       next: ^12.3.1
@@ -136,7 +135,6 @@ importers:
       class-validator-jsonschema: 3.1.1_e6kgdsnyya5caxg3ysdyxrqm7a
       cors: 2.8.5
       express: 4.18.2
-      html-react-parser: 3.0.4_react@17.0.2
       kcors: 2.2.2
       multer: 1.4.5-lts.1
       reflect-metadata: 0.1.13
@@ -7777,13 +7775,6 @@ packages:
       wbuf: 1.7.3
     dev: false
 
-  /html-dom-parser/3.1.2:
-    resolution: {integrity: sha512-mLTtl3pVn3HnqZSZzW3xVs/mJAKrG1yIw3wlp+9bdoZHHLaBRvELdpfShiPVLyjPypq1Fugv2KMDoGHW4lVXnw==}
-    dependencies:
-      domhandler: 5.0.3
-      htmlparser2: 8.0.1
-    dev: false
-
   /html-encoding-sniffer/2.0.1:
     resolution: {integrity: sha512-D5JbOMBIR/TVZkubHT+OyT2705QvogUW4IBn6nHd756OwieSF9aDYFj4dv6HHEVGYbHaLETa3WggZYWWMyy3ZQ==}
     engines: {node: '>=10'}
@@ -7809,18 +7800,6 @@ packages:
       param-case: 3.0.4
       relateurl: 0.2.7
       terser: 5.15.1
-    dev: false
-
-  /html-react-parser/3.0.4_react@17.0.2:
-    resolution: {integrity: sha512-va68PSmC7uA6PbOEc9yuw5Mu3OHPXmFKUpkLGvUPdTuNrZ0CJZk1s/8X/FaHjswK/6uZghu2U02tJjussT8+uw==}
-    peerDependencies:
-      react: 0.14 || 15 || 16 || 17 || 18
-    dependencies:
-      domhandler: 5.0.3
-      html-dom-parser: 3.1.2
-      react: 17.0.2
-      react-property: 2.0.0
-      style-to-js: 1.1.1
     dev: false
 
   /html-tags/3.2.0:
@@ -11507,10 +11486,6 @@ packages:
       webpack: 5.74.0
     dev: false
 
-  /react-property/2.0.0:
-    resolution: {integrity: sha512-kzmNjIgU32mO4mmH5+iUyrqlpFQhF8K2k7eZ4fdLSOPFrD1XgEuSBv9LDEgxRXTMBqMd8ppT0x6TIzqE5pdGdw==}
-    dev: false
-
   /react-query/3.39.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha512-F6hYDKyNgDQfQOuR1Rsp3VRzJnWHx6aRnnIZHMNGGgbL3SBgpZTDg8MQwmxOgpCAoqZJA+JSNCydF1xGJqKOCA==}
     peerDependencies:
@@ -12693,12 +12668,6 @@ packages:
   /strip-json-comments/3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
-
-  /style-to-js/1.1.1:
-    resolution: {integrity: sha512-RJ18Z9t2B02sYhZtfWKQq5uplVctgvjTfLWT7+Eb1zjUjIrWzX5SdlkwLGQozrqarTmEzJJ/YmdNJCUNI47elg==}
-    dependencies:
-      style-to-object: 0.3.0
-    dev: false
 
   /style-to-object/0.3.0:
     resolution: {integrity: sha512-CzFnRRXhzWIdItT3OmF8SQfWyahHhjq3HwcMNCNLn+N7klOOqPjMeG/4JSu77D7ypZdGvSzvkrbyeTMizz2VrA==}
