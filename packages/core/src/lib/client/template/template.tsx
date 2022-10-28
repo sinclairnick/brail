@@ -42,7 +42,7 @@ export function createTemplate<P extends { [key: string]: any } = any>(
       }),
     meta: args.meta,
     path: () => args.path,
-    propType: args.propType ?? class {},
+    propType: args.propType ?? class UnknownType {},
 
     // --- These methods are used for dev previewing largely ---
     generatePreviewHtml: () => {
