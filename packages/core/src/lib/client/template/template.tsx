@@ -6,6 +6,7 @@ import {
   TemplateMethods,
 } from '../../types/template.types';
 import 'reflect-metadata';
+import HtmlReactParser from 'html-react-parser';
 
 const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
   beautify: true,
@@ -27,12 +28,7 @@ export function createTemplate<P extends { [key: string]: any } = any>(
       defaultOptions
     );
 
-    return (
-      <div
-        key={new Date().getTime()}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-    );
+    return HtmlReactParser(html) as JSX.Element;
   };
 
   const methods: TemplateMethods<P> = {
