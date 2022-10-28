@@ -45,6 +45,16 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
     );
 
     const bodySchema = classToJsonSchema(propType);
+    if (propType.name !== 'UnknownType' && schema[propType.name] != null) {
+      Logger.warn(
+        `Found multiple prop types with the same name: ${chalk.cyan(
+          propType.name
+        )}. \n` +
+          Logger.indent(
+            `Please consider making all prop types unique to avoid conflicts or overwriting.`
+          )
+      );
+    }
     schema[propType.name] = bodySchema;
 
     @Controller(`/templates`)
