@@ -198,6 +198,9 @@ export const createApp = (
     routePrefix: '/api',
     validation: true,
     classTransformer: true,
+    classToPlainTransformOptions: {
+      excludeExtraneousValues: true,
+    },
   });
 
   Logger.log('Brail app initialization complete.');
