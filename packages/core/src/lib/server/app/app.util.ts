@@ -39,10 +39,9 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
     const pathName = stripTrailingSlashes(t.path());
 
     Logger.log(
-      `Registered template ${chalk.green.bold(
+      `Registered (props: ${chalk.cyan(propType.name)}) => <${chalk.green.bold(
         t.templateName()
-      )} (/api/templates/${pathName}).
-			`
+      )} /> (/api/templates/${pathName}).`
     );
 
     const bodySchema = classToJsonSchema(propType);
