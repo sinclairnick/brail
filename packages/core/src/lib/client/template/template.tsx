@@ -6,7 +6,6 @@ import {
   TemplateMethods,
 } from '../../types/template.types';
 import 'reflect-metadata';
-import HtmlReactParser from 'html-react-parser';
 
 const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
   beautify: true,
@@ -28,7 +27,7 @@ export function createTemplate<P extends { [key: string]: any } = any>(
       defaultOptions
     );
 
-    return HtmlReactParser(html) as JSX.Element;
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
   };
 
   const methods: TemplateMethods<P> = {
@@ -43,7 +42,7 @@ export function createTemplate<P extends { [key: string]: any } = any>(
       }),
     meta: args.meta,
     path: () => args.path,
-    propType: args.propType ?? class {},
+    propType: args.propType ?? class UnknownType {},
 
     // --- These methods are used for dev previewing largely ---
     generatePreviewHtml: () => {

@@ -39,13 +39,22 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
     const pathName = stripTrailingSlashes(t.path());
 
     Logger.log(
-      `Registered template ${chalk.green.bold(
+      `Registered (props: ${chalk.cyan(propType.name)}) => <${chalk.green.bold(
         t.templateName()
-      )} (/api/templates/${pathName}).
-			`
+      )} /> (/api/templates/${pathName}).`
     );
 
     const bodySchema = classToJsonSchema(propType);
+    if (propType.name !== 'UnknownType' && schema[propType.name] != null) {
+      Logger.warn(
+        `Found multiple prop types with the same name: ${chalk.cyan(
+          propType.name
+        )}. \n` +
+          Logger.indent(
+            `Please consider making all prop types unique to avoid conflicts or overwriting.`
+          )
+      );
+    }
     schema[propType.name] = bodySchema;
 
     @Controller(`/templates`)
@@ -198,6 +207,9 @@ export const createApp = (
     routePrefix: '/api',
     validation: true,
     classTransformer: true,
+    classToPlainTransformOptions: {
+      excludeExtraneousValues: true,
+    },
   });
 
   Logger.log('Brail app initialization complete.');
