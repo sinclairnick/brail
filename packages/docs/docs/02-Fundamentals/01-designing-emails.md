@@ -8,6 +8,10 @@ For higher-level components, you can also check out the [`@brail/react`](https:/
 
 > `@brail/react` is built on top of the `@brail/mjml` package, and they can be used alongside one another.
 
+#### A word on creating emails:
+
+> 🚨 _Email design is inherently much more limited than website/app design and some layouts are simply not possible, while ensuring compatibility._
+
 ## MJML basics
 
 For the full breakdown on MJML, visit the official [MJML documentation](https://documentation.mjml.io/). However, to get up and running quickly, we will cover a basic overview of how to write emails using MJML-like syntax.

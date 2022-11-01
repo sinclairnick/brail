@@ -1,6 +1,6 @@
 {
   "name": "@brail/web",
-  "version": "0.2.0-alpha.12",
+  "version": "0.2.0-alpha.13",
   "main": "./dist/index.js",
   "exports": {
     ".": {
@@ -19,7 +19,7 @@
     "version:patch": "pnpm version patch",
     "version:minor": "pnpm version minor",
     "version:major": "pnpm version major",
-    "publish-pkg": "pnpm publish --access=public"
+    "publish-pkg": "pnpm run build && pnpm publish --access=public"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
