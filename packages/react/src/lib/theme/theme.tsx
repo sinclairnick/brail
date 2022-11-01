@@ -3,16 +3,16 @@ import { IPalette, IPaletteOptions, ITheme, IThemeOptions } from './types';
 
 const defaultPalette: IPalette = {
   primary: {
-    main: '#019C53',
-    dark: '#12472C',
-    contrastText: '#F0FFF7',
-    light: '#e5f5ed',
+    main: '#1B448D',
+    dark: '#0F2750',
+    contrastText: '#E5EDFB',
+    light: '#ABC3ED',
   },
   secondary: {
-    main: '#C1272D',
-    dark: '#8C2428',
-    light: '#F5E5E5',
-    contrastText: '#FFF0F0',
+    main: '#1B448D',
+    dark: '#0F2750',
+    contrastText: '#E5EDFB',
+    light: '#ABC3ED',
   },
   info: {
     main: '#3381ca',
@@ -58,7 +58,9 @@ const defaultPalette: IPalette = {
 
 const defaultTheme: ITheme = {
   typography: {
-    allVariants: {},
+    allVariants: {
+      fontFamily: 'Helvetica, sans-serif',
+    },
     h1: {
       fontSize: 32,
     },
