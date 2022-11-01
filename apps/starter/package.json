@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4444",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "client:generate": "openapi -i 'http://localhost:4444/api/openapi.json' -o out --useOptions --name ExampleApi"
   },
   "dependencies": {
-    "@brail/core": "workspace:0.2.0-alpha.10",
-    "@brail/mjml": "workspace:0.2.0-alpha.3",
-    "@brail/react": "workspace:0.2.0-alpha.3",
-    "@brail/web": "workspace:0.2.0-alpha.11",
+    "@brail/core": "0.2.0",
+    "@brail/mjml": "0.2.0",
+    "@brail/react": "0.2.0",
+    "@brail/web": "0.2.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "next": "^12.3.1",
