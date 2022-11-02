@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Brail',
   tagline: 'Transactional email that feels different',
-  url: 'https://github.com/sinclairnick/brail',
+  url: 'https://brail.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

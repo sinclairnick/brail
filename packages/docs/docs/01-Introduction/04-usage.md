@@ -1,4 +1,4 @@
-# Usage
+# Example Usage
 
 To generate emails with Brail we must:
 
