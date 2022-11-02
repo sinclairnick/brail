@@ -1,20 +1,23 @@
 # Getting Started
 
-### Install Packages
-
-```sh
-npm install @brail/core @brail/mjml
-
-# Optional
-npm install @brail/react @brail/web
-```
-
 ### Create a new NextJS App
 
 Brail is built on NextJS. Currently, the quickest way to get up and running is to use [`create-next-app`](https://nextjs.org/docs/api-reference/create-next-app).
 
 ```sh
 npx create-next-app@latest
+
+# Install packages
+npm install @brail/core @brail/mjml
+
+# Optional
+npm install @brail/react @brail/web
+```
+
+Or you can simply use the starter project:
+
+```sh
+npx create-next-app -e https://github.com/sinclairnick/brail/tree/main/apps/starter
 ```
 
 ### Create an email template
@@ -67,7 +70,10 @@ export default server;
 ### Generate a dynamic email
 
 ```sh
-curl -X POST --data '{ "field": "value" }' http://localhost:4444/api/template_name
+curl -X POST \
+	--d '{ "field": "value" }' \
+	-H "Content-Type: application/json" \
+	http://localhost:4444/api/template_name
 ```
 
 ### Add web UI for improved developer experience (optional)
