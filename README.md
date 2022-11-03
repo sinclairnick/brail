@@ -25,6 +25,8 @@ In a few lines of code, Brail lets you turn a nextjs app into an email templatin
 
 > 🧰 Enjoy theming, version control, reusable components and no vendor lock-in
 
+> 🗂 Automatic image hosting
+
 <br/>
 
 ### Read the [docs](https://brail.vercel.app)

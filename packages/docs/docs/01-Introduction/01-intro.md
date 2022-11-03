@@ -22,6 +22,10 @@ Built on [NextJS](https://nextjs.org/), Brail includes many features:
 
 > 📬 Agnostic to email delivery provider
 
+> 🧰 Enjoy theming, version control, reusable components and no vendor lock-in
+
+> 🗂 Automatic image hosting
+
 Compared to traditional approaches, the following become trivial:
 
 - Theming
