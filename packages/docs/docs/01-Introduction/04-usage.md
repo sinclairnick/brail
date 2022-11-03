@@ -25,6 +25,11 @@ const WelcomeTemplateView = (props: WelcomeTemplateProps) => {
     <EmailTemplate title={`Welcome ${firstName}!`}>
       <ReusableHeader />
 
+      <Image
+        src={getAbsoluteUrl('/icons/wave.jpg')} // See: apps/example/lib/path.ts
+        alt="This icon will be automatically hosted by Vercel"
+      />
+
       <Row paddingTop={16} paddingBottom={16}>
         <Column>
           <Typography variant="h1">Welcome to Brail, {firstName}!</Typography>
