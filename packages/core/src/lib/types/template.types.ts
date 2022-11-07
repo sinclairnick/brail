@@ -36,7 +36,7 @@ export type CreateTemplateArgs<T> = {
    * See: https://github.com/typestack/class-validator
    */
   propType?: {
-    new (...args: any[]): any;
+    new (...args: any[]): T;
   };
   /** Set the default options for rendering email templates */
   options?: Partial<MjType.Mjml2HtmlOptions>;
