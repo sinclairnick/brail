@@ -25,11 +25,11 @@ Below are a few (a lot) of my gripes with the way emails work in \[current year\
 
 ### Correctness
 
-The underlying reason developers don't hand-write emails more often, is because it's unclear whether they will actually work in a given email client. It's not difficult, per se, but it is tedious, and requires esoteric knowledge of how email clients work across the board. Consequently, ne must be masochistic enough to endure leveraging only the most basic of web-based techniques to achieve a particular layout and style. Writing complex React code is much harder. But writing emails in this way is much more boring and finnicky.
+The underlying reason developers don't hand-write emails more often, is because it's unclear whether they will actually work in a given email client. It's not difficult, per se, but it is tedious, and requires esoteric knowledge of how email clients work across the board. Consequently, writing emails by hand requires being masochistic enough to endure using only the most basic web-based techniques to achieve a simple layout and style. Sure, writing complex React code for a website is much more complex. But writing emails using raw code is boring and finnicky, which is somehow worse.
 
 ### Theming
 
-One of the first issues you'll slam into is theming. Need to change the logo in the footer, or the font for all headings? Say goodbye to the rest of the day. Many developers pray to the Don't Repeat Yourself (DRY) gods every morning, and this amount of repitition is pure blasphemy. This so-called theming problem is trivially solved in code. Not so for drag-and-drop editors.
+One of the first obstacles you'll run into is theming. Need to change the logo in the footer, or the font for all headings? Say goodbye to the rest of the day. Many developers pray to the Don't Repeat Yourself (DRY) gods every morning, and this amount of repitition is pure blasphemy. This so-called theming problem is trivially solved in code. Not so for drag-and-drop editors.
 
 ### Variables and Dynamic data
 
@@ -68,6 +68,6 @@ With all of the problems plaguing email, I think it's time for an improvement. A
 
 It turns out, this is actually very doable.
 
-The result is called [Brail](https://github.com/sinclairnick/brail). And I've been using it in production for 7 months now, worry free.
+The result is called [Brail](https://github.com/sinclairnick/brail). And I've been using it in production for 7 months now, worry free. My workflow looks like creating a themed email template in a few minutes, `git push`ing to Vercel who hosts the templates, API and assets, and then re-generating a type-safe client on my backend, fixing any newfound (statically checked) errors if the dynamic data provided is incorrect.
 
-[Learn more about Brail](/docs/Introduction/intro)
+I'm now happy enough with it's stability to share it with the rest of the world. [Learn more](/docs/Introduction/intro) about Brail, or check it out on [GitHub](https://github.com/sinclairnick/brail).
