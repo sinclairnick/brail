@@ -11,9 +11,9 @@
 ![Mjml][mjml-badge]
 ![Web][web-badge]
 
-Brail is a framework built on NextJS for developing email templates in React, and returning HTML that is compatible with major email clients. It aims to seperate the concerns of generating the emails and delivering them.
+Brail is a framework built on NextJS for developing email templates in React, and returning HTML that is compatible with major email clients. It aims to separate the concerns of generating the emails and delivering them.
 
-In a few lines of code, Brail lets you turn a nextjs app into an email templating server.
+In a few lines of code, Brail lets you turn a NextJS app into an email templating server.
 
 > 📧 Preview templates in your browser
 
