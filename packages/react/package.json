@@ -16,6 +16,7 @@
     "dev:esm": "tsc -p tsconfig.esm.json -w",
     "dev:cjs": "tsc -p tsconfig.json -w",
     "dev": "npm-run-all --parallel dev:*",
+    "test": "jest -c jest.config.js",
     "version:patch": "pnpm version patch",
     "version:minor": "pnpm version minor",
     "version:major": "pnpm version major",
@@ -23,6 +24,13 @@
   },
   "dependencies": {
     "@brail/mjml": "workspace:*",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "csstype": "^3.0.11",
+    "interweave": "^13.0.0",
+    "interweave-ssr": "^2.0.0",
+    "jsdom": "^20.0.2",
+    "reflect-metadata": "^0.1.13",
     "tiny-invariant": "^1.2.0",
     "tslib": "^2.3.1"
   },
@@ -33,10 +41,15 @@
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.4",
+    "@types/jest": "^27.4.1",
+    "@types/jsdom": "^20.0.1",
     "@types/react": "^17.0.50",
+    "@types/react-dom": "^17.0.17",
+    "jest": "^27.5.1",
     "next": "^12.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.8.4"
   }
 }

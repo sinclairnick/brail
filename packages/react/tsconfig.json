@@ -4,7 +4,10 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "module": "CommonJS",
-    "declaration": true
+    "target": "ESNext",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": ["./src/**/*"],
   "exclude": [
