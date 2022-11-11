@@ -1,8 +1,4 @@
-import React, { ReactNode } from 'react';
-import {
-  OptionalParentConsumerProps,
-  ParentProviderProps,
-} from '../parent-provider/parent-provider.types';
+import { OptionalParentConsumerProps } from '../parent-provider/parent-provider.types';
 import {
   BorderAttributes,
   PaddingAttributes,
@@ -11,10 +7,6 @@ import {
   VerticalAlign,
   Align,
 } from '../util/util.types';
-
-export type ColumnChildArgs = {
-  parentWidth: number;
-};
 
 export type ColumnProps = BorderAttributes &
   PaddingAttributes &

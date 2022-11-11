@@ -25,7 +25,5 @@ describe('Core', () => {
         </Container>
       </Email>
     );
-
-    console.log(text);
   });
 });

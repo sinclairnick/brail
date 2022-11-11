@@ -10,7 +10,11 @@ export const Email = (props: EmailProps) => {
 
   return (
     <body {...{ width: '100%' }} style={{ margin: '0 auto' }}>
-      <ParentProvider width={containerWidth}>{children}</ParentProvider>
+      {/* @ts-ignore */}
+      <center width="100%">
+        <ParentProvider width={containerWidth}>{children}</ParentProvider>
+        {/* @ts-ignore */}
+      </center>
     </body>
   );
 };

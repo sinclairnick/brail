@@ -17,16 +17,18 @@ export type Align = 'left' | 'right' | 'center' | 'justify';
 export type Color = `#${string}` | DataType.NamedColor;
 export type Direction = 'rtl' | 'ltr';
 
-export type FontAttributes = Pick<
-  CSSProperties,
-  | 'fontFamily'
-  | 'fontStyle'
-  | 'fontWeight'
-  | 'textDecoration'
-  | 'textTransform'
-  | 'lineHeight'
-  | 'letterSpacing'
-  | 'textAlign'
+export type FontAttributes = Partial<
+  Pick<
+    CSSProperties,
+    | 'fontFamily'
+    | 'fontStyle'
+    | 'fontWeight'
+    | 'textDecoration'
+    | 'textTransform'
+    | 'lineHeight'
+    | 'letterSpacing'
+    | 'textAlign'
+  >
 > & {
   fontSize?: Spacing<'px'>;
   lineHeight?: Spacing<'' | 'px' | '%'>;

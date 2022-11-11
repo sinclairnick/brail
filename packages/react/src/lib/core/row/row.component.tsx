@@ -5,6 +5,7 @@ import {
   useParent,
 } from '../parent-provider/parent-provider.component';
 import { Table } from '../table/table.component';
+import { TBody } from '../table/tbody.component';
 import { Td } from '../table/td.component';
 import { Tr } from '../table/tr.component';
 import { SpacingUtil } from '../util/spacing.utli';
