@@ -1,20 +1,21 @@
 import React, { PropsWithChildren } from 'react';
-import { EmailProvider, useEmailContext } from '../email/email.context';
+import { ConditionalCommentWrapper } from '../html/conditional-wrapper.component';
 import {
-  Conditional,
-  ConditionalCommentWrapper,
-} from '../html/conditional-wrapper.component';
-import { HtmlUtil } from '../util/html.util';
+  ParentProvider,
+  useParent,
+} from '../parent-provider/parent-provider.component';
+import { Table } from '../table/table.component';
+import { Td } from '../table/td.component';
+import { Tr } from '../table/tr.component';
 import { SpacingUtil } from '../util/spacing.utli';
 import {
   BorderAttributes,
   Direction,
   FontAttributes,
-  SpacingAttributes,
+  PaddingAttributes,
 } from '../util/util.types';
 
-// TODO: Incoroprate background color
-export type RowProps = SpacingAttributes &
+export type RowProps = PaddingAttributes &
   BorderAttributes &
   Pick<FontAttributes, 'textAlign'> &
   PropsWithChildren<{
@@ -22,83 +23,23 @@ export type RowProps = SpacingAttributes &
   }>;
 
 export const Row = (props: RowProps) => {
-  const ctx = useEmailContext();
-  const { boxWidth } = ctx;
-
-  const hasBackground = false; // TODO:
-
-  const newBoxWidth = SpacingUtil.getBoxWidth(boxWidth, props);
+  const parent = useParent();
+  const nextParentWidth = SpacingUtil.getBoxWidth(parent.width, props);
 
   return (
-    <ConditionalCommentWrapper
-      start={`<table style="${HtmlUtil.toInlineStyle({
-        width: boxWidth,
-        border: '0',
-      })}" ${HtmlUtil.toAttributes({
-        cellPadding: '0',
-        cellSpacing: '0',
-        // class: suffixCssClasses(this.getAttribute('css-class'), 'outlook'),
-        role: 'presentation',
-        width: boxWidth,
-        // TODO: Background styles
-      })}
-      >
-        <tr>
-          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">`}
-      end={`</td></tr></table>`}
-    >
-      <div
-        style={{
-          margin: '0px auto',
-          borderRadius: props.borderRadius,
-          maxWidth: boxWidth,
-        }}
-      >
-        <Conditional
-          when={hasBackground}
-          Wrapper={(props) => <div>{props.children}</div>}
-        >
-          <table
-            cellPadding={0}
-            cellSpacing={0}
-            role="presentation"
-            style={{ borderRadius: props.borderRadius, width: '100%' }}
+    <Table>
+      <Tr>
+        <Td>
+          <ConditionalCommentWrapper
+            start={`<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"><tr>`}
+            end={`</tr></table>`}
           >
-            <tbody>
-              <tr>
-                <td
-                  dir={props.dir}
-                  style={{
-                    border: props.border,
-                    borderBottom: props.borderBottom,
-                    borderLeft: props.borderLeft,
-                    borderRight: props.borderRight,
-                    borderTop: props.borderTop,
-                    fontSize: 0,
-                    padding: props.padding,
-                    paddingBottom: props.paddingBottom,
-                    paddingLeft: props.paddingLeft,
-                    paddingRight: props.paddingRight,
-                    paddingTop: props.paddingTop,
-                    textAlign: props.textAlign,
-                  }}
-                >
-                  <ConditionalCommentWrapper
-                    start={`<table role="presentation" border="0" cellpadding="0" cellspacing="0">`}
-                    end={`</table>`}
-                  >
-                    <ConditionalCommentWrapper start={`<tr>`} end={'</tr>'}>
-                      <EmailProvider value={{ ...ctx, boxWidth: newBoxWidth }}>
-                        {props.children}
-                      </EmailProvider>
-                    </ConditionalCommentWrapper>
-                  </ConditionalCommentWrapper>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </Conditional>
-      </div>
-    </ConditionalCommentWrapper>
+            <ParentProvider width={nextParentWidth}>
+              {props.children}
+            </ParentProvider>
+          </ConditionalCommentWrapper>
+        </Td>
+      </Tr>
+    </Table>
   );
 };

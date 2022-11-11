@@ -27,9 +27,6 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "csstype": "^3.0.11",
-    "interweave": "^13.0.0",
-    "interweave-ssr": "^2.0.0",
-    "jsdom": "^20.0.2",
     "reflect-metadata": "^0.1.13",
     "tiny-invariant": "^1.2.0",
     "tslib": "^2.3.1"

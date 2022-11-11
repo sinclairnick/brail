@@ -1,6 +1,5 @@
 import React from 'react';
 import { HtmlComment } from './comment.component';
-import { Markup } from 'interweave';
 import { RawHtml } from './raw-html.component';
 
 export type ConditionalCommentProps = {

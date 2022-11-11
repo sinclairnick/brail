@@ -2,7 +2,7 @@ import {
   Border,
   BorderAttributes,
   Spacing,
-  SpacingAttributes,
+  PaddingAttributes,
 } from './util.types';
 
 export class SpacingUtil {
@@ -33,7 +33,7 @@ export class SpacingUtil {
   }
 
   static getTotatlPaddingWidth(
-    borders: Pick<SpacingAttributes, 'padding' | 'paddingRight' | 'paddingLeft'>
+    borders: Pick<PaddingAttributes, 'padding' | 'paddingRight' | 'paddingLeft'>
   ) {
     const { padding, paddingLeft, paddingRight } = borders;
 
@@ -54,13 +54,13 @@ export class SpacingUtil {
   }
 
   static getBoxWidth = (
-    fullWidth: number,
-    spacing: BorderAttributes & SpacingAttributes
+    containerWidth: number,
+    spacing: BorderAttributes & PaddingAttributes
   ) => {
     const paddingSize = SpacingUtil.getTotatlPaddingWidth(spacing);
     const borderSize = SpacingUtil.getTotalBorderWidth(spacing);
     const totalOffset = paddingSize + borderSize;
 
-    return Math.max(0, fullWidth - totalOffset);
+    return Math.max(0, containerWidth - totalOffset);
   };
 }

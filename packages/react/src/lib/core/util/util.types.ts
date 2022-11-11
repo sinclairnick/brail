@@ -13,13 +13,8 @@ export type Border = `${BorderSize}px ${string}`;
 
 export type VerticalAlign = 'top' | 'bottom' | 'middle';
 export type Align = 'left' | 'right' | 'center' | 'justify';
-export type Color =
-  | `rgb(${string})`
-  | `rgba(${string})`
-  | `hsl${string}`
-  | `hsla(${string})`
-  | `#${string}`
-  | DataType.NamedColor;
+/** Colors are restricted to hex values only, for max compatibility */
+export type Color = `#${string}` | DataType.NamedColor;
 export type Direction = 'rtl' | 'ltr';
 
 export type FontAttributes = Pick<
@@ -38,7 +33,8 @@ export type FontAttributes = Pick<
   color?: Color;
 };
 
-export type SpacingAttributes = {
+/** Largely used on *Layout* elements */
+export type PaddingAttributes = {
   paddingBottom?: Spacing<'px'>;
   paddingTop?: Spacing<'px'>;
   paddingLeft?: Spacing<'px'>;
@@ -47,6 +43,18 @@ export type SpacingAttributes = {
     | Spacing<'px'>
     | `${Spacing<'px'>} ${Spacing<'px'>} ${Spacing<'px'>} ${Spacing<'px'>}
       `;
+};
+
+/** Largely used on *Typography* elements */
+export type MarginAttributes = {
+  marginBottom?: Spacing<'px'>;
+  marginTop?: Spacing<'px'>;
+  marginLeft?: Spacing<'px'>;
+  marginRight?: Spacing<'px'>;
+  margin?:
+    | Spacing<'px'>
+    | `${Spacing<'px'>} ${Spacing<'px'>} ${Spacing<'px'>} ${Spacing<'px'>}
+				`;
 };
 
 export type BorderAttributes = {
@@ -64,4 +72,9 @@ export type BackgroundAttributes = {
   backgroundPosition?: CSSProperties['backgroundPosition'];
   backgroundRepeat?: CSSProperties['backgroundRepeat'];
   backgroundSize?: CSSProperties['backgroundSize'];
+};
+
+export type AlignmentAttributes = {
+  verticalAlign?: VerticalAlign;
+  align?: Align;
 };

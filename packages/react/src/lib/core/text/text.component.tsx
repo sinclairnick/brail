@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropsWithChildren } from 'react';
 import { ConditionalCommentWrapper } from '../html/conditional-wrapper.component';
+import { LangUtil } from '../util/lang.util';
 import { FontAttributes, Spacing } from '../util/util.types';
 
 export type TextProps = PropsWithChildren<
@@ -10,8 +11,36 @@ export type TextProps = PropsWithChildren<
 >;
 
 export const Text = (props: TextProps) => {
+  const {
+    color,
+    fontFamily,
+    fontSize,
+    fontStyle,
+    fontWeight,
+    letterSpacing,
+    lineHeight,
+    textAlign,
+    textDecoration,
+    textTransform,
+  } = props;
+
   const content = (
-    <p style={{ fontFamily: props.fontFamily }}>{props.children}</p>
+    <p
+      style={{
+        fontFamily,
+        color,
+        fontSize,
+        fontStyle,
+        fontWeight,
+        letterSpacing,
+        lineHeight,
+        textAlign,
+        textDecoration,
+        textTransform,
+      }}
+    >
+      {props.children}
+    </p>
   );
 
   if (props.height) {

@@ -1,4 +1,3 @@
-import { Markup } from 'interweave';
 import React from 'react';
 import { RawHtml } from './raw-html.component';
 
