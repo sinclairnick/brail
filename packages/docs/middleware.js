@@ -1,5 +1,7 @@
 export default function middleware(request) {
-  const url = new URL(request.url);
-
-  return Response.redirect(new URL(url.pathname.toLowerCase(), request.url));
+  if (request.url.match(/\/[A-Z]/)) {
+    const url = new URL(request.url);
+    url.pathname = url.pathname.toLowerCase();
+    return Response.redirect(url);
+  }
 }
