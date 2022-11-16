@@ -187,6 +187,29 @@ const createIntrospectionController = (
   return IntrospectionController;
 };
 
+const createErrorMiddleware = () => {
+  @Middleware({ type: 'after' })
+  class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
+    error(
+      error: HttpError | any,
+      req: Request,
+      res: Response,
+      next: (err?: any) => any
+    ): void {
+      if (error instanceof HttpError) {
+        res.status(error.httpCode).json({
+          name: error.name,
+          message: error.message,
+        });
+        return;
+      }
+
+      next(error);
+    }
+  }
+  return CustomErrorHandler;
+};
+
 export type CreateAppOptions = {
   /** Disables broadcasting an open api endpoint */
   disableOpenApi?: boolean;
@@ -222,9 +245,11 @@ export const createApp = (
 
   const app: Express = createExpressServer({
     controllers,
+    middlewares: [createErrorMiddleware()],
     routePrefix: '/api',
     validation: true,
     classTransformer: true,
+    defaultErrorHandler: false, // Enable our custom handler only
     classToPlainTransformOptions: {
       excludeExtraneousValues: true,
     },
