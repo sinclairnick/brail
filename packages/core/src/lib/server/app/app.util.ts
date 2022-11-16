@@ -11,12 +11,15 @@ import {
   createExpressServer,
   Get,
   QueryParams,
+  Middleware,
+  ExpressErrorMiddlewareInterface,
+  HttpError,
 } from 'routing-controllers';
 import { CreateTemplateReturn } from '../../types/template.types';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
 // @ts-ignore
 import { defaultMetadataStorage } from 'class-transformer/cjs/storage.js';
-import type { Express } from 'express';
+import type { Express, Response } from 'express';
 import { Logger } from '../logging.util';
 import chalk from 'chalk';
 import { stripTrailingSlashes } from '../path.util';
@@ -55,7 +58,18 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
           )
       );
     }
-    schema[propType.name] = bodySchema;
+    schema[propType.name] = {
+      /**
+       * Ensures the type will always be an object, preventing unintended behaviour
+       * when e.g. object has no properties.
+       * */
+      type: 'object',
+      properties: {},
+      required: [],
+      ...bodySchema,
+    };
+
+    const hasProperties = (schema[propType.name].required?.length ?? 0) > 0;
 
     @Controller(`/templates`)
     class TemplatesController extends currentClass {
@@ -70,7 +84,11 @@ export const registerTemplates = (templates: CreateTemplateReturn<any>[]) => {
       async [operationName](
         @QueryParams({ required: false, type: RenderOptions })
         options: RenderOptions,
-        @Body({ type: propType, required: true, validate: true })
+        @Body({
+          type: propType,
+          required: hasProperties ? true : false,
+          validate: true,
+        })
         _body: typeof propType
       ): Promise<BrailResponse> {
         Logger.log(

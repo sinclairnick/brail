@@ -78,7 +78,7 @@ importers:
       react-dom: ^17.0.2
       typescript: 4.8.4
     dependencies:
-      '@brail/core': link:../../packages/core
+      '@brail/core': 0.2.0_dty4et2pnba4zo7o4cegg6bk2e
       '@brail/mjml': link:../../packages/mjml
       '@brail/react': link:../../packages/react
       '@brail/web': link:../../packages/web
@@ -1776,6 +1776,68 @@ packages:
 
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+
+  /@brail/core/0.2.0_dty4et2pnba4zo7o4cegg6bk2e:
+    resolution: {integrity: sha512-sqI1PwosuL9Dt/qTWvgTohvPE1ZoTN6nILcYzbCPIJnN1jprEJn+r/JD3Hv38ApcUDV7/g0Et9cneBakvifo4Q==}
+    peerDependencies:
+      next: ^12.3.1
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      '@brail/mjml': 0.2.0_dty4et2pnba4zo7o4cegg6bk2e
+      body-parser: 1.20.1
+      chalk: 4.1.2
+      class-transformer: 0.5.1
+      class-validator: 0.13.2
+      class-validator-jsonschema: 3.1.1_e6kgdsnyya5caxg3ysdyxrqm7a
+      cors: 2.8.5
+      express: 4.18.2
+      kcors: 2.2.2
+      multer: 1.4.5-lts.1
+      next: 12.3.1_sfoxds7t5ydpegc3knd667wn6m
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      reflect-metadata: 0.1.13
+      routing-controllers: 0.9.0_e6kgdsnyya5caxg3ysdyxrqm7a
+      routing-controllers-openapi: 3.1.0_routing-controllers@0.9.0
+      serverless-http: 3.1.0
+      webpack: 5.74.0
+    transitivePeerDependencies:
+      - '@swc/core'
+      - encoding
+      - esbuild
+      - supports-color
+      - uglify-js
+      - webpack-cli
+    dev: false
+
+  /@brail/mjml/0.2.0_dty4et2pnba4zo7o4cegg6bk2e:
+    resolution: {integrity: sha512-ZZwf4seIaluo7oDuloA32flqBcFDkqQPGTbWZGO6HwS46FwzAUGQPDX1DnyTv9D4xDw4LlGRhCrx2H74dqFuNw==}
+    peerDependencies:
+      next: ^12.3.1
+      react: ^17.0.2
+      react-dom: ^17.0.2
+    dependencies:
+      cheerio: 1.0.0-rc.12
+      chokidar: 3.5.3
+      color: 4.2.3
+      glob: 7.2.3
+      htmlparser2: 7.2.0
+      js-beautify: 1.14.6
+      juice: 8.1.0
+      lodash: 4.17.21
+      next: 12.3.1_sfoxds7t5ydpegc3knd667wn6m
+      pretty: 2.0.0
+      prop-types: 15.8.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      react-reconciler: 0.26.2_react@17.0.2
+      tslib: 2.4.0
+      uuid: 8.3.2
+      yargs: 17.6.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /@braintree/sanitize-url/6.0.0:
     resolution: {integrity: sha512-mgmE7XBYY/21erpzhexk4Cj1cyTQ9LzvnTxtzM17BJ7ERMNE6W72mQRo0I1Ud8eFJ+RVVIcBNhLFZ3GX4XFz5w==}

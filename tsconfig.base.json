@@ -21,6 +21,7 @@
     "target": "ESNext",
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true
   }
 }

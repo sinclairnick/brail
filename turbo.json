@@ -21,6 +21,8 @@
       "dependsOn": ["build"],
       "outputs": []
     },
-    "dev": {}
+    "dev": {
+			
+		}
   }
 }
