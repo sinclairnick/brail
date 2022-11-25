@@ -70,4 +70,4 @@ It turns out, this is actually very doable.
 
 The result is called [Brail](https://github.com/sinclairnick/brail). And I've been using it in production for 7 months now, worry free. My workflow looks like creating a themed email template in a few minutes, `git push`ing to Vercel who hosts the templates, API and assets, and then re-generating a type-safe client on my backend, fixing any newfound (statically checked) errors if the dynamic data provided is incorrect.
 
-I'm now happy enough with it's stability to share it with the rest of the world. [Learn more](/docs/Introduction/intro) about Brail, or check it out on [GitHub](https://github.com/sinclairnick/brail).
+I'm now happy enough with it's stability to share it with the rest of the world. [Learn more](/docs/introduction/intro) about Brail, or check it out on [GitHub](https://github.com/sinclairnick/brail).
