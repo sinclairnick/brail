@@ -8,6 +8,12 @@
       "default": "./dist/esm/index.js"
     }
   },
+  "overrides": {
+    "swagger-ui-react": {
+      "react-inspector": "6.0.1",
+      "react-copy-to-clipboard": "5.1.0"
+    }
+  },
   "scripts": {
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:cjs": "tsc -p tsconfig.json",
@@ -30,7 +36,7 @@
     "@mui/material": "^5.10.10",
     "btoa": "^1.2.1",
     "react-query": "^3.39.2",
-    "swagger-ui-react": "4.8.1",
+    "swagger-ui-react": "4.15.5",
     "tslib": "^2.3.1"
   },
   "peerDependencies": {

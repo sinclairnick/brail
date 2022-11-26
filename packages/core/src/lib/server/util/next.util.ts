@@ -19,7 +19,7 @@ export const brailExtensions: string[] = [
 // Future feature
 export const collectExportedHandlers = async () => {
   const dir = getProjectDir();
-  const pagesDir = findPagesDir(dir);
+  const pagesDir = findPagesDir(dir, false);
   // const pagesRelative = pagesDir.replace(dir, '');
 
   // const templatePaths = await collectPages(pagesDir, brailExtensions);

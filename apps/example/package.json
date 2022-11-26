@@ -3,6 +3,9 @@
   "version": "0.2.0-alpha.3",
   "description": "",
   "main": "dist/index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "clean": "rimraf .next",
     "dev": "next dev -p 4444",
@@ -18,9 +21,9 @@
     "@brail/web": "workspace:*",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
-    "next": "^12.3.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "next": "^13.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "reflect-metadata": "^0.1.13",
     "tslib": "^2.3.1"
   },

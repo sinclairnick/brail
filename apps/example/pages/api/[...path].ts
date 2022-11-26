@@ -5,7 +5,10 @@ import NoPropsTemplate from '../no-props/index.template';
 import WelcomeTemplate from '../welcome/index.template';
 
 // Optional: Provide Nextjs API Route configuration to silence unneeded warnings
-export const config = getBrailApiConfig();
+// export const config = {
+//   api: { externalResolver: true },
+//   runtime: 'experimental-edge',
+// };
 
 // Register the email templates, so they can be served via Next API
 const server = createServer([

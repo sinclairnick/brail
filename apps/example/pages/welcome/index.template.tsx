@@ -16,7 +16,7 @@ import { WelcomeTemplateProps } from './welcome.types';
 // must exist in the same file.
 export const WelcomeTemplate = createTemplate({
   name: 'Welcome',
-  path: '/welcome',
+  path: 'welcome',
   preview: () => ({
     firstName: 'Steve',
     pet: { age: 2, name: 'Spot' },

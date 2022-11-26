@@ -66,3 +66,15 @@ export class RenderOptions {
   @IsOptional()
   minify?: boolean;
 }
+
+export type CreateAppOptions = {
+  /** Disables broadcasting an open api endpoint */
+  disableOpenApi?: boolean;
+  /**
+   *  Disables broadcasting introspection endpoints.
+   *  If disabled,features like BrailLayout (@brail/web) may break.
+   */
+  disableIntrospection?: boolean;
+  /** Disable all brail-internal logging */
+  disableLogging?: boolean;
+};

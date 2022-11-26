@@ -12,7 +12,8 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "dev": "turbo run dev --parallel",
-    "publish": "turbo run publish-pkg"
+    "publish": "turbo run publish-pkg",
+		"clean": "rimraf **/node_modules **/.next **/dist"
   },
   "devDependencies": {
     "@changesets/cli": "^2.25.0",
