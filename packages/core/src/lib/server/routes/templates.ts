@@ -25,7 +25,7 @@ export const createTemplatesHandler = (
     const errors = await validate(transformed);
 
     if (errors.length) {
-      res.status(401).json(errors);
+      res.status(400).json(errors);
       return;
     }
 
