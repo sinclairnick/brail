@@ -40,4 +40,4 @@ Now we are able to generate our templates, from `/api/templates/*`
 curl -X POST --data '{ "firstName": "Steve" }' http://localhost:3000/api/templates/welcome
 ```
 
-Since we're usually generating emails from within a backend codebase, we can also generate typed API clients, using OpenAPI ([Docs](/docs/Fundamentals/openapi)).
+Since we're usually generating emails from within a backend codebase, we can also generate typed API clients, using OpenAPI ([Docs](/docs/fundamentals/openapi)).

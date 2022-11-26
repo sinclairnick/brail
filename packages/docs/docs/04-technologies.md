@@ -1,3 +1,5 @@
+# Technologies
+
 ## Brail is built on the following technologies
 
 ### MJML

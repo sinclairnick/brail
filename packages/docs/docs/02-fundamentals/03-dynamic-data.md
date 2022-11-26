@@ -4,7 +4,7 @@ Using dynamic data is where traditional drag and drop approaches tend to be the 
 
 ## Declaring dynamic data
 
-Just like any other React application, our email template components take in some props, and return a JSX component. In this case, our props are our dynamic data and this data should be included in any API calls we subsequently make when we want to generate an email. We can also enforce type-safety via OpenAPI ([Docs](/docs/Fundamentals/openapi)).
+Just like any other React application, our email template components take in some props, and return a JSX component. In this case, our props are our dynamic data and this data should be included in any API calls we subsequently make when we want to generate an email. We can also enforce type-safety via OpenAPI ([Docs](/docs/fundamentals/openapi)).
 
 We can specify the shape of the props using `type` or `class` syntax.
 
