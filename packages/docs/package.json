@@ -1,6 +1,6 @@
 {
   "name": "@brail/docs",
-  "version": "0.2.1-canary.0",
+  "version": "0.3.0-canary.7"
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
