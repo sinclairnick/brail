@@ -1,11 +1,11 @@
 {
   "name": "@brail/core",
-  "version": "0.3.0-canary.2",
+  "version": "0.3.0-canary.3",
   "main": "./dist/client.js",
   "exports": {
     ".": {
-      "require": "./dist/server.js",
-      "default": "./dist/esm/server.js"
+      "require": "./dist/index.js",
+      "default": "./dist/esm/index.js"
     },
     "./types": {
       "require": "./dist/types.js",
