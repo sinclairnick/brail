@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, PropsWithChildren, useState } from 'react';
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
@@ -78,9 +78,9 @@ const useBrailLayout = (
   };
 };
 
-export type BrailLayoutProps = {
+export type BrailLayoutProps = PropsWithChildren<{
   template: NextComponentType<NextPageContext, any, any>;
-};
+}>;
 
 const queryClient = new QueryClient();
 
