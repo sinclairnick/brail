@@ -1,6 +1,6 @@
 {
   "name": "@brail/core",
-  "version": "0.3.0-canary.7"
+  "version": "0.3.0-canary.7",
   "main": "./dist/client.js",
   "exports": {
     "require": "./dist/index.js",
