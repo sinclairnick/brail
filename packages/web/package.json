@@ -28,7 +28,6 @@
     "publish-pkg": "pnpm run build && pnpm publish --access=public"
   },
   "dependencies": {
-    "@brail/core": "workspace:*",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.9",
@@ -44,6 +43,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@brail/core": "workspace:*",
     "@testing-library/react": "^12.1.4",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
