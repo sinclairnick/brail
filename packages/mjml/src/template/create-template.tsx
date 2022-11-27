@@ -3,7 +3,7 @@ import type {
   CreateTemplateArgs,
   CreateTemplateReturn,
   TemplateMethods,
-} from '@brail/core/types';
+} from '@brail/core';
 import {
   MjType,
   RenderResult,
