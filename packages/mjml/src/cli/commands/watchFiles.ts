@@ -2,8 +2,13 @@ import chokidar from 'chokidar';
 import glob from 'glob';
 import path from 'path';
 import mjml2html from '../../core/mjml-core';
-import { flow, pickBy, flatMap, uniq, difference, remove } from 'lodash/fp';
-import { omit } from 'lodash';
+import flow from 'lodash/fp/flow';
+import pickBy from 'lodash/fp/pickBy';
+import flatMap from 'lodash/fp/flatMap';
+import uniq from 'lodash/fp/uniq';
+import difference from 'lodash/fp/difference';
+import remove from 'lodash/fp/remove';
+import omit from 'lodash/omit';
 import { html as htmlBeautify } from 'js-beautify';
 
 // @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'html-minifier' or its correspo... Remove this comment to see the full error message

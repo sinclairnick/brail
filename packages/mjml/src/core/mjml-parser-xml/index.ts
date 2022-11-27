@@ -1,6 +1,10 @@
 import { Parser } from 'htmlparser2';
-import { isObject, findLastIndex, find } from 'lodash';
-import { filter, map, flow } from 'lodash/fp';
+import find from 'lodash/find';
+import isObject from 'lodash/isObject';
+import findLastIndex from 'lodash/findLastIndex';
+import filter from 'lodash/fp/filter';
+import map from 'lodash/fp/map';
+import flow from 'lodash/fp/flow';
 import cleanNode from './helpers/cleanNode';
 import convertBooleansOnAttrs from './helpers/convertBooleansOnAttrs';
 import setEmptyAttributes from './helpers/setEmptyAttributes';
@@ -47,8 +51,6 @@ export default function MJMLParser(
     filter((component: any) => component.endingTag),
     map((component: any) => component.getTagName())
   )({ ...components });
-
-  let cwd = process.cwd();
 
   let mjml: any = null;
   let cur: any = null;

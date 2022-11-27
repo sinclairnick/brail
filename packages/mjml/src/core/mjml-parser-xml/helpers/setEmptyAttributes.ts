@@ -1,5 +1,5 @@
 
-import { forEach } from 'lodash'
+import forEach from 'lodash/forEach'
 
 export default function setEmptyAttributes(node: any) {
   if (!node.attributes) {

@@ -1,6 +1,9 @@
 import { BodyComponent, suffixCssClasses } from '../../mjml-core';
 
-import { flow, identity, join, filter } from 'lodash/fp';
+import flow from 'lodash/fp/flow';
+import identity from 'lodash/fp/identity';
+import join from 'lodash/fp/join';
+import filter from 'lodash/fp/filter';
 
 const makeBackgroundString = flow(filter(identity), join(' '));
 
@@ -42,17 +45,17 @@ export default class MjSection extends BodyComponent {
     'text-padding': '4px 4px 4px 0',
   };
 
-  declare context: any;;
+  declare context: any;
 
-  declare getAttribute: any;;
+  declare getAttribute: any;
 
-  declare getBoxWidths: any;;
+  declare getBoxWidths: any;
 
-  declare htmlAttributes: any;;
+  declare htmlAttributes: any;
 
   declare props: any;
 
-  declare renderChildren: any;;
+  declare renderChildren: any;
 
   override getChildContext() {
     const { box } = this.getBoxWidths();

@@ -1,15 +1,13 @@
-import {
-  find,
-  filter,
-  get,
-  identity,
-  map,
-  omit,
-  reduce,
-  isObject,
-  each,
-  isEmpty,
-} from 'lodash';
+import map from 'lodash/map';
+import omit from 'lodash/omit';
+import isObject from 'lodash/isObject';
+import each from 'lodash/each';
+import isEmpty from 'lodash/isEmpty';
+import get from 'lodash/get';
+import identity from 'lodash/identity';
+import reduce from 'lodash/reduce';
+import find from 'lodash/find';
+import filter from 'lodash/filter';
 import juice from 'juice';
 
 import { html as htmlBeautify } from 'js-beautify';
@@ -182,15 +180,7 @@ export default function mjml2html(mjml: any, options = {}) {
       },
     });
 
-    if (component !== null) {
-      if ('handler' in component) {
-        return component.handler(); // eslint-disable-line consistent-return
-      }
-
-      if ('render' in component) {
-        return component.render(); // eslint-disable-line consistent-return
-      }
-    }
+    return component.render?.() ?? component.handler?.();
   };
 
   const applyAttributes = (mjml: any) => {
@@ -224,7 +214,7 @@ export default function mjml2html(mjml: any, options = {}) {
 
         (acc, value) => ({
           ...acc,
-          ...get(globalDatas.classesDefault, `${value}.${tagName}`),
+          ...(get(globalDatas.classesDefault, `${value}.${tagName}`) ?? {}),
         }),
         {}
       );
@@ -315,7 +305,6 @@ export default function mjml2html(mjml: any, options = {}) {
 
   // @ts-expect-error ts-migrate(2345) FIXME: Argument of type '(mjml: any) => any' is not assig... Remove this comment to see the full error message
   content = processing(mjBody, bodyHelpers, applyAttributes);
-
   if (!content) {
     throw new Error(
       'Malformed MJML. Check that your structure is correct and enclosed in <mjml> tags.'

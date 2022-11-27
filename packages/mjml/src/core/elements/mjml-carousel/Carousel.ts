@@ -1,6 +1,9 @@
 import { BodyComponent } from '../../mjml-core';
 
-import { range, repeat, min, map } from 'lodash';
+import range from 'lodash/range';
+import repeat from 'lodash/repeat';
+import min from 'lodash/min';
+import map from 'lodash/map';
 import { v4 as uuidv4 } from 'uuid';
 
 import { msoConditionalTag } from '../../mjml-core/helpers/conditionalTag';
@@ -45,15 +48,15 @@ export default class MjCarousel extends BodyComponent {
 
   children: any;
 
-  declare context: any;;
+  declare context: any;
 
-  declare getAttribute: any;;
+  declare getAttribute: any;
 
-  declare htmlAttributes: any;;
+  declare htmlAttributes: any;
 
   declare props: any;
 
-  declare renderChildren: any;;
+  declare renderChildren: any;
 
   constructor(initialDatas = {}) {
     super(initialDatas);

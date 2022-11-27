@@ -1,6 +1,9 @@
 import { BodyComponent } from '../../mjml-core';
 
-import { flow, identity, join, filter } from 'lodash/fp';
+import flow from 'lodash/fp/flow';
+import identity from 'lodash/fp/identity';
+import join from 'lodash/fp/join';
+import filter from 'lodash/fp/filter';
 
 import widthParser from '../../mjml-core/helpers/widthParser';
 
@@ -47,17 +50,17 @@ export default class MjHero extends BodyComponent {
     'vertical-align': 'top',
   };
 
-  declare context: any;;
+  declare context: any;
 
-  declare getAttribute: any;;
+  declare getAttribute: any;
 
-  declare getShorthandAttrValue: any;;
+  declare getShorthandAttrValue: any;
 
-  declare htmlAttributes: any;;
+  declare htmlAttributes: any;
 
   declare props: any;
 
-  declare renderChildren: any;;
+  declare renderChildren: any;
 
   override getChildContext() {
     // Refactor -- removePaddingFor(width, ['padding', 'inner-padding'])

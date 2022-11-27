@@ -1,5 +1,5 @@
 
-import { escapeRegExp } from 'lodash'
+import escapeRegExp from 'lodash/escapeRegExp'
 import Type from './type'
 
 export const matcher = /^(unit|unitWithNegative)\(.*\)/gim
