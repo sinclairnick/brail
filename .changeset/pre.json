@@ -1,0 +1,17 @@
+{
+  "mode": "pre",
+  "tag": "canary",
+  "initialVersions": {
+    "example": "0.3.0-canary.1",
+    "starter": "0.1.0",
+    "@brail/core": "0.3.0-canary.5",
+    "@brail/docs": "0.2.0",
+    "@brail/mjml": "0.3.0-canary.5",
+    "@brail/react": "0.3.0-canary.5",
+    "@brail/web": "0.3.0-canary.5"
+  },
+  "changesets": [
+    "calm-mice-check",
+    "dry-foxes-change"
+  ]
+}
