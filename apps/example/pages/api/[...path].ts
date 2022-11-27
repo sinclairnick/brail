@@ -1,4 +1,4 @@
-import { createServer } from '@brail/core';
+import { createServer } from '@brail/core/server';
 import EmptyTemplate from '../empty/index.template';
 import NestedWelcomeTemplate from '../nested/welcome/index.template';
 import NoPropsTemplate from '../no-props/index.template';
