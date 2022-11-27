@@ -3,7 +3,6 @@ import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
 import { useRouter } from 'next/router';
-import { CreateTemplateReturn } from '@brail/core/types';
 import { NextComponentType, NextPageContext } from 'next';
 import { UtilityDrawer } from './utility-drawer.component';
 import { Tab, TabNavigation } from './tab-navigation.component';
@@ -14,6 +13,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ErrorDrawer } from './error-drawer.component';
 import { useQueryParam } from '../hooks/use-query-param.hook';
 import dynamic from 'next/dynamic';
+import { CreateTemplateReturn } from '@brail/core/types';
 
 const SwaggerUI = dynamic(() => import('swagger-ui-react'));
 
