@@ -1,5 +1,7 @@
 import { Parser } from 'htmlparser2';
-import { isObject, findLastIndex, find } from 'lodash';
+import find from 'lodash/find';
+import isObject from 'lodash/isObject';
+import findLastIndex from 'lodash/findLastIndex';
 import { filter, map, flow } from 'lodash/fp';
 import cleanNode from './helpers/cleanNode';
 import convertBooleansOnAttrs from './helpers/convertBooleansOnAttrs';

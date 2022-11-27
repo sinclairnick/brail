@@ -1,5 +1,5 @@
 
-import { reduce } from 'lodash'
+import reduce from 'lodash/reduce'
 import { initializeType } from '../types/type'
 
 export default (attributes: any, allowedAttributes: any) =>

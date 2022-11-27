@@ -1,7 +1,15 @@
 import * as path from 'path';
 import * as yargs from 'yargs';
-import { flow, pick, isNil, negate, pickBy } from 'lodash/fp';
-import { isArray, isEmpty, map, get, omit } from 'lodash';
+import flow from 'lodash/fp/flow';
+import pick from 'lodash/fp/pick';
+import isNil from 'lodash/fp/isNil';
+import negate from 'lodash/fp/negate';
+import pickBy from 'lodash/fp/pickBy';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
+import map from 'lodash/map';
+import get from 'lodash/get';
+import omit from 'lodash/omit';
 import { html as htmlBeautify } from 'js-beautify';
 
 // @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'html-minifier' or its correspo... Remove this comment to see the full error message

@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
 import { IPalette, IPaletteOptions, ITheme, IThemeOptions } from './types';
 
 const defaultPalette: IPalette = {

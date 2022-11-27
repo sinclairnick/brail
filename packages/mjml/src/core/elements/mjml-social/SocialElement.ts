@@ -1,6 +1,7 @@
 import { BodyComponent } from '../../mjml-core';
 
-import { get, each } from 'lodash';
+import get from 'lodash/get';
+import each from 'lodash/each';
 
 const IMG_BASE_URL =
   'https://www.mailjet.com/images/theme/v1/icons/ico-social/';
@@ -136,7 +137,8 @@ export default class MjSocialElement extends BodyComponent {
     align: 'left',
     color: '#000',
     'border-radius': '3px',
-    fontFamily: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+    fontFamily:
+      'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
     'font-size': '13px',
     'line-height': '1',
     padding: '4px',
@@ -146,11 +148,11 @@ export default class MjSocialElement extends BodyComponent {
     'vertical-align': 'middle',
   };
 
-  declare getAttribute: any;;
+  declare getAttribute: any;
 
-  declare getContent: any;;
+  declare getContent: any;
 
-  declare htmlAttributes: any;;
+  declare htmlAttributes: any;
 
   override getStyles() {
     const {

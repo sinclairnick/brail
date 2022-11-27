@@ -1,15 +1,13 @@
-import {
-  find,
-  filter,
-  get,
-  identity,
-  map,
-  omit,
-  reduce,
-  isObject,
-  each,
-  isEmpty,
-} from 'lodash';
+import map from 'lodash/map';
+import omit from 'lodash/omit';
+import isObject from 'lodash/isObject';
+import each from 'lodash/each';
+import isEmpty from 'lodash/isEmpty';
+import get from 'lodash/get';
+import identity from 'lodash/identity';
+import reduce from 'lodash/reduce';
+import find from 'lodash/find';
+import filter from 'lodash/filter';
 import juice from 'juice';
 
 import { html as htmlBeautify } from 'js-beautify';

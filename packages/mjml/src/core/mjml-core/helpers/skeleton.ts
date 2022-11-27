@@ -1,13 +1,16 @@
-
-import { map, reduce, negate, isNil, isFunction } from 'lodash'
-import buildPreview from './preview'
-import { buildFontsTags } from './fonts'
-import buildMediaQueriesTags from './mediaQueries'
+import isFunction from 'lodash/isFunction';
+import isNil from 'lodash/isNil';
+import negate from 'lodash/negate';
+import reduce from 'lodash/reduce';
+import map from 'lodash/map';
+import buildPreview from './preview';
+import { buildFontsTags } from './fonts';
+import buildMediaQueriesTags from './mediaQueries';
 
 export default function skeleton(options: any) {
   const {
     backgroundColor = '',
-    beforeDoctype= '',
+    beforeDoctype = '',
     breakpoint = '480px',
     content = '',
     fonts = {},
@@ -21,9 +24,9 @@ export default function skeleton(options: any) {
     forceOWADesktop,
     inlineStyle,
     lang,
-  } = options
+  } = options;
 
-  const langAttribute = lang ? `lang="${lang}" ` : ''
+  const langAttribute = lang ? `lang="${lang}" ` : '';
 
   return `${beforeDoctype ? `${beforeDoctype}\n` : ''}<!doctype html>
 <html ${langAttribute}xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -63,17 +66,18 @@ export default function skeleton(options: any) {
     <style type="text/css">
     ${reduce(
       componentsHeadStyle,
-      (result: any, compHeadStyle: any) => `${result}\n${compHeadStyle(breakpoint)}`,
-      '',
+      (result: any, compHeadStyle: any) =>
+        `${result}\n${compHeadStyle(breakpoint)}`,
+      ''
     )}
     ${reduce(
       headStyle,
       (result: any, headStyle: any) => `${result}\n${headStyle(breakpoint)}`,
-      '',
+      ''
     )}
     </style>
     <style type="text/css">
-    ${map(style, (s: any) => isFunction(s) ? s(breakpoint) : s).join('')}
+    ${map(style, (s: any) => (isFunction(s) ? s(breakpoint) : s)).join('')}
     </style>
     ${headRaw.filter(negate(isNil)).join('\n')}
   </head>
@@ -84,5 +88,5 @@ export default function skeleton(options: any) {
     ${content}
   </body>
 </html>
-  `
+  `;
 }

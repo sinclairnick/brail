@@ -1,5 +1,5 @@
 import { BodyComponent } from '../../mjml-core';
-import { find } from 'lodash';
+import find from 'lodash/find';
 import conditionalTag from '../../mjml-core/helpers/conditionalTag';
 import AccordionText from './AccordionText';
 import AccordionTitle from './AccordionTitle';
@@ -30,15 +30,15 @@ export default class MjAccordionElement extends BodyComponent {
     },
   };
 
-  declare getAttribute: any;;
+  declare getAttribute: any;
 
-  declare getChildContext: any;;
+  declare getChildContext: any;
 
-  declare htmlAttributes: any;;
+  declare htmlAttributes: any;
 
   declare props: any;
 
-  declare renderChildren: any;;
+  declare renderChildren: any;
 
   override getStyles() {
     return {

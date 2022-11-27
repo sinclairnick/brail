@@ -1,11 +1,11 @@
-import { get } from 'lodash';
+import get from 'lodash/get';
 
 import { HeadComponent } from '../../mjml-core';
 
 export default class MjHtmlAttributes extends HeadComponent {
   static componentName = 'mj-html-attributes';
 
-  declare context: any;;
+  declare context: any;
 
   declare props: any;
 

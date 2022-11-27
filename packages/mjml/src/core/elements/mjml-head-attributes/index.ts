@@ -1,11 +1,13 @@
-import { forEach, omit, reduce } from 'lodash';
+import forEach from 'lodash/forEach';
+import omit from 'lodash/omit';
+import reduce from 'lodash/reduce';
 
 import { HeadComponent } from '../../mjml-core';
 
 export default class MjAttributes extends HeadComponent {
   static componentName = 'mj-attributes';
 
-  declare context: any;;
+  declare context: any;
 
   declare props: any;
 

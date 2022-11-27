@@ -1,5 +1,5 @@
 
-import { get } from 'lodash'
+import get from 'lodash/get'
 
 export default function (cssValue: any, direction: any) {
   const splittedCssValue = cssValue.split(' ')

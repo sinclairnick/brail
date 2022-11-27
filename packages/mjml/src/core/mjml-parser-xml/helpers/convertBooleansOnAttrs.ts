@@ -1,5 +1,5 @@
 
-import { mapValues } from 'lodash'
+import mapValues from 'lodash/mapValues'
 
 /**
  * Convert "true" and "false" string attributes values

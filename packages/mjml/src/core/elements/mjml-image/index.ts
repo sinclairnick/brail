@@ -1,4 +1,4 @@
-import { min } from 'lodash';
+import min from 'lodash/min';
 
 import { BodyComponent } from '../../mjml-core';
 
@@ -47,11 +47,11 @@ export default class MjImage extends BodyComponent {
     'font-size': '13px',
   };
 
-  declare getAttribute: any;;
+  declare getAttribute: any;
 
-  declare getBoxWidths: any;;
+  declare getBoxWidths: any;
 
-  declare htmlAttributes: any;;
+  declare htmlAttributes: any;
 
   override getStyles() {
     const width = this.getContentWidth();
