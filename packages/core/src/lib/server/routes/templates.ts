@@ -1,55 +1,50 @@
-import { NextApiHandler } from 'next';
 import { RegisteredTemplate } from '../templates';
 import { plainToInstance } from 'class-transformer';
-import { validate, ValidationError } from 'class-validator';
-import { BrailResponse } from '../util/util.types';
+import { validate } from 'class-validator';
 import { NextRequest, NextResponse } from 'next/server';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
+import { BrailResponse } from '../util/util.types';
 
 export const ROUTE_REGEX = /^\/api\/templates.*/;
 
 export const createTemplatesHandler = (
   templates: Record<string, RegisteredTemplate>
-): ((req: NextRequest) => Promise<any>) => {
-  return async (req) => {
-    const url = new URL(req.url);
-    const path = url.pathname;
+): NextApiHandler => {
+  return async (req: NextApiRequest, res: NextApiResponse<BrailResponse>) => {
+    const path = req.url;
 
     if (path == null) {
-      return new Response(undefined, {
-        status: 404,
-      });
+      res.status(404).end();
+      return;
     }
 
     const template = templates[path];
 
     if (template == null) {
-      return new Response(undefined, {
-        status: 404,
-      });
+      res.status(404).end();
+      return;
     }
 
     try {
-      const body = await req.json();
+      const body = req.body;
 
       const transformed = await plainToInstance(template.body, body);
       const errors = await validate(transformed);
 
       if (errors.length) {
-        return new Response(undefined, {
-          status: 404,
-        });
+        res.status(400).end();
+        return;
       }
 
-      const options = plainToInstance(template.query, url.searchParams);
+      const options = plainToInstance(template.query, req.query);
 
       const result = await template.template.renderAsync(req.body, options);
       const meta = template.template.meta?.(req.body);
 
-      return NextResponse.json({ ...result, meta: { ...meta } });
+      res.json({ ...result, meta: { ...meta } });
+      return;
     } catch (e) {
-      return new Response(undefined, {
-        status: 400,
-      });
+      res.status(400).end();
     }
   };
 };

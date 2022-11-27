@@ -5,14 +5,14 @@ import * as OpenApi from './routes/openapi';
 import * as Templates from './routes/templates';
 import { CreateAppOptions } from './util/util.types';
 import { match } from 'ts-pattern';
-import { NextRequest } from 'next/server';
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 export type CreateServerOptions = {} & CreateAppOptions;
 
 export function createServer(
   templates: CreateTemplateReturn<any>[],
   options?: CreateServerOptions
-) {
+): NextApiHandler {
   const app = createBailApp(templates, options);
 
   const introspectionHandler = Introspection.createIntrospectionHandler(
@@ -23,14 +23,12 @@ export function createServer(
     app.registeredTemplates
   );
 
-  return (req: NextRequest) => {
-    const url = new URL(req.url);
-    const path = url.pathname;
+  return (req: NextApiRequest, res: NextApiResponse) => {
+    const path = req.url;
 
     if (path == null) {
-      return new Response(undefined, {
-        status: 404,
-      });
+      res.status(404).end();
+      return;
     }
 
     return match(path)
@@ -38,34 +36,32 @@ export function createServer(
         (path) => path === Introspection.ROUTE_NAME,
         () => {
           if (options?.disableIntrospection) {
-            return new Response(undefined, {
-              status: 404,
-            });
+            if (options?.disableOpenApi) {
+              res.status(404).end();
+              return;
+            }
           }
-          return introspectionHandler(req);
+          return introspectionHandler(req, res);
         }
       )
       .when(
         (path) => path === OpenApi.ROUTE_NAME,
         () => {
           if (options?.disableOpenApi) {
-            return new Response(undefined, {
-              status: 404,
-            });
+            res.status(404).end();
+            return;
           }
-          return openApiHandler(req);
+          return openApiHandler(req, res);
         }
       )
       .when(
         (path) => Templates.ROUTE_REGEX.test(path),
         () => {
-          return templateHandler(req);
+          return templateHandler(req, res);
         }
       )
       .otherwise(() => {
-        return new Response(undefined, {
-          status: 404,
-        });
+        res.status(404).end();
       });
   };
 }
