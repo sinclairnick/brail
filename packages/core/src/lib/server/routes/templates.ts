@@ -28,22 +28,28 @@ export const createTemplatesHandler = (
       });
     }
 
-    const body = await req.json();
+    try {
+      const body = await req.json();
 
-    const transformed = await plainToInstance(template.body, body);
-    const errors = await validate(transformed);
+      const transformed = await plainToInstance(template.body, body);
+      const errors = await validate(transformed);
 
-    if (errors.length) {
+      if (errors.length) {
+        return new Response(undefined, {
+          status: 404,
+        });
+      }
+
+      const options = plainToInstance(template.query, url.searchParams);
+
+      const result = await template.template.renderAsync(req.body, options);
+      const meta = template.template.meta?.(req.body);
+
+      return NextResponse.json({ ...result, meta: { ...meta } });
+    } catch (e) {
       return new Response(undefined, {
-        status: 404,
+        status: 400,
       });
     }
-
-    const options = plainToInstance(template.query, url.searchParams);
-
-    const result = await template.template.renderAsync(req.body, options);
-    const meta = template.template.meta?.(req.body);
-
-    return NextResponse.json({ ...result, meta: { ...meta } });
   };
 };
