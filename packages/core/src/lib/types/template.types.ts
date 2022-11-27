@@ -1,25 +1,25 @@
-import { MjType, RenderResult } from '@brail/mjml';
-
 export type EmailMeta = {
   subject: string;
   preview: string;
 };
 
-export type TemplateMethods<T> = {
+export type TemplateMethods<T, O, R, E> = {
   templateName: () => string;
   path: () => string;
-  render: (props: T, options: MjType.Mjml2HtmlOptions) => RenderResult;
+  render: (props: T, options: O) => R;
+  /** React + Edge runtime means we must use this in API routes */
+  renderAsync: (props: T, options: O) => Promise<R>;
   meta?: (props: T) => Partial<EmailMeta>;
   propType: {
     new (...args: any[]): any;
   };
-  generatePreviewHtml: () => string;
-  generatePreviewMjml: () => string;
-  generatePreviewJson: () => string;
-  getErrors: () => MjType.MjmlError[];
+  generatePreviewHtml: () => Promise<string>;
+  generatePreviewMjml: () => Promise<string>;
+  generatePreviewJson: () => Promise<string>;
+  getErrors: () => Promise<E[]>;
 };
 
-export type CreateTemplateArgs<T> = {
+export type CreateTemplateArgs<T, O> = {
   /** Should match the current filename */
   path: string;
   /** Optionally specify a name for this template */
@@ -39,10 +39,10 @@ export type CreateTemplateArgs<T> = {
     new (...args: any[]): T;
   };
   /** Set the default options for rendering email templates */
-  options?: Partial<MjType.Mjml2HtmlOptions>;
+  options?: Partial<O>;
 };
 
-export type CreateTemplateReturn<T> = ((props: {
+export type CreateTemplateReturn<T, O = any, R = any, E = any> = ((props: {
   html: string;
 }) => JSX.Element) &
-  TemplateMethods<T>;
+  TemplateMethods<T, O, R, E>;

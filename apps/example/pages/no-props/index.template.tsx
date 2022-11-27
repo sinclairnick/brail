@@ -1,4 +1,4 @@
-import { createTemplate } from '@brail/core';
+import { createTemplate } from '@brail/mjml';
 import { EmailTemplate } from '@brail/react';
 import { Footer } from 'apps/example/components/footer';
 import { ReusableHeader } from 'apps/example/components/reusable-header';

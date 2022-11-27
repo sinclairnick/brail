@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
@@ -20,10 +20,13 @@ const useBrailLayout = (
 ) => {
   const router = useRouter();
   const tab = (router.query.tab?.toString() ?? 'preview') as Tab;
+  const [htmlPreview, setHtmlPreview] = useState<string | undefined>();
+  const [mjmlPreview, setMjmlPreview] = useState<string | undefined>();
+  const [jsonPreview, setJsonPreview] = useState<string | undefined>();
 
   const methods: Partial<
     Pick<
-      CreateTemplateReturn<any>,
+      CreateTemplateReturn<any, any, any, any>,
       | 'generatePreviewHtml'
       | 'generatePreviewJson'
       | 'generatePreviewMjml'
@@ -41,13 +44,35 @@ const useBrailLayout = (
   );
   const isLayoutVisible = _isLayoutVisible.toLowerCase() === 'true';
 
-  const htmlPreview = methods.generatePreviewHtml?.();
-  const mjmlPreview = methods.generatePreviewMjml?.();
-  const jsonPreview = JSON.stringify(
-    methods.generatePreviewJson?.() ?? '{}',
-    undefined,
-    2
-  );
+  const {
+    generatePreviewHtml,
+    generatePreviewJson,
+    generatePreviewMjml,
+    getErrors,
+  } = methods;
+
+  useEffect(() => {
+    const get = async () => {
+      const x = await generatePreviewHtml?.();
+      setHtmlPreview(x);
+    };
+    get();
+  }, [generatePreviewHtml, setHtmlPreview]);
+  useEffect(() => {
+    const get = async () => {
+      const x = await generatePreviewMjml?.();
+      setMjmlPreview(x);
+    };
+    get();
+  }, [generatePreviewMjml, setMjmlPreview]);
+  useEffect(() => {
+    const get = async () => {
+      const x = await generatePreviewJson?.();
+      const json = JSON.stringify(x ?? '{}', undefined, 2);
+      setJsonPreview(json);
+    };
+    get();
+  }, [generatePreviewJson, setJsonPreview]);
 
   const changeTab = (tab: Tab) => {
     router.push({
@@ -78,9 +103,9 @@ const useBrailLayout = (
   };
 };
 
-export type BrailLayoutProps = {
+export type BrailLayoutProps = PropsWithChildren<{
   template: NextComponentType<NextPageContext, any, any>;
-};
+}>;
 
 const queryClient = new QueryClient();
 

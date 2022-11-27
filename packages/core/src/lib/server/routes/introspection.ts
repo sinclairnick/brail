@@ -1,11 +1,12 @@
 import { NextApiHandler } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { RegisteredTemplate } from '../templates';
 
 export const ROUTE_NAME = '/api/__introspect/templates';
 
 export const createIntrospectionHandler = (
   templates: Record<string, RegisteredTemplate>
-): NextApiHandler => {
+) => {
   const templateList = Object.keys(templates)
     .sort()
     .map((key) => templates[key]);
@@ -17,7 +18,7 @@ export const createIntrospectionHandler = (
     };
   });
 
-  return (req, res) => {
-    res.json(templateListData);
+  return (req: NextRequest) => {
+    return NextResponse.json(templateListData);
   };
 };

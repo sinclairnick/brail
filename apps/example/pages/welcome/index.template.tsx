@@ -1,3 +1,4 @@
+import { createTemplate } from '@brail/mjml';
 import {
   Button,
   Column,
@@ -9,7 +10,6 @@ import {
 import { Footer } from 'apps/example/components/footer';
 import { ReusableHeader } from 'apps/example/components/reusable-header';
 import { Signature } from 'apps/example/components/signature';
-import { createTemplate } from '@brail/core';
 import { WelcomeTemplateProps } from './welcome.types';
 
 // NOTE: For hot reload to work, the createTemplate() call and actual JSX content
