@@ -6,6 +6,7 @@ import type {
 } from '@brail/core';
 import {
   MjType,
+  RenderResult,
   renderToHtml_async,
   renderToHtml_sync,
   renderToJSON2,
@@ -21,7 +22,7 @@ const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
 };
 
 export function createTemplate<P extends { [key: string]: any } = any>(
-  args: CreateTemplateArgs<P>
+  args: CreateTemplateArgs<P, MjType.Mjml2HtmlOptions>
 ): CreateTemplateReturn<P> {
   const defaultOptions = Object.assign(DEFAULT_MJML_OPTIONS, args.options);
 
@@ -36,7 +37,12 @@ export function createTemplate<P extends { [key: string]: any } = any>(
     return <div dangerouslySetInnerHTML={{ __html: html }} />;
   };
 
-  const methods: TemplateMethods<P> = {
+  const methods: TemplateMethods<
+    P,
+    MjType.Mjml2HtmlOptions,
+    RenderResult,
+    MjType.MjmlError
+  > = {
     templateName: () =>
       args.name ??
       args.propType?.name.replace('Props', '') ??
