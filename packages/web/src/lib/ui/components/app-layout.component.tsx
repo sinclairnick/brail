@@ -13,7 +13,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ErrorDrawer } from './error-drawer.component';
 import { useQueryParam } from '../hooks/use-query-param.hook';
 import dynamic from 'next/dynamic';
-// @ts-ignore Not sure why this is erroring
 import type { CreateTemplateReturn } from '@brail/core';
 
 const SwaggerUI = dynamic(() => import('swagger-ui-react'));

@@ -28,7 +28,7 @@ export const createTemplatesHandler = (
       });
     }
 
-    const body = req.json();
+    const body = await req.json();
 
     const transformed = await plainToInstance(template.body, body);
     const errors = await validate(transformed);

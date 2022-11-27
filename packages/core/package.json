@@ -3,19 +3,10 @@
   "version": "0.3.0-canary.6",
   "main": "./dist/client.js",
   "exports": {
-    ".": {
-      "require": "./dist/server.js",
-      "default": "./dist/esm/server.js"
-    },
-    "./server": {
-      "require": "./dist/server.js",
-      "default": "./dist/esm/server.js"
-    },
-    "./types": {
-      "require": "./dist/types.js",
-      "default": "./dist/esm/types.js"
-    }
+    "require": "./dist/index.js",
+    "default": "./dist/esm/index.js"
   },
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:cjs": "tsc -p tsconfig.json",
