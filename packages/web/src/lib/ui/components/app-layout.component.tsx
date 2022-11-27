@@ -3,7 +3,7 @@ import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme';
 import { useRouter } from 'next/router';
-import { CreateTemplateReturn } from '@brail/core';
+import { CreateTemplateReturn } from '@brail/core/types';
 import { NextComponentType, NextPageContext } from 'next';
 import { UtilityDrawer } from './utility-drawer.component';
 import { Tab, TabNavigation } from './tab-navigation.component';
@@ -12,8 +12,10 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ErrorDrawer } from './error-drawer.component';
-import SwaggerUI from 'swagger-ui-react';
 import { useQueryParam } from '../hooks/use-query-param.hook';
+import dynamic from 'next/dynamic';
+
+const SwaggerUI = dynamic(() => import('swagger-ui-react'));
 
 const useBrailLayout = (
   template: NextComponentType<NextPageContext, any, any>
@@ -44,12 +46,8 @@ const useBrailLayout = (
   );
   const isLayoutVisible = _isLayoutVisible.toLowerCase() === 'true';
 
-  const {
-    generatePreviewHtml,
-    generatePreviewJson,
-    generatePreviewMjml,
-    getErrors,
-  } = methods;
+  const { generatePreviewHtml, generatePreviewJson, generatePreviewMjml } =
+    methods;
 
   useEffect(() => {
     const get = async () => {

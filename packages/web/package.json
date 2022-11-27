@@ -1,6 +1,6 @@
 {
   "name": "@brail/web",
-  "version": "0.3.0-canary.3",
+  "version": "0.3.0-canary.4",
   "main": "./dist/index.js",
   "exports": {
     ".": {
@@ -28,7 +28,6 @@
     "publish-pkg": "pnpm run build && pnpm publish --access=public"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0",
     "@brail/core": "workspace:*",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
