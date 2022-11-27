@@ -1,6 +1,6 @@
-import startCase from 'lodash/startCase';
 import { CreateTemplateReturn } from '../types';
 import { stripTrailingSlashes } from './util/path.util';
+import { startCase } from './util/text.util';
 import { BrailResponse, RenderOptions } from './util/util.types';
 
 export type RegisteredTemplate = {
