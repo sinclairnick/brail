@@ -1,4 +1,3 @@
-import { MjType } from '@brail/mjml';
 import { Type } from 'class-transformer';
 import {
   IsBoolean,
@@ -8,6 +7,7 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
+import 'reflect-metadata';
 
 export class Meta {
   @IsString()
@@ -19,7 +19,7 @@ export class Meta {
   preview?: string | null;
 }
 
-export class RenderError implements MjType.MjmlError {
+export class RenderError {
   @IsString()
   tagName: string;
   @IsString()

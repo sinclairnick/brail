@@ -1,4 +1,4 @@
-import { createTemplate } from '@brail/core';
+import { createTemplate } from '@brail/mjml';
 import {
   Button,
   Column,

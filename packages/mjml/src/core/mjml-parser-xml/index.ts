@@ -48,8 +48,6 @@ export default function MJMLParser(
     map((component: any) => component.getTagName())
   )({ ...components });
 
-  let cwd = process.cwd();
-
   let mjml: any = null;
   let cur: any = null;
   let inInclude = !!includedIn.length;

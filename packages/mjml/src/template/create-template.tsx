@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { renderToHtml, MjType, renderToMjml, renderToJSON2 } from '@brail/mjml';
-import {
+import type {
   CreateTemplateArgs,
   CreateTemplateReturn,
   TemplateMethods,
-} from '../../types/template.types';
+} from '@brail/core';
+import {
+  MjType,
+  renderToHtml_async,
+  renderToHtml_sync,
+  renderToJSON2,
+  renderToMjml_clent,
+} from '../react';
 import 'reflect-metadata';
 
 const DEFAULT_MJML_OPTIONS: MjType.Mjml2HtmlOptions = {
@@ -22,7 +28,7 @@ export function createTemplate<P extends { [key: string]: any } = any>(
   const TemplatePage = () => {
     const previewProps = args.preview();
 
-    const { html } = renderToHtml(
+    const { html } = renderToHtml_sync(
       <args.template {...previewProps} />,
       defaultOptions
     );
@@ -36,7 +42,12 @@ export function createTemplate<P extends { [key: string]: any } = any>(
       args.propType?.name.replace('Props', '') ??
       'UnknownTemplate',
     render: (props, options) =>
-      renderToHtml(<args.template {...props} />, {
+      renderToHtml_sync(<args.template {...props} />, {
+        ...defaultOptions,
+        ...options,
+      }),
+    renderAsync: (props, options) =>
+      renderToHtml_async(<args.template {...props} />, {
         ...defaultOptions,
         ...options,
       }),
@@ -45,26 +56,32 @@ export function createTemplate<P extends { [key: string]: any } = any>(
     propType: args.propType ?? class UnknownType {},
 
     // --- These methods are used for dev previewing largely ---
-    generatePreviewHtml: () => {
-      const { html } = renderToHtml(<args.template {...args.preview()} />, {
-        beautify: true,
-        keepComments: true,
-        minify: false,
-        validationLevel: 'skip',
-      });
+    generatePreviewHtml: async () => {
+      const { html } = await renderToHtml_async(
+        <args.template {...args.preview()} />,
+        {
+          beautify: true,
+          keepComments: true,
+          minify: false,
+          validationLevel: 'skip',
+        }
+      );
       return html;
     },
-    getErrors: () => {
-      const { errors } = renderToHtml(<args.template {...args.preview()} />, {
-        beautify: false,
-        keepComments: true,
-        minify: false,
-        validationLevel: 'soft',
-      });
+    getErrors: async () => {
+      const { errors } = await renderToHtml_async(
+        <args.template {...args.preview()} />,
+        {
+          beautify: false,
+          keepComments: true,
+          minify: false,
+          validationLevel: 'soft',
+        }
+      );
       return errors;
     },
     generatePreviewMjml: () => {
-      return renderToMjml(<args.template {...args.preview()} />, {
+      return renderToMjml_clent(<args.template {...args.preview()} />, {
         prettify: true,
       });
     },

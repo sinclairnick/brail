@@ -182,15 +182,7 @@ export default function mjml2html(mjml: any, options = {}) {
       },
     });
 
-    if (component !== null) {
-      if ('handler' in component) {
-        return component.handler(); // eslint-disable-line consistent-return
-      }
-
-      if ('render' in component) {
-        return component.render(); // eslint-disable-line consistent-return
-      }
-    }
+    return component.render?.() ?? component.handler?.();
   };
 
   const applyAttributes = (mjml: any) => {
@@ -224,7 +216,7 @@ export default function mjml2html(mjml: any, options = {}) {
 
         (acc, value) => ({
           ...acc,
-          ...get(globalDatas.classesDefault, `${value}.${tagName}`),
+          ...(get(globalDatas.classesDefault, `${value}.${tagName}`) ?? {}),
         }),
         {}
       );
@@ -315,7 +307,6 @@ export default function mjml2html(mjml: any, options = {}) {
 
   // @ts-expect-error ts-migrate(2345) FIXME: Argument of type '(mjml: any) => any' is not assig... Remove this comment to see the full error message
   content = processing(mjBody, bodyHelpers, applyAttributes);
-
   if (!content) {
     throw new Error(
       'Malformed MJML. Check that your structure is correct and enclosed in <mjml> tags.'

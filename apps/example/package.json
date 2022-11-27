@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@brail/core": "workspace:*",
+    "@brail/mjml": "workspace:*",
     "@brail/react": "workspace:*",
     "@brail/web": "workspace:*",
     "class-transformer": "^0.5.1",

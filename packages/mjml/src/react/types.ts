@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export interface Mjml2HtmlOptions {
   fonts?: { [key: string]: string } | undefined;

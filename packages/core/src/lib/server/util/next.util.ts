@@ -4,7 +4,6 @@ import { getNamedExports } from 'next/dist/build/utils';
 import { defaultConfig, NextConfig } from 'next/dist/server/config-shared';
 import { loadComponents } from 'next/dist/server/load-components';
 import * as path from 'path';
-import webpack from 'webpack';
 import fs from 'fs';
 import { pathToFileURL } from 'url';
 

@@ -5,6 +5,7 @@
     "rootDir": "./src",
     "module": "CommonJS",
     "declaration": true,
+    "esModuleInterop": true,
   },
   "include": ["./src/**/*"],
   "exclude": [

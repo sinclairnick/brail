@@ -3,37 +3,47 @@ import { RegisteredTemplate } from '../templates';
 import { plainToInstance } from 'class-transformer';
 import { validate, ValidationError } from 'class-validator';
 import { BrailResponse } from '../util/util.types';
+import { NextRequest, NextResponse } from 'next/server';
+
+export const ROUTE_REGEX = /^\/api\/templates.*/;
 
 export const createTemplatesHandler = (
   templates: Record<string, RegisteredTemplate>
-): NextApiHandler<BrailResponse | ValidationError[]> => {
-  return async (req, res) => {
-    const path = req.url;
+): ((req: NextRequest) => Promise<any>) => {
+  return async (req) => {
+    const url = new URL(req.url);
+    const path = url.pathname;
+
     if (path == null) {
-      res.status(404).end();
-      return;
+      return new Response(undefined, {
+        status: 404,
+      });
     }
 
     const template = templates[path];
 
     if (template == null) {
-      res.status(404).end();
-      return;
+      return new Response(undefined, {
+        status: 404,
+      });
     }
 
-    const transformed = await plainToInstance(template.body, req.body);
+    const body = req.json();
+
+    const transformed = await plainToInstance(template.body, body);
     const errors = await validate(transformed);
 
     if (errors.length) {
-      res.status(400).json(errors);
-      return;
+      return new Response(undefined, {
+        status: 404,
+      });
     }
 
-    const options = plainToInstance(template.query, req.query);
+    const options = plainToInstance(template.query, url.searchParams);
 
-    const result = template.template.render(req.body, options);
+    const result = await template.template.renderAsync(req.body, options);
     const meta = template.template.meta?.(req.body);
 
-    return res.json({ ...result, meta: { ...meta } });
+    return NextResponse.json({ ...result, meta: { ...meta } });
   };
 };

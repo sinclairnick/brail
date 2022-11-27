@@ -1,29 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Badge, Drawer, IconButton, Stack, Typography } from '@mui/material';
 import ErrorOutline from '@mui/icons-material/ErrorOutline';
 
-export type ErrorDrawerProps = {
-  getErrors: () => {
-    line: number;
-    message: string;
-    tagName: string;
-    formattedMessage: string;
-  }[];
+type Error = {
+  line: number;
+  message: string;
+  tagName: string;
+  formattedMessage: string;
 };
 
-const useErrorDrawer = () => {
+export type ErrorDrawerProps = {
+  getErrors: () => Promise<Error[]>;
+};
+
+const useErrorDrawer = (getErrors: ErrorDrawerProps['getErrors']) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [errors, setErrors] = useState<Error[]>([]);
+
+  useEffect(() => {
+    const get = async () => {
+      const x = await getErrors();
+      setErrors(x);
+    };
+    get();
+  }, [getErrors]);
 
   return {
     isDrawerOpen,
     setIsDrawerOpen,
+    errors,
   };
 };
 
 export const ErrorDrawer = (props: ErrorDrawerProps) => {
-  const { getErrors } = props;
-  const { isDrawerOpen, setIsDrawerOpen } = useErrorDrawer();
-  const errors = getErrors();
+  const { isDrawerOpen, setIsDrawerOpen, errors } = useErrorDrawer(
+    props.getErrors
+  );
   const numErrors = errors.length;
 
   return (
