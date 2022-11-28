@@ -57,8 +57,8 @@ export const getSpec = (templates: Record<string, RegisteredTemplate>) => {
 
   builder.addSchema(RenderOptions.name, classToJsonSchema(RenderOptions));
   builder.addSchema(RenderError.name, classToJsonSchema(RenderError));
-  builder.addSchema(Meta.name, classToJsonSchema(RenderError));
-  builder.addSchema(BrailResponse.name, classToJsonSchema(RenderError));
+  builder.addSchema(Meta.name, classToJsonSchema(Meta));
+  builder.addSchema(BrailResponse.name, classToJsonSchema(BrailResponse));
 
   // Manually setting schema on this object so all schema are flat,
   // to reduce naming conflict issues
@@ -104,6 +104,7 @@ export const getSpec = (templates: Record<string, RegisteredTemplate>) => {
     const pathOpts: PathItemObject = {
       post: {
         operationId: operationName,
+        tags: ['template'],
         parameters: DEFAULT_PARAMETERS,
         requestBody: {
           content: {

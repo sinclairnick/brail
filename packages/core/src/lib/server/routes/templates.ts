@@ -34,6 +34,10 @@ export const createTemplatesHandler = (
     const result = template.template.render(req.body, options);
     const meta = template.template.meta?.(req.body);
 
-    return res.json({ ...result, meta: { ...meta } });
+    return res.json({
+      html: result.html,
+      errors: result.errors,
+      meta: { ...meta },
+    });
   };
 };
