@@ -1,6 +1,6 @@
 {
   "name": "@brail/react",
-  "version": "0.3.0-canary.11",
+  "version": "0.3.0",
   "main": "./dist/index.js",
   "exports": {
     ".": {
