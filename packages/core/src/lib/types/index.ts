@@ -4,3 +4,5 @@ export type {
   EmailMeta,
   TemplateMethods,
 } from './template.types';
+
+export { BrailResponse, Meta, RenderError, RenderOptions } from './api.types';

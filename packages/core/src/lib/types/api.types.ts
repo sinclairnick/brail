@@ -67,14 +67,38 @@ export class RenderOptions {
   minify?: boolean;
 }
 
-export type CreateAppOptions = {
-  /** Disables broadcasting an open api endpoint */
-  disableOpenApi?: boolean;
-  /**
-   *  Disables broadcasting introspection endpoints.
-   *  If disabled,features like BrailLayout (@brail/web) may break.
-   */
-  disableIntrospection?: boolean;
-  /** Disable all brail-internal logging */
-  disableLogging?: boolean;
-};
+export class Sender {
+  @IsString()
+  email: string;
+  @IsString()
+  @IsOptional()
+  name: string | undefined;
+}
+
+export class Recipient {
+  @IsString()
+  email: string;
+  @IsString()
+  @IsOptional()
+  name: string | undefined;
+}
+
+export class SenderArgs {
+  @ValidateNested()
+  @Type(() => Sender)
+  from: Sender;
+  @ValidateNested({ each: true })
+  @Type(() => Recipient)
+  to: Recipient[];
+  @ValidateNested({ each: true })
+  @Type(() => Recipient)
+  cc?: Recipient[];
+  @ValidateNested({ each: true })
+  @Type(() => Recipient)
+  bcc?: Recipient[];
+  @ValidateNested({ each: true })
+  @Type(() => Recipient)
+  reply_to?: Recipient;
+  @IsString()
+  subject: string;
+}
