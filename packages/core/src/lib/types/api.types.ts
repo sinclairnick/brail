@@ -83,22 +83,38 @@ export class Recipient {
   name: string | undefined;
 }
 
-export class SenderArgs {
+export class OnSendParams {
   @ValidateNested()
   @Type(() => Sender)
-  from: Sender;
+  @IsOptional()
+  from?: Sender;
   @ValidateNested({ each: true })
   @Type(() => Recipient)
   to: Recipient[];
   @ValidateNested({ each: true })
   @Type(() => Recipient)
+  @IsOptional()
   cc?: Recipient[];
   @ValidateNested({ each: true })
   @Type(() => Recipient)
+  @IsOptional()
   bcc?: Recipient[];
   @ValidateNested({ each: true })
   @Type(() => Recipient)
+  @IsOptional()
   reply_to?: Recipient;
   @IsString()
-  subject: string;
+  @IsOptional()
+  subject?: string;
 }
+
+export class OnSendArgs<Error = RenderError> extends OnSendParams {
+  @IsString()
+  html: string;
+  @ValidateNested({ each: true })
+  @Type(() => RenderError)
+  errors: Error[];
+}
+
+/** Used for unknown response types */
+export class WildcardJson {}

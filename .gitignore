@@ -42,3 +42,4 @@ todo.txt
 .turbo
 **/out
 openapi.json
+apps/example/.env

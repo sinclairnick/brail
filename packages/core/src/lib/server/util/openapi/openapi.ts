@@ -8,11 +8,16 @@ import {
 } from 'openapi3-ts';
 import { classToJsonSchema } from './json-schema.util';
 
-const getSchemaRef = (schemaName: string) =>
+export const getSchemaRef = (schemaName: string) =>
   `#/components/schemas/${schemaName}`;
 
-const getParameterRef = (paramName: string) =>
+export const getParameterRef = (paramName: string) =>
   `#/components/parameters/${paramName}`;
+
+export const getNamespacedParamName = (
+  paramName: string,
+  parentSchemaName: string
+) => `${parentSchemaName}.${paramName}`;
 
 export type CreateResponsesBodySchemaArgs = {
   schemaName: string;
@@ -57,7 +62,8 @@ export const createParamSchemaRef = (
   if (schema.properties == null) return [];
 
   return Object.keys(schema.properties).map((k) => ({
-    $ref: getParameterRef(k),
+    // Namespaced ref
+    $ref: getParameterRef(getNamespacedParamName(k, args.schema.name)),
   }));
 };
 
@@ -84,7 +90,8 @@ export const createParamSchemas = (
       };
     })
     .reduce((params: { [parameter: string]: ParameterObject }, param) => {
-      params[param.name] = param;
+      // Namespace parameters
+      params[getNamespacedParamName(param.name, args.schema.name)] = param;
       return params;
     }, {});
 };
@@ -142,6 +149,7 @@ export type CreateOperationSchemaArgs = {
   responses: ResponsesObject;
   requestBody: RequestBodyObject;
   parameters?: ReferenceObject[];
+  tags?: string[];
 };
 
 export const createOperationSchema = (
@@ -152,5 +160,6 @@ export const createOperationSchema = (
     operationId: args.operationId,
     requestBody: args.requestBody,
     parameters: args.parameters,
+    tags: args.tags,
   };
 };

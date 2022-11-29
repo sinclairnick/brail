@@ -73,6 +73,11 @@ export const theme = createTheme({
       defaultProps: {
         disableTouchRipple: true,
       },
+      styleOverrides: {
+        root: {
+          transition: '0.05s',
+        },
+      },
     },
     MuiAccordion: {
       defaultProps: {

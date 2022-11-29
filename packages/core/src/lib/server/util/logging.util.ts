@@ -10,6 +10,12 @@ export class Logger {
     isEnabled = false;
   }
 
+  static debug(message: string) {
+    if (isEnabled && Number(process.env.BRAIL_DEBUG) > 0) {
+      console.log(`${coloredBrand} - ${chalk.blue(message)}`);
+    }
+  }
+
   static indent(message: string) {
     return `${INDENT} ${message}`;
   }

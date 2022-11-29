@@ -1,9 +1,11 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { ParameterObject, PathItemObject, SchemasObject } from 'openapi3-ts';
-import { SenderArgs } from '../../types/api.types';
+import { OnSendArgs } from '../../types/api.types';
+
+export type HttpMethod = 'POST' | 'GET' | 'PATCH' | 'DELETE' | 'PUT';
 
 export type Route<T = any> = {
-  matchRoute: (route: string) => boolean;
+  matchRoute: (route: string, method: HttpMethod) => boolean;
   handler: (req: NextApiRequest, res: NextApiResponse) => T;
   getSpec?: () => {
     path: string;
@@ -13,7 +15,9 @@ export type Route<T = any> = {
   };
 };
 
-export type CreateAppOptions<SO = SenderArgs> = {
+export type OnSendFn = (args: OnSendArgs, req: NextApiRequest) => Promise<any>;
+
+export type CreateAppOptions<SO = OnSendArgs> = {
   /** Disables broadcasting an open api endpoint */
   disableOpenApi?: boolean;
   /**
@@ -23,7 +27,7 @@ export type CreateAppOptions<SO = SenderArgs> = {
   disableIntrospection?: boolean;
   /** Disable all brail-internal logging */
   disableLogging?: boolean;
-  sender: (args: SenderArgs) => {};
+  onSend?: OnSendFn;
 };
 
 export type BrailApp = {

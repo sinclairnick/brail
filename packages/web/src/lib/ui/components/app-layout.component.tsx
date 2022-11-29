@@ -5,7 +5,7 @@ import { theme } from './theme';
 import { useRouter } from 'next/router';
 import { CreateTemplateReturn } from '@brail/core';
 import { NextComponentType, NextPageContext } from 'next';
-import { UtilityDrawer } from './utility-drawer.component';
+import { UtilityDrawer } from './utility-drawer/utility-drawer.component';
 import { Tab, TabNavigation } from './tab-navigation.component';
 import { IconButton, Stack } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
@@ -106,7 +106,7 @@ export const BrailLayout: FC<BrailLayoutProps> = (props) => {
       <ThemeProvider theme={theme}>
         <Stack position="relative" width="100%" height="100vh">
           <Stack position="relative" direction="row" flex={1}>
-            {isLayoutVisible && <UtilityDrawer />}
+            {isLayoutVisible && <UtilityDrawer html={htmlPreview ?? ''} />}
             <Stack
               position="relative"
               flex={1}
