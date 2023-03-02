@@ -1,3 +1,7 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "editor.stickyScroll.enabled": true,
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#2a6cc8",
+    "titleBar.inactiveBackground": "#1f539d",
+  }
 }

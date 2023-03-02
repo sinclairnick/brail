@@ -1,0 +1,17 @@
+{
+  "extends": "tsconfig/react-library.json",
+  "include": [
+    "./src",
+    "tsup.config.ts",
+    "../server/src/server",
+    "../server/src/next/next.ts"
+  ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "dist",
+    "lib": ["ES2017", "DOM"],
+    "noErrorTruncation": true,
+    "allowJs": false,
+    "declaration": true
+  }
+}

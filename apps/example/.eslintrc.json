@@ -1,4 +1,0 @@
-{
-  "extends": "next",
-  "plugins": ["@brail", "@typescript-eslint"]
-}

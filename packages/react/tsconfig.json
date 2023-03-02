@@ -1,17 +1,10 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "tsconfig/react-library.json",
+  "include": ["./src"],
+  "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "module": "CommonJS",
-    "declaration": true
-  },
-  "include": ["./src/**/*"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "./src/**/test",
-    "./src/**/tests",
-    "./src/cli"
-  ]
+    "outDir": "dist",
+    "target": "ES2017",
+    "lib": ["ES2017", "DOM"]
+  }
 }

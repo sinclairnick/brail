@@ -1,159 +1,56 @@
-![Brail](./static/cover.jpg)
+![Brail](./static/banner.jpg)
 
-# Brail
+<div align="center">
+  <a href="https://www.npmjs.com/package/brail"><img src="https://img.shields.io/npm/v/brail" /></a>
+  <a href="https://github.com/sinclairnick/brail/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202-blue" /></a>
+  <br />
+  <br />
+  <h1>Brail</h1>
+  <a href="https://www.prisma.io/docs/getting-started/quickstart">Quickstart</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://brail.vercel.app">Docs</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://github.com/brail/apps/examples">Examples</a>
+  <br />
+  <br />
+</div>
 
-> Transactional email that feels different
+Brail provides batteries-included tooling for creating, generating and delivering HTML emails. With out-of-the-box email template correctness, ergonomic React templating and full-stack type-safety, never send an erroneous transactional (or marketing) emails again.
 
-[![License][license-image]][license-url]
-![Stars][stars-image]
-![React][react-badge]
-![Core][core-badge]
-![Mjml][mjml-badge]
-![Web][web-badge]
+## What is Brail?
 
-Brail is a framework built on NextJS for developing email templates in React, and returning HTML that is compatible with major email clients. It aims to separate the concerns of generating the emails and delivering them.
+Brail consists of several tools which aid crafting and delivering emails:
 
-In a few lines of code, Brail lets you turn a NextJS app into an email templating server.
+- [**UI Library**](): Responsive email-safe React component library
+- [**Brail Core**](): Tools for creating type-safe APIs or SDKs
+- [**Devtools**](): Tools for making developing, debugging and testing emails easier
+- [**Linting**](): ESLint plugin warnings for common email-specific HTML pitfalls
 
-> 📧 Preview templates in your browser
+## Getting started
 
-> 📤 Trigger deployments via Git (via Vercel, Netlify etc.)
+To get started with Brail, check out the [**Quickstart**]() guide.
 
-> 🔑 Familiar templating in JSX or TSX
+Alternatively, you can [**check out the Docs**](), try Brail out in a codesandbox or use one of the [**Brail starter projects**]():
 
-> 📬 Agnostic to email delivery provider
-
-> 🧰 Enjoy theming, version control, reusable components and no vendor lock-in
-
-> 🗂 Automatic image hosting
+- [Brail + Nextjs]()
+- [Brail + Turborepo + Nextjs]()
 
 <br/>
 
-### Read the [docs](https://brail.vercel.app)
-
 ---
 
-## Installation
+<br/>
 
-```sh
-npm install @brail/core @brail/mjml
+## Why would I want to use Brail?
 
-# Optional helper packages
-npm install @brail/react @brail/web
-```
+Handwriting emails using HTML is notoriously a pain. Unlike the web, email clients don't strongly adhere to a specific standard, resulting in limited and inconsistent support for CSS and HTML features.
 
-## Usage example
+Consequently, HTML emails become incredibly verbose, complex and littered with Microsoft Outlook-specific HTML comments, heavily nested `<table>` elements and esoteric CSS properties. As such, handwriting HTML email is an uncommon and tedious artform.
 
-`pages/welcome.tsx:`
+Brail abstracts away that complexity and aims to provide a web-like experience to writing emails, making it trivial to produce correct emails.
 
-```tsx
-// (Optionally) define props
-class WelcomeTemplateProps {
-  @IsString() // Decorators allow for type-safe API generation
-  firstName: string;
-}
+<br/>
 
-// Create a template view
-const WelcomeTemplateView = (props: WelcomeTemplateProps) => {
-  const { firstName } = props;
+##  Why not use a drag-and-drop editor?
 
-  return (
-    <EmailTemplate title={`Welcome ${firstName}!`}>
-      <ReusableHeader />
-
-      <Row paddingTop={16} paddingBottom={16}>
-        <Column>
-          <Typography variant="h1">Welcome to Brail, {firstName}!</Typography>
-        </Column>
-      </Row>
-
-      {['Feature 1', 'Feature 2', 'Feature 3'].map((x) => {
-        return <Row key={x}>{/** ... */}</Row>;
-      })}
-
-      <Signature />
-      <Footer />
-    </EmailTemplate>
-  );
-};
-
-// Create and export the template
-const WelcomeTemplate = createTemplate({
-  name: 'Welcome',
-  path: '/welcome',
-  template: WelcomeTemplateView,
-  // Defines the data used when previewing the template in the browser
-  preview: () => ({ firstName: 'Steve' }),
-  // Specify how email meta should be generated
-  meta: (props) => ({ subject: `Welcome, ${props.firstName}!` }),
-  propType: WelcomeTemplateProps,
-});
-
-export default WelcomeTemplate;
-```
-
-`pages/api/[...email].ts:`
-
-```ts
-import { createServer, getBrailApiConfig } from '@brail/core/server';
-
-export const config = getBrailApiConfig();
-
-// Register template so it can be generated via API
-const server = createServer([WelcomeTemplate]);
-export default server;
-```
-
-Then consume the emails via API, dynamically generating transactional content
-
-```sh
-curl -X POST --data '{ "firstName": "Steve" }' <host>/api/welcome
-```
-
-To view a full example, visit the `apps/example` directory.
-
-## Motivation
-
-Brail was created so I never have to use a drag-and-drop editor again. It puts emails back into the "coding ecosystem" where theming, composition and dynamically generating content are standard. Version control? Git. Consistent theming and composition? React components. Vendor lock in? No thanks.
-
-With brail, my emails are portable, consistent, easy and more fun to make.
-
-[Get Started](https://brail.vercel.app)
-
-## Packages
-
-## `@brail/core`
-
-Contains the underlying framework for creating and serving templates
-
-## `@brail/react`
-
-Contains components which simplifies email markup, built on top of the MailJet Markup Language (MJML).
-
-## `@brail/mjml`
-
-A fork of MJML providing browser compatibility, type safety and React bindings.
-
-## `@brail/web`
-
-Web components intended to improve the developer experience
-
-## Author
-
-Nick Sinclair
-
-Distributed under the MIT license. See `LICENSE` for more information.
-
-[https://github.com/sinclairnick](https://github.com/sinclairnick)
-
-<!-- Markdown link & img dfn's -->
-
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/@brail/core
-[license-image]: https://img.shields.io/github/license/sinclairnick/brail
-[license-url]: /LICENSE
-[stars-image]: https://img.shields.io/github/stars/sinclairnick/brail
-[core-badge]: https://img.shields.io/npm/v/@brail/core?label=@brail/core
-[react-badge]: https://img.shields.io/npm/v/@brail/react?label=@brail/react
-[mjml-badge]: https://img.shields.io/npm/v/@brail/mjml?label=@brail/mjml
-[web-badge]: https://img.shields.io/npm/v/@brail/mjml?label=@brail/web
+Drag and drop editors make it easy to create email-safe templates, but lack many features we're used to in code-world like theming, abstraction, formatting, maths, version control, PRs and types. By providing a full-proof in-code solution to HTML emails, we regain the control, flexibility and power of code, which makes creating (and refactoring) emails much faster, easier and more fun.
