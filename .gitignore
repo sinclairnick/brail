@@ -34,6 +34,5 @@ yarn-error.log*
 .turbo
 
 packages/eslint-plugin-brail/data
-apps/web/.env
-apps/web/**/sender.prod.ts
-apps/web/.brail
+**/.env
+**/.brail
