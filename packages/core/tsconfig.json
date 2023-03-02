@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "../server/src/generic", "../server/src/types"],
   "exclude": [
     "node_modules",
     "dist",

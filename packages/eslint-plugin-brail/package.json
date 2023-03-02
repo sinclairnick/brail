@@ -1,0 +1,25 @@
+{
+  "name": "@brail/eslint-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && cp -r data/* dist/data/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "dist/",
+    "data/"
+  ],
+  "devDependencies": {
+    "@types/eslint": "^8.21.0",
+    "@types/node": "^17.0.45",
+    "@typescript-eslint/utils": "^5.51.0",
+    "node-fetch": "^3.3.0",
+    "tsx": "^3.12.3",
+    "zod": "^3.20.2"
+  }
+}

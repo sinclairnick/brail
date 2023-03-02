@@ -43,3 +43,5 @@ todo.txt
 **/out
 openapi.json
 apps/example/.env
+
+packages/eslint-plugin-brail/data/

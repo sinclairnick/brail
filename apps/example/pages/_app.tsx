@@ -14,6 +14,12 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <BrailLayout template={Component}>
         <Component />
       </BrailLayout>
+      <div
+        style={{
+          alignItems: '',
+        }}
+      ></div>
+
     </>
   );
 }

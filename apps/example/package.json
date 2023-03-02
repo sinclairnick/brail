@@ -11,12 +11,14 @@
     "dev": "next dev -p 4444",
     "start": "next start -p 4444",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client:generate": "openapi -i 'http://localhost:4444/api/openapi.json' -o out --useOptions --name ExampleApi"
+    "client:generate": "openapi -i 'http://localhost:4444/api/openapi.json' -o out --useOptions --name ExampleApi",
+    "lint": "DEBUG=eslint:cli-engine eslint --config .eslintrc.json \"pages/**/*.{ts,tsx}\""
   },
   "author": "Nick Sinclair",
   "license": "ISC",
   "dependencies": {
     "@brail/core": "workspace:*",
+    "@brail/eslint-plugin": "workspace:*",
     "@brail/react": "workspace:*",
     "@brail/web": "workspace:*",
     "class-transformer": "^0.5.1",
@@ -31,6 +33,7 @@
     "@types/node": "^17.0.21",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
     "openapi-typescript-codegen": "^0.23.0"
   }
 }
