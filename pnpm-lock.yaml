@@ -52,7 +52,7 @@ importers:
       '@types/nodemailer': ^6.4.7
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
-      brail: workspace:^1.0.0
+      brail: workspace:*
       eslint: 7.32.0
       next: ^13.1.1
       nodemailer: ^6.9.1
@@ -243,43 +243,6 @@ importers:
       '@types/react-dom': 18.0.11
       typescript: 4.9.5
       zod: 3.20.6
-
-  starters/nextjs-trpc-starter:
-    specifiers:
-      '@babel/core': ^7.0.0
-      '@brail/eslint-plugin': workspace:*
-      '@brail/react': workspace:*
-      '@trpc/server': ^10.11.1
-      '@types/node': ^17.0.12
-      '@types/nodemailer': ^6.4.7
-      '@types/react': ^18.0.22
-      '@types/react-dom': ^18.0.7
-      brail: workspace:^1.0.0
-      eslint: 7.32.0
-      next: ^13.1.1
-      nodemailer: ^6.9.1
-      react: 18.2.0
-      react-dom: 18.2.0
-      tsconfig: workspace:*
-      zod: ^3.20.6
-    dependencies:
-      '@brail/react': link:../../packages/react
-      '@trpc/server': 10.11.1
-      brail: link:../../packages/server
-      next: 13.2.1_pjwopsidmaokadturxaafygjp4
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      zod: 3.20.6
-    devDependencies:
-      '@babel/core': 7.20.12
-      '@brail/eslint-plugin': link:../../packages/eslint-plugin-brail
-      '@types/node': 17.0.45
-      '@types/nodemailer': 6.4.7
-      '@types/react': 18.0.28
-      '@types/react-dom': 18.0.11
-      eslint: 7.32.0
-      nodemailer: 6.9.1
-      tsconfig: link:../../packages/tsconfig
 
 packages:
 
@@ -1559,6 +1522,7 @@ packages:
 
   /@next/env/13.2.1:
     resolution: {integrity: sha512-Hq+6QZ6kgmloCg8Kgrix+4F0HtvLqVK3FZAnlAoS0eonaDemHe1Km4kwjSWRE3JNpJNcKxFHF+jsZrYo0SxWoQ==}
+    dev: true
 
   /@next/swc-android-arm-eabi/13.1.6:
     resolution: {integrity: sha512-F3/6Z8LH/pGlPzR1AcjPFxx35mPqjE5xZcf+IL+KgbW9tMkp7CYi1y7qKrEWU7W4AumxX/8OINnDQWLiwLasLQ==}
@@ -1575,6 +1539,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-android-arm64/13.1.6:
@@ -1592,6 +1557,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-darwin-arm64/13.1.6:
@@ -1609,6 +1575,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-darwin-x64/13.1.6:
@@ -1626,6 +1593,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-freebsd-x64/13.1.6:
@@ -1643,6 +1611,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-linux-arm-gnueabihf/13.1.6:
@@ -1660,6 +1629,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-linux-arm64-gnu/13.1.6:
@@ -1677,6 +1647,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-linux-arm64-musl/13.1.6:
@@ -1694,6 +1665,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-linux-x64-gnu/13.1.6:
@@ -1711,6 +1683,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-linux-x64-musl/13.1.6:
@@ -1728,6 +1701,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-win32-arm64-msvc/13.1.6:
@@ -1745,6 +1719,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-win32-ia32-msvc/13.1.6:
@@ -1762,6 +1737,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@next/swc-win32-x64-msvc/13.1.6:
@@ -1779,6 +1755,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -5329,53 +5306,6 @@ packages:
       - '@babel/core'
       - babel-plugin-macros
     dev: true
-
-  /next/13.2.1_pjwopsidmaokadturxaafygjp4:
-    resolution: {integrity: sha512-qhgJlDtG0xidNViJUPeQHLGJJoT4zDj/El7fP3D3OzpxJDUfxsm16cK4WTMyvSX1ciIfAq05u+0HqFAa+VJ+Hg==}
-    engines: {node: '>=14.6.0'}
-    hasBin: true
-    peerDependencies:
-      '@opentelemetry/api': ^1.4.0
-      fibers: '>= 3.1.0'
-      node-sass: ^6.0.0 || ^7.0.0
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      sass: ^1.3.0
-    peerDependenciesMeta:
-      '@opentelemetry/api':
-        optional: true
-      fibers:
-        optional: true
-      node-sass:
-        optional: true
-      sass:
-        optional: true
-    dependencies:
-      '@next/env': 13.2.1
-      '@swc/helpers': 0.4.14
-      caniuse-lite: 1.0.30001451
-      postcss: 8.4.14
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      styled-jsx: 5.1.1_2exiyaescjxorpwwmy4ejghgte
-    optionalDependencies:
-      '@next/swc-android-arm-eabi': 13.2.1
-      '@next/swc-android-arm64': 13.2.1
-      '@next/swc-darwin-arm64': 13.2.1
-      '@next/swc-darwin-x64': 13.2.1
-      '@next/swc-freebsd-x64': 13.2.1
-      '@next/swc-linux-arm-gnueabihf': 13.2.1
-      '@next/swc-linux-arm64-gnu': 13.2.1
-      '@next/swc-linux-arm64-musl': 13.2.1
-      '@next/swc-linux-x64-gnu': 13.2.1
-      '@next/swc-linux-x64-musl': 13.2.1
-      '@next/swc-win32-arm64-msvc': 13.2.1
-      '@next/swc-win32-ia32-msvc': 13.2.1
-      '@next/swc-win32-x64-msvc': 13.2.1
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-    dev: false
 
   /next/13.2.1_react@18.2.0:
     resolution: {integrity: sha512-qhgJlDtG0xidNViJUPeQHLGJJoT4zDj/El7fP3D3OzpxJDUfxsm16cK4WTMyvSX1ciIfAq05u+0HqFAa+VJ+Hg==}
