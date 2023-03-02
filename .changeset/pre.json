@@ -1,0 +1,16 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "docs": "0.0.0",
+    "@brail/devtools": "1.0.0-alpha.1",
+    "@brail/eslint-plugin": "1.0.0-alpha.1",
+    "@brail/react": "1.0.0-alpha.1",
+    "brail": "1.0.0-alpha.1",
+    "tsconfig": "0.0.0",
+    "@brail/types": "1.0.0-alpha.1"
+  },
+  "changesets": [
+    "neat-eels-obey"
+  ]
+}

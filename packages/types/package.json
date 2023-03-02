@@ -1,8 +1,9 @@
 {
   "name": "@brail/types",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "",
   "types": "dist/index.d.ts",
+  "private": false,
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w"

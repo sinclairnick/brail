@@ -15,7 +15,7 @@
   <br />
 </div>
 
-Brail provides batteries-included tooling for creating, generating and delivering HTML emails. With out-of-the-box email template correctness, ergonomic React templating and full-stack type-safety, never send an erroneous transactional (or marketing) emails again.
+Brail provides batteries-included tooling for creating, generating and delivering HTML emails. With out-of-the-box email template correctness, ergonomic React templating and full-stack type-safety, never send an erroneous transactional (or marketing) email again.
 
 ## What is Brail?
 

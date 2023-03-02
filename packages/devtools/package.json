@@ -1,10 +1,11 @@
 {
   "name": "@brail/devtools",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "private": false,
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
