@@ -5,13 +5,14 @@ import {
   normalizeAlign,
   normalizeBackgroundColor,
   normalizeHeight,
+  normalizeMarginStyle,
   normalizePaddingStyle,
   normalizeVerticalAlign,
   normalizeWidth,
 } from "../../styles";
 import { ParentDimensionProvider } from "../../util/parent-provider";
 import { useEmailContext } from "../email/email.constants";
-import { MsoConditional } from "../html/mso-conditional/mso-conditional.component";
+import { MsoConditional } from "../outlook/mso-conditional/mso-conditional.component";
 import { useRowContext } from "../row/row.constants";
 import { Table } from "../table/table.component";
 import { TypographyProvider } from "../typography/typography.constants";
@@ -48,13 +49,12 @@ export const Column = (props: ColumnProps) => {
     width,
   });
 
-  const pctStyle = getPctWidthStyles(width);
-
+  const pctStyle = getPctWidthStyles(rowCtx.getPctWidth(width));
   const classes = [C_RESPONSIVE_BASE];
-  if (pctStyle?.css) {
-    classes.push(pctStyle.className);
-  } else {
+  if (rowCtx.stack) {
     classes.push(C_FULL_WIDTH_CONTAINER);
+  } else if (pctStyle?.className) {
+    classes.push(pctStyle?.className);
   }
 
   return (

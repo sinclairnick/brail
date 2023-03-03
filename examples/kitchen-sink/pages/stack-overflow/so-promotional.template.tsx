@@ -51,7 +51,7 @@ export default template
               <Typography fontSize={17} color="white">
                 The excerpt or slogan of the email announcement can go here.
               </Typography>
-              <Button mt="$5" href="#">
+              <Button mt="$5" href="/">
                 Medium white button
               </Button>
             </Column>
@@ -62,8 +62,8 @@ export default template
         </Container>
 
         <Container backgroundColor="#ffffff" p={20}>
-          <Row color="#3c3f44">
-            <Column width={128} mr={20}>
+          <Row color="#3c3f44" stack={false}>
+            <Column width={128} pr={10}>
               <Image src="/so-image2.png" width={128} height={128} />
             </Column>
             <Column>
@@ -102,7 +102,7 @@ export default template
           </Row>
         </Container>
 
-        <Container backgroundImage="/so-blue-bg.png">
+        <Container backgroundImage="/so-blue-bg.png" backgroundColor="#117FF1">
           <Row p={30}>
             <Column>
               <Typography textAlign="center" fontSize={17} color="#ffffff">

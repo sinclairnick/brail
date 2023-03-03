@@ -10,7 +10,7 @@ import {
   ParentDimensionProvider,
   useParentDimensions,
 } from "../../util/parent-provider";
-import { MsoConditional } from "../html/mso-conditional/mso-conditional.component";
+import { MsoConditional } from "../outlook/mso-conditional/mso-conditional.component";
 import { Table } from "../table/table.component";
 import { TypographyProvider } from "../typography/typography.constants";
 import { RowProvider } from "./row.constants";

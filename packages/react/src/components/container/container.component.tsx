@@ -9,7 +9,8 @@ import {
 } from "../../styles";
 import { ParentDimensionProvider } from "../../util/parent-provider";
 import { useEmailContext } from "../email/email.constants";
-import { MsoConditional } from "../html/mso-conditional/mso-conditional.component";
+import { OutlookBgContainer } from "../outlook/outlook-bg-container/outlook-bg-container.component";
+import { OutlookContainer } from "../outlook/outlook-container/outlook-container.component";
 import { TypographyProvider } from "../typography/typography.constants";
 import { ContainerProps } from "./container.types";
 
@@ -28,31 +29,42 @@ export const Container = (props: ContainerProps) => {
     padding,
   });
 
+  const style = {
+    maxWidth,
+    ...padding.styles,
+    // Place bg styles before bg image
+    ...bg.styles,
+    ...border.styles,
+    ...shadow.styles,
+    ...margin.styles,
+    ...bgImage.styles,
+  };
+
+  const attr = {
+    ...bg.attrs,
+    ...bgImage.attrs,
+    ...border.styles,
+    ...margin.attrs,
+  };
+
   return (
-    <MsoConditional
-      startMso={`<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="${ctx.maxWidth}" align="center"> <tr> <td>`}
-      endMso={`</td> </tr> </table>`}
-    >
-      <div
-        style={{
-          maxWidth,
-          ...padding.styles,
-          ...bg.styles,
-          ...border.styles,
-          ...shadow.styles,
-          ...margin.styles,
-          ...bgImage.styles,
-        }}
+    <OutlookContainer styles={style} attrs={attr} width={ctx.maxWidth}>
+      <OutlookBgContainer
+        backgroundColor={props.backgroundColor}
+        backgroundImage={bgImage.attrs?.background}
+        width={ctx.maxWidth}
       >
-        <ParentDimensionProvider
-          name="Container"
-          width={ctx.maxWidth}
-          padding={padding}
-          margin={margin}
-        >
-          <TypographyProvider {...props}>{props.children}</TypographyProvider>
-        </ParentDimensionProvider>
-      </div>
-    </MsoConditional>
+        <div {...attr} style={style}>
+          <ParentDimensionProvider
+            name="Container"
+            width={ctx.maxWidth}
+            padding={padding}
+            margin={margin}
+          >
+            <TypographyProvider {...props}>{props.children}</TypographyProvider>
+          </ParentDimensionProvider>
+        </div>
+      </OutlookBgContainer>
+    </OutlookContainer>
   );
 };

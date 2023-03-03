@@ -5,6 +5,8 @@ import {
   FontProps,
   BorderProps,
   ShadowProps,
+  UnitlessValue,
+  PixelValue,
 } from "../../styles";
 import { Expand } from "../../util/types.util";
 
@@ -13,13 +15,12 @@ type BaseProps = {
   children: React.ReactNode;
   rel?: string | null;
   target?: React.HTMLAttributeAnchorTarget | null;
-  display?: "block" | "inline-block";
 };
 
 export type ButtonProps = Expand<
   BaseProps &
     Partial<
-      SpacingProps &
+      SpacingProps<UnitlessValue | PixelValue> &
         ColorProps &
         BackgroundColorProps &
         FontProps &

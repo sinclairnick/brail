@@ -4,12 +4,18 @@ import {
   normalizeFont,
   normalizeColor,
 } from "../../styles";
-import { useTypgraphyContext } from "./typography.constants";
+import { MsoConditional } from "../outlook/mso-conditional/mso-conditional.component";
+import { useTypographyContext } from "./typography.constants";
 import { TypographyProps } from "./typography.types";
+import {
+  attrObjectToInline,
+  styleObjectToInline,
+} from "../../styles/style-prop";
+import { OutlookContainer } from "../outlook/outlook-container/outlook-container.component";
 
 export const Typography = (props: TypographyProps) => {
   const { inline = false, variant, children } = props;
-  const typoCtx = useTypgraphyContext();
+  const typoCtx = useTypographyContext();
   const Tag = variant ?? "p";
   const margin = normalizeMarginStyle(props);
   const padding = normalizePaddingStyle(props);
@@ -32,19 +38,38 @@ export const Typography = (props: TypographyProps) => {
 
   const color = normalizeColor({ color: props.color ?? typoCtx.color });
 
+  const style = {
+    ...margin.styles,
+    ...padding.styles,
+    ...font.styles,
+    ...color.styles,
+  };
+
+  const attrs = {
+    ...color.attrs,
+    ...margin.attrs,
+  };
+
   return (
-    <Tag
-      {...color.attrs}
-      {...margin.attrs}
-      style={{
-        display: inline ? "inline-block" : "block",
-        ...margin.styles,
-        ...padding.styles,
-        ...font.styles,
-        ...color.styles,
+    <OutlookContainer
+      styles={{
+        ...style,
+        align: font.styles?.textAlign, // Force table alignment to match the text alignment
       }}
+      attrs={attrs}
     >
-      {children}
-    </Tag>
+      <Tag
+        {...attrs}
+        style={{
+          // Outlook has limited support for inline-block, so we use inline instead
+          // Ref: https://www.campaignmonitor.com/css/positioning-display/display/
+          display: inline ? "inline" : "block",
+          width: "100%",
+          ...style,
+        }}
+      >
+        {children}
+      </Tag>
+    </OutlookContainer>
   );
 };

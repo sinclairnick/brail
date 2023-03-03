@@ -2,7 +2,9 @@ import { Expand } from "../../util/types.util";
 import {
   AlignValue,
   PercentValue,
+  PixelValue,
   SpacingValue,
+  UnitlessValue,
   VerticalAlignValue,
   WidthValue,
 } from "../../styles";
@@ -48,6 +50,8 @@ export type RowContext = {
   abs: RowDimensions<number>;
   relative: RowDimensions<PercentValue>;
   stack: boolean;
+  getPctWidth: (absWidth: WidthValue) => PercentValue;
+  getAbsWidth: (value: WidthValue) => number;
 };
 
 export type RowProviderProps = {

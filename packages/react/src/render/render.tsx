@@ -1,6 +1,6 @@
 import * as ReactDOM from "react-dom/server";
 import { headStore } from "../styles";
-import { OUTLOOK_DPI_NORMALIZATION } from "../styles/outlook-dpi.style";
+import { OUTLOOK_DPI_NORMALIZATION } from "../styles/outlook";
 import { TemplateWrapper } from "./template-wrapper.component";
 
 export const DYNAMIC_STYLES_KEY = "__dynamic";

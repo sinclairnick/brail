@@ -10,9 +10,9 @@
     "maildev": "docker run -p 1080:1080 -p 1025:1025 maildev/maildev"
   },
   "dependencies": {
-    "@brail/react": "^1.0.0",
+    "@brail/react": "*",
     "@trpc/server": "^10.11.1",
-    "brail": "^1.0.0",
+    "brail": "*",
     "next": "^13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@brail/eslint-plugin": "workspace:*",
+    "@brail/eslint-plugin": "*",
     "@types/node": "^17.0.12",
     "@types/nodemailer": "^6.4.7",
     "@types/react": "^18.0.22",

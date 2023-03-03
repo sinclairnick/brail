@@ -104,14 +104,22 @@ export const normalizeMarginStyle = (margin?: Partial<MarginProps>) => {
     marginRight: mr ?? mx ?? _mr ?? 0,
   };
 
+  const marginSingular = [
+    styles.marginTop ?? 0,
+    styles.marginRight ?? 0,
+    styles.marginBottom ?? 0,
+    styles.marginLeft ?? 0,
+  ]
+    .map((x) => (typeof x === "number" ? `${x}px` : x))
+    .join(" ");
+
   return {
-    styles,
+    styles: {
+      ...styles,
+      margin: marginSingular,
+    },
     attrs: {
-      margin: `${getPxValue(styles.marginTop ?? 0) + "px"} ${
-        getPxValue(styles.marginRight ?? 0) + "px"
-      } ${getPxValue(styles.marginBottom ?? 0) + "px"} ${
-        getPxValue(styles.marginLeft ?? 0) + "px"
-      }`,
+      margin: marginSingular,
     },
   } satisfies NormalizedAttribute;
 };
@@ -130,12 +138,69 @@ export const normalizePaddingStyle = (padding?: Partial<PaddingProps>) => {
 
   const [_pt, _pr, _pb, _pl] = p ? expandFullSpacing(p) : [];
 
+  const styles = {
+    paddingTop: pt ?? py ?? _pt,
+    paddingBottom: pb ?? py ?? _pb,
+    paddingLeft: pl ?? px ?? _pl,
+    paddingRight: pr ?? px ?? _pr,
+  };
+
+  const paddingSingular = [
+    styles.paddingTop ?? 0,
+    styles.paddingRight ?? 0,
+    styles.paddingBottom ?? 0,
+    styles.paddingLeft ?? 0,
+  ]
+    .map((x) => (typeof x === "number" ? `${x}px` : x))
+    .join(" ");
+
   return {
     styles: {
-      paddingTop: pt ?? py ?? _pt,
-      paddingBottom: pb ?? py ?? _pb,
-      paddingLeft: pl ?? px ?? _pl,
-      paddingRight: pr ?? px ?? _pr,
+      ...styles,
+      padding: paddingSingular,
     },
   } satisfies NormalizedAttribute;
+};
+
+/**
+ * This is a list of the JSX style props, not the Brail-level props
+ */
+export const SpacingStyleProps = [
+  "margin",
+  "marginTop",
+  "marginRight",
+  "marginBottom",
+  "marginLeft",
+  "padding",
+  "paddingTop",
+  "paddingRight",
+  "paddingBottom",
+  "paddingLeft",
+] as const;
+
+export const marginStyleToPadding = (
+  styles?: ReturnType<typeof normalizeMarginStyle>
+): ReturnType<typeof normalizePaddingStyle> => {
+  const pStyle = {
+    paddingBottom: styles?.styles.marginBottom,
+    paddingLeft: styles?.styles.marginLeft,
+    paddingRight: styles?.styles.marginRight,
+    paddingTop: styles?.styles.marginTop,
+  };
+
+  const paddingSingular = [
+    pStyle.paddingTop ?? 0,
+    pStyle.paddingRight ?? 0,
+    pStyle.paddingBottom ?? 0,
+    pStyle.paddingLeft ?? 0,
+  ]
+    .map((x) => (typeof x === "number" ? `${x}px` : x))
+    .join(" ");
+
+  return {
+    styles: {
+      ...pStyle,
+      padding: paddingSingular,
+    },
+  };
 };

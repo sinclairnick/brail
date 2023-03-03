@@ -8,7 +8,7 @@ import {
   ensureAbsoluteUrl,
 } from "../../styles";
 import { useEmailContext } from "../email/email.constants";
-import { useTypgraphyContext } from "../typography/typography.constants";
+import { useTypographyContext } from "../typography/typography.constants";
 import { LinkProps } from "./link.types";
 
 export const Link = (props: LinkProps) => {
@@ -19,7 +19,7 @@ export const Link = (props: LinkProps) => {
     inline = false,
   } = props;
   const emailCtx = useEmailContext();
-  const typoCtx = useTypgraphyContext();
+  const typoCtx = useTypographyContext();
   const padding = normalizePaddingStyle(props);
   const margin = normalizeMarginStyle(props);
   const bg = normalizeBackgroundColor(props);

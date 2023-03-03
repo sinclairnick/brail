@@ -4,6 +4,7 @@ import {
   getPxValue,
   normalizeMarginStyle,
   normalizePaddingStyle,
+  PercentValue,
 } from "../../styles";
 import { useParentDimensions } from "../../util/parent-provider";
 import { RowContext, RowProviderProps } from "./row.types";
@@ -63,8 +64,22 @@ export const RowProvider = (props: RowProviderProps) => {
     remaining: `${Number(((absRemaining / totalWidth) * 100).toPrecision(3))}%`,
   };
 
+  const getAbsWidth: RowContext["getAbsWidth"] = (value) => {
+    return getPxValue(value, totalWidth) as number;
+  };
+
+  const getPctWidth: RowContext["getPctWidth"] = (value) => {
+    if (value.toString().endsWith("%")) return value as PercentValue;
+
+    const pxValue = getPxValue(value) as number;
+
+    return `${(pxValue / totalWidth) * 100}%`;
+  };
+
   return (
-    <RowContext.Provider value={{ totalWidth, abs, relative, stack }}>
+    <RowContext.Provider
+      value={{ totalWidth, abs, relative, stack, getPctWidth, getAbsWidth }}
+    >
       {children}
     </RowContext.Provider>
   );

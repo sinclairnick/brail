@@ -38,7 +38,10 @@ export const normalizeBackgroundColor = (
 
   return {
     attrs: { bgcolor: props.backgroundColor },
-    styles: { backgroundColor: props.backgroundColor },
+    styles: {
+      backgroundColor: props.backgroundColor,
+      background: props.backgroundColor,
+    },
   } satisfies NormalizedAttribute;
 };
 
@@ -52,7 +55,7 @@ export const normalizeColor = (props?: Partial<ColorProps>) => {
 };
 
 export const normalizeBackgroundImage = (
-  props?: Partial<BackgroundImageProps>,
+  props?: Partial<BackgroundImageProps & BackgroundColorProps>,
   baseUrl?: string
 ) => {
   if (!props || props.backgroundImage == null)
@@ -60,12 +63,16 @@ export const normalizeBackgroundImage = (
 
   const url = ensureAbsoluteUrl(baseUrl, props.backgroundImage);
 
+  const backgroundImage =
+    props.backgroundImage != null ? `url('${url}')` : undefined;
+
   return {
+    attrs: { background: url },
     styles: {
       backgroundSize: props.backgroundSize,
       backgroundPosition: props.backgroundPosition,
-      backgroundImage:
-        props.backgroundImage != null ? `url("${url}")` : undefined,
+      backgroundColor: props.backgroundColor,
+      backgroundImage,
     },
   } satisfies NormalizedAttribute;
 };

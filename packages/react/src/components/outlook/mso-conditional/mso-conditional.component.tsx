@@ -5,7 +5,7 @@ import {
   normalizeBackgroundImage,
   WidthValue,
 } from "../../../styles";
-import { HtmlComment } from "../html-comment/html-comment.component";
+import { HtmlComment } from "../../html/html-comment/html-comment.component";
 
 export type MsoConditionalProps = PropsWithChildren<{
   startMso: string;

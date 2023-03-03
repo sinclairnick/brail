@@ -3,7 +3,7 @@ import { TypographyContext, TypographyProviderProps } from "./typography.types";
 
 const TypographyContext = React.createContext<TypographyContext | null>(null);
 
-export const useTypgraphyContext = () => {
+export const useTypographyContext = () => {
   const context = React.useContext(TypographyContext);
 
   if (!context) {
