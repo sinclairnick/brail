@@ -1,4 +1,5 @@
 {
+  "test-emails": "Sending Test Emails",
   "trpc": "Serving a tRPC API",
   "rest": "Serving an API",
   "sdk": "Generating an SDK",

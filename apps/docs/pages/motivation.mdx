@@ -1,0 +1,50 @@
+# Why was Brail created?
+> Or, why might you want to use it?
+
+## Background
+
+Email clients don't support CSS, HTML or JavaScript as we're used to in the web world. In many ways, we must write email HTML as if it were 2003. Even worse, the degree of support varies wildly and the same code can be interepreted entirely different by different email clients.
+
+This makes handwriting HTML email templates incredibly error prone and frustrating – a task now reserved for email wizards spread few and far between.
+
+Even once we have a working, beautiful template, we can stil shoot ourselves in the foot by sending incorrect or incomplete data, resulting in users being confused by broken links or `Hello, {{ firstName }}!`. In a nutshell, **developing templates** and **sending dynamic data** are the two pain points of email development.
+
+## Email templating
+
+Over time, there have been a few attempts to abstract the complicated nature of HTML email away. The most popular is to just use a drag-and-drop editor, which basically uses well-tested snippets which you can theme. Another approach has been to create email component libraries or frameworks. The most popular of these is [MJML](https://mjml.io/), which is a markup language that compiles to HTML. While MJML has done a great job on this front, it provides no help for actually using the templates and has some limitations and a learning curve that can make it less approachable.
+
+> Fun fact: For an earlier version of Brail, MJML was rewritten in React and Typescript, to improve it's DX.
+
+Brail includes a completely from-scratch React library which abstracts the complexities of HTML email away, using idiomatic, modern React. Under the hood, Brail's UI components emulate unsupported and/or complicated CSS features like `box-sizing: border-box` and responsiveness. Brail also uses type-safety to ensure only valid props are supplied, down to the level of which type of units are allowed (e.g. `em` vs `px`).
+
+Ultimately, a simple Brail template might look like: 
+
+```tsx
+<Email>
+	<Title>Hello, world!</Title>
+	<Container backgroundColor="white">
+		<Row borderBottom="1px solid black">
+			<Column p={10}> 
+					<Typography>Hello, </Typography>
+			</Column>
+			<Column>
+					<Typography>world!</Typography>
+			</Column>
+		</Row>
+	</Container>
+</Email>
+```
+
+For more information on email templating, visit the [crafting emails](/crafting) section
+
+## Dynamic data
+
+In the email world, data intended to be injected into a template is often called _dynamic data_ or _merge data_. Whether using MJML or a drag-and-drop hosted service like Mailchimp, Sendgrid, MailerLite etc. this data is sent in "blind". We send some data across and hope it's enough. Tracking which templates need which data can become a big problem, causing unprofessional emails to be sent, especially for complicated transactional email that might loop over this dynamic data.
+
+Brail takes a "single source of truth" approach and offers ways to ensure end-to-end type-safety, including data validation. The idea is to define your template, alongside it's data schema, only once. 
+
+While brail templates can be used however you like, Brail has built-in support for [tRPC](https://trpc.io/), which can be adapted for use with serverless API Routes, Edge routes and regular express backends. Brail works out-of-the-box with [tRPC OpenAPI](https://github.com/jlalmes/trpc-openapi) meaning language-agnostic [type-safe SDKs](/guides/openapi) can always be generated using brail.
+
+Even further, Brail lets you define your metadata at the same time, so subject lines and other metadata is colocated next to your templates view/component and dynamic data schema.
+
+For more information on generating and sending emails, visit the [using templates](/using) section
