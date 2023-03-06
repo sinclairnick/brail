@@ -66,7 +66,12 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
       }}
     >
       <Stack>
-        <ToolbarButton css={{ p: 4 }}>
+        <ToolbarButton
+          css={{ p: 4 }}
+          onClick={() => {
+            window.open("https://brail.dev");
+          }}
+        >
           <BrailIcon style={{ height: 24, width: 24 }} />
         </ToolbarButton>
         {Tabs.map((tab) => {
