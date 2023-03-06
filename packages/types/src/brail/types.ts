@@ -21,7 +21,7 @@ export type BrailOptions = {
 
   /**
    * Optionally auto-emit templates to a file
-   * If true, emits to default location `.brail/templates.brail`
+   * If true, emits to default location `<rootdir>/.brail/templates.generated`
    * If string, emits to specified location
    */
   emitTemplates?: boolean | string;

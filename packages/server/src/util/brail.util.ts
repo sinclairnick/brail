@@ -12,8 +12,11 @@ export const optionsToConfig = (
 ): BrailConfig => {
   const lang = detectLang();
 
+  let rootDir = hasSrc() ? "src" : ".";
+  rootDir = path.join(process.cwd(), rootDir);
+
   const brailDir = path.join(
-    process.cwd(),
+    rootDir,
     opts.paths?.brailDir ?? DEFAULT_BRAIL_DIR
   );
 
@@ -21,11 +24,8 @@ export const optionsToConfig = (
   if (typeof opts.emitTemplates === "string") {
     templatesFile = path.resolve(opts.emitTemplates);
   } else {
-    templatesFile = path.join(brailDir, `templates.brail.${lang}`);
+    templatesFile = path.join(brailDir, `templates.generated.${lang}`);
   }
-
-  let rootDir = hasSrc() ? "src" : ".";
-  rootDir = path.join(process.cwd(), rootDir);
 
   return {
     paths: { brailDir, templatesFile, rootDir },

@@ -6,7 +6,7 @@ export const b = Brail.init();
 
 export const BASE_URL =
   (process.env.VERCEL_URL as AbsoluteUrl) ??
-  "https://bcac-115-188-87-130.au.ngrok.io";
+  "http://localhost:3000";
 
 export const template = b.template
   .meta(z.object({ to: z.string().email(), subject: z.string() }))

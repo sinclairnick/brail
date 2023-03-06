@@ -1,7 +1,7 @@
 /** @type {import("brail").BrailOptions} */
 const brailConfig = {
   templateExtensions: ["template.tsx"],
-	emitTemplates: "brail/templates.ts"
+  emitTemplates: true,
 };
 
 const withBrail = require("brail/next")(brailConfig);

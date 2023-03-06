@@ -46,14 +46,6 @@ export const withBrail: WithBrailFn =
         plugins.push(new BrailEmitTemplatesPlugin(brailConfig));
       }
 
-      wpConfig.resolve = {
-        ...wpConfig.resolve,
-        alias: {
-          ...wpConfig.resolve?.alias,
-          fs: "brail/dist/compiled/",
-        },
-      };
-
       return {
         ...wpConfig,
         module: { ...wpConfig.module, rules },

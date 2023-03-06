@@ -2,6 +2,7 @@ import { WebpackPluginFunction } from "webpack";
 import { BrailConfig } from "../types";
 import { getTemplatePages, pageListToStr } from "../util";
 import fs from "node:fs";
+import path from "node:path";
 
 const PLUGIN_NAME = "BrailEmitTemplatesPlugin";
 
@@ -39,14 +40,15 @@ export class BrailEmitTemplatesPlugin {
 }
 
 const writeTemplateFile = (config: BrailConfig, outPath: string) => {
-  const pagesDir = config.paths.rootDir + "/pages";
+  const pagesDir = path.join(config.paths.rootDir, "pages");
+  const templatesDir = path.dirname(outPath);
 
   const pages = getTemplatePages(pagesDir, config);
-  const templateMap = pageListToStr(config.paths.brailDir, pages);
+  const templateMap = pageListToStr(templatesDir, pages);
   const fileStr = templateMap.fileString();
 
   try {
-    fs.mkdirSync(config.paths.brailDir, { recursive: true });
+    fs.mkdirSync(templatesDir, { recursive: true });
   } catch (e: any) {
     if (e.code === "EEXIST") return;
     throw e;

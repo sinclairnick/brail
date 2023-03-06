@@ -31,9 +31,7 @@ export type RowProps = Expand<
      * @default true
      */
     stack?: boolean;
-  } & Partial<
-    PaddingProps & BackgroundColorProps & BorderProps & BackgroundImageProps
-  > &
+  } & Partial<PaddingProps & BackgroundColorProps & BorderProps> &
     TypographyProviderProps
 >;
 

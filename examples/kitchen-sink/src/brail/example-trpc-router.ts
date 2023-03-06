@@ -1,6 +1,6 @@
 import { initTRPC } from "@trpc/server";
 import { createTrpcRouter } from "brail/trpc";
-import { templates } from "./templates";
+import { templates } from "../.brail/templates.generated";
 
 const t = initTRPC.create({
   isDev: true,
