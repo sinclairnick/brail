@@ -1,1 +1,26 @@
 # HTML Email Primer
+
+Email HTML looks very different to the clean HTML and CSS we might use for the web. Unlike web browsers, which largely adhere to modern HTML and CSS specifications, email clients are a wild west, with haphazard HTML and CSS support. Even worse, we must cater our email markup to the lowest common denominator (Microsoft Outlook), which means we can't rely on modern features that more progressive email clients support.
+
+Since email clients differ so much, pixel perfect consistency across clients is virtually impossible. Instead, HTML emails should aim to be consistently _good_ across clients, even if they don't look exactly the same. We can use techniques like progressive enhancement, which enhance non-essential styling or layout for clients that support it, while still providing a good experience for clients that don't.
+
+## Layout
+
+
+The layout of a website or email is more important than it's styling. In the web world, CSS properties like `display: flex` are commonplace and the backbone of layouts. In email, we don't have access to this luxury, and clients like Outlook force our hand to use tables, at least to some degree. For this reason, HTML email templates will have `<table>` and `<td>` tags littered all over the place. Further, you might stumble across a few `<!--[if mso]>` tags, which are used to target specific versions of Outlook. We must, therefore, view HTML emails as fundamentally tables, not "boxes" as we do in the web world. 
+
+On the bright side, we can use some tricks to add "box-like" functionality like responsiveness to our emails. _Hybrid_ and _responsive_ layouts are good approaches for making more complex layouts that work across clients. The Brail React components make it trivial to achieve this behaviour.
+
+> "Layout" here is defined as the positioning of elements on the page, not the styling of those elements. This might include width, height, padding, margin, etc.
+
+## Styling
+
+While a wonky layout trumps poor styling, getting beautiful emails requires using CSS effectively. Once we've achieved a nice, consistent layout, we can use _progressive enhancements_ to create rich styles for our emails, which will be honoured to varying degrees by different clients. The idea is to make the email look as good as possible for the client, while still providing a good experience for clients that don't support the enhancements. The most important such enhancement are [media queries](https://www.caniemail.com/features/css-at-media/). Media queries provide us with a way to create responsive email templates, but only for the clients that support them. A more specific example could be [`box-shadow`](https://www.caniemail.com/features/css-at-media/)s. Shadows aren't essential for the template, but may improve its aesthetic for clients that support them.
+
+In short, we should use CSS to make our emails look as good as possible, but not at the expense of a good experience for clients that don't support the enhancements.
+
+## Summary
+
+HTML emails use a table-like mental model instead of a flex-model we might be used to. Ensuring our layout is approximately the same across clients is critical. Once a consistent layout has been achieved, we can use CSS features with mixed support to jazz up our templates in non-essential ways, to the degree different email clients allow it.
+
+Brail has the above (among many other) considerations baked right into it so you don't have to worry about the details. However, this brief peek beneath the hood will help to prevent various footguns and pitfalls you may encounter.
