@@ -16,7 +16,6 @@ export const EmailBody = (props: EmailBodyProps) => {
       style={{
         margin: 0,
         padding: "0 !important",
-        background: "#f3f3f5",
         // @ts-expect-error
         msoLineHeightRule: "exactly",
       }}
