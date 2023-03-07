@@ -60,7 +60,7 @@ export const Button = (props: ButtonProps) => {
         <tr>
           <td style={{ ...marginAsPadding.styles }}>
             <a
-              href="https://example.com/"
+              href={url}
               {...attrs}
               style={{
                 ...style,
