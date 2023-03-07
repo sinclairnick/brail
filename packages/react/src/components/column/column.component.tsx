@@ -1,4 +1,3 @@
-import { Style } from "..";
 import {
   getPctWidthStyles,
   getPxValue,
@@ -12,6 +11,7 @@ import {
 } from "../../styles";
 import { ParentDimensionProvider } from "../../util/parent-provider";
 import { useEmailContext } from "../email/email.constants";
+import { Style } from "../head";
 import { MsoConditional } from "../outlook/mso-conditional/mso-conditional.component";
 import { useRowContext } from "../row/row.constants";
 import { Table } from "../table/table.component";
