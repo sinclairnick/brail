@@ -8,6 +8,7 @@ import {
 import { Colors } from "../constants";
 import { Html } from "@brail/react";
 import Head from "next/head";
+import { createTemplate } from "@brail/react";
 
 type DivProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -18,10 +19,24 @@ export type DemoProps = PropsWithChildren<DivProps>;
 
 export const Demo = (props: DemoProps) => {
   const [hasMounted, setHasMounted] = useState(false);
+  const [html, setHtml] = useState<string | undefined>();
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
+
+  const childrenAsTemplate = createTemplate({
+    view: () => <>{props.children}</>,
+		previewProps: {}
+  });
+
+  useEffect(() => {
+    if (!html) {
+      childrenAsTemplate.render({}).then((html) => {
+        setHtml(html);
+      });
+    }
+  }, [html, childrenAsTemplate]);
 
   return (
     <>
@@ -29,8 +44,8 @@ export const Demo = (props: DemoProps) => {
         <div
           className="demo"
           style={{
+						boxSizing: "border-box",
             width: "100%",
-            height: "auto",
             backgroundColor: Colors.grey100,
             marginTop: 16,
             marginBottom: 16,
@@ -39,8 +54,7 @@ export const Demo = (props: DemoProps) => {
             ...props.style,
           }}
         >
-          <Html.EmailHead components={{ Head }} />
-          {props.children}
+          {<iframe scrolling="no" srcDoc={html} width="100%" height={props.style?.height} />}
         </div>
       )}
     </>

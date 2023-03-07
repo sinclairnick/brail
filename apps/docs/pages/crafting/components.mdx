@@ -33,19 +33,19 @@ These core components do the most heavy lifting and are concerned with producing
 
 The `<Email/>` element is the root of your template. It contains everything else and allows setting some global options like a `baseUrl` for relative URLs.
 
-<Demo>
+{<Demo>
   <Email backgroundColor={Colors.grey100}>
     <Container py={32} px={16}>
       <Row>
-        <Column>
-          <Typography textAlign="center" fontWeight="bold" color="black">
+        <Column align="center">
+          <Typography fontWeight="bold" color="black" fontFamily="Arial">
             This is an empty email
           </Typography>
         </Column>
       </Row>
     </Container>
   </Email>
-</Demo>
+</Demo>}
 
 ### `<Container/>`
 
@@ -53,26 +53,26 @@ The `<Email/>` element is the root of your template. It contains everything else
 
 Any content, like text and images, must live in a `<Column>`, and any `<Column>`s must live in a `<Row>`.
 
-<Demo>
-  <Email backgroundColor={Colors.grey100}>
+{<Demo>
+  <Email backgroundColor={Colors.grey100} fontFamily="Arial">
     <Container py={32} px={16} backgroundColor="white" my={16}>
       <Row>
-        <Column>
-          <Typography textAlign="center" fontWeight="bold" color="black">
+        <Column align="center">
+          <Typography fontWeight="bold" color="black">
             This is an empty container
           </Typography>
         </Column>
       </Row>
     </Container>
   </Email>
-</Demo>
+</Demo>}
 
 ### `<Row>`
 
 The `<Row>` component is a horizontal container for `<Column>`s. Any `<Column>`s must live in a `<Row>`.
 
-<Demo>
-  <Email backgroundColor={Colors.grey100}>
+{<Demo>
+  <Email backgroundColor={Colors.grey100} fontFamily="Arial">
     <Container py={16} px={16} backgroundColor="white" my={16}>
       <Row backgroundColor={Colors.grey100} py={16}>
         <Column>
@@ -83,14 +83,15 @@ The `<Row>` component is a horizontal container for `<Column>`s. Any `<Column>`s
       </Row>
     </Container>
   </Email>
-</Demo>
+</Demo>}
+
 
 ### `<Column>`
 
 The `<Column>` component is a vertical container for content. Any content, like text and images, must live in a `<Column>`.
 
-<Demo>
-  <Email backgroundColor={Colors.grey100}>
+{<Demo style={{ height: 200 }}>
+  <Email backgroundColor={Colors.grey100} fontFamily="Arial">
     <Container py={16} px={16} backgroundColor="white" my={16}>
       <Row>
         {[1,2,3].map((i) => <Column key={i} backgroundColor={Colors.grey100} py={16}>
@@ -101,7 +102,7 @@ The `<Column>` component is a vertical container for content. Any content, like 
       </Row>
     </Container>
   </Email>
-</Demo>
+</Demo>}
 
 > 🎉 `<Row>`s **can** be nested in other `<Column>`s to create nested layouts.
 
@@ -138,7 +139,7 @@ The `<Column>` component is a vertical container for content. Any content, like 
 
 The `<Typography>` component is used for adding text content. This component is more robust than regular HTML text elements like `<p>` or `<h1>`, `<h2>`... tags, but you are also free to use those.
 
-<ContentDemo>
+{<ContentDemo style={{ height: 200 }}>
   {[
     ["h1", 32],
     ["h2", 28],
@@ -148,35 +149,36 @@ The `<Typography>` component is used for adding text content. This component is 
     ["h6", 16],
     ["p", 14],
   ].map(([variant, size], i) => (
-    <Typography as={variant} fontSize={size} key={variant} color="black">
+    <Typography as={variant} fontSize={size} key={variant} color="black" fontFamily="Arial">
       {variant} (size: {size})
     </Typography>
   ))}
-</ContentDemo>
+</ContentDemo>}
 
 ### `<Image>`
 
 The `<Image>` component is used for adding images to your email. It's a wrapper around the `<img>` tag, but performs additional validation of the `src` prop and produces more reliable HTML.
 
-<ContentDemo>
+{<ContentDemo>
   <Image src={`${BASE_URL}/logo.png`} width={200} />
-</ContentDemo>
+</ContentDemo>}
 
 ### `<Link>`
 
 Like `<Image>`, `<Link>` validates any URLs it's passed, ensuring more reliable templates.
 
-<ContentDemo>
+{<ContentDemo>
   <Link href="https://brail.dev">
     <Typography
       color={Colors.brail}
       fontWeight="bold"
       textDecoration="underline"
+			fontFamily="Arial"
     >
       This is a link with text in it.
     </Typography>
   </Link>
-</ContentDemo>
+</ContentDemo>}
 
 ### What about vanilla HTML?
 
