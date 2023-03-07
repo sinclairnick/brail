@@ -1,1 +1,42 @@
 # Theming
+
+Because CSS and HTML properties are finnicky in the email world, existing theming solutions won't produce optimised HTML and CSS markup. As such, Brail provides its own [stitches](https://stitches.dev/)-like theming solution.
+
+## Create a theme
+
+We can create a theme by providing theme tokens for the following  categories:
+- `font`
+- `palette`
+- `spacing`
+- `shadow`
+
+
+```tsx
+const myTheme = b.theme
+  .font({ arial: "Arial, sans-serif" })
+  .palette({ primary: "#000", secondary: "#fff" })
+  .spacing({
+    1: 4,
+    2: 8,
+    4: 16,
+  })
+	.create()
+
+// Alternatively, use `import { createTheme } from "@brail/react"`
+// for functional-style
+```
+
+We can now decorate our components, making these tokens available to use as props, and set default values per component:
+
+```tsx
+import { Button } from "@brail/react"
+
+export const MyButton = styled(Button, {
+	// Props valid for button here
+	color: "$primary", // -> #000
+	p: "$2", // -> 8
+})
+
+// Theme tokens are now available on the component
+<MyButton color="$secondary" >
+```
