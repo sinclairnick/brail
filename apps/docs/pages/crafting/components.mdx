@@ -180,6 +180,24 @@ Like `<Image>`, `<Link>` validates any URLs it's passed, ensuring more reliable 
   </Link>
 </ContentDemo>}
 
+### `<Button>`
+
+The `<Button>` component is similar to 
+
+{<ContentDemo>
+	<Button 
+		href="https://brail.dev" 
+		variant="primary" 
+		fontFamily="Arial" 
+		px={32} 
+		py={8} 
+		backgroundColor={Colors.brail}
+		color="white"
+		borderRadius={4}>
+		This is a primary button
+	</Button>
+</ContentDemo>}
+
 ### What about vanilla HTML?
 
 Brail reserves the right for developers to go "off-piste" and use whatever other components they want, including regular HTML elements. However, in doing so, the guard-rails are dropped and ensuring your email renders correctly is up to you.
