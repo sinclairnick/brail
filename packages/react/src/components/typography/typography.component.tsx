@@ -4,19 +4,14 @@ import {
   normalizeFont,
   normalizeColor,
 } from "../../styles";
-import { MsoConditional } from "../outlook/mso-conditional/mso-conditional.component";
 import { useTypographyContext } from "./typography.constants";
 import { TypographyProps } from "./typography.types";
-import {
-  attrObjectToInline,
-  styleObjectToInline,
-} from "../../styles/style-prop";
 import { OutlookContainer } from "../outlook/outlook-container/outlook-container.component";
 
 export const Typography = (props: TypographyProps) => {
-  const { inline = false, variant, children } = props;
+  const { inline = false, as: _as, children } = props;
   const typoCtx = useTypographyContext();
-  const Tag = variant ?? "p";
+  const Tag = _as ?? "p";
   const margin = normalizeMarginStyle(props);
   const padding = normalizePaddingStyle(props);
 

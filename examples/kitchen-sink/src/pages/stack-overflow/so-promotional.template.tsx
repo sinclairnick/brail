@@ -73,7 +73,7 @@ export default template
                 lineHeight={21}
                 mb={5}
                 color="#0c0d0e"
-                variant="h3"
+                as="h3"
               >
                 Are your preferences up to date?
               </Typography>
@@ -90,10 +90,10 @@ export default template
         <Container p={20} backgroundColor="#ffffff">
           <Row borderTop="1px solid #e0e0e0" py={30} color="#3c3f44">
             <Column>
-              <Typography variant="h2" fontSize={21} mb={15} color="#0c0d0e">
+              <Typography as="h2" fontSize={21} mb={15} color="#0c0d0e">
                 Mix and match patterns to build complex emails
               </Typography>
-              <Typography variant="p">
+              <Typography as="p">
                 Think of this template as a canvas for mixing and matching email
                 components. Use components and patterns as building blocks as
                 you design and build new emails.

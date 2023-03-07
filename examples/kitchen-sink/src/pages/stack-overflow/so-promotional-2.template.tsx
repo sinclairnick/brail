@@ -51,7 +51,7 @@ export default template
               <Typography fontSize={17} color="white">
                 The excerpt or slogan of the email announcement can go here.
               </Typography>
-              <Button mt="$5" href="#">
+              <Button mt="$5" href="/">
                 Medium white button
               </Button>
             </Column>
@@ -62,8 +62,8 @@ export default template
         </Container>
 
         <Container backgroundColor="#ffffff" p={20}>
-          <Row color="#3c3f44">
-            <Column width={128} mr={20}>
+          <Row color="#3c3f44" stack={false}>
+            <Column width={128} pr={10}>
               <Image src="/so-image2.png" width={128} height={128} />
             </Column>
             <Column>
@@ -73,7 +73,7 @@ export default template
                 lineHeight={21}
                 mb={5}
                 color="#0c0d0e"
-                variant="h3"
+                as="h3"
               >
                 Are your preferences up to date?
               </Typography>
@@ -90,10 +90,10 @@ export default template
         <Container p={20} backgroundColor="#ffffff">
           <Row borderTop="1px solid #e0e0e0" py={30} color="#3c3f44">
             <Column>
-              <Typography variant="h2" fontSize={21} mb={15} color="#0c0d0e">
+              <Typography as="h2" fontSize={21} mb={15} color="#0c0d0e">
                 Mix and match patterns to build complex emails
               </Typography>
-              <Typography variant="p">
+              <Typography as="p">
                 Think of this template as a canvas for mixing and matching email
                 components. Use components and patterns as building blocks as
                 you design and build new emails.
@@ -102,7 +102,7 @@ export default template
           </Row>
         </Container>
 
-        <Container backgroundImage="/so-blue-bg.png">
+        <Container backgroundImage="/so-blue-bg.png" backgroundColor="#117FF1">
           <Row p={30}>
             <Column>
               <Typography textAlign="center" fontSize={17} color="#ffffff">
