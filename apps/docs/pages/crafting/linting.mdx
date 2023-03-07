@@ -1,1 +1,41 @@
-# Brail ESLint Plugin
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Linting
+
+Given email correctness lies on a spectrum, Brail offers an eslint plugin to ascertain just how much email client support your code might have.
+As well as arbitrary linting rules, the plugin uses up-to-date data on email client support, sourced from [caniemail.com](https://caniemail.com/).
+
+> Full credit for the data and other email wisdom: [HTeuMeuLeu](https://github.com/hteumeuleu).
+
+To install the plugin: 
+
+<Tabs items={["pnpm", "npm", "yarn"]}>
+<Tab>
+```bash
+pnpm add -D @brail/eslint-plugin
+```
+</Tab>
+
+<Tab>
+```bash
+npm i -D @brail/eslint-plugin
+```
+</Tab>
+
+<Tab>
+```bash
+yarn add -D @brail/eslint-plugin
+```
+</Tab>
+</Tabs>
+
+Add the following to your eslint configuration:
+
+```js
+{
+  // ...
+  plugins: ["@brail"],
+  extends: ["plugin:@brail/recommended"],
+  // ...
+}
+```
