@@ -11,6 +11,7 @@ import {
   getPxValue,
 } from "../../styles";
 import { useEmailContext } from "../email/email.constants";
+import { Style } from "../head";
 import { MsoConditional } from "../outlook/mso-conditional/mso-conditional.component";
 import { useTypographyContext } from "../typography/typography.constants";
 import { ButtonProps } from "./button.types";
@@ -55,55 +56,63 @@ export const Button = (props: ButtonProps) => {
 
   // Inspired by: https://www.goodemailcode.com/email-code/link-button
   return (
-    <table cellPadding={0} cellSpacing={0} border={0}>
-      <tbody>
-        <tr>
-          <td style={{ ...marginAsPadding.styles }}>
-            <a
-              href={url}
-              {...attrs}
-              style={{
-                ...style,
-                display: "inline-block",
-                textDecoration: "none",
-                // @ts-expect-error
-                "mso-padding-alt": 0,
-              }}
-            >
-              <MsoConditional
-                startMso={[
-                  `<i`,
-                  `style="letter-spacing: ${
-                    padding.styles.paddingLeft
-                  };mso-font-width:-100%;mso-text-raise:${
-                    (getPxValue(padding.styles.paddingBottom) ?? 0) +
-                    (getPxValue(padding.styles.paddingTop) ?? 0)
-                  }px"`,
-                  `hidden>`,
-                  `&nbsp;`,
-                  `</i>`,
-                ].join(" ")}
-                endMso={[
-                  `<i`,
-                  `style="letter-spacing: ${padding.styles.paddingRight};mso-font-width:-100%"`,
-                  `hidden>`,
-                  `&nbsp;`,
-                  `</i>`,
-                ].join(" ")}
+    <>
+		<Style>{`
+			a:visited {
+				color: unset;
+				text-decoration: none;
+			}
+		`}</Style>
+      <table cellPadding={0} cellSpacing={0} border={0}>
+        <tbody>
+          <tr>
+            <td style={{ ...marginAsPadding.styles }}>
+              <a
+                href={url}
+                {...attrs}
+                style={{
+                  ...style,
+                  display: "inline-block",
+                  textDecoration: "none",
+                  // @ts-expect-error
+                  "mso-padding-alt": 0,
+                }}
               >
-                <span
-                  style={{
-                    // @ts-expect-error
-                    "mso-text-raise": padding.styles.paddingBottom,
-                  }}
+                <MsoConditional
+                  startMso={[
+                    `<i`,
+                    `style="letter-spacing: ${
+                      padding.styles.paddingLeft
+                    };mso-font-width:-100%;mso-text-raise:${
+                      (getPxValue(padding.styles.paddingBottom) ?? 0) +
+                      (getPxValue(padding.styles.paddingTop) ?? 0)
+                    }px"`,
+                    `hidden>`,
+                    `&nbsp;`,
+                    `</i>`,
+                  ].join(" ")}
+                  endMso={[
+                    `<i`,
+                    `style="letter-spacing: ${padding.styles.paddingRight};mso-font-width:-100%"`,
+                    `hidden>`,
+                    `&nbsp;`,
+                    `</i>`,
+                  ].join(" ")}
                 >
-                  {props.children}
-                </span>
-              </MsoConditional>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+                  <span
+                    style={{
+                      // @ts-expect-error
+                      "mso-text-raise": padding.styles.paddingBottom,
+                    }}
+                  >
+                    {props.children}
+                  </span>
+                </MsoConditional>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </>
   );
 };
