@@ -15,10 +15,7 @@ export const optionsToConfig = (
   let rootDir = hasSrc() ? "src" : ".";
   rootDir = path.join(process.cwd(), rootDir);
 
-  const brailDir = path.join(
-    rootDir,
-    opts.paths?.brailDir ?? DEFAULT_BRAIL_DIR
-  );
+  const brailDir = path.join(rootDir, opts.brailDir ?? DEFAULT_BRAIL_DIR);
 
   let templatesFile = "";
   if (typeof opts.emitTemplates === "string") {
