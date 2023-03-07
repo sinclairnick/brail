@@ -1,1 +1,37 @@
 # Brail Devtools
+
+> 🚨 The below applies only to next.js applications. **Devtools support will be expanded in the future.**
+
+The Brail 'devtools' make working with your templates easier, but are not strictly necessary.
+
+The devtools consists of a frontend and backend component. Both require access to your templates, so we first initialise the devtools, which returns both pieces.
+
+```tsx
+//---| devtools.ts |---
+import { initNextDevtools } from "brail/devtools";
+
+const templates = {
+  /* Your templates */
+};
+
+export const {
+  DevtoolsLayout, // For frontend
+  devtoolsHandler, // For backend
+} = initNextDevtools({
+  templates,
+});
+
+//---| api/devtools/[trpc].ts |---
+export default devtoolsHandler();
+
+//---| _app.tsx |---
+export default (props: AppProps) => {
+  const { Component, pageProps } = props;
+  return (
+    <DevtoolsLayout>
+      {/* Wrap devtools around app. This will not affect generated template HTML */}
+      <Component {...pageProps} />
+    </DevtoolsLayout>
+  );
+};
+```
