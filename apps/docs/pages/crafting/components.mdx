@@ -1,0 +1,194 @@
+import {
+  Email,
+  Container,
+  Row,
+  Column,
+  Button,
+  Typography,
+  Link,
+  Image,
+} from "@brail/react";
+import { Demo } from "@components/demo";
+import { ContentDemo } from "@components/content-demo";
+import { Colors, BASE_URL } from "@constants/index";
+
+# React Components
+
+Brail provides several key components for producing reliable, responsive email templates. These components are unstyled and built to be extended with your own styles.
+
+Below is merely an overview of what components are available. For a more detailed description of each component, please the component's TSDoc definitions, in code.
+
+> 🔔 The below examples have had minimal styles added for emphasis.
+
+## Core Components
+
+While Brail strives to hide the complexity of email HTML, there's no avoiding the use of a table-like layout. Brail implements this through the `<Container>`, `<Row>`, and `<Column>` components.
+
+These core components do the most heavy lifting and are concerned with producing reliable layouts. As such they are indispensable for crafting emails.
+
+<center>![Brail layout](/brail-layout.png)</center>
+
+### `<Email/>`
+
+The `<Email/>` element is the root of your template. It contains everything else and allows setting some global options like a `baseUrl` for relative URLs.
+
+<Demo>
+  <Email backgroundColor={Colors.grey100}>
+    <Container py={32} px={16}>
+      <Row>
+        <Column>
+          <Typography textAlign="center" fontWeight="bold">
+            This is an empty email
+          </Typography>
+        </Column>
+      </Row>
+    </Container>
+  </Email>
+</Demo>
+
+### `<Container/>`
+
+`<Container>`s aren't strictly necessary, but they center your content and provide a typical email "content" container, so are recommended.
+
+Any content, like text and images, must live in a `<Column>`, and any `<Column>`s must live in a `<Row>`.
+
+<Demo>
+  <Email backgroundColor={Colors.grey100}>
+    <Container py={32} px={16} backgroundColor="white" my={16}>
+      <Row>
+        <Column>
+          <Typography textAlign="center" fontWeight="bold">
+            This is an empty container
+          </Typography>
+        </Column>
+      </Row>
+    </Container>
+  </Email>
+</Demo>
+
+### `<Row>`
+
+The `<Row>` component is a horizontal container for `<Column>`s. Any `<Column>`s must live in a `<Row>`.
+
+<Demo>
+  <Email backgroundColor={Colors.grey100}>
+    <Container py={16} px={16} backgroundColor="white" my={16}>
+      <Row backgroundColor={Colors.grey100} py={16}>
+        <Column>
+          <Typography textAlign="center" fontWeight="bold">
+            This is an empty row
+          </Typography>
+        </Column>
+      </Row>
+    </Container>
+  </Email>
+</Demo>
+
+### `<Column>`
+
+The `<Column>` component is a vertical container for content. Any content, like text and images, must live in a `<Column>`.
+
+<Demo>
+  <Email backgroundColor={Colors.grey100}>
+    <Container py={16} px={16} backgroundColor="white" my={16}>
+      <Row>
+        <Column backgroundColor={Colors.grey100} py={16}>
+          <Typography textAlign="center" fontWeight="bold">
+            This is an empty column
+          </Typography>
+        </Column>
+        <Column backgroundColor={Colors.grey100} py={16}>
+          <Typography textAlign="center" fontWeight="bold">
+            This is an empty column
+          </Typography>
+        </Column>
+        <Column backgroundColor={Colors.grey100} py={16}>
+          <Typography textAlign="center" fontWeight="bold">
+            This is an empty column
+          </Typography>
+        </Column>
+      </Row>
+    </Container>
+  </Email>
+</Demo>
+
+> 🎉 `<Row>`s **can** be nested in other `<Column>`s to create nested layouts.
+
+#### Example layout
+
+```tsx
+<Email>
+  {/* Container 1 */}
+  <Container backgroundColor="grey">
+    <Row>
+      <Column>{/* Content */}</Column>
+    </Row>
+  </Container>
+
+  {/* Container 2 */}
+  <Container backgroundColor="blue">
+    <Row>
+      <Column>
+        <Row>
+          {" "}
+          {/* Nested <Row> */}
+          <Column>{/* Nested content */}</Column>
+          <Column>{/* Nested content */}</Column>
+        </Row>
+      </Column>
+    </Row>
+  </Container>
+</Email>
+```
+
+## Content Components
+
+### `<Typography>`
+
+The `<Typography>` component is used for adding text content. This component is more robust than regular HTML text elements like `<p>` or `<h1>`, `<h2>`... tags, but you are also free to use those.
+
+<ContentDemo>
+  {[
+    ["h1", 32],
+    ["h2", 28],
+    ["h3", 24],
+    ["h4", 20],
+    ["h5", 18],
+    ["h6", 16],
+    ["p", 14],
+  ].map(([variant, size], i) => (
+    <Typography as={variant} fontSize={size} key={variant}>
+      {variant} (size: {size})
+    </Typography>
+  ))}
+</ContentDemo>
+
+### `<Image>`
+
+The `<Image>` component is used for adding images to your email. It's a wrapper around the `<img>` tag, but performs additional validation of the `src` prop and produces more reliable HTML.
+
+<ContentDemo>
+  <Image src={`${BASE_URL}/logo.png`} width={200} />
+</ContentDemo>
+
+### `<Link>`
+
+Like `<Image>`, `<Link>` validates any URLs it's passed, ensuring more reliable templates.
+
+<ContentDemo>
+  <Link href="https://brail.dev">
+    <Typography
+      color={Colors.brail}
+      fontWeight="bold"
+      textDecoration="underline"
+    >
+      This is a link with text in it.
+    </Typography>
+  </Link>
+</ContentDemo>
+
+### What about vanilla HTML?
+
+Brail reserves the right for developers to go "off-piste" and use whatever other components they want, including regular HTML elements. However, in doing so, the guard-rails are dropped and ensuring your email renders correctly is up to you.
+
+With that said, Brail provides a [linter](/crafting/linting) which provides warnings about email support for various elements, CSS properties and other features. And as per usual, you can always test and preview your templates to be sure.

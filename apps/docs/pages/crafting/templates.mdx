@@ -1,0 +1,76 @@
+# Creating Email Templates
+
+`@brail/react` provides a suite of components and utilites for creating email templates. In many ways, it's the heart of Brail and has been painstakingly developed to provide a pleasant developer experience, while producing correct HTML markup.
+
+Looking for component info? Skip to the [**components section**](/crafting/components).
+
+## Creating an email template
+
+Templates are the atom of Brail's universe, where the template view, data schema, sending logic and email metadata are all colocated. Those familiar with [tRPC](https://trpc.io) will feel at home using the template creation API.
+
+
+```tsx
+import Brail from "@brail/react"
+
+const b = Brail.init()
+
+// Example: A basic brail template with meta and props schemas defined.
+export default b.template
+	.meta(/** (Optional) Define metadata schema e.g { to: string, subject: string} */)
+	.props(/** (Optional) Define props schema */)
+	.preview(/** Define data for template preview */)
+	.view(props => {
+		return <Email>{/* Your email template view */}</Email>
+	})
+```
+Brail now has everything it needs to preview, validate, generate and send templates – whether via API, SDK or any other methods you might dream up.
+
+> 🔔 If you prefer a more functional approach, you can use `createTemplate` instead of `b.template` to create a template. 👇
+
+```tsx
+import { createTemplate } from "@brail/react"
+
+// Creating a template using functional style
+export default createTemplate({
+	metaSchema: {/* Meta schema */},
+	view: {/* Temlate view*/},
+	// ...etc.
+})
+```
+
+### Defining schema
+
+Brail supports defining schemas for both the template's props and metadata. This is useful for ensuring that the template is used correctly and that the correct data is passed to the template, both via type-safety and runtime validation when used in APIs.
+
+
+```tsx
+// $: npm install zod
+import z from "zod"
+
+// Props are data sent to your component
+const propSchema = z.object({ title: z.string().optional() }) // { title?: string }
+
+// Meta is sent to e.g. a sender function
+const metaSchema = z.object({ to: z.string(), subject: z.string(), }) // { to: string, subject: string }
+
+// Register schema
+template
+	.props(propSchema)
+	.meta(metaSchema)
+	// ...
+```
+
+### Other template methods
+
+```tsx
+template
+	.preview({/* Data provided for previewing the template */})
+	.metaDefault(props => ({/* Specify any default metadata, like a subject*/}))
+	.onSend(async args => {
+		const { meta, html } = args
+		// Bind email sending logic to the template
+		await send(meta.to, html)
+	})
+
+```
+

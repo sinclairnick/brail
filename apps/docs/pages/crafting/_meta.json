@@ -1,6 +1,7 @@
 {
   "html-emails": "HTML Email Primer",
-  "react-components": "React Components",
+  "templates": "Email Templates",
+	"components": "Components",
   "theming": "Theming",
   "devtools": "Devtools",
   "linting": "Linting",

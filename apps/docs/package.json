@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@brail/react": "workspace:1.0.0-alpha.2",
     "next": "^13.1.1",
     "nextra": "^2.2.16",
     "nextra-theme-docs": "^2.2.16",

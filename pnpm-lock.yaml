@@ -19,6 +19,7 @@ importers:
     specifiers:
       '@babel/core': ^7.0.0
       '@brail/eslint-plugin': workspace:*
+      '@brail/react': workspace:1.0.0-alpha.2
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
@@ -30,6 +31,7 @@ importers:
       react-dom: 18.2.0
       tsconfig: workspace:*
     dependencies:
+      '@brail/react': link:../../packages/react
       next: 13.1.6_pjwopsidmaokadturxaafygjp4
       nextra: 2.2.16_3vryta7zmbcsw4rrqf4axjqggm
       nextra-theme-docs: 2.2.16_rx2c2lgi4kk2voowlhd7uitkla
