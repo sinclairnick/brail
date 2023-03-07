@@ -3,19 +3,19 @@ import { BASE_URL, theme } from "../../brail/react";
 
 export const stackOverflowTheme = theme
   .font({
-    $arial: "Arial",
+    arial: "Arial",
   })
   .palette({
-    $white: "#ffffff",
-    $grey50: "#FAFAFA",
-    $blue500: "#0077cc",
+    white: "#ffffff",
+    grey50: "#FAFAFA",
+    blue500: "#0077cc",
   })
   .spacing({
-    $1: 4,
-    $2: 8,
-    $3: 12,
-    $4: 16,
-    $5: 20,
+    1: 4,
+    2: 8,
+    3: 12,
+    4: 16,
+    5: 20,
   })
   .create();
 

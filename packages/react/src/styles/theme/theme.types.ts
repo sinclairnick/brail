@@ -7,34 +7,41 @@ import {
   ThemedColorProps,
   ThemedBorderProps,
   ThemedSpacingProps,
+  BackgroundColorProps,
+  ColorProps,
+  BorderProps,
+  SpacingProps,
+  FontProps,
+  ShadowProps,
 } from "../attr";
 
 type ErrorMessage<T extends string> = `Error: ${T}`;
 
-export type ThemeToken = `$${string}` & string;
+export type ThemeTokenIn = string | number;
+export type ThemeTokenRef<T extends ThemeTokenIn> = `$${T}` & string;
 
-export type AnyPalette = { [key in ThemeToken]: string };
-export type AnySpacing = { [key in ThemeToken]: number };
-export type AnyShadow = { [key in ThemeToken]: string };
-export type AnyUtils = { [key in ThemeToken]: (...args: any[]) => any };
-export type AnyProps = { [key in ThemeToken]: any };
-export type AnyFont = { [key in ThemeToken]: string };
+export type AnyPalette = { [key in ThemeTokenIn]: string };
+export type AnySpacing = { [key in ThemeTokenIn]: number };
+export type AnyShadow = { [key in ThemeTokenIn]: string };
+export type AnyProps = { [key in ThemeTokenIn]: any };
+export type AnyFont = { [key in ThemeTokenIn]: string };
+export type AnyUtils = { [key in ThemeTokenIn]: (...args: any[]) => any };
 export type AnyComponents = { [key: string]: string };
 
 export type ValidateThemeTokenMap<TMap> = {
-  [key in keyof TMap]: key extends ThemeToken
+  [key in keyof TMap]: key extends ThemeTokenIn
     ? TMap[key]
     : ErrorMessage<"Theme tokens must begin with the '$' symbol">;
 };
 
 export type PaletteKey<TPalette extends AnyPalette> =
-  keyof TPalette extends ThemeToken ? keyof TPalette : never;
+  keyof TPalette extends ThemeTokenIn ? ThemeTokenRef<keyof TPalette> : never;
 export type SpacingKey<TSpacing extends AnySpacing> =
-  keyof TSpacing extends ThemeToken ? keyof TSpacing : never;
+  keyof TSpacing extends ThemeTokenIn ? ThemeTokenRef<keyof TSpacing> : never;
 export type ShadowKey<TShadow extends AnyShadow> =
-  keyof TShadow extends ThemeToken ? keyof TShadow : never;
-export type FontKey<TFont extends AnyFont> = keyof TFont extends ThemeToken
-  ? keyof TFont
+  keyof TShadow extends ThemeTokenIn ? ThemeTokenRef<keyof TShadow> : never;
+export type FontKey<TFont extends AnyFont> = keyof TFont extends ThemeTokenIn
+  ? ThemeTokenRef<keyof TFont>
   : never;
 
 export type Theme<
@@ -44,11 +51,11 @@ export type Theme<
   TUtils extends AnyUtils,
   TFont extends AnyFont
 > = {
-  palette: TPalette;
-  spacing: TSpacing;
-  shadow: TShadow;
-  utils: TUtils;
-  font: TFont;
+  palette?: TPalette;
+  spacing?: TSpacing;
+  shadow?: TShadow;
+  utils?: TUtils;
+  font?: TFont;
 };
 
 export type AnyTheme = Theme<
@@ -61,16 +68,21 @@ export type AnyTheme = Theme<
 
 export type AnyStyleProps = StyleProps<AnyTheme>;
 
-export type PaletteRelatedProps<TPalette extends AnyPalette> =
-  ThemedBackgroundColorProps<TPalette> & ThemedColorProps<TPalette>;
+export type PaletteRelatedProps<TPalette extends AnyPalette | undefined> =
+  TPalette extends AnyPalette
+    ? ThemedBackgroundColorProps<TPalette> & ThemedColorProps<TPalette>
+    : BackgroundColorProps & ColorProps;
 
-export type SpacingRelatedProps<TSpacing extends AnySpacing> =
-  ThemedBorderProps<TSpacing> & ThemedSpacingProps<TSpacing, SpacingValue>;
+export type SpacingRelatedProps<TSpacing extends AnySpacing | undefined> =
+  TSpacing extends AnySpacing
+    ? ThemedBorderProps<TSpacing> & ThemedSpacingProps<TSpacing, SpacingValue>
+    : BorderProps & SpacingProps;
 
-export type FontRelatedProps<TFont extends AnyFont> = ThemedFontProps<TFont>;
+export type FontRelatedProps<TFont extends AnyFont | undefined> =
+  TFont extends AnyFont ? ThemedFontProps<TFont> : FontProps;
 
-export type ShadowRelatedProps<TShadow extends AnyShadow> =
-  ThemedShadowProps<TShadow>;
+export type ShadowRelatedProps<TShadow extends AnyShadow | undefined> =
+  TShadow extends AnyShadow ? ThemedShadowProps<TShadow> : ShadowProps;
 
 export type StyleProps<TTheme extends AnyTheme> = PaletteRelatedProps<
   TTheme["palette"]
@@ -79,9 +91,6 @@ export type StyleProps<TTheme extends AnyTheme> = PaletteRelatedProps<
   FontRelatedProps<TTheme["font"]> &
   ShadowRelatedProps<TTheme["shadow"]> &
   BackgroundImageProps;
-// TODO: Untokenize for this
-// &
-// Omit<EmailProps, "children">;
 
 export type ComponentStylingProps<
   TProps extends AnyProps,

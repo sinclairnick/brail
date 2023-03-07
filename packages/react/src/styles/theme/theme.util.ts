@@ -5,7 +5,7 @@ import {
   PaletteRelatedProps,
   ShadowRelatedProps,
   SpacingRelatedProps,
-  ThemeToken,
+  ThemeTokenIn as ThemeTokenRef,
 } from "..";
 
 const palettePropKeys: Array<keyof PaletteRelatedProps<any>> = [
@@ -55,23 +55,25 @@ const shadowPropKeys: Array<keyof ShadowRelatedProps<any>> = ["boxShadow"];
 
 export const substituteToken = (
   propertyKey: string,
-  token: string,
+  token: ThemeTokenRef,
   theme: AnyTheme
 ) => {
-  if (!isToken(token)) {
-    return token;
+	if (!isToken(token)) {
+		return token;
   }
+  const tokenSansDollar = token.toString().slice(1);
+
   if (palettePropKeys.some((x) => x === propertyKey)) {
-    return theme.palette?.[token];
+    return theme.palette?.[tokenSansDollar];
   }
   if (spacingPropKeys.some((x) => x === propertyKey)) {
-    return theme.spacing?.[token];
+    return theme.spacing?.[tokenSansDollar];
   }
   if (fontPropKeys.some((x) => x === propertyKey)) {
-    return theme.font?.[token];
+    return theme.font?.[tokenSansDollar];
   }
   if (shadowPropKeys.some((x) => x === propertyKey)) {
-    return theme.shadow?.[token];
+    return theme.shadow?.[tokenSansDollar];
   }
   throw new Error(
     `Unable to find value for token, { ${propertyKey}: ${token} }`
@@ -94,9 +96,7 @@ export const substitutePropsTokens = <
   return newProps as TProps;
 };
 
-export const isToken = <T extends any>(
-  value: T | ThemeToken
-): value is ThemeToken => {
+export const isToken = (value: unknown): value is ThemeTokenRef => {
   if (value?.toString().startsWith("$")) {
     return true;
   }
