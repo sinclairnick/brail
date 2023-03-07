@@ -1,0 +1,48 @@
+# Security 
+
+Exposing your email templates to the world, can be risky if not properly secured. If credentials or authentication are mismanaged, others may be able to view or even send emails on your behalf.
+
+This document covers several best practices to make your Brail projects secure.
+
+## Security Best Practices
+
+> The below best practices are *not* mutually exclusive. You can use any combination of them to achieve the level of security you need.
+
+### API Middleware
+
+If your Brail templates are exposed [via an API](/using/trpc), you can implement authentication via middleware provided by your the API framework you're using. We provide an example of this in the [tRPC section](/using/trpc#security). This can be useful to prevent all activity regarding your Brail templates.
+
+> If your templates are hosted on e.g. Vercel, they will still be visible, if only using this approach.
+
+### SDK Environment Variables
+
+If you are publishing your templates as an SDK, it's best to store any API keys or other sensitive credentials in environment variables. This way SDK users cannot send emails using your credentials.
+
+### User-provided API Keys (recommended)
+
+Instead of storing your credentials within the Brail project at all, a very secure approach is to require any API keys with every request. This way, your Brail project is kept "clean" of any sensitive information, and the requesting user must provide such information themselves. It also avoids 
+
+One way to achieve this is to add an `apiKey` property to your metadata object when sending a template. This can then be forwarded in your send function.
+
+```tsx
+const metaSchema = z.object({
+	// ... other properties
+	apiKey: z.string()
+})
+
+template
+	.meta(metaSchema)
+	.onSend(async args => {
+		await sendEmail(args.html, {
+			apiKey: args.meta.apiKey // <-- Use the provided API key
+			to: args.meta.to
+		})
+	})
+
+```
+
+### Devtools
+
+Devtools are intended to aid development, but can also be useful in production environments. However, they can also increase security risks if not used properly.
+
+### Frontend Authentication

@@ -1,0 +1,33 @@
+# Brail + Next.js
+
+Brail is intended to be framework agnostic, but has been developed with next.js in mind.
+
+The below configuration allows us to automatically generate a file with all of our templates.
+
+```tsx
+const withBrail = require("brail/next")({
+	// templateExtensions: string[] | undefined
+	// Narrow which files in the project should be considered templates
+	templateExtensions: ["template.tsx"]
+
+	// brailDir: string | undefined
+	// Specify where any brail files will be stored
+	brailDir: "some/dir",
+
+	// emitTemplates: string | boolean | undefined
+	// Whether/where to emit templates
+	emitTemplates: "some/dir/path.ts"
+});
+
+module.exports = withBrail({
+	/* Your next.js config */
+});
+```
+
+With the above config we could import our templates for use from the `some/dir/path.ts` file, which would have a generated export along the lines of:
+
+```tsx
+export const templates = {
+  /** Nested map of templates */
+};
+```

@@ -33,5 +33,5 @@ export default {
     text: <span>
       Apache {new Date().getFullYear()} © <a href="https://nextra.site" target="_blank">Brail</a>.
     </span>,
-  }
+  },
 };

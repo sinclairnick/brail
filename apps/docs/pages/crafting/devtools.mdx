@@ -7,7 +7,7 @@ The Brail 'devtools' make working with your templates easier, but are not strict
 The devtools consists of a frontend and backend component. Both require access to your templates, so we first initialise the devtools, which returns both pieces.
 
 ```tsx
-//---| devtools.ts |---
+//---| lib/devtools.ts |---
 import { initNextDevtools } from "brail/devtools";
 
 const templates = {
@@ -21,10 +21,10 @@ export const {
   templates,
 });
 
-//---| api/devtools/[trpc].ts |---
+//---| pages/api/devtools/[trpc].ts |---
 export default devtoolsHandler();
 
-//---| _app.tsx |---
+//---| pages/_app.tsx |---
 export default (props: AppProps) => {
   const { Component, pageProps } = props;
   return (
@@ -35,3 +35,15 @@ export default (props: AppProps) => {
   );
 };
 ```
+
+To ensure routing between templates works, we need to register the brail next.js config.
+
+```tsx
+const withBrail = require("brail/next")(/* options */);
+
+module.exports = withBrail({
+	/* Your next.js config */
+});
+```
+
+For more information, see the [**next.js integration docs**](/recipes/nextjs)

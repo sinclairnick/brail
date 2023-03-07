@@ -1,0 +1,58 @@
+# Creating a tRPC API
+
+Brail offers utilities to quickly turn your templates into a fully-fledged API.
+
+Brail has first-class support for [tRPC](https://trpc.io) because it provides a relatively generic way of defining APIs that can be easily adapted into different API types, like REST or RPC, and can run across many environments like server, serverless or edge runtimes.
+
+This also means API-concerns like authentication can be handled as per any other tRPC server.
+
+```tsx
+// Basic TRPC server example
+import { initTRPC } from "@trpc/server";
+import { createTrpcRouter } from "brail/trpc";
+
+const t = initTRPC()
+
+export const appRouter = createTrpcRouter({ t, templates, });
+```
+
+This `appRouter` can now be used across many environments (see [tRPC Adapter docs](https://trpc.io/docs/adapters)) and can be used as a REST API (see [tRPC OpenAPI](https://github.com/jlalmes/trpc-openapi)).
+
+### Security
+
+We can also use the regular tRPC measures to protect these routes.
+
+```tsx
+// ...
+const authedProdecure = t.procedure.use(isAuthedMiddleware);
+
+export const appRouter = createTrpcRouter({ 
+	t: { 
+		...t,
+		 procedure: authedProdecure // <-- Override `procedure` property
+	},
+	templates
+});
+```
+
+### Next Edge Runtime Example
+
+As an example, we can export our tRPC server from the same next.js project, via edge API routes.
+
+```tsx
+// ---| pages/api/trpc/[trpc].ts |---
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { NextRequest } from "next/server";
+
+export const config = { runtime: "edge" };
+
+export default async function handler(req: NextRequest) {
+  return fetchRequestHandler({
+    endpoint: "/api/trpc",
+    router: appRouter, // <-- Your appRouter here
+    req,
+    createContext: () => ({}),
+  });
+}
+```
+

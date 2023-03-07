@@ -27,6 +27,7 @@ export const Demo = (props: DemoProps) => {
     <>
       {hasMounted && (
         <div
+          className="demo"
           style={{
             width: "100%",
             height: "auto",

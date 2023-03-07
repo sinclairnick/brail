@@ -1,0 +1,55 @@
+
+# Calling Templates Directly
+
+The simplest way to use a template is to simply call it's `render` method, which generates the email HTML, given the provided props.
+
+```tsx
+const html = myTemplate.render(props)
+// Do something with HTML
+```
+
+If you've defined an `onSend` method, we can also send in a similarly simple fashion.
+
+```tsx
+await myTemplate.send({
+	meta: { to: "larry@google.com" }
+	data: props
+})
+```
+
+### Express Example
+
+To integrate these templates into an existing or custom API setup, we can just call them directly, as demonstrated below.
+
+```tsx
+// express-example.ts
+const app = express()
+
+app.get("/my-template", (req) =>{
+	return myTemplate.render(req.body)
+})
+
+app.post("/my-template", async (req) => {
+	await myTemplate.send(req.body)
+})
+```
+
+However, doing so for every template is tedious. Instead, we can use one of the utilities exported by Brail to expedite the process. See: [API](/using/api), [SDK](/using/sdk)
+
+### Creating Local SDKs
+
+If you wish to call the templates directly, including exposing them as a library, it's best to create a "local SDK".
+
+```tsx
+// ---| my-template-lib.ts |---
+import { createSdk } from "brail/sdk";
+
+// This can now be exported as a lib or used directly
+export const email = createSdk(templates);
+
+// ---| my-other-project.ts |---
+const html = email.myTemplate.render({/** Props */*/})
+```
+
+
+> 💡 `createSdk` is essentially an identity function that returns a more concise type definition, omitting noisy properties

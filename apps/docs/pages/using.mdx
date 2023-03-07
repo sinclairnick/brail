@@ -1,1 +1,21 @@
 # Using templates
+
+
+The docs in this folder often refer to `templates`. This might look something like the below – a nested record of templates.
+
+```tsx
+import welcomeTemplate from "./pages/account/welcome.template"
+import forgotPasswordTemplate from "./pages/account/forgot.template"
+
+// Example template map
+export const templates = {
+	account: {
+		welcome: welcomeTemplate,
+		forgot: forgotPasswordTemplate,
+	}
+}
+```
+
+> In nextjs, this step can be automated. See [nextjs integration](/recipes/nextjs)
+
+This template record can now be trivially turned into a [**tRPC**](/using/trpc) or [**REST API**](/using/rest), or even called via a [**local SDK**](/using/direct#creating-local-sdks).

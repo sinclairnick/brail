@@ -1,4 +1,5 @@
 {
-  "api": "Serving an API",
-  "sdk": "Generating an SDK"
+	"direct": "Calling Directly",
+	"trpc": "Creating a tRPC API",
+  "rest": "Creating a REST API"
 }

@@ -26,6 +26,7 @@ While Brail strives to hide the complexity of email HTML, there's no avoiding th
 
 These core components do the most heavy lifting and are concerned with producing reliable layouts. As such they are indispensable for crafting emails.
 
+<br/>
 <center>![Brail layout](/brail-layout.png)</center>
 
 ### `<Email/>`
@@ -37,7 +38,7 @@ The `<Email/>` element is the root of your template. It contains everything else
     <Container py={32} px={16}>
       <Row>
         <Column>
-          <Typography textAlign="center" fontWeight="bold">
+          <Typography textAlign="center" fontWeight="bold" color="black">
             This is an empty email
           </Typography>
         </Column>
@@ -57,7 +58,7 @@ Any content, like text and images, must live in a `<Column>`, and any `<Column>`
     <Container py={32} px={16} backgroundColor="white" my={16}>
       <Row>
         <Column>
-          <Typography textAlign="center" fontWeight="bold">
+          <Typography textAlign="center" fontWeight="bold" color="black">
             This is an empty container
           </Typography>
         </Column>
@@ -75,7 +76,7 @@ The `<Row>` component is a horizontal container for `<Column>`s. Any `<Column>`s
     <Container py={16} px={16} backgroundColor="white" my={16}>
       <Row backgroundColor={Colors.grey100} py={16}>
         <Column>
-          <Typography textAlign="center" fontWeight="bold">
+          <Typography textAlign="center" fontWeight="bold" color="black">
             This is an empty row
           </Typography>
         </Column>
@@ -92,21 +93,11 @@ The `<Column>` component is a vertical container for content. Any content, like 
   <Email backgroundColor={Colors.grey100}>
     <Container py={16} px={16} backgroundColor="white" my={16}>
       <Row>
-        <Column backgroundColor={Colors.grey100} py={16}>
-          <Typography textAlign="center" fontWeight="bold">
+        {[1,2,3].map((i) => <Column key={i} backgroundColor={Colors.grey100} py={16}>
+          <Typography textAlign="center" fontWeight="bold" color="black">
             This is an empty column
           </Typography>
-        </Column>
-        <Column backgroundColor={Colors.grey100} py={16}>
-          <Typography textAlign="center" fontWeight="bold">
-            This is an empty column
-          </Typography>
-        </Column>
-        <Column backgroundColor={Colors.grey100} py={16}>
-          <Typography textAlign="center" fontWeight="bold">
-            This is an empty column
-          </Typography>
-        </Column>
+        </Column>)}
       </Row>
     </Container>
   </Email>
@@ -157,7 +148,7 @@ The `<Typography>` component is used for adding text content. This component is 
     ["h6", 16],
     ["p", 14],
   ].map(([variant, size], i) => (
-    <Typography as={variant} fontSize={size} key={variant}>
+    <Typography as={variant} fontSize={size} key={variant} color="black">
       {variant} (size: {size})
     </Typography>
   ))}
