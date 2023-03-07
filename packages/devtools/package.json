@@ -27,7 +27,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsup-node",
-    "dev": "tsup-node --watch"
+    "dev": "tsup-node --watch",
+    "check": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
@@ -53,6 +54,7 @@
     "monaco-editor": "^0.36.1",
     "next": "^13.2.1",
     "react": "^18.2.0",
-    "tsconfig": "workspace:*"
+    "tsconfig": "workspace:*",
+    "typescript": "^4.9.5"
   }
 }

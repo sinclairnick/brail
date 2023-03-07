@@ -64,6 +64,7 @@ importers:
       react-dom: 18.2.0
       trpc-playground: ^1.0.4
       tsconfig: workspace:*
+      typescript: ^4.9.5
       zod: ^3.20.6
     dependencies:
       '@brail/react': link:../../packages/react
@@ -72,7 +73,7 @@ importers:
       next: 13.2.1_pjwopsidmaokadturxaafygjp4
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      trpc-playground: 1.0.4_564e5fizissjrqzqpxflhmrh3q
+      trpc-playground: 1.0.4_oqmiqzko6vvjaq756e4xbok2tu
       zod: 3.20.6
     devDependencies:
       '@babel/core': 7.20.12
@@ -84,6 +85,7 @@ importers:
       eslint: 7.32.0
       nodemailer: 6.9.1
       tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
 
   packages/devtools:
     specifiers:
@@ -104,6 +106,7 @@ importers:
       react: ^18.2.0
       ts-pattern: ^4.2.1
       tsconfig: workspace:*
+      typescript: ^4.9.5
       zod: ^3.20.6
       zod-to-json-schema: ^3.20.4
     dependencies:
@@ -127,6 +130,7 @@ importers:
       next: 13.2.1_react@18.2.0
       react: 18.2.0
       tsconfig: link:../tsconfig
+      typescript: 4.9.5
 
   packages/eslint-plugin-brail:
     specifiers:
@@ -265,6 +269,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       tsconfig: workspace:*
+      typescript: ^4.9.5
       zod: ^3.20.6
     dependencies:
       '@brail/react': link:../../packages/react
@@ -284,6 +289,7 @@ importers:
       eslint: 7.32.0
       nodemailer: 6.9.1
       tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
 
 packages:
 
@@ -2087,13 +2093,13 @@ packages:
       - terser
     dev: false
 
-  /@trpc-playground/types/1.0.0_@trpc+server@10.11.1:
+  /@trpc-playground/types/1.0.0_grp6t4djrwbfi6c2ipnvfaodzq:
     resolution: {integrity: sha512-Ap5aNaVlglfM9WLkPLKF2rHDZ8CwHcqK32A8YaqTyHUuoEFTSOh6oSgVU6Cv8toxClKiTXFvbWmE4aZxIoh4Zg==}
     peerDependencies:
       '@trpc/server': ^10
     dependencies:
       '@trpc/server': 10.11.1
-      ts-essentials: 9.3.0
+      ts-essentials: 9.3.0_typescript@4.9.5
     transitivePeerDependencies:
       - typescript
     dev: false
@@ -7458,19 +7464,19 @@ packages:
       zod-to-json-schema: 3.20.3_zod@3.20.6
     dev: true
 
-  /trpc-playground/1.0.4_564e5fizissjrqzqpxflhmrh3q:
+  /trpc-playground/1.0.4_oqmiqzko6vvjaq756e4xbok2tu:
     resolution: {integrity: sha512-6nVf1o2LNoo1g6oTS24yajoH7xV4CFjxGAbAH7qLXqa3yo9qB5QHsWLbrm1hNt51SyCG++P0zHJaCdVfgvEVDg==}
     peerDependencies:
       '@trpc/server': ^10
       zod: ^3
     dependencies:
       '@trpc-playground/html': 1.0.4_@types+node@17.0.45
-      '@trpc-playground/types': 1.0.0_@trpc+server@10.11.1
+      '@trpc-playground/types': 1.0.0_grp6t4djrwbfi6c2ipnvfaodzq
       '@trpc/server': 10.11.1
       lodash: 4.17.21
       uttp: 0.1.3
       zod: 3.20.6
-      zod-to-ts: 1.1.2_zod@3.20.6
+      zod-to-ts: 1.1.2_smsy4negu7uja64s32ifnoozrm
     transitivePeerDependencies:
       - '@types/node'
       - express
@@ -7485,10 +7491,12 @@ packages:
       - typescript
     dev: false
 
-  /ts-essentials/9.3.0:
+  /ts-essentials/9.3.0_typescript@4.9.5:
     resolution: {integrity: sha512-XeiCboEyBG8UqXZtXl59bWEi4ZgOqRsogFDI6WDGIF1LmzbYiAkIwjkXN6zZWWl4re/lsOqMlYfe8KA0XiiEPw==}
     peerDependencies:
       typescript: '>=4.1.0'
+    dependencies:
+      typescript: 4.9.5
     dev: false
 
   /ts-interface-checker/0.1.13:
@@ -8247,12 +8255,13 @@ packages:
       zod: 3.20.6
     dev: false
 
-  /zod-to-ts/1.1.2_zod@3.20.6:
+  /zod-to-ts/1.1.2_smsy4negu7uja64s32ifnoozrm:
     resolution: {integrity: sha512-IZdM0Ga1l/vQnrNy63aV3qsLNchD0aUYZEtXcyt8A3xA7+erFO0zeImEcUH5qNLA6tXDTjRpcWp0paoVoH/D0A==}
     peerDependencies:
       typescript: ^4.9.4
       zod: ^3
     dependencies:
+      typescript: 4.9.5
       zod: 3.20.6
     dev: false
 

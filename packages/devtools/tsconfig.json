@@ -1,11 +1,6 @@
 {
   "extends": "tsconfig/react-library.json",
-  "include": [
-    "./src",
-    "tsup.config.ts",
-    "../server/src/server",
-    "../server/src/next/next.ts"
-  ],
+  "include": ["./src"],
   "compilerOptions": {
     "module": "commonjs",
     "outDir": "dist",

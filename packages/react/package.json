@@ -9,7 +9,8 @@
     "test": "jest spec",
     "lint": "eslint *.ts*",
     "build": "tsup-node",
-    "dev": "tsup-node --watch"
+    "dev": "tsup-node --watch",
+		"check": "tsc --noEmit"
   },
   "devDependencies": {
     "@brail/eslint-plugin": "workspace:*",

@@ -8,9 +8,10 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check": "turbo run check --parallel"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",

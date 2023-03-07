@@ -1,6 +1,6 @@
 {
   "extends": "tsconfig/base.json",
-  "include": ["./src", "tsup.config.ts", "../devtools/src/client", "util.d.ts"],
+  "include": ["./src"],
   "compilerOptions": {
     "module": "commonjs",
     "outDir": "dist",

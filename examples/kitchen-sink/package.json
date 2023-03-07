@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint \"./pages/**/*.{tsx,ts}\"",
     "maildev": "docker run -p 1080:1080 -p 1025:1025 maildev/maildev",
-    "ngrok": "ngrok http 3000"
+    "ngrok": "ngrok http 3000",
+    "check": "tsc --noEmit"
   },
   "dependencies": {
     "@brail/react": "workspace:*",
@@ -29,6 +30,7 @@
     "@types/react-dom": "^18.0.7",
     "eslint": "7.32.0",
     "nodemailer": "^6.9.1",
-    "tsconfig": "workspace:*"
+    "tsconfig": "workspace:*",
+    "typescript": "^4.9.5"
   }
 }
