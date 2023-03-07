@@ -43,7 +43,7 @@ export const Container = (props: ContainerProps) => {
   const attr = {
     ...bg.attrs,
     ...bgImage.attrs,
-    ...border.styles,
+    ...border.attrs,
     ...margin.attrs,
   };
 
