@@ -1,3 +1,5 @@
+import { Callout } from "nextra-theme-docs"
+
 # Why was Brail created?
 > Or, why might you want to use it?
 
@@ -13,7 +15,9 @@ Even once we have a working, beautiful template, we can stil shoot ourselves in 
 
 Over time, there have been a few attempts to abstract the complicated nature of HTML email away. The most popular is to just use a drag-and-drop editor, which basically uses well-tested snippets which you can theme. Another approach has been to create email component libraries or frameworks. The most popular of these is [MJML](https://mjml.io/), which is a markup language that compiles to HTML. While MJML has done a great job on this front, it provides no help for actually using the templates and has some limitations and a learning curve that can make it less approachable.
 
-> Fun fact: For an earlier version of Brail, MJML was rewritten in React and Typescript, to improve it's DX.
+<Callout type="info">
+For a previous version of Brail, MJML was rewritten in React and Typescript, to improve MJML's DX.
+</Callout>
 
 Brail includes a completely from-scratch React library which abstracts the complexities of HTML email away, using idiomatic, modern React. Under the hood, Brail's UI components emulate unsupported and/or complicated CSS features like `box-sizing: border-box` and responsiveness. Brail also uses type-safety to ensure only valid props are supplied, down to the level of which type of units are allowed (e.g. `em` vs `px`).
 

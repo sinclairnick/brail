@@ -1,3 +1,4 @@
+import { Callout } from "nextra-theme-docs"
 
 # Calling Templates Directly
 
@@ -51,5 +52,6 @@ export const email = createSdk(templates);
 const html = email.myTemplate.render({/** Props */*/})
 ```
 
-
-> 💡 `createSdk` is essentially an identity function that returns a more concise type definition, omitting noisy properties
+<Callout>
+`createSdk` is essentially an identity function that returns a more concise type definition, omitting noisy properties
+</Callout>

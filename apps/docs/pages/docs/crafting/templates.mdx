@@ -1,8 +1,12 @@
+import { Callout } from "nextra-theme-docs"
+
 # Creating Email Templates
 
 `@brail/react` provides a suite of components and utilites for creating email templates. In many ways, it's the heart of Brail and has been painstakingly developed to provide a pleasant developer experience, while producing correct HTML markup.
 
+<Callout type="info">
 Looking for component info? Skip to the [**components section**](/docs/crafting/components).
+</Callout>
 
 ## Creating an email template
 
@@ -14,18 +18,19 @@ import Brail from "@brail/react"
 
 const b = Brail.init()
 
-// Example: A basic brail template with meta and props schemas defined.
 export default b.template
-	.meta(/docs/** (Optional) Define metadata schema e.g { to: string, subject: string} */)
-	.props(/docs/** (Optional) Define props schema */)
-	.preview(/docs/** Define data for template preview */)
+	.meta(/** 👈 (Optional) Define metadata schema e.g { to: string, subject: string} */)
+	.props(/** 👈 (Optional) Define props schema */)
+	.preview(/** 👈 Define data for template preview */)
 	.view(props => {
-		return <Email>{/* Your email template view */}</Email>
+		return <Email>{/* 👇 Your email template view */}</Email>
 	})
 ```
 Brail now has everything it needs to preview, validate, generate and send templates – whether via API, SDK or any other methods you might dream up.
 
-> 🔔 If you prefer a more functional approach, you can use `createTemplate` instead of `b.template` to create a template. 👇
+<Callout emoji="🔔">
+	If you prefer a more functional approach, you can use `createTemplate` instead of `b.template` to create a template. 👇
+</Callout>
 
 ```tsx
 import { createTemplate } from "@brail/react"

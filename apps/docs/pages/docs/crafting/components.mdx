@@ -11,6 +11,7 @@ import {
 import { Demo } from "@components/demo";
 import { ContentDemo } from "@components/content-demo";
 import { Colors, BASE_URL } from "@constants/index";
+import { Callout } from "nextra-theme-docs"
 
 # React Components
 
@@ -18,7 +19,9 @@ Brail provides several key components for producing reliable, responsive email t
 
 Below is merely an overview of what components are available. For a more detailed description of each component, please the component's TSDoc definitions, in code.
 
-> 🔔 The below examples have had minimal styles added for emphasis.
+<Callout>
+The below examples have had minimal styles added for illustrative purposes.
+</Callout>
 
 ## Core Components
 
@@ -27,7 +30,7 @@ While Brail strives to hide the complexity of email HTML, there's no avoiding th
 These core components do the most heavy lifting and are concerned with producing reliable layouts. As such they are indispensable for crafting emails.
 
 <br/>
-<center>![Brail layout](/docs/brail-layout.png)</center>
+<center>![Brail layout](/brail-layout.png)</center>
 
 ### `<Email/>`
 
@@ -104,7 +107,9 @@ The `<Column>` component is a vertical container for content. Any content, like 
   </Email>
 </Demo>}
 
-> 🎉 `<Row>`s **can** be nested in other `<Column>`s to create nested layouts.
+<Callout emoji="🎉">
+`<Row>`s **can** be nested in other `<Column>`s to create nested layouts.
+</Callout>
 
 #### Example layout
 
