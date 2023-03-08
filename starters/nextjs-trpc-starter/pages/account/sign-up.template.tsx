@@ -31,9 +31,9 @@ export default template
       <Email maxWidth={600}>
         <Title>{`Welcome, ${props.firstName}`}</Title>
         <Container
-          backgroundColor={myTheme.config.palette.$white}
-          borderBottom={`1px solid ${myTheme.config.palette.$grey100}`}
-          px={myTheme.config.spacing.$2}
+          backgroundColor={myTheme.config.palette.white}
+          borderBottom={`1px solid ${myTheme.config.palette.grey100}`}
+          px={myTheme.config.spacing[2]}
           py={32}
         >
           <Row>
@@ -50,8 +50,8 @@ export default template
           </Row>
         </Container>
         <Container
-          backgroundColor={myTheme.config.palette.$white}
-          borderBottom={`1px solid ${myTheme.config.palette.$grey100}`}
+          backgroundColor={myTheme.config.palette.white}
+          borderBottom={`1px solid ${myTheme.config.palette.grey100}`}
         >
           <Row p={48}>
             <Column>
@@ -59,7 +59,7 @@ export default template
               <Typography fontSize={16} py={16}>
                 <span
                   style={{
-                    color: myTheme.config.palette.$brailMain,
+                    color: myTheme.config.palette.brailMain,
                     display: "inline",
                     fontWeight: "bold",
                     // // The below line should raise a linting warning
