@@ -12,6 +12,7 @@
   },
   "changesets": [
     "calm-bugs-switch",
+    "fuzzy-bags-rest",
     "neat-eels-obey"
   ]
 }
