@@ -5,7 +5,7 @@ export const BASE_URL =
   (process.env.VERCEL_URL as B.AbsoluteUrl) ?? "http://localhost:3000";
 
 export const myTheme = theme
-  .font({ $arial: "Arial" })
+  .font({ arial: "Arial" })
   .palette({
     white: "#ffffff",
     grey50: "#FAFAFA",
