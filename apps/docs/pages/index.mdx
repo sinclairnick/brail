@@ -1,6 +1,23 @@
-# Welcome to Brail
+---
+title: Email development for the 21st century
+---
 
-### 💌 The email development toolkit for the 21st century
+import { Features } from "@components/features";
+import { CenterContainer } from "@components/center-container"
+
+{<center style={{ marginTop: 80 }}>
+
+<img src="/logo.png" width={200} />
+<p style={{ fontSize: 24, marginTop: 16 }}>
+  The email development toolkit for the 21st century
+</p>
+
+</center>}
+
+<br />
+<br />
+
+<CenterContainer>
 
 Brail provides batteries-included tooling for creating, generating and delivering email templates. It aims to bring email development into the 21st century by providing a modern, developer-friendly experience.
 
@@ -8,24 +25,120 @@ Brail provides batteries-included tooling for creating, generating and deliverin
 # Add brail to your favourite React meta-framework
 npm install brail @brail/react
 ```
+</CenterContainer>
 
-**Brail is a toolkit, not a framework.**
+<br/>
 
-It works best with React meta-frameworks that provide API routes, like next.js, which allow us to develop and preview templates; and run server-side code at the same time.
+<div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+	<span>[Quick Start](/docs/quick-start)</span>
+	<span>&bull;</span>
+	<span>[Github](https://github.com/sinclairnick/brail)</span>
+</div>
 
----
+<br />
+<br />
+<br />
+
+<CenterContainer>
+	{<Features />}
+</CenterContainer>
+
+<br />
+<br />
+
+<CenterContainer maxWidth={1400}>
+
+## Overview
+
+<div style={{ display: "flex", gap: 8, marginTop: 8, width: "100%", overflow: "hidden", flexWrap: "wrap" }}>
+	<div style={{ minWidth: 400, flex: 1 }}>
+		#### Create a template
+		Define a template using zod and React.
+
+	```tsx
+	import Brail from "@brail/react";
+	import z from "zod";
+
+	const b = Brail.init();
+
+	export default b.template
+		 /** 👇 Define meta schema (optional) */
+		.meta(z.object({ to: z.string(), sendGridApiKey: z.string() }))
+		 /** 👇 Define props schema (optional) */
+		.props(z.object({ name: z.string() }))
+	```
+	```tsx
+		/** 👇 Define a send function (optional) */
+		.onSend(async (args) => {
+			const { meta, html } = args;
+			const res = await sendGrid.send(html, {
+				to: meta.to,
+				apiKey: meta.sendGridApiKey,
+			});
+			return { ok: res.status === 200 };
+		})
+	```
+	```tsx
+		/** 👇 Create your template */
+		.view((props) => {
+			return (
+				<Email>
+					<Container>
+						<Row>
+							<Column>
+								<Typography>Welcome, {props.name}</Typography>
+							</Column>
+						</Row>
+					</Container>
+				</Email>
+			);
+		});
+	```
+	</div>
+	
+	<div style={{ minWidth: 400, flex: 1 }}>
+	#### Use your template
+	Expose your templates via type-safe APIs, including tRPC.
+
+	```tsx
+	import { createTrpcRouter } from "brail/trpc";
+	import { initTrpc } from "@trpc/server";
+	
+	// Use your template directly
+	const html = myTemplate.render({/** Props */})
+	const sendResponse = await myTemplate.send({/** data: {}, meta: {} */})
+
+	/** 👇 Or create tRPC router based on your templates */
+	const appRouter = createTrpcRouter({
+		templates: { myTemplate },
+		t: initTrpc.create()
+	});
+	```
+	```tsx
+	// ---| pages/api/trpc/[trpc].ts |---
+	import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+
+	// Serve templates via edge runtime function
+	export default async function handler(req: NextRequest) {
+	return fetchRequestHandler({
+		endpoint: "/api/trpc",
+		router: appRouter,
+		req,
+		createContext: () => ({}),
+	});
+	}
+	````
+	</div>
+</div>
+
+</CenterContainer>
+
+<CenterContainer>
 
 
-|           | Benefits                                                                                        |
-| --------- | :---------------------------------------------------------------------------------------------- |
-| ⚛️        | Using **simple, idiomatic React**, craft fully-fledged, responsive email templates in minutes   |
-| 🧢        | Expose **end-to-end type-safe APIs and SDKs** so your templates always receive the correct data |
-| 👀        | Preview templates in real-time using **live-reloading**                                         |
-| **\{ \}** | Enjoy **git versioning**, **theming** and **abstraction**, unlike drag-and-drop editors         |
+### Works with your favourite tools
 
-> Brail was inspired by and integrates with tools like [**tRPC**](https://github.com/trpc/trpc), [**NextJS**](https://github.com/vercel/next.js/) and [**Zod**](https://github.com/colinhacks/zod).
-
-> 🔔 While Brail is fundamentally framework agnostic, it is currently designed with next.js in mind. The examples in these docs are currently tailored to next.js, but not necessarily exclusive to next.js.
+Brail sits on top of your favourite meta-frameworks and uses tools you already know, including [**Zod**](https://zod.dev/) and [**tRPC**](https://trpc.io).
 
 ### Get started
 
@@ -33,11 +146,10 @@ The fastest way to get up and running locally, is to use the [**Nextjs + Trpc St
 
 ```bash
 npx degit sinclairnick/brail/starters/nextjs-trpc-starter
-```
-
+````
 
 ### Development status
 
 > 🚦 Brail is currently in Beta. It has been used in production for a year, but the API is still subject to change.
 
-{/* ### Playground */}
+</CenterContainer>

@@ -1,7 +1,7 @@
 const { useRouter } = require("next/router");
 
 /** @type {import("nextra").ThemeConfig} */
-export default {
+const config = {
   logo: (
     <div
       style={{
@@ -21,17 +21,21 @@ export default {
     link: "https://github.com/sinclairnick/brail",
   },
   useNextSeoProps() {
-    const { asPath } = useRouter();
-    if (asPath !== "/") {
-      return {
-        titleTemplate: "%s – Brail",
-      };
-    }
-    return "Brail";
+    return {
+      titleTemplate: "%s – Brail",
+    };
   },
-	footer: {
-    text: <span>
-      Apache {new Date().getFullYear()} © <a href="https://nextra.site" target="_blank">Brail</a>.
-    </span>,
+  footer: {
+    text: (
+      <span>
+        Apache {new Date().getFullYear()} ©{" "}
+        <a href="https://nextra.site" target="_blank">
+          Brail
+        </a>
+        .
+      </span>
+    ),
   },
 };
+
+export default config;

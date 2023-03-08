@@ -2,7 +2,7 @@
 
 `@brail/react` provides a suite of components and utilites for creating email templates. In many ways, it's the heart of Brail and has been painstakingly developed to provide a pleasant developer experience, while producing correct HTML markup.
 
-Looking for component info? Skip to the [**components section**](/crafting/components).
+Looking for component info? Skip to the [**components section**](/docs/crafting/components).
 
 ## Creating an email template
 
@@ -16,9 +16,9 @@ const b = Brail.init()
 
 // Example: A basic brail template with meta and props schemas defined.
 export default b.template
-	.meta(/** (Optional) Define metadata schema e.g { to: string, subject: string} */)
-	.props(/** (Optional) Define props schema */)
-	.preview(/** Define data for template preview */)
+	.meta(/docs/** (Optional) Define metadata schema e.g { to: string, subject: string} */)
+	.props(/docs/** (Optional) Define props schema */)
+	.preview(/docs/** Define data for template preview */)
 	.view(props => {
 		return <Email>{/* Your email template view */}</Email>
 	})

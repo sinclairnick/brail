@@ -1,10 +1,14 @@
 {
-  "index": "Introduction",
-  "quick-start": "Quick start",
-  "included": "What's included?",
-  "motivation": "Why Brail?",
-  "faq": "FAQ",
-  "crafting": "Crafting templates",
-  "using": "Using templates",
-  "recipes": "Recipes"
+  "index": {
+    "title": "Introduction",
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "layout": "full"
+    }
+  },
+  "docs": {
+    "title": "Docs",
+    "type": "page"
+  }
 }
