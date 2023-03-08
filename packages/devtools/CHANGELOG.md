@@ -1,5 +1,11 @@
 # @brail/devtools
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- Update devtools
+
 ## 1.0.0-alpha.5
 
 ### Patch Changes

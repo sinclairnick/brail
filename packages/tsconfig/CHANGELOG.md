@@ -1,5 +1,11 @@
 # tsconfig
 
+## 0.0.1-alpha.4
+
+### Patch Changes
+
+- Update devtools
+
 ## 0.0.1-alpha.3
 
 ### Patch Changes
