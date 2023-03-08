@@ -1,6 +1,6 @@
 {
   "name": "@brail/types",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "description": "",
   "types": "dist/index.d.ts",
   "private": false,

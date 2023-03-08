@@ -1,5 +1,13 @@
 # docs
 
+## 0.0.1-alpha.5
+
+### Patch Changes
+
+- Improve devtools importing
+- Updated dependencies
+  - @brail/react@1.0.0-alpha.7
+
 ## 0.0.1-alpha.4
 
 ### Patch Changes
