@@ -7,7 +7,7 @@ import { Iframe, useIframe } from "../iframe/iframe.component";
 import { AnyTemplateMap } from "@brail/types";
 import { motion } from "framer-motion";
 import { flattenTemplates } from "../util/templates.util";
-import { useRouter } from "next/router";
+import { useRouter } from "next/router.js";
 import Head from "next/head";
 import { FileTree } from "./left-panel/file-tree/file-tree.component";
 import { Sending } from "./left-panel/sending/sending.component";

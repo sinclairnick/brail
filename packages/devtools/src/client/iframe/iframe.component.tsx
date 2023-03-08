@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/router.js";
 import { useEffect, PropsWithChildren, useState } from "react";
 import { styled } from "../theme/theme";
 import { motion } from "framer-motion";

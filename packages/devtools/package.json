@@ -33,6 +33,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "optionalDependencies": {
+    "next": "^13.2.1"
+  },
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",
     "@primer/octicons-react": "^17.12.0",
