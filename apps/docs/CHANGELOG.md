@@ -1,5 +1,13 @@
 # docs
 
+## 0.0.1-alpha.3
+
+### Patch Changes
+
+- Update module resolution settings
+- Updated dependencies
+  - @brail/react@1.0.0-alpha.5
+
 ## 0.0.1-alpha.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @brail/devtools
 
+## 1.0.0-alpha.5
+
+### Patch Changes
+
+- Update module resolution settings
+
 ## 1.0.0-alpha.4
 
 ### Patch Changes
