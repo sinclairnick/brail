@@ -4,6 +4,8 @@ import {
   HiOutlineDocument,
   HiOutlineEnvelope,
   HiArrowUpRight,
+  HiChevronDoubleRight,
+  HiChevronDoubleLeft,
 } from "react-icons/hi2";
 import type { IconType } from "react-icons";
 import { SplitState, TabKey } from "../shell.component";
@@ -87,13 +89,14 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
               css={{
                 borderLeftColor: isActive ? "$gray12" : "transparent",
                 "&:hover": {
-                  "*": { fill: theme.colors.gray12.value },
+                  "*": { color: theme.colors.gray12.value },
                 },
               }}
             >
               <tab.icon
                 size={20}
-                fill={
+                strokeWidth={2}
+                color={
                   isActive
                     ? theme.colors.gray12.value
                     : theme.colors.gray10.value
@@ -104,8 +107,17 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
         })}
       </Stack>
       <Stack>
-        <ToolbarButton onClick={onToggleSplit}>
-          {/* <TableIcon size={20} /> */}
+        <ToolbarButton
+          onClick={onToggleSplit}
+          css={{
+            "&:hover": { "*": { color: theme.colors.gray12.value } },
+          }}
+        >
+          {splitState === "even" ? (
+            <HiChevronDoubleLeft size={20} color={theme.colors.gray10.value} />
+          ) : (
+            <HiChevronDoubleRight size={20} color={theme.colors.gray10.value} />
+          )}
         </ToolbarButton>
       </Stack>
     </Stack>

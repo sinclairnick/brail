@@ -10,36 +10,43 @@
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.js",
+      "default": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./sdk": {
       "import": "./dist/sdk.mjs",
       "require": "./dist/sdk.js",
+      "default": "./dist/sdk.js",
       "types": "./dist/sdk.d.ts"
     },
     "./trpc": {
       "import": "./dist/trpc.mjs",
       "require": "./dist/trpc.js",
+      "default": "./dist/trpc.js",
       "types": "./dist/trpc.d.ts"
     },
     "./next": {
       "import": "./dist/next.mjs",
       "require": "./dist/next.js",
+      "default": "./dist/next.js",
       "types": "./dist/next.d.ts"
     },
     "./next-loader": {
       "import": "./dist/next-loader.mjs",
       "require": "./dist/next-loader.js",
+      "default": "./dist/next-loader.js",
       "types": "./dist/next-loader.d.ts"
     },
     "./devtools": {
       "import": "./dist/devtools.mjs",
       "require": "./dist/devtools.js",
+      "default": "./dist/devtools.js",
       "types": "./dist/devtools.d.ts"
     },
     "./*": {
       "import": "./dist/*.mjs",
       "require": "./dist/*.js",
+      "default": "./dist/*.js",
       "types": "./dist/*.d.ts"
     }
   },

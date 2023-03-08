@@ -25,6 +25,7 @@ export const template = b.template
 
     const nodemailer = await nodemailerImport;
     const transport = nodemailer?.createTransport({ port: 1025 });
+
     await transport?.sendMail({
       to: meta.to,
       subject: meta.subject,

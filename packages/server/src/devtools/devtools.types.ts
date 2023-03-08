@@ -1,4 +1,3 @@
-import { Devtools } from "@brail/devtools/";
 import { AnyTemplateMap } from "@brail/types";
 import type { NextApiHandler } from "next";
 import { PropsWithChildren } from "react";
