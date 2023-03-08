@@ -57,7 +57,7 @@ export const Button = (props: ButtonProps) => {
   // Inspired by: https://www.goodemailcode.com/email-code/link-button
   return (
     <>
-		<Style>{`
+      <Style>{`
 			a:visited {
 				color: unset;
 				text-decoration: none;
@@ -75,7 +75,7 @@ export const Button = (props: ButtonProps) => {
                   display: "inline-block",
                   textDecoration: "none",
                   // @ts-expect-error
-                  "mso-padding-alt": 0,
+                  "msoPaddingAlt": 0,
                 }}
               >
                 <MsoConditional
@@ -101,8 +101,8 @@ export const Button = (props: ButtonProps) => {
                 >
                   <span
                     style={{
-                      // @ts-expect-error
-                      "mso-text-raise": padding.styles.paddingBottom,
+											// @ts-expect-error
+                      msoTextRaise: padding.styles.paddingBottom,
                     }}
                   >
                     {props.children}
