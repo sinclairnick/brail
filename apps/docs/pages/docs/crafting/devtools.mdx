@@ -6,34 +6,30 @@ import { Callout } from "nextra-theme-docs"
 The below applies only to next.js applications. **Devtools support will be expanded in the future.**
 </Callout>
 
-The Brail 'devtools' make working with your templates easier, but are not strictly necessary.
+The Brail Devtools make working with your templates easier, but are not strictly necessary.
 
-The devtools consists of a frontend and backend component. Both require access to your templates, so we first initialise the devtools, which returns both pieces.
+The Devtools consists of a frontend and backend component. Both require access to your templates, so we first initialise the devtools, which returns both pieces.
 
 ```tsx
-//---| lib/devtools.ts |---
+/* 📄 lib/devtools.ts */
 import { initNextDevtools } from "brail/devtools";
-
-const templates = {
-  /* Your templates */
-};
 
 export const {
   DevtoolsLayout, // For frontend
   devtoolsHandler, // For backend
-} = initNextDevtools({
-  templates,
+} = initNextDevtools({ 
+	templates, /** 👈 Register your templates with the devtools */
 });
 
-//---| pages/api/devtools/[trpc].ts |---
-export default devtoolsHandler();
+/* 📄 pages/api/devtools/[trpc].ts */
+export default devtoolsHandler(); /** 👈 Export API handler, to enable e.g. sending test emails */
 
-//---| pages/_app.tsx |---
+/* 📄 pages/_app.tsx */
 export default (props: AppProps) => {
   const { Component, pageProps } = props;
   return (
     <DevtoolsLayout>
-      {/* Wrap devtools around app. This will not affect generated template HTML */}
+      {/* 👆 Wrap devtools around app. This will not affect generated template HTML */}
       <Component {...pageProps} />
     </DevtoolsLayout>
   );
@@ -45,7 +41,7 @@ To ensure routing between templates works, we need to register the brail next.js
 ```tsx
 const withBrail = require("brail/next")(/docs/* options */);
 
-module.exports = withBrail({
+module.exports = withBrail({ /** 👈 Add Brail plugin */
 	/* Your next.js config */
 });
 ```

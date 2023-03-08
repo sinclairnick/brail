@@ -1,3 +1,5 @@
+import { Callout } from "nextra-theme-docs"
+
 # Creating a tRPC API
 
 Brail offers utilities to quickly turn your templates into a fully-fledged API.
@@ -5,6 +7,10 @@ Brail offers utilities to quickly turn your templates into a fully-fledged API.
 Brail has first-class support for [tRPC](https://trpc.io) because it provides a relatively generic way of defining APIs that can be easily adapted into different API types, like REST or RPC, and can run across many environments like server, serverless or edge runtimes.
 
 This also means API-concerns like authentication can be handled as per any other tRPC server.
+
+```tsx
+npm i @trpc/server
+```
 
 ```tsx
 // Basic TRPC server example
@@ -17,6 +23,10 @@ export const appRouter = createTrpcRouter({ t, templates, });
 ```
 
 This `appRouter` can now be used across many environments (see [tRPC Adapter docs](https://trpc.io/docs/adapters)) and can be used as a REST API (see [tRPC OpenAPI](https://github.com/jlalmes/trpc-openapi)).
+
+<Callout type="info">
+	Refer to the [tRPC docs](https://trpc.io/docs) for more information on how to use tRPC in practice.
+</Callout>
 
 ### Security
 
@@ -40,7 +50,7 @@ export const appRouter = createTrpcRouter({
 As an example, we can export our tRPC server from the same next.js project, via edge API routes.
 
 ```tsx
-// ---| pages/api/trpc/[trpc].ts |---
+/* 📄 pages/api/trpc/[trpc].ts */
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { NextRequest } from "next/server";
 

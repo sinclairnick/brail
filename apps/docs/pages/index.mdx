@@ -57,6 +57,7 @@ npm install brail @brail/react
 		Define a template using zod and React.
 
 	```tsx
+	/* 📄 my-template.tsx */
 	import Brail from "@brail/react";
 	import z from "zod";
 
@@ -102,6 +103,7 @@ npm install brail @brail/react
 	Expose your templates via type-safe APIs, including tRPC.
 
 	```tsx
+	/* 📄 lib/trpc.ts */
 	import { createTrpcRouter } from "brail/trpc";
 	import { initTrpc } from "@trpc/server";
 	
@@ -116,7 +118,7 @@ npm install brail @brail/react
 	});
 	```
 	```tsx
-	// ---| pages/api/trpc/[trpc].ts |---
+	/* 📄 pages/api/trpc/[trpc].ts */
 	import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
 	// Serve templates via edge runtime function

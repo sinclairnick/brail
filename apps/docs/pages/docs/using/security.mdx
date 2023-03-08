@@ -1,30 +1,62 @@
 import { Callout } from "nextra-theme-docs"
+import { Chip } from "@components/chip"
 
-# Security 
+# Security Best Practices
 
 Exposing your email templates to the world, can be risky if not properly secured. If credentials or authentication are mismanaged, others may be able to view or even send emails on your behalf.
 
-This document covers several best practices to make your Brail projects secure.
+Like any full-stack application, Brail may require authentication or authorisation, at different levels of the stack. This document provides a few tips, recipes and considerations to help you achieve the level of security you need.
 
-## Security Best Practices
+Security concerns can be grouped as:
+
+1. **Viewing Templates**
+2. **Interacting with templates**
 
 <Callout>
 The below best practices are **not** mutually exclusive. You can use any combination of them to achieve the level of security you need.
 </Callout>
 
-### API Middleware
+## Viewing Templates
 
-If your Brail templates are exposed [via an API](/docs/using/trpc), you can implement authentication via middleware provided by your the API framework you're using. We provide an example of this in the [tRPC section](/using/trpc#security). This can be useful to prevent all activity regarding your Brail templates.
+<Callout type="info">
+	The following discusses protecting the frontend portion of your Brail apps. If you are only using Brail as an API, you can skip this section.
+</Callout>
 
-> If your templates are hosted on e.g. Vercel, they will still be visible, if only using this approach.
 
-### SDK Environment Variables
+If you have deployed your Brail frontend, your templates will be visible via the internet. For some use cases, this may be perfectly fine. However, there are several ways to protect your templates from being viewed by unauthorized users.
 
-If you are publishing your templates as an SDK, it's best to store any API keys or other sensitive credentials in environment variables. This way SDK users cannot send emails using your credentials.
+For example, you might surround your frontend code with an authentication layer:
+```tsx
+// Next.js: _app.tsx
+export default (props) => {
+	const { Component, pageProps } = props
+	
+	return <AuthGuard> {/* 👈 User-supplied guard that authenticates users before revealing templates */}
+		<Component {...pageProps}/>
+	</AuthGuard>
+}
+```
 
-### User-provided API Keys (recommended)
+You could also just entirely obscure the frontend aspects of Brail in production:
 
-Instead of storing your credentials within the Brail project at all, a very secure approach is to require any API keys with every request. This way, your Brail project is kept "clean" of any sensitive information, and the requesting user must provide such information themselves. It also avoids 
+```tsx
+// Next.js: _app.tsx
+export default (props) => {
+	const { Component, pageProps } = props
+	
+	return <>
+		{process.env.NODE_ENV !== "production" && <Component {...pageProps}/>}
+	</>
+}
+```
+
+## Interacting with Templates
+
+Protecting how people interact with your templates is very important, as it can prevent unauthorized users from sending emails on your behalf.
+
+### User-provided API Keys  <Chip>Strongly Recommended</Chip>
+
+Instead of storing your credentials within the Brail project, a very secure approach is to require API keys with every request. This way, your Brail project is kept ignorant of any sensitive credentials, and only credential-holders can ever send emails.
 
 One way to achieve this is to add an `apiKey` property to your metadata object when sending a template. This can then be forwarded in your send function.
 
@@ -37,16 +69,36 @@ const metaSchema = z.object({
 template
 	.meta(metaSchema)
 	.onSend(async args => {
+		// Optionally add validation logic here
 		await sendEmail(args.html, {
-			apiKey: args.meta.apiKey // <-- Use the provided API key
+			apiKey: args.meta.apiKey // 👈 Use the provided API key
 			to: args.meta.to
 		})
 	})
-
 ```
 
-### Devtools
 
-Devtools are intended to aid development, but can also be useful in production environments. However, they can also increase security risks if not used properly.
+### API Middleware
 
-### Frontend Authentication
+If your Brail templates are exposed [via an API](/docs/using/trpc), you can implement authentication via middleware provided by your the API framework you're using. We provide an example of this in the [tRPC section](/using/trpc#security). This is useful for protecting any form of unauthorised interaction with your API.
+
+### SDK Environment Variables
+
+If you are publishing your templates as an SDK, it's best to store any API keys or other sensitive credentials in environment variables. This way SDK users cannot send emails using your credentials.
+
+
+## Devtools
+
+<Callout type="info">
+	If you're not using the [Brail devtools](/docs/crafting/devtools), you can skip this section.
+</Callout>
+
+By default, the Brail devtools are disabled in production environments. However they can be re-enabled via the `isEnabled` option, passed to the `initDevtools` function.
+
+Because devtools uses it's own internal server to support it's sending functionality, any middleware you may have applied to your own API will not apply to the devtools.
+
+However, user-provided keys will still be respected, and can be used to protect from sending emails in production.
+
+<Callout>
+	In future releases, the Devtools will have support for more granular security.
+</Callout>

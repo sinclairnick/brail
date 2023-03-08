@@ -18,12 +18,12 @@ await myTemplate.send({
 })
 ```
 
-### Express Example
+### Express Example (Manual)
 
 To integrate these templates into an existing or custom API setup, we can just call them directly, as demonstrated below.
 
 ```tsx
-// express-example.ts
+/**=== express-server.ts ===*/
 const app = express()
 
 app.get("/my-template", (req) =>{
@@ -42,13 +42,13 @@ However, doing so for every template is tedious. Instead, we can use one of the 
 If you wish to call the templates directly, including exposing them as a library, it's best to create a "local SDK".
 
 ```tsx
-// ---| my-template-lib.ts |---
+/* 📄 my-template-lib.ts */
 import { createSdk } from "brail/sdk";
 
 // This can now be exported as a lib or used directly
 export const email = createSdk(templates);
 
-// ---| my-other-project.ts |---
+/* 📄 my-other-project.ts */
 const html = email.myTemplate.render({/** Props */*/})
 ```
 
