@@ -8,7 +8,7 @@ import { AnyTemplateMap } from "@brail/types";
 import { motion } from "framer-motion";
 import { flattenTemplates } from "../util/templates.util";
 import { useRouter } from "next/router.js";
-import Head from "next/head";
+import Head from "next/head.js";
 import { FileTree } from "./left-panel/file-tree/file-tree.component";
 import { Sending } from "./left-panel/sending/sending.component";
 import { useIsMounted } from "../util/is-mounted.hook";
