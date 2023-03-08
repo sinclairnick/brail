@@ -11,6 +11,7 @@
     "@brail/types": "1.0.0-alpha.1"
   },
   "changesets": [
+    "calm-bugs-switch",
     "neat-eels-obey"
   ]
 }

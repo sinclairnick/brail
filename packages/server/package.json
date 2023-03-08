@@ -1,6 +1,6 @@
 {
   "name": "brail",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -47,7 +47,7 @@
     "test": "jest spec",
     "build": "tsup-node",
     "dev": "tsup-node --watch",
-		"check": "tsc --noEmit"
+    "check": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",

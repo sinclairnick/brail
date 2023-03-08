@@ -1,6 +1,6 @@
 {
   "name": "@brail/react",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "lint": "eslint *.ts*",
     "build": "tsup-node",
     "dev": "tsup-node --watch",
-		"check": "tsc --noEmit"
+    "check": "tsc --noEmit"
   },
   "devDependencies": {
     "@brail/eslint-plugin": "workspace:*",
