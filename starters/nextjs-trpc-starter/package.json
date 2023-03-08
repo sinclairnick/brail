@@ -2,6 +2,7 @@
   "name": "nextjs-trpc-starter",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
