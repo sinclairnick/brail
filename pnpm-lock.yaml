@@ -19,7 +19,7 @@ importers:
     specifiers:
       '@babel/core': ^7.0.0
       '@brail/eslint-plugin': workspace:*
-      '@brail/react': workspace:1.0.0-alpha.2
+      '@brail/react': workspace:1.0.0-alpha.3
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
@@ -30,6 +30,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       tsconfig: workspace:*
+      typescript: ^4.9.5
     dependencies:
       '@brail/react': link:../../packages/react
       next: 13.1.6_pjwopsidmaokadturxaafygjp4
@@ -45,6 +46,7 @@ importers:
       '@types/react-dom': 18.0.10
       eslint: 7.32.0
       tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
 
   examples/kitchen-sink:
     specifiers:

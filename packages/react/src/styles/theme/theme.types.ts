@@ -66,7 +66,7 @@ export type AnyTheme = Theme<
   AnyFont
 >;
 
-export type AnyStyleProps = StyleProps<AnyTheme>;
+export type AnyStyleRelatedProps = StyleRelatedProps<AnyTheme>;
 
 export type PaletteRelatedProps<TPalette extends AnyPalette | undefined> =
   TPalette extends AnyPalette
@@ -84,7 +84,7 @@ export type FontRelatedProps<TFont extends AnyFont | undefined> =
 export type ShadowRelatedProps<TShadow extends AnyShadow | undefined> =
   TShadow extends AnyShadow ? ThemedShadowProps<TShadow> : ShadowProps;
 
-export type StyleProps<TTheme extends AnyTheme> = PaletteRelatedProps<
+export type StyleRelatedProps<TTheme extends AnyTheme> = PaletteRelatedProps<
   TTheme["palette"]
 > &
   SpacingRelatedProps<TTheme["spacing"]> &
@@ -94,7 +94,7 @@ export type StyleProps<TTheme extends AnyTheme> = PaletteRelatedProps<
 
 export type ComponentStylingProps<
   TProps extends AnyProps,
-  TStyleProps extends AnyStyleProps
+  TStyleProps extends AnyStyleRelatedProps
 > = {
   [K in keyof TProps]: K extends keyof TStyleProps ? TStyleProps[K] : TProps[K];
 };
@@ -102,11 +102,11 @@ export type ComponentStylingProps<
 export type ThemedComponentProps<
   TProps extends AnyProps,
   TTheme extends AnyTheme
-> = ComponentStylingProps<TProps, StyleProps<TTheme>>;
+> = ComponentStylingProps<TProps, StyleRelatedProps<TTheme>>;
 
 export type StyledFn<TTheme extends AnyTheme> = <TProps extends AnyProps>(
   Component: (props: TProps) => JSX.Element,
-  options?: Partial<ComponentStylingProps<TProps, StyleProps<TTheme>>>
+  options?: Partial<ComponentStylingProps<TProps, StyleRelatedProps<TTheme>>>
 ) => (props: ThemedComponentProps<TProps, TTheme>) => JSX.Element;
 
 export type ExtendFn<TTheme extends AnyTheme> = <TNewTheme extends AnyTheme>(

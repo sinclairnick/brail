@@ -7,17 +7,17 @@ export const BASE_URL =
 export const myTheme = theme
   .font({ $arial: "Arial" })
   .palette({
-    $white: "#ffffff",
-    $grey50: "#FAFAFA",
-    $grey100: "#EEEEEE",
-    $brailMain: "#1B448D",
+    white: "#ffffff",
+    grey50: "#FAFAFA",
+    grey100: "#EEEEEE",
+    brailMain: "#1B448D",
   })
   .spacing({
-    $1: 4,
-    $2: 8,
-    $3: 12,
-    $4: 16,
-    $5: 20,
+    1: 4,
+    2: 8,
+    3: 12,
+    4: 16,
+    5: 20,
   })
   .create();
 

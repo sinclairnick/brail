@@ -8,3 +8,4 @@ export * from "./row";
 export * from "./spacer";
 export * from "./typography";
 export * from "./container";
+export * from "./head";
