@@ -257,14 +257,14 @@ importers:
   starters/nextjs-trpc-starter:
     specifiers:
       '@babel/core': ^7.0.0
-      '@brail/eslint-plugin': '*'
-      '@brail/react': '*'
+      '@brail/eslint-plugin': 1.0.0-alpha.3
+      '@brail/react': 1.0.0-alpha.3
       '@trpc/server': ^10.11.1
       '@types/node': ^17.0.12
       '@types/nodemailer': ^6.4.7
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
-      brail: '*'
+      brail: 1.0.0-alpha.3
       eslint: 7.32.0
       next: ^13.1.1
       nodemailer: ^6.9.1

@@ -2,6 +2,26 @@
   "name": "brail-temp",
   "version": "0.0.0",
   "private": true,
+  "description": "The email development toolkit for the 21st century",
+  "repository": {
+    "url": "https://github.com/sinclairnick/brail"
+  },
+  "author": {
+    "url": "https://github.com/sinclairnick",
+    "name": "Nick Sinclair"
+  },
+  "homepage": "https://brail.dev",
+  "keywords": [
+    "email",
+    "development",
+    "trpc",
+    "zod",
+    "react",
+    "templating",
+    "typescript"
+  ],
+  "license": "Apache",
+  "readme": "README.md",
   "workspaces": [
     "apps/*",
     "packages/*"
