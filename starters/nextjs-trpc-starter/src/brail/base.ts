@@ -11,14 +11,24 @@ const nodemailerImport = serverImport<typeof Nodemailer>("nodemailer");
 
 // Base template config
 export const template = b.template
-  .meta(z.object({ to: z.string().email(), subject: z.string() }))
+  .meta(
+    z.object({
+      to: z.string().email(),
+      subject: z.string(),
+      apiKey: z.string().optional(),
+    })
+  )
   .onSend(async (args) => {
+    const { html, meta } = args;
+    // Do something with api key?
+    const key = meta.apiKey;
+
     const nodemailer = await nodemailerImport;
     const transport = nodemailer?.createTransport({ port: 1025 });
     await transport?.sendMail({
-      to: args.meta.to,
-      subject: args.meta.subject,
-      html: args.html,
+      to: meta.to,
+      subject: meta.subject,
+      html: html,
     });
     return { ok: true };
   });
