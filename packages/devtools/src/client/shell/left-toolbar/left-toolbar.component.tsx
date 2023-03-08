@@ -1,20 +1,20 @@
 import { BrailIcon } from "../../icons/brail-icon";
 import { Stack, Button, theme, styled } from "../../theme/theme";
 import {
-  FileIcon,
-  TableIcon,
-  MailIcon,
-  ArrowUpRightIcon,
-} from "@primer/octicons-react";
+  HiOutlineDocument,
+  HiOutlineEnvelope,
+  HiArrowUpRight,
+} from "react-icons/hi2";
+import type { IconType } from "react-icons";
 import { SplitState, TabKey } from "../shell.component";
 
 const Tabs = [
-  { label: "Templates", icon: FileIcon, key: "templates" },
+  { label: "Templates", icon: HiOutlineDocument, key: "templates" },
   // { label: "Playground", icon: BeakerIcon, key: "playground" },
-  { label: "Send", icon: MailIcon, key: "send" },
+  { label: "Send", icon: HiOutlineEnvelope, key: "send" },
   {
     label: "View",
-    icon: ArrowUpRightIcon,
+    icon: HiArrowUpRight,
     key: "view",
     onClick: () => {
       const url = new URL(location.href);
@@ -24,7 +24,7 @@ const Tabs = [
   },
 ] satisfies Array<{
   label: string;
-  icon: typeof FileIcon;
+  icon: IconType;
   key: TabKey;
   onClick?: () => void;
 }>;
@@ -105,7 +105,7 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
       </Stack>
       <Stack>
         <ToolbarButton onClick={onToggleSplit}>
-          <TableIcon size={20} />
+          {/* <TableIcon size={20} /> */}
         </ToolbarButton>
       </Stack>
     </Stack>

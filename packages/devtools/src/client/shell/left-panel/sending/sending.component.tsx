@@ -3,10 +3,9 @@ import { Button, Stack, Typography } from "../../../theme/theme";
 import Editor, { OnMount, useMonaco, Monaco } from "@monaco-editor/react";
 import { SendingProps } from "./sending.types";
 import { AnySendValue, createBeforeMountHandler } from "./sending.constants";
-import { ArrowRightIcon } from "@primer/octicons-react";
+import { HiArrowRight } from "react-icons/hi2";
 import { useDevtoolsContext } from "../../../context/devtools-context.component";
 import { useAsync } from "../../../util/use-async.hook";
-import { match } from "ts-pattern";
 import { TRPCClientError } from "@trpc/client";
 import { setHeaders } from "../../../trpc";
 
@@ -122,7 +121,7 @@ export const Sending = (props: SendingProps) => {
               disabled={sendReq.isLoading}
             >
               Send
-              <ArrowRightIcon />
+              <HiArrowRight />
             </Button>
             <Stack css={{ fontSize: 12, marginTop: 8, gap: 8 }}>
               <Typography css={{ textAlign: "center", color: "$gray9" }}>
@@ -131,40 +130,32 @@ export const Sending = (props: SendingProps) => {
                 <strong>Enter</strong>
               </Typography>
               <Stack css={{ height: "12px", maxHeight: "max-content" }}>
-                {match({ ...sendReq, jsonError: error })
-                  .when(
-                    (x) => x.jsonError,
-                    () => (
+                {(() => {
+                  if (error) {
+                    return (
                       <Typography
                         css={{ textAlign: "center", color: "$red10" }}
                       >
                         {error}
                       </Typography>
-                    )
-                  )
-                  .when(
-                    (x) => x.isLoading,
-                    () => (
+                    );
+                  }
+                  if (sendReq.isLoading) {
+                    return (
                       <Typography
                         css={{ textAlign: "center", color: "$gray9" }}
                       >
                         Sending...
                       </Typography>
-                    )
-                  )
-                  .when(
-                    (x) => x.error,
-                    (x) => (
-                      <Typography
-                        css={{ textAlign: "center", color: "$red10" }}
-                      >
-                        Error {x.error?.message}
-                      </Typography>
-                    )
-                  )
-                  .when(
-                    (x) => x.data,
-                    () => (
+                    );
+                  }
+                  if (sendReq.error) {
+                    <Typography css={{ textAlign: "center", color: "$red10" }}>
+                      Error {sendReq.error?.message}
+                    </Typography>;
+                  }
+                  if (sendReq.data) {
+                    return (
                       <Typography
                         css={{
                           textAlign: "center",
@@ -174,9 +165,10 @@ export const Sending = (props: SendingProps) => {
                       >
                         Sent successfully!
                       </Typography>
-                    )
-                  )
-                  .otherwise(() => null)}
+                    );
+                  }
+                  return null;
+                })()}
               </Stack>
             </Stack>
           </Stack>

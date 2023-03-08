@@ -2,9 +2,6 @@
   "name": "@brail/devtools",
   "version": "1.0.0-alpha.4",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "private": false,
   "exports": {
     ".": {
@@ -38,7 +35,6 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",
-    "@primer/octicons-react": "^17.12.0",
     "@radix-ui/colors": "^0.1.8",
     "@stitches/react": "^1.2.8",
     "@tanstack/react-query": "^4.24.10",
@@ -46,6 +42,7 @@
     "@trpc/react-query": "^10.12.0",
     "@trpc/server": "^10.11.1",
     "framer-motion": "^9.0.7",
+    "react-icons": "^4.8.0",
     "ts-pattern": "^4.2.1",
     "zod": "^3.20.6",
     "zod-to-json-schema": "^3.20.4"
@@ -56,7 +53,7 @@
     "@types/react": "^18.0.28",
     "monaco-editor": "^0.36.1",
     "next": "^13.2.1",
-    "react": "^18.2.0",
+    "react": "link:@types/@heroicons/react",
     "tsconfig": "workspace:*",
     "typescript": "^4.9.5"
   }

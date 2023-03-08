@@ -1,6 +1,6 @@
 import { AppShell } from "../shell/shell.component";
 import type { AnyTemplateMap } from "@brail/types";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren } from "react";
 import { globalStyles } from "../theme/theme";
 import {
   DevtoolsProvider,
@@ -14,7 +14,7 @@ export type DevtoolsProps = PropsWithChildren<{
 
 export const Devtools = (props: DevtoolsProps) => {
   globalStyles();
-	
+
   return (
     <DevtoolsProvider apiPath={props.apiPath}>
       <AppShell templates={props.templates}>{props.children}</AppShell>

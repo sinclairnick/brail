@@ -32,6 +32,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check": "turbo run check --parallel",
+		"check:watch": "npm run check --watch",
 		"publish": "turbo run publish --parallel && pnpm publish -r"
   },
   "devDependencies": {

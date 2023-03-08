@@ -1,5 +1,5 @@
 import { Button, Stack } from "../../theme/theme";
-import { DeviceMobileIcon, DeviceDesktopIcon } from "@primer/octicons-react";
+import { HiDevicePhoneMobile, HiComputerDesktop } from "react-icons/hi2";
 
 export type TopToolbarProps = {
   isMobile: boolean;
@@ -33,7 +33,7 @@ export const TopToolbar = (props: TopToolbarProps) => {
         }}
         onClick={() => onChange(true)}
       >
-        <DeviceMobileIcon size={18} />
+        <HiDevicePhoneMobile size={18} />
       </Button>
       <Button
         css={{
@@ -43,7 +43,7 @@ export const TopToolbar = (props: TopToolbarProps) => {
         }}
         onClick={() => onChange(false)}
       >
-        <DeviceDesktopIcon size={18} />
+        <HiComputerDesktop size={18} />
       </Button>
     </Stack>
   );

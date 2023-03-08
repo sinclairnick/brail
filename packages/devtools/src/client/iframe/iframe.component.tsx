@@ -1,7 +1,6 @@
-import { useRouter } from "next/router.js";
+import { useRouter } from "next/router";
 import { useEffect, PropsWithChildren, useState } from "react";
 import { styled } from "../theme/theme";
-import { motion } from "framer-motion";
 
 export type IframeProps = PropsWithChildren<ReturnType<typeof useIframe>>;
 

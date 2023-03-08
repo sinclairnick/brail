@@ -1,10 +1,10 @@
 import {
-  FileIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-  FileDirectoryIcon,
-  FileDirectoryFillIcon,
-} from "@primer/octicons-react";
+  HiOutlineDocument,
+  HiChevronDown,
+  HiChevronRight,
+  HiOutlineFolder,
+  HiOutlineFolderOpen,
+} from "react-icons/hi2";
 import { useState } from "react";
 import { Button, Stack, Typography } from "../../../theme/theme";
 import { createTemplateTree } from "./file-tree.constants";
@@ -14,7 +14,7 @@ import {
   TemplateList as TTemplateList,
   TemplateFolder as TTemplateFolder,
 } from "./file-tree.types";
-import Router, { useRouter } from "next/router.js";
+import { useRouter } from "next/router";
 
 const DEPTH_PAD = 16;
 
@@ -43,7 +43,7 @@ const TemplateButton = (
           columnGap: 8,
         }}
       >
-        <FileIcon size={14} />
+        <HiOutlineDocument size={14} />
         <Typography>{props.label}</Typography>
       </Stack>
     </Button>
@@ -74,14 +74,14 @@ const TemplateFolder = (props: {
         }}
       >
         {props.isExpanded ? (
-          <ChevronDownIcon size={14} />
+          <HiChevronDown size={14} />
         ) : (
-          <ChevronRightIcon size={14} />
+          <HiChevronRight size={14} />
         )}
         {props.isExpanded ? (
-          <FileDirectoryIcon size={14} />
+          <HiOutlineFolderOpen size={14} />
         ) : (
-          <FileDirectoryFillIcon size={14} />
+          <HiOutlineFolder size={14} />
         )}
         <Typography>{props.label}</Typography>
       </Stack>
@@ -106,8 +106,7 @@ const TemplateListItem = (props: {
         isActive={path === item.urlPath}
         onClick={() => {
           if (item.urlPath) {
-            // TODO: Make framework agnostic
-            Router.push(item.urlPath);
+            router.push(item.urlPath);
           }
         }}
       />
