@@ -11,7 +11,8 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check": "turbo run check --parallel"
+    "check": "turbo run check --parallel",
+		"publish": "turbo run publish --parallel"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
