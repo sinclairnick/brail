@@ -10,11 +10,15 @@ export type IDevtoolsContext = {
 const DevtoolsContext = createContext<IDevtoolsContext | null>(null);
 
 export type DevtoolsProviderProps = PropsWithChildren<{
-  apiPath: string;
+  /**
+   * Path to the devtools API handler.
+   * @default /api/devtools
+   */
+  apiPath?: string;
 }>;
 
 export const DevtoolsProvider = (props: DevtoolsProviderProps) => {
-  const { apiPath, children } = props;
+  const { apiPath = "/api/devtools", children } = props;
 
   const trpc = useMemo(() => {
     return createTrpc({ apiPath });

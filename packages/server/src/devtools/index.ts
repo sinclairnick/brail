@@ -1,2 +1,1 @@
-// Re-export
-export * from "./next";
+export * from "@brail/devtools";

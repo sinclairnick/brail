@@ -1,11 +1,13 @@
 import { AppProps } from "next/app";
-import { DevtoolsLayout } from "../brail/devtools";
+import { Devtools } from "brail/devtools";
+import { templates } from "../.brail/templates.generated";
 
 export default (props: AppProps) => {
   const { Component, pageProps } = props;
+
   return (
-    <DevtoolsLayout>
+    <Devtools templates={templates}>
       <Component {...pageProps} />
-    </DevtoolsLayout>
+    </Devtools>
   );
 };

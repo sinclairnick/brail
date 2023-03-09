@@ -41,6 +41,11 @@ export const Sending = (props: SendingProps) => {
   const [error, setError] = useState<string | undefined>();
   const { trpc } = useDevtoolsContext();
   const [sendReq, runSendReq] = useAsync<any, TRPCClientError<any>>();
+  const [isEnabledReq, runIsEnabledReq] = useAsync<
+    boolean,
+    TRPCClientError<any>
+  >();
+  const isSendingEnabled = Boolean(isEnabledReq.data);
   const [value] = useState(() =>
     JSON.stringify(
       getStorageVal() ?? getDefaultValue(activeTemplate?.previewProps),
@@ -51,6 +56,13 @@ export const Sending = (props: SendingProps) => {
 
   useEffect(() => {
     setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    runIsEnabledReq(async () => {
+      const res = (await trpc.query(`__internal.isEnabled`)) as boolean;
+      return res;
+    });
   }, []);
 
   const handleBeforeMount = createBeforeMountHandler(activeTemplate);
@@ -83,7 +95,10 @@ export const Sending = (props: SendingProps) => {
 
     runSendReq(async () => {
       setHeaders(headers ?? {});
-      const res = await trpc.mutation(`${activeTemplate.trpcPath}.send`, data);
+      const res = await trpc.mutation(
+        `templates.${activeTemplate.trpcPath}.send`,
+        data
+      );
       return res;
     });
   };
@@ -100,92 +115,112 @@ export const Sending = (props: SendingProps) => {
   if (!hasMounted) return <></>;
 
   return (
-    <Stack css={{ paddingTop: 8 }}>
-      {!activeTemplate && (
-        <Typography css={{ px: 4, pt: 2, color: "DarkGray" }}>
-          Please select a template to send/generate emails
+    <>
+      {isEnabledReq.isLoading ? (
+        <Typography css={{ p: 4 }}>
+          Checking if sending is enabled...
         </Typography>
-      )}
-      {activeTemplate && (
-        <>
-          <Stack css={{ p: 4 }}>
-            <Button
-              css={{
-                backgroundColor: "$gray3",
-                display: "flex",
-                columnGap: 4,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              onClick={handleSubmit(editorRef.current, monaco)}
-              disabled={sendReq.isLoading}
-            >
-              Send
-              <HiArrowRight />
-            </Button>
-            <Stack css={{ fontSize: 12, marginTop: 8, gap: 8 }}>
-              <Typography css={{ textAlign: "center", color: "$gray9" }}>
-                Or press <strong>Cmd</strong>
-                {" + "}
-                <strong>Enter</strong>
-              </Typography>
-              <Stack css={{ height: "12px", maxHeight: "max-content" }}>
-                {(() => {
-                  if (error) {
-                    return (
-                      <Typography
-                        css={{ textAlign: "center", color: "$red10" }}
-                      >
-                        {error}
-                      </Typography>
-                    );
-                  }
-                  if (sendReq.isLoading) {
-                    return (
-                      <Typography
-                        css={{ textAlign: "center", color: "$gray9" }}
-                      >
-                        Sending...
-                      </Typography>
-                    );
-                  }
-                  if (sendReq.error) {
-                    <Typography css={{ textAlign: "center", color: "$red10" }}>
-                      Error {sendReq.error?.message}
-                    </Typography>;
-                  }
-                  if (sendReq.data) {
-                    return (
-                      <Typography
-                        css={{
-                          textAlign: "center",
-                          color: "$green10",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Sent successfully!
-                      </Typography>
-                    );
-                  }
-                  return null;
-                })()}
+      ) : isSendingEnabled ? (
+        <Stack css={{ paddingTop: 8 }}>
+          {!activeTemplate && (
+            <Typography css={{ px: 4, pt: 2, color: "DarkGray" }}>
+              Please select a template to send/generate emails
+            </Typography>
+          )}
+          {activeTemplate && (
+            <>
+              <Stack css={{ p: 4 }}>
+                <Button
+                  css={{
+                    backgroundColor: "$gray3",
+                    display: "flex",
+                    columnGap: 4,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  onClick={handleSubmit(editorRef.current, monaco)}
+                  disabled={sendReq.isLoading}
+                >
+                  Send
+                  <HiArrowRight />
+                </Button>
+                <Stack css={{ fontSize: 12, marginTop: 8, gap: 8 }}>
+                  <Typography css={{ textAlign: "center", color: "$gray9" }}>
+                    Or press <strong>Cmd</strong>
+                    {" + "}
+                    <strong>Enter</strong>
+                  </Typography>
+                  <Stack css={{ height: "12px", maxHeight: "max-content" }}>
+                    {(() => {
+                      if (error) {
+                        return (
+                          <Typography
+                            css={{ textAlign: "center", color: "$red10" }}
+                          >
+                            {error}
+                          </Typography>
+                        );
+                      }
+                      if (sendReq.isLoading) {
+                        return (
+                          <Typography
+                            css={{ textAlign: "center", color: "$gray9" }}
+                          >
+                            Sending...
+                          </Typography>
+                        );
+                      }
+                      if (sendReq.error) {
+                        <Typography
+                          css={{ textAlign: "center", color: "$red10" }}
+                        >
+                          Error {sendReq.error?.message}
+                        </Typography>;
+                      }
+                      if (sendReq.data) {
+                        return (
+                          <Typography
+                            css={{
+                              textAlign: "center",
+                              color: "$green10",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            Sent successfully!
+                          </Typography>
+                        );
+                      }
+                      return null;
+                    })()}
+                  </Stack>
+                </Stack>
               </Stack>
-            </Stack>
-          </Stack>
-          <Editor
-            defaultLanguage="json"
-            width={"100%"}
-            height={400}
-            options={{
-              minimap: { enabled: false },
-            }}
-            beforeMount={handleBeforeMount}
-            language="json"
-            value={value}
-            onMount={onMount}
-          />
-        </>
+              <Editor
+                defaultLanguage="json"
+                width={"100%"}
+                height={400}
+                options={{
+                  minimap: { enabled: false },
+                }}
+                beforeMount={handleBeforeMount}
+                language="json"
+                value={value}
+                onMount={onMount}
+              />
+            </>
+          )}
+        </Stack>
+      ) : (
+        <Stack css={{ rowGap: 8, p: 4 }}>
+          <Typography>
+            <b>Sending has been disabled.</b>
+          </Typography>
+          <Typography css={{ fontSize: 14, color: "$gray10" }}>
+            You can re-enable sending via the <code>isEnabled</code> devtools
+            setting.
+          </Typography>
+        </Stack>
       )}
-    </Stack>
+    </>
   );
 };

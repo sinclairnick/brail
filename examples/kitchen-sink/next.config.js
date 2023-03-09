@@ -8,5 +8,5 @@ const withBrail = require("brail/next")(brailConfig);
 
 module.exports = withBrail({
   reactStrictMode: true,
-  pageExtensions: ["page.tsx"],
+  pageExtensions: ["page.tsx", "api.ts"],
 });

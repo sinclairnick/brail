@@ -33,6 +33,9 @@ export const useAsync = <
         })
         .catch((e) => {
           setState((s) => ({ ...s, error: e, isLoading: false, hasRun: true }));
+        })
+        .finally(() => {
+          setState((s) => ({ ...s, isLoading: false }));
         });
     },
   ];

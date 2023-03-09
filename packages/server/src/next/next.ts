@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 import type { Configuration } from "webpack";
 import { BrailOptions } from "@brail/types";
 import { optionsToConfig, DEFAULT_PAGE_EXTENSIONS } from "../util/brail.util";
-import path from "node:path";
 import { BrailEmitTemplatesPlugin } from "./webpack/plugins/emit-templates.plugin";
 
 export type WithBrailFn = (
