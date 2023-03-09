@@ -1,9 +1,9 @@
 {
   "name": "@brail/create-app",
-  "version": "1.0.1-beta.0",
+  "version": "1.0.1-beta.1",
   "description": "",
   "bin": {
-    "brail": "./bin/brail.js"
+    "brail": "./bin/brail.mjs"
   },
   "scripts": {
     "build": "tsc",
