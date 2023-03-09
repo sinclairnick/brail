@@ -1,6 +1,6 @@
 {
   "name": "@brail/create-brail-app",
-  "version": "0.0.0",
+  "version": "1.0.0-beta.1",
   "private": false,
   "packageManager": "pnpm@7.26.0",
   "scripts": {
