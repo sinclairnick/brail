@@ -1,5 +1,13 @@
 # brail
 
+## 1.0.0-alpha.9
+
+### Patch Changes
+
+- Update devtools module type
+- Updated dependencies
+  - @brail/devtools@1.0.0-alpha.9
+
 ## 1.0.0-alpha.8
 
 ### Patch Changes

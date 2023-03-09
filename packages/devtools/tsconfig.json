@@ -2,7 +2,6 @@
   "extends": "tsconfig/react-library.json",
   "include": ["./src"],
   "compilerOptions": {
-    "module": "CommonJS",
     "outDir": "dist",
     "lib": ["ES2017", "DOM"],
     "noErrorTruncation": true,

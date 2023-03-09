@@ -1,5 +1,13 @@
 # @brail/types
 
+## 1.0.0-alpha.9
+
+### Patch Changes
+
+- Update devtools module type
+- Updated dependencies
+  - tsconfig@0.0.1-alpha.7
+
 ## 1.0.0-alpha.8
 
 ### Patch Changes

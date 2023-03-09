@@ -1,5 +1,13 @@
 # docs
 
+## 0.0.1-alpha.7
+
+### Patch Changes
+
+- Update devtools module type
+- Updated dependencies
+  - @brail/react@1.0.0-alpha.9
+
 ## 0.0.1-alpha.6
 
 ### Patch Changes
