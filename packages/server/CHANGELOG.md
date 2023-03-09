@@ -1,5 +1,11 @@
 # brail
 
+## 1.0.0-alpha.13
+
+### Patch Changes
+
+- Normalize withBrail export, preferring next.config.mjs configuration
+
 ## 1.0.0-alpha.12
 
 ### Patch Changes
