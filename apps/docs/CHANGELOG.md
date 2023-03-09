@@ -1,5 +1,13 @@
 # docs
 
+## 0.0.1-alpha.9
+
+### Patch Changes
+
+- Add explicity .js export to /server
+- Updated dependencies
+  - @brail/react@1.0.0-alpha.11
+
 ## 0.0.1-alpha.8
 
 ### Patch Changes

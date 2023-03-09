@@ -1,5 +1,13 @@
 # brail
 
+## 1.0.0-alpha.11
+
+### Patch Changes
+
+- Add explicity .js export to /server
+- Updated dependencies
+  - @brail/devtools@1.0.0-alpha.11
+
 ## 1.0.0-alpha.10
 
 ### Patch Changes

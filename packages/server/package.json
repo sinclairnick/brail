@@ -1,6 +1,6 @@
 {
   "name": "brail",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -42,12 +42,6 @@
       "require": "./dist/devtools.js",
       "default": "./dist/devtools.js",
       "types": "./dist/devtools.d.ts"
-    },
-    "./*": {
-      "import": "./dist/*.mjs",
-      "require": "./dist/*.js",
-      "default": "./dist/*.js",
-      "types": "./dist/*.d.ts"
     }
   },
   "scripts": {

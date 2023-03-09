@@ -1,6 +1,6 @@
 {
   "name": "@brail/devtools",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "description": "",
   "private": false,
   "main": "dist/index.js",
@@ -12,16 +12,6 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./next": {
-      "import": "./dist/next.mjs",
-      "require": "./dist/next.js",
-      "types": "./dist/next.d.ts"
-    },
-    "./loader": {
-      "import": "./dist/loader.mjs",
-      "require": "./dist/loader.js",
-      "types": "./dist/loader.d.ts"
     }
   },
   "scripts": {
