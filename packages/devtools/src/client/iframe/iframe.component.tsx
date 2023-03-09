@@ -7,6 +7,7 @@ export type IframeProps = PropsWithChildren<ReturnType<typeof useIframe>>;
 const StyledIframe = styled("iframe", {
   border: "none",
   outline: "none",
+  overflow: "hidden",
 });
 
 export const useIframe = () => {

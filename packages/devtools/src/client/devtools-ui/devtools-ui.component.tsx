@@ -21,13 +21,3 @@ export const Devtools = (props: DevtoolsProps) => {
     </DevtoolsProvider>
   );
 };
-
-/**
- *  Creates devtools with all props pre-passed in.
- * Basically just curries the devtools component.
- */
-export const createDevtools = (
-  args: Omit<DevtoolsProps, "children">
-): ((props: Pick<DevtoolsProps, "children">) => JSX.Element) => {
-  return (props) => <Devtools {...args} {...props} />;
-};
