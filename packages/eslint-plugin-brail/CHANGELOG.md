@@ -1,5 +1,11 @@
 # @brail/eslint-plugin
 
+## 1.0.0-beta.13
+
+### Patch Changes
+
+- Move alpha into beta
+
 ## 1.0.0-alpha.12
 
 ### Patch Changes

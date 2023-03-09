@@ -1,14 +1,14 @@
 {
   "mode": "pre",
-  "tag": "alpha",
+  "tag": "beta",
   "initialVersions": {
-    "docs": "0.0.0",
-    "@brail/devtools": "1.0.0-alpha.1",
-    "@brail/eslint-plugin": "1.0.0-alpha.1",
-    "@brail/react": "1.0.0-alpha.1",
-    "brail": "1.0.0-alpha.1",
-    "tsconfig": "0.0.0",
-    "@brail/types": "1.0.0-alpha.1"
+    "docs": "0.0.1-alpha.10",
+    "@brail/devtools": "1.0.0-alpha.13",
+    "@brail/eslint-plugin": "1.0.0-alpha.12",
+    "@brail/react": "1.0.0-alpha.12",
+    "brail": "1.0.0-alpha.14",
+    "tsconfig": "0.0.1-alpha.10",
+    "@brail/types": "1.0.0-alpha.12"
   },
   "changesets": [
     "big-carpets-clean",
@@ -19,6 +19,7 @@
     "cool-wolves-glow",
     "cuddly-wombats-behave",
     "fuzzy-bags-rest",
+    "itchy-bananas-report",
     "neat-eels-obey",
     "old-starfishes-allow",
     "rich-foxes-appear",

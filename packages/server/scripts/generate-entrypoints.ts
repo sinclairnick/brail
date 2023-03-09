@@ -6,6 +6,24 @@ const main = async () => {
   const pkgJson: { files: any[]; exports: {}; entrypoints: string[] } =
     JSON.parse(pkgString);
 
+  pkgJson.files = ["dist", "package.json", "README.md"];
+
+  pkgJson.exports = {
+    "./package.json": "./package.json",
+    ".": {
+      import: "./dist/index.mjs",
+      require: "./dist/index.js",
+      default: "./dist/index.js",
+      types: "./dist/index.d.ts",
+    },
+    "./next-loader": {
+      import: "./dist/next-loader.mjs",
+      require: "./dist/next-loader.js",
+      default: "./dist/next-loader.js",
+      types: "./dist/next-loader.d.ts",
+    },
+  };
+
   for (const entrypoint of pkgJson.entrypoints) {
     const dtsPath = path.join(process.cwd(), `${entrypoint}.d.ts`);
     const jsPath = path.join(process.cwd(), `${entrypoint}.js`);

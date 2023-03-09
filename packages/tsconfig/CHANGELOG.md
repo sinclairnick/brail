@@ -1,5 +1,11 @@
 # tsconfig
 
+## 0.0.1-beta.11
+
+### Patch Changes
+
+- Move alpha into beta
+
 ## 0.0.1-alpha.10
 
 ### Patch Changes

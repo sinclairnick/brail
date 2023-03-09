@@ -1,6 +1,6 @@
 {
   "name": "brail",
-  "version": "1.0.0-alpha.14",
+  "version": "1.0.0-beta.15",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,26 +16,13 @@
     "sdk.d.ts",
     "sdk.js",
     "trpc.d.ts",
-    "trpc.js",
-    "util.d.ts",
-    "util.js",
-    "next.d.ts",
-    "next.js",
-    "devtools.d.ts",
-    "devtools.js",
-    "sdk.d.ts",
-    "sdk.js",
-    "trpc.d.ts",
-    "trpc.js",
-    "util.d.ts",
-    "util.js"
+    "trpc.js"
   ],
   "entrypoints": [
     "next",
     "devtools",
     "sdk",
-    "trpc",
-    "util"
+    "trpc"
   ],
   "exports": {
     "./package.json": "./package.json",
@@ -74,12 +61,6 @@
       "import": "./dist/trpc.mjs",
       "types": "./dist/trpc.d.ts",
       "default": "./dist/trpc.js"
-    },
-    "./util": {
-      "require": "./dist/util.js",
-      "import": "./dist/util.mjs",
-      "types": "./dist/util.d.ts",
-      "default": "./dist/util.js"
     }
   },
   "scripts": {

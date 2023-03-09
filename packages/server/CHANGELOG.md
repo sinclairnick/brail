@@ -1,5 +1,13 @@
 # brail
 
+## 1.0.0-beta.15
+
+### Patch Changes
+
+- Move alpha into beta
+- Updated dependencies
+  - @brail/devtools@1.0.0-beta.14
+
 ## 1.0.0-alpha.14
 
 ### Patch Changes

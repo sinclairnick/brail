@@ -1,5 +1,11 @@
 # @brail/devtools
 
+## 1.0.0-beta.14
+
+### Patch Changes
+
+- Move alpha into beta
+
 ## 1.0.0-alpha.13
 
 ### Patch Changes

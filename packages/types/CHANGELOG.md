@@ -1,5 +1,13 @@
 # @brail/types
 
+## 1.0.0-beta.13
+
+### Patch Changes
+
+- Move alpha into beta
+- Updated dependencies
+  - tsconfig@0.0.1-beta.11
+
 ## 1.0.0-alpha.12
 
 ### Patch Changes
