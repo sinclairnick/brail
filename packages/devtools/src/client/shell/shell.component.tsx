@@ -1,5 +1,5 @@
 import { reset, Stack } from "../theme/theme.js";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useEffect, useLayoutEffect, useState } from "react";
 import { LeftToolbar } from "./left-toolbar/left-toolbar.component";
 import { LeftPanel } from "./left-panel/left-panel.component";
 import { TopToolbar } from "./top-toolbar/top-toolbar.component";
@@ -12,6 +12,7 @@ import Head from "next/head.js";
 import { FileTree } from "./left-panel/file-tree/file-tree.component";
 import { Sending } from "./left-panel/sending/sending.component";
 import { useIsMounted } from "../util/is-mounted.hook";
+import { Breakpoints } from "../util/breakpoints.util.js";
 
 export type AppShellProps = PropsWithChildren<{
   templates: AnyTemplateMap;
@@ -57,6 +58,12 @@ export const AppShell = (props: AppShellProps) => {
   const isMounted = useIsMounted();
   const [splitState, setSplitState] = useState<SplitState>("content");
   const splitWidths = getSplitWidths(splitState);
+
+  useEffect(() => {
+    if (window.innerWidth <= Breakpoints.md) {
+      setSplitState("minimized");
+    }
+  }, []);
 
   return (
     <>

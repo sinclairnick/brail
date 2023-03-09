@@ -1,8 +1,8 @@
-const MD_BREAKPOINT = "768";
+const MD_BREAKPOINT = 900;
 
-const SM_BREAKPOINT = "480";
+const SM_BREAKPOINT = 480;
 
-const breakpoints = {
+export const Breakpoints = {
   md: MD_BREAKPOINT,
   sm: SM_BREAKPOINT,
 };
@@ -10,5 +10,5 @@ const breakpoints = {
 export type Breakpoint = "sm" | "md";
 
 export const mediaQuery = (breakpoint: Breakpoint) => {
-  return `@media screen and (max-width: ${breakpoints[breakpoint]}px)`;
+  return `@media screen and (max-width: ${Breakpoints[breakpoint]}px)`;
 };
