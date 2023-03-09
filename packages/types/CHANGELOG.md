@@ -1,5 +1,13 @@
 # @brail/types
 
+## 1.0.0-alpha.12
+
+### Patch Changes
+
+- Add entrypoints script, make next/X identifiers full
+- Updated dependencies
+  - tsconfig@0.0.1-alpha.10
+
 ## 1.0.0-alpha.11
 
 ### Patch Changes

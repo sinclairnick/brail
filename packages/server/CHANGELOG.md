@@ -1,5 +1,13 @@
 # brail
 
+## 1.0.0-alpha.12
+
+### Patch Changes
+
+- Add entrypoints script, make next/X identifiers full
+- Updated dependencies
+  - @brail/devtools@1.0.0-alpha.12
+
 ## 1.0.0-alpha.11
 
 ### Patch Changes

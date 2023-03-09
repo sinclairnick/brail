@@ -1,1 +1,1 @@
-module.exports = require("./dist/trpc");
+module.exports = require("./dist/trpc.js");

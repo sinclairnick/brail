@@ -213,6 +213,7 @@ importers:
       trpc-openapi: ^1.1.2
       ts-jest: ^29.0.5
       tsconfig: workspace:*
+      tsx: ^3.12.3
       typescript: ^4.9.5
       webpack: ^5.75.0
       zod: ^3.20.6
@@ -236,6 +237,7 @@ importers:
       trpc-openapi: 1.1.2_4szgkylmb2xbcj6rxrtnlh4mry
       ts-jest: 29.0.5_doipufordlnvh5g4adbwayvyvy
       tsconfig: link:../tsconfig
+      tsx: 3.12.3
       typescript: 4.9.5
       webpack: 5.75.0
 

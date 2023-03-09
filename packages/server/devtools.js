@@ -1,1 +1,1 @@
-module.exports = require("./dist/devtools");
+module.exports = require("./dist/devtools.js");

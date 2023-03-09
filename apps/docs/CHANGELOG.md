@@ -1,5 +1,13 @@
 # docs
 
+## 0.0.1-alpha.10
+
+### Patch Changes
+
+- Add entrypoints script, make next/X identifiers full
+- Updated dependencies
+  - @brail/react@1.0.0-alpha.12
+
 ## 0.0.1-alpha.9
 
 ### Patch Changes

@@ -12,7 +12,7 @@ import {
   TemplateList as TTemplateList,
   TemplateFolder as TTemplateFolder,
 } from "./file-tree.types";
-import { useRouter } from "next/router";
+import { useRouter } from "next/router.js";
 
 const DEPTH_PAD = 16;
 

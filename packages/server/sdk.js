@@ -1,1 +1,1 @@
-module.exports = require("./dist/sdk");
+module.exports = require("./dist/sdk.js");

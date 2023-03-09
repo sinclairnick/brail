@@ -1,10 +1,42 @@
 {
   "name": "brail",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "private": false,
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "next.d.ts",
+    "next.js",
+    "devtools.d.ts",
+    "devtools.js",
+    "sdk.d.ts",
+    "sdk.js",
+    "trpc.d.ts",
+    "trpc.js",
+    "util.d.ts",
+    "util.js",
+    "next.d.ts",
+    "next.js",
+    "devtools.d.ts",
+    "devtools.js",
+    "sdk.d.ts",
+    "sdk.js",
+    "trpc.d.ts",
+    "trpc.js",
+    "util.d.ts",
+    "util.js"
+  ],
+  "entrypoints": [
+    "next",
+    "devtools",
+    "sdk",
+    "trpc",
+    "util"
+  ],
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -13,42 +45,49 @@
       "default": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./sdk": {
-      "import": "./dist/sdk.mjs",
-      "require": "./dist/sdk.js",
-      "default": "./dist/sdk.js",
-      "types": "./dist/sdk.d.ts"
-    },
-    "./trpc": {
-      "import": "./dist/trpc.mjs",
-      "require": "./dist/trpc.js",
-      "default": "./dist/trpc.js",
-      "types": "./dist/trpc.d.ts"
-    },
-    "./next": {
-      "import": "./dist/next.mjs",
-      "require": "./dist/next.js",
-      "default": "./dist/next.js",
-      "types": "./dist/next.d.ts"
-    },
     "./next-loader": {
       "import": "./dist/next-loader.mjs",
       "require": "./dist/next-loader.js",
       "default": "./dist/next-loader.js",
       "types": "./dist/next-loader.d.ts"
     },
+    "./next": {
+      "require": "./dist/next.js",
+      "import": "./dist/next.mjs",
+      "types": "./dist/next.d.ts",
+      "default": "./dist/next.js"
+    },
     "./devtools": {
-      "import": "./dist/devtools.mjs",
       "require": "./dist/devtools.js",
-      "default": "./dist/devtools.js",
-      "types": "./dist/devtools.d.ts"
+      "import": "./dist/devtools.mjs",
+      "types": "./dist/devtools.d.ts",
+      "default": "./dist/devtools.js"
+    },
+    "./sdk": {
+      "require": "./dist/sdk.js",
+      "import": "./dist/sdk.mjs",
+      "types": "./dist/sdk.d.ts",
+      "default": "./dist/sdk.js"
+    },
+    "./trpc": {
+      "require": "./dist/trpc.js",
+      "import": "./dist/trpc.mjs",
+      "types": "./dist/trpc.d.ts",
+      "default": "./dist/trpc.js"
+    },
+    "./util": {
+      "require": "./dist/util.js",
+      "import": "./dist/util.mjs",
+      "types": "./dist/util.d.ts",
+      "default": "./dist/util.js"
     }
   },
   "scripts": {
     "test": "jest spec",
     "build": "tsup-node",
     "dev": "tsup-node --watch",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "entrypoints": "tsx scripts/generate-entrypoints.ts"
   },
   "keywords": [],
   "author": "",
@@ -70,6 +109,7 @@
     "trpc-openapi": "^1.1.2",
     "ts-jest": "^29.0.5",
     "tsconfig": "workspace:*",
+    "tsx": "^3.12.3",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0"
   },
