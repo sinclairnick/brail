@@ -12,7 +12,6 @@
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
-    "module": "ESNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"

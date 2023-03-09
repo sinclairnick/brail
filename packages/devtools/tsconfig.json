@@ -6,6 +6,6 @@
     "lib": ["ES2017", "DOM"],
     "noErrorTruncation": true,
     "allowJs": false,
-    "declaration": true
+    "declaration": true,
   }
 }

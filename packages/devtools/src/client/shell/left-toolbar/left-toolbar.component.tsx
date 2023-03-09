@@ -1,22 +1,21 @@
 import { BrailIcon } from "../../icons/brail-icon";
 import { Stack, Button, theme, styled } from "../../theme/theme";
-import {
-  HiOutlineDocument,
-  HiOutlineEnvelope,
-  HiArrowUpRight,
-  HiChevronDoubleRight,
-  HiChevronDoubleLeft,
-} from "react-icons/hi2";
-import type { IconType } from "react-icons";
 import { SplitState, TabKey } from "../shell.component";
+import {
+  FileIcon,
+  EnvelopeClosedIcon,
+  ArrowTopRightIcon,
+  DoubleArrowRightIcon,
+  DoubleArrowLeftIcon,
+} from "@radix-ui/react-icons";
 
 const Tabs = [
-  { label: "Templates", icon: HiOutlineDocument, key: "templates" },
+  { label: "Templates", icon: FileIcon, key: "templates" },
   // { label: "Playground", icon: BeakerIcon, key: "playground" },
-  { label: "Send", icon: HiOutlineEnvelope, key: "send" },
+  { label: "Send", icon: EnvelopeClosedIcon, key: "send" },
   {
     label: "View",
-    icon: HiArrowUpRight,
+    icon: ArrowTopRightIcon,
     key: "view",
     onClick: () => {
       const url = new URL(location.href);
@@ -26,7 +25,7 @@ const Tabs = [
   },
 ] satisfies Array<{
   label: string;
-  icon: IconType;
+  icon: typeof FileIcon;
   key: TabKey;
   onClick?: () => void;
 }>;
@@ -89,13 +88,13 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
               css={{
                 borderLeftColor: isActive ? "$gray12" : "transparent",
                 "&:hover": {
-                  "*": { color: theme.colors.gray12.value },
+                  "*": { fill: theme.colors.gray12.value },
                 },
               }}
             >
               <tab.icon
-                size={20}
-                strokeWidth={2}
+                width={20}
+                height={20}
                 color={
                   isActive
                     ? theme.colors.gray12.value
@@ -114,9 +113,17 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
           }}
         >
           {splitState === "even" ? (
-            <HiChevronDoubleLeft size={20} color={theme.colors.gray10.value} />
+            <DoubleArrowLeftIcon
+              width={20}
+              height={20}
+              color={theme.colors.gray10.value}
+            />
           ) : (
-            <HiChevronDoubleRight size={20} color={theme.colors.gray10.value} />
+            <DoubleArrowRightIcon
+              width={20}
+              height={20}
+              color={theme.colors.gray10.value}
+            />
           )}
         </ToolbarButton>
       </Stack>

@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3001",
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@brail/react": "workspace:1.0.0-alpha.9",
+    "@brail/react": "workspace:1.0.0-alpha.10",
     "next": "^13.1.1",
     "nextra": "^2.2.16",
     "nextra-theme-docs": "^2.2.16",

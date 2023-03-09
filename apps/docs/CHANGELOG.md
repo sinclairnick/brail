@@ -1,5 +1,13 @@
 # docs
 
+## 0.0.1-alpha.8
+
+### Patch Changes
+
+- Replace devtool icons
+- Updated dependencies
+  - @brail/react@1.0.0-alpha.10
+
 ## 0.0.1-alpha.7
 
 ### Patch Changes

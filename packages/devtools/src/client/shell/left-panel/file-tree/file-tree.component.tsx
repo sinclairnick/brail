@@ -1,10 +1,8 @@
 import {
-  HiOutlineDocument,
-  HiChevronDown,
-  HiChevronRight,
-  HiOutlineFolder,
-  HiOutlineFolderOpen,
-} from "react-icons/hi2";
+  FileIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+} from "@radix-ui/react-icons";
 import { useState } from "react";
 import { Button, Stack, Typography } from "../../../theme/theme";
 import { createTemplateTree } from "./file-tree.constants";
@@ -43,7 +41,7 @@ const TemplateButton = (
           columnGap: 8,
         }}
       >
-        <HiOutlineDocument size={14} />
+        <FileIcon fontSize={14} />
         <Typography>{props.label}</Typography>
       </Stack>
     </Button>
@@ -74,14 +72,9 @@ const TemplateFolder = (props: {
         }}
       >
         {props.isExpanded ? (
-          <HiChevronDown size={14} />
+          <ChevronDownIcon fontSize={14} />
         ) : (
-          <HiChevronRight size={14} />
-        )}
-        {props.isExpanded ? (
-          <HiOutlineFolderOpen size={14} />
-        ) : (
-          <HiOutlineFolder size={14} />
+          <ChevronRightIcon fontSize={14} />
         )}
         <Typography>{props.label}</Typography>
       </Stack>

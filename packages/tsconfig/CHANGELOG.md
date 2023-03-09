@@ -1,5 +1,11 @@
 # tsconfig
 
+## 0.0.1-alpha.8
+
+### Patch Changes
+
+- Replace devtool icons
+
 ## 0.0.1-alpha.7
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @brail/react
 
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- Replace devtool icons
+
 ## 1.0.0-alpha.9
 
 ### Patch Changes

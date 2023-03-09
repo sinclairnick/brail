@@ -1,5 +1,13 @@
 # brail
 
+## 1.0.0-alpha.10
+
+### Patch Changes
+
+- Replace devtool icons
+- Updated dependencies
+  - @brail/devtools@1.0.0-alpha.10
+
 ## 1.0.0-alpha.9
 
 ### Patch Changes

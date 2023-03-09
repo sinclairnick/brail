@@ -1,5 +1,5 @@
 import { Button, Stack } from "../../theme/theme";
-import { HiDevicePhoneMobile, HiComputerDesktop } from "react-icons/hi2";
+import { DesktopIcon, MobileIcon } from "@radix-ui/react-icons";
 
 export type TopToolbarProps = {
   isMobile: boolean;
@@ -33,7 +33,7 @@ export const TopToolbar = (props: TopToolbarProps) => {
         }}
         onClick={() => onChange(true)}
       >
-        <HiDevicePhoneMobile size={18} />
+        <MobileIcon width={20} height={20} />
       </Button>
       <Button
         css={{
@@ -43,7 +43,7 @@ export const TopToolbar = (props: TopToolbarProps) => {
         }}
         onClick={() => onChange(false)}
       >
-        <HiComputerDesktop size={18} />
+        <DesktopIcon width={20} height={20} />
       </Button>
     </Stack>
   );

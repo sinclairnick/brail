@@ -1,9 +1,13 @@
 {
   "name": "@brail/devtools",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "description": "",
   "private": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.mjs",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.js",
@@ -14,7 +18,6 @@
       "require": "./dist/next.js",
       "types": "./dist/next.d.ts"
     },
-    "./package.json": "./package.json",
     "./loader": {
       "import": "./dist/loader.mjs",
       "require": "./dist/loader.js",
@@ -36,13 +39,13 @@
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",
     "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-icons": "^1.2.0",
     "@stitches/react": "^1.2.8",
     "@tanstack/react-query": "^4.24.10",
     "@trpc/client": "^10.11.1",
     "@trpc/react-query": "^10.12.0",
     "@trpc/server": "^10.11.1",
     "framer-motion": "^9.0.7",
-    "react-icons": "^4.8.0",
     "ts-pattern": "^4.2.1",
     "zod": "^3.20.6",
     "zod-to-json-schema": "^3.20.4"

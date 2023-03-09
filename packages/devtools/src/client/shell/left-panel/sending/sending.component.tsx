@@ -3,7 +3,7 @@ import { Button, Stack, Typography } from "../../../theme/theme";
 import Editor, { OnMount, useMonaco, Monaco } from "@monaco-editor/react";
 import { SendingProps } from "./sending.types";
 import { AnySendValue, createBeforeMountHandler } from "./sending.constants";
-import { HiArrowRight } from "react-icons/hi2";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useDevtoolsContext } from "../../../context/devtools-context.component";
 import { useAsync } from "../../../util/use-async.hook";
 import { TRPCClientError } from "@trpc/client";
@@ -142,7 +142,7 @@ export const Sending = (props: SendingProps) => {
                   disabled={sendReq.isLoading}
                 >
                   Send
-                  <HiArrowRight />
+                  <ArrowRightIcon />
                 </Button>
                 <Stack css={{ fontSize: 12, marginTop: 8, gap: 8 }}>
                   <Typography css={{ textAlign: "center", color: "$gray9" }}>
