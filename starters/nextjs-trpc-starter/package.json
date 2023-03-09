@@ -1,7 +1,7 @@
 {
-  "name": "@brail/create-nextjs",
+  "name": "@brail/nextjs-trpc-starter",
   "version": "1.0.0-beta.1",
-  "private": false,
+  "private": true,
   "packageManager": "pnpm@7.26.0",
   "files": [
     "src",

@@ -1,0 +1,25 @@
+{
+  "name": "@brail/create-app",
+  "version": "1.0.1-beta.0",
+  "description": "",
+  "bin": {
+    "brail": "./bin/brail.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "start": "node ./bin/brail.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.0",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "zx": "^7.2.0"
+  }
+}

@@ -25,7 +25,7 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-		"starters/*"
+    "starters/*"
   ],
   "scripts": {
     "build": "turbo run build",

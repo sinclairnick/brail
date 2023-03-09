@@ -8,7 +8,9 @@
     "@brail/react": "1.0.0-alpha.12",
     "brail": "1.0.0-alpha.14",
     "tsconfig": "0.0.1-alpha.10",
-    "@brail/types": "1.0.0-alpha.12"
+    "@brail/types": "1.0.0-alpha.12",
+    "@brail/create-app": "1.0.0",
+    "@brail/nextjs-trpc-starter": "1.0.0-beta.1"
   },
   "changesets": [
     "big-carpets-clean",
@@ -24,6 +26,7 @@
     "old-starfishes-allow",
     "rich-foxes-appear",
     "short-mice-ring",
-    "silver-comics-think"
+    "silver-comics-think",
+    "thirty-rivers-design"
   ]
 }

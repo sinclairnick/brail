@@ -1,0 +1,12 @@
+{
+  "extends": "tsconfig/base.json",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "outDir": "bin",
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "declaration": false,
+    "declarationMap": false
+  }
+}
