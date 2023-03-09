@@ -24,7 +24,8 @@
   "readme": "README.md",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+		"starters/*"
   ],
   "scripts": {
     "build": "turbo run build",
