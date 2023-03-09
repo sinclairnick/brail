@@ -3,6 +3,15 @@
   "version": "1.0.0-beta.1",
   "private": false,
   "packageManager": "pnpm@7.26.0",
+  "files": [
+    "src",
+    "README.md",
+    "tsconfig.json",
+    "next.config.mjs",
+    "next-env.d.ts",
+    ".eslintrc.js",
+    "public"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
