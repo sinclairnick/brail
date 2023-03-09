@@ -33,7 +33,10 @@ yarn-error.log*
 # turbo
 .turbo
 
-packages/eslint-plugin-brail/data
 **/.env
 **/.brail
 **/tsconfig.tsbuildinfo
+
+# Package-specific
+packages/eslint-plugin-brail/data
+packages/create-app/bin
