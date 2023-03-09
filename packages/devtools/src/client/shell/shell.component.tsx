@@ -32,7 +32,7 @@ const getObjectPath = <T extends { [key: string]: any }, P extends string>(
 };
 
 export type TabKey = "templates" | "playground" | "send" | "view";
-export type SplitState = "even" | "content";
+export type SplitState = "even" | "content" | "minimized";
 
 const getSplitWidths = (split: SplitState) => {
   switch (split) {
@@ -40,6 +40,8 @@ const getSplitWidths = (split: SplitState) => {
       return { content: "50%", panel: "50%" };
     case "content":
       return { content: "auto", panel: 300 };
+    case "minimized":
+      return { content: "auto", panel: 0 };
   }
 };
 

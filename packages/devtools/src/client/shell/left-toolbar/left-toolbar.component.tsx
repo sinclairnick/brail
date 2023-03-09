@@ -8,6 +8,7 @@ import {
   DoubleArrowRightIcon,
   DoubleArrowLeftIcon,
 } from "@radix-ui/react-icons";
+import { mediaQuery } from "../../util/breakpoints.util";
 
 const Tabs = [
   { label: "Templates", icon: FileIcon, key: "templates" },
@@ -83,7 +84,16 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
               key={tab.key}
               onClick={() => {
                 if (tab.onClick) tab.onClick();
-                else setSelectedTab(tab.key);
+                else if (isActive) {
+                  setSplitState(
+                    splitState === "minimized" ? "content" : "minimized"
+                  );
+                } else {
+                  setSelectedTab(tab.key);
+                  if (splitState === "minimized") {
+                    setSplitState("content");
+                  }
+                }
               }}
               css={{
                 borderLeftColor: isActive ? "$gray12" : "transparent",
@@ -105,7 +115,13 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
           );
         })}
       </Stack>
-      <Stack>
+      <Stack
+        css={{
+          [mediaQuery("md")]: {
+            display: "none",
+          },
+        }}
+      >
         <ToolbarButton
           onClick={onToggleSplit}
           css={{

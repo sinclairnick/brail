@@ -1,5 +1,13 @@
 # brail
 
+## 1.0.0-alpha.14
+
+### Patch Changes
+
+- Make devtools responsive
+- Updated dependencies
+  - @brail/devtools@1.0.0-alpha.13
+
 ## 1.0.0-alpha.13
 
 ### Patch Changes
