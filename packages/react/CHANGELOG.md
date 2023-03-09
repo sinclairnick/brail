@@ -1,5 +1,11 @@
 # @brail/react
 
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- Update devtools API
+
 ## 1.0.0-alpha.7
 
 ### Patch Changes
