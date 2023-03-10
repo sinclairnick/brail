@@ -1,4 +1,4 @@
-import withBrail from "brail/next";
+import { withBrail } from "brail/next";
 
 /** @type {import('next').NextConfig} */
 const config = {
