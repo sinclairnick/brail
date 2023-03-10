@@ -31,8 +31,9 @@ export const RowProvider = (props: RowProviderProps) => {
     ? props.children
     : [props.children];
   const specifiedWidths = Children.toArray(children)
-    .filter((x): x is JSX.Element => x != null)
+    .filter((x): x is JSX.Element => Boolean(x))
     .map((child) => {
+      console.log(child);
       const width = getPxValue(child.props.width, totalWidth);
       if (width == null) return;
       const margin = normalizeMarginStyle(child.props);
@@ -40,14 +41,15 @@ export const RowProvider = (props: RowProviderProps) => {
       const axis = getAxisSpacing({ margin, padding });
       const total = width + (axis.left + axis.right);
       return Math.max(total, child.props.minWidth ?? 0);
-    });
+    })
+    .filter(Boolean);
 
   const absPredefined =
     specifiedWidths.reduce((s, w) => (s ?? 0) + (w ?? 0), 0) ?? 0;
   const absRemaining = parentCtx.width - absPredefined;
-  const absColumnDefault = Math.floor(
-    absRemaining / (children.length - specifiedWidths.length)
-  );
+  const unspecifiedCount = children.length - specifiedWidths.length;
+  const absColumnDefault =
+    unspecifiedCount === 0 ? 0 : Math.floor(absRemaining / unspecifiedCount);
 
   const abs: RowContext["abs"] = {
     columnDefault: absColumnDefault,
