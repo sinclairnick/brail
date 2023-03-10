@@ -1,5 +1,13 @@
 # brail
 
+## 1.0.0-beta.20
+
+### Patch Changes
+
+- Upgrade brail types
+- Updated dependencies
+  - @brail/devtools@1.0.0-beta.17
+
 ## 1.0.0-beta.19
 
 ### Patch Changes

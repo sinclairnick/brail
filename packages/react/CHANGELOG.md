@@ -1,5 +1,11 @@
 # @brail/react
 
+## 1.0.0-beta.14
+
+### Patch Changes
+
+- Upgrade brail types
+
 ## 1.0.0-beta.13
 
 ### Patch Changes
