@@ -7,7 +7,7 @@ import { Iframe, useIframe } from "../iframe/iframe.component";
 import { AnyTemplateMap } from "@brail/types";
 import { motion } from "framer-motion";
 import { flattenTemplates } from "../util/templates.util";
-import { useRouter } from "next/router.js";
+import { useRouter } from "next/compat/router.js";
 import Head from "next/head.js";
 import { FileTree } from "./left-panel/file-tree/file-tree.component";
 import { Sending } from "./left-panel/sending/sending.component";
@@ -51,7 +51,7 @@ export const AppShell = (props: AppShellProps) => {
   const [isMobile, setIsMobile] = useState(false);
   const iframe = useIframe();
   const router = useRouter();
-  const path = router.asPath.split("?")[0].replace(/#.*/, "");
+  const path = router?.asPath.split("?")[0].replace(/#.*/, "") ?? "";
   const templates = flattenTemplates(props.templates);
   const activeTemplate = templates[path];
   const [selectedTab, setSelectedTab] = useState<TabKey>("templates");

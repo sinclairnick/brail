@@ -12,7 +12,7 @@ import {
   TemplateList as TTemplateList,
   TemplateFolder as TTemplateFolder,
 } from "./file-tree.types";
-import { useRouter } from "next/router.js";
+import { useRouter } from "next/compat/router.js";
 
 const DEPTH_PAD = 16;
 
@@ -89,7 +89,7 @@ const TemplateListItem = (props: {
   const { depth, item } = props;
   const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
-  const path = router.asPath.split("?")[0].replace(/\#.*/, "");
+  const path = router?.asPath.split("?")[0].replace(/\#.*/, "") ?? "";
 
   if (item.type === "item") {
     return (
@@ -99,7 +99,7 @@ const TemplateListItem = (props: {
         isActive={path === item.urlPath}
         onClick={() => {
           if (item.urlPath) {
-            router.push(item.urlPath);
+            router?.push(item.urlPath);
           }
         }}
       />

@@ -1,4 +1,4 @@
-import { useRouter } from "next/router.js";
+import { useRouter } from "next/compat/router.js";
 import { useEffect, PropsWithChildren, useState } from "react";
 import { styled } from "../theme/theme";
 
@@ -20,7 +20,7 @@ export const useIframe = () => {
 
   useEffect(() => {
     setOrigin(location.href);
-  }, [router.asPath]);
+  }, [router?.asPath]);
 
   return {
     url: frameUrl?.toString(),
