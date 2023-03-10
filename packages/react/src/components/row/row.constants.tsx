@@ -30,6 +30,7 @@ export const RowProvider = (props: RowProviderProps) => {
     ? props.children
     : [props.children];
   const specifiedWidths = children
+    .filter((x) => x != null)
     .map((child) => {
       const width = getPxValue(child.props.width, totalWidth);
       if (width == null) return;
@@ -38,8 +39,7 @@ export const RowProvider = (props: RowProviderProps) => {
       const axis = getAxisSpacing({ margin, padding });
       const total = width + (axis.left + axis.right);
       return Math.max(total, child.props.minWidth ?? 0);
-    })
-    .filter((x) => x != null);
+    });
 
   const absPredefined =
     specifiedWidths.reduce((s, w) => (s ?? 0) + (w ?? 0), 0) ?? 0;
