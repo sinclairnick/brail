@@ -30,7 +30,7 @@ export const RowProvider = (props: RowProviderProps) => {
     ? props.children
     : [props.children];
   const specifiedWidths = children
-    .filter((x) => x != null)
+    .filter((x): x is JSX.Element => x != null)
     .map((child) => {
       const width = getPxValue(child.props.width, totalWidth);
       if (width == null) return;

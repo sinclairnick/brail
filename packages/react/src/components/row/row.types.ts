@@ -2,23 +2,15 @@ import { Expand } from "../../util/types.util";
 import {
   AlignValue,
   PercentValue,
-  PixelValue,
-  SpacingValue,
-  UnitlessValue,
   VerticalAlignValue,
   WidthValue,
 } from "../../styles";
 import { TypographyProviderProps } from "../typography";
-import {
-  PaddingProps,
-  BackgroundColorProps,
-  BorderProps,
-  BackgroundImageProps,
-} from "../../styles";
+import { PaddingProps, BackgroundColorProps, BorderProps } from "../../styles";
 
 export type RowProps = Expand<
   {
-    children: JSX.Element | JSX.Element[];
+    children: (JSX.Element | null) | (JSX.Element | null)[];
     align?: AlignValue;
     verticalAlign?: VerticalAlignValue;
     /**
