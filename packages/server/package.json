@@ -1,6 +1,6 @@
 {
   "name": "brail",
-  "version": "1.0.0-beta.20",
+  "version": "1.0.0-beta.21",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -73,9 +73,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+	"dependencies": {
+		"@brail/devtools": "workspace:*",
+		"@brail/types": "workspace:*",
+		"chalk": "^4.0.0",
+		"zod": "^3.20.6"
+	},
   "devDependencies": {
     "@brail/react": "workspace:*",
-    "@brail/types": "workspace:*",
     "@trpc/client": "^10.11.1",
     "@trpc/server": "^10.11.1",
     "@types/jest": "^29.4.0",
@@ -93,10 +98,5 @@
     "tsx": "^3.12.3",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0"
-  },
-  "dependencies": {
-    "@brail/devtools": "workspace:*",
-    "chalk": "^4.0.0",
-    "zod": "^3.20.6"
   }
 }
