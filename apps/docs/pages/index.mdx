@@ -2,11 +2,13 @@
 title: Email development for the 21st century
 ---
 
-import { Callout } from "nextra-theme-docs"
+import { Callout } from "nextra-theme-docs";
 import { Features } from "@components/features";
-import { CenterContainer } from "@components/center-container"
+import { CenterContainer } from "@components/center-container";
+import { Tabs, Tab } from "nextra-theme-docs";
+import { IndexSandbox } from "@components/embeds";
 
-{<center style={{ marginTop: 80 }}>
+{<center style={{ marginTop: 40 }}>
 
 <img src="/logo.png" width={200} />
 <p style={{ fontSize: 24, marginTop: 16 }}>
@@ -16,36 +18,53 @@ import { CenterContainer } from "@components/center-container"
 </center>}
 
 <br />
-<br />
 
 <CenterContainer>
 
-Brail provides batteries-included tooling for creating, generating and delivering email templates. It aims to bring email development into the 21st century by providing a modern, developer-friendly experience.
+<br />
 
-```bash
-# Add brail to your favourite React meta-framework
-npm install brail @brail/react
-```
-</CenterContainer>
+<center>
+Brail provides batteries-included tooling for creating, generating and delivering email templates. It aims to bring email development into the 21st century by providing a modern, developer-friendly experience.
+</center>
 
 <br/>
 
+<Tabs items={["npm", "pnpm", "yarn"]}>
+	<Tab>
+	```bash
+	npx @brail/create-app
+	```
+	</Tab>
+	<Tab>
+	```bash
+	pnpm create @brail/app
+	```
+	</Tab>
+	<Tab>
+	```bash
+	yarn create @brail/app
+	```
+	</Tab>
+</Tabs>
+
+</CenterContainer>
+
+<br />
+
 <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-	<span>[Quick Start](/docs/quick-start)</span>
-	<span>&bull;</span>
-	<span>[Github](https://github.com/sinclairnick/brail)</span>
+  <span>[Introduction](/docs/introduction)</span>
+  <span>&bull;</span>
+  <span>[Quick Start](/docs/quick-start)</span>
+  <span>&bull;</span>
+  <span>[Github](https://github.com/sinclairnick/brail)</span>
 </div>
 
 <br />
 <br />
 <br />
 
-<CenterContainer>
-	{<Features />}
-</CenterContainer>
+<CenterContainer>{<Features />}</CenterContainer>
 
-<br />
-<br />
 
 <CenterContainer maxWidth={1400}>
 
@@ -56,88 +75,84 @@ npm install brail @brail/react
 		#### Create a template
 		Define a template using zod and React.
 
-	```tsx
-	/* 📄 my-template.tsx */
-	import Brail from "@brail/react";
-	import z from "zod";
+    ```tsx
+    /* 📄 my-template.tsx */
+    import Brail from "@brail/react";
+    import z from "zod";
 
-	const b = Brail.init();
+    const b = Brail.init();
 
-	export default b.template
-		 /** 👇 Define meta schema (optional) */
-		.meta(z.object({ to: z.string(), sendGridApiKey: z.string() }))
-		 /** 👇 Define props schema (optional) */
-		.props(z.object({ name: z.string() }))
-	```
-	```tsx
-		/** 👇 Define a send function (optional) */
-		.onSend(async (args) => {
-			const { meta, html } = args;
-			const res = await sendGrid.send(html, {
-				to: meta.to,
-				apiKey: meta.sendGridApiKey,
-			});
-			return { ok: res.status === 200 };
-		})
-	```
-	```tsx
-		/** 👇 Create your template */
-		.view((props) => {
-			return (
-				<Email>
-					<Container>
-						<Row>
-							<Column>
-								<Typography>Welcome, {props.name}</Typography>
-							</Column>
-						</Row>
-					</Container>
-				</Email>
-			);
-		});
-	```
-	</div>
-	
-	<div style={{ minWidth: 400, flex: 1 }}>
-	#### Use your template
-	Expose your templates via type-safe APIs, including tRPC.
+    	/** 👇 Create your template */
+    const MyTemplateView = (props) => {
+    	return <Email>
+    		<Container>
+    			<Row>
+    				<Column>
+    					<Typography>Welcome, {props.name}</Typography>
+    				</Column>
+    			</Row>
+    		</Container>
+    	</Email>
+    }
 
-	```tsx
-	/* 📄 lib/trpc.ts */
-	import { createTrpcRouter } from "brail/trpc";
-	import { initTrpc } from "@trpc/server";
-	
-	// Use your template directly
-	const html = myTemplate.render({/** Props */})
-	const sendResponse = await myTemplate.send({/** data: {}, meta: {} */})
+    export default b.template
+    	 /** 👇 Define meta schema (optional) */
+    	.meta(z.object({ to: z.string(), sendGridApiKey: z.string() }))
+    	 /** 👇 Define props schema (optional) */
+    	.props(z.object({ name: z.string() }))
+    	/** 👇 Define a send function (optional) */
+    	.onSend(async (args) => {
+    		const { meta, html } = args;
+    		const res = await sendGrid.send(html, {
+    			to: meta.to,
+    			apiKey: meta.sendGridApiKey,
+    		});
+    		return { ok: res.status === 200 };
+    	})
+    	.view(MyTemplateView); /** 👈 Register template view */
+    ```
+    </div>
 
-	/** 👇 Or create tRPC router based on your templates */
-	const appRouter = createTrpcRouter({
-		templates: { myTemplate },
-		t: initTrpc.create()
-	});
-	```
-	```tsx
-	/* 📄 pages/api/trpc/[trpc].ts */
-	import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+    <div style={{ minWidth: 400, flex: 1 }}>
+    #### Use your template
+    Expose your templates via type-safe APIs, including tRPC.
 
-	// Serve templates via edge runtime function
-	export default async function handler(req: NextRequest) {
-	return fetchRequestHandler({
-		endpoint: "/api/trpc",
-		router: appRouter,
-		req,
-		createContext: () => ({}),
-	});
-	}
-	````
-	</div>
+    ```tsx
+    /* 📄 lib/trpc.ts */
+    import { createTrpcRouter } from "brail/trpc";
+    import { initTrpc } from "@trpc/server";
+
+    // Use your template directly
+    const html = myTemplate.render({/** Props */})
+    const sendResponse = await myTemplate.send({/** data: {}, meta: {} */})
+
+    /** 👇 Or create tRPC router based on your templates */
+    const appRouter = createTrpcRouter({
+    	templates: { myTemplate },
+    	t: initTrpc.create()
+    });
+    ```
+    ```tsx
+    /* 📄 pages/api/trpc/[trpc].ts */
+    import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+
+    // Serve templates via edge runtime function
+    export default async function handler(req: NextRequest) {
+    return fetchRequestHandler({
+    	endpoint: "/api/trpc",
+    	router: appRouter,
+    	req,
+    	createContext: () => ({}),
+    });
+    }
+    ````
+    </div>
+
 </div>
 
 </CenterContainer>
 
 <CenterContainer>
-
 
 ### Works with your favourite tools
 
@@ -145,16 +160,29 @@ Brail sits on top of your favourite meta-frameworks and uses tools you already k
 
 ### Get started
 
-The fastest way to get up and running locally, is to use the [**Nextjs + Trpc Starter**](https://github.com/sinclairnick/brail/tree/main/packages/starters/nextjs-trpc-starter) project. More starters will be gradually added to the `packages/starters` folder as the Brail API stabilises.
-
-```bash
-npx degit sinclairnick/brail/starters/nextjs-trpc-starter
-````
+<Tabs items={["npm", "pnpm", "yarn"]}>
+	<Tab>
+	```bash
+	npx @brail/create-app
+	```
+	</Tab>
+	<Tab>
+	```bash
+	pnpm create @brail/app
+	```
+	</Tab>
+	<Tab>
+	```bash
+	yarn create @brail/app
+	```
+	</Tab>
+</Tabs>
 
 ### Development status
 
 <Callout emoji="🚦">
-Brail is currently in Beta. It has been used in production for a year, but the API is still subject to change.
+  Brail is currently in Beta, as any last bugs are ironed out. We're looking for
+  feedback and contributions.
 </Callout>
 
 </CenterContainer>

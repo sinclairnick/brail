@@ -5,7 +5,10 @@ Brail is intended to be framework agnostic, but has been developed with next.js 
 The below configuration allows us to automatically generate a file with all of our templates.
 
 ```tsx
-const withBrail = require("brail/next")({
+/* 📄 next.config.mjs */
+import { withBrail } from "brail/next"
+
+const brailConfig = {
 	// templateExtensions: string[] | undefined
 	// Narrow which files in the project should be considered templates
 	templateExtensions: ["template.tsx"]
@@ -17,9 +20,9 @@ const withBrail = require("brail/next")({
 	// emitTemplates: string | boolean | undefined
 	// Whether/where to emit templates
 	emitTemplates: "some/dir/path.ts"
-});
+}
 
-module.exports = withBrail({
+export default withBrail(brailConfig)({
 	/* Your next.js config */
 });
 ```

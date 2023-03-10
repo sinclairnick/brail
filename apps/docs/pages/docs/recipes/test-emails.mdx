@@ -1,2 +1,48 @@
+import { Callout } from "nextra-theme-docs"
+
 # Sending test emails
 
+Assuming you've set up the [Devtools](/docs/crafting/devtools) and an `onSend` function for your template, you can easily send test emails. However, you might notice local images aren't appearing in the emails.
+
+During local development, the images aren't yet hosted anywhere, so references to local files won't work for remote readers. To fix this, we can use `ngrok` to tunnel through to our local environment so our local images appear in any test emails we might send.
+
+### 1. Setup `ngrok`
+
+```bash
+brew install ngrok/ngrok/ngrok
+```
+
+You'll need to create a (free) account if you havent' already, and set up authentication:
+
+```bash
+ngrok config add-authtoken <token>
+```
+
+Then we can tunnel our local dev environment through `ngrok`:
+
+### 2. Tunnel through `ngrok`
+```bash
+ngrok http 3000 # Assuming you're running on port 3000
+```
+
+While `ngrok` is tunneling it should show us a URL that represents our forwarded port. Something like.
+
+
+```
+...
+Forwarding		 https://XXXX-XXX-XXX-XXX-XXXXX.ngrok.io -> http://localhost:3000
+...				 ^ Copy this URL
+```
+
+### 3. Set Brail `baseUrl`
+
+We should also set our image urls to use the `baseUrl` produced in the `ngrok` output.
+
+```tsx
+<Email baseUrl={urlFromNgrok}>
+	{/* ...*/}
+</Email>
+```
+
+--- 
+✅ **Done**. Your images will now work in test emails.

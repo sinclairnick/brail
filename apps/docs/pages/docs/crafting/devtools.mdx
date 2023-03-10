@@ -8,40 +8,47 @@ The below applies only to next.js applications. **Devtools support will be expan
 
 The Brail Devtools make working with your templates easier, but are not strictly necessary.
 
-The Devtools consists of a frontend and backend component. Both require access to your templates, so we first initialise the devtools, which returns both pieces.
+The Devtools consists of a frontend and backend component.
+
+### Devtools UI
 
 ```tsx
-/* 📄 lib/devtools.ts */
-import { initNextDevtools } from "brail/devtools";
-
-export const {
-  DevtoolsLayout, // For frontend
-  devtoolsHandler, // For backend
-} = initNextDevtools({ 
-	templates, /** 👈 Register your templates with the devtools */
-});
-
-/* 📄 pages/api/devtools/[trpc].ts */
-export default devtoolsHandler(); /** 👈 Export API handler, to enable e.g. sending test emails */
-
 /* 📄 pages/_app.tsx */
-export default (props: AppProps) => {
-  const { Component, pageProps } = props;
-  return (
-    <DevtoolsLayout>
-      {/* 👆 Wrap devtools around app. This will not affect generated template HTML */}
-      <Component {...pageProps} />
-    </DevtoolsLayout>
-  );
-};
+import { AppProps } from "next/app"
+import { Devtools } from "brail/devtools"
+
+const _App = (props: AppProps) => {
+	const { pageProps, Component } = props
+
+	return <Devtools templates={templates}>
+		 {/** 👇 Wrap app in devtools */}
+		<Component {...pageProps}/>
+	</Devtools>
+
+}
+
+export default _App;
+```
+### Devtools Handler
+
+```tsx
+/* 📄 pages/api/devtools/[trpc].ts */
+import { createNextDevtoolsHandler } from "brail/next";
+
+export default createNextDevtoolsHandler({ templates });
+
 ```
 
-To ensure routing between templates works, we need to register the brail next.js config.
+
+To ensure routing between templates works, we need to register Brail in the next.config file, if you haven't already.
 
 ```tsx
-const withBrail = require("brail/next")(/docs/* options */);
+import { withBrail } from "brail/next"
+const brailConfig = {
+	// Your brail config
+}
 
-module.exports = withBrail({ /** 👈 Add Brail plugin */
+export default withBrail(brailConfig)({ /** 👈 Add Brail plugin */
 	/* Your next.js config */
 });
 ```

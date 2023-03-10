@@ -6,15 +6,36 @@ export type CenterContainerProps = PropsWithChildren<{
 
 export const CenterContainer = (props: CenterContainerProps) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        paddingLeft: 32,
-        paddingRight: 32,
-      }}
-    >
-      <div style={{ maxWidth: props.maxWidth ?? 928 }}>{props.children}</div>
-    </div>
+    <>
+      <style jsx>{`
+        .center-container {
+          padding-left: 32px;
+          padding-right: 32px;
+        }
+        @media screen and (max-width: 768px) {
+          .center-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
+        @media screen and (max-width: 480px) {
+          .center-container {
+            padding-left: 8px;
+            padding-right: 8px;
+          }
+        }
+      `}</style>
+      <div
+        className="center-container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ maxWidth: props.maxWidth ?? 928, width: "100%" }}>
+          {props.children}
+        </div>
+      </div>
+    </>
   );
 };

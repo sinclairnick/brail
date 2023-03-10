@@ -3,6 +3,7 @@ import {
   httpBatchLink,
   HTTPHeaders,
   TRPCUntypedClient,
+	createTRPCProxyClient
 } from "@trpc/client";
 import { AnyRouter } from "@trpc/server";
 
