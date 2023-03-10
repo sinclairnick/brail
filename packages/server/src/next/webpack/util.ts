@@ -22,3 +22,10 @@ export const extractFileParts = (path: string) => {
   const [_, fname, ext] = /^([\w\s-]+)\.?([\.\w]+)?$/.exec(path) ?? [];
   return { fname, ext };
 };
+
+export const stripIndex = (path: string) => {
+  return path
+    .split("/")
+    .filter((x) => x !== "index")
+    .join("/");
+};

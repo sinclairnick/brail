@@ -4,9 +4,9 @@ import {
   isIgnored,
   isValidExtension,
   stripExt,
-  stripLeadingSlash,
-} from "./util";
-import { BrailConfig } from "./types";
+  stripIndex,
+} from "../util";
+import { BrailConfig } from "../types";
 import path from "node:path";
 import { TemplateProperties } from "@brail/types";
 
@@ -26,6 +26,7 @@ const loader: LoaderDefinitionFunction<BrailConfig> = function (this, content) {
   const pagesDir = path.join(config.paths.rootDir, "pages");
   let urlPath = fPath.replace(pagesDir, "");
   urlPath = stripExt(urlPath, config.templateExtensions);
+  urlPath = stripIndex(urlPath);
 
   // Replace default export with variable
   const originalContent = content.replace(

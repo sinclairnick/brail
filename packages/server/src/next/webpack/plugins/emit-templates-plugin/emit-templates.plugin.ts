@@ -14,20 +14,25 @@ import chalk from "chalk";
 const PLUGIN_NAME = "BrailEmitTemplatesPlugin";
 
 export class BrailEmitTemplatesPlugin {
-  constructor(private config: BrailConfig) {}
+  private outPath: string;
+  private outDir: string;
+
+  constructor(private config: BrailConfig) {
+    this.outPath = this.config.paths.templatesFile;
+    this.outDir = path.dirname(this.outPath);
+
+    console.log(`💌 - Templates will be written to ${chalk.green(this.outPath)}`);
+  }
 
   private lastEmitFile: string | undefined;
 
   private run() {
-    const outPath = this.config.paths.templatesFile;
-    const outDir = path.dirname(outPath);
-
     const templates = getTemplates();
     const flattenedTemplates = flattenTemplateRecord(templates);
 
     const exportObj = templatesToObject(flattenedTemplates);
 
-    const importData = templatesToImportData(flattenedTemplates, outDir);
+    const importData = templatesToImportData(flattenedTemplates, this.outDir);
 
     const fileStr = createTemplatesFile({
       exportObj,
@@ -39,13 +44,12 @@ export class BrailEmitTemplatesPlugin {
 
     this.lastEmitFile = fileStr;
     try {
-      fs.mkdirSync(outDir, { recursive: true });
+      fs.mkdirSync(this.outDir, { recursive: true });
     } catch (e: any) {
       if (e.code === "EEXIST") return;
       throw e;
     }
-    fs.writeFileSync(outPath, fileStr);
-    console.log(`💌 - Templates written to ${chalk.green(outPath)}`);
+    fs.writeFileSync(this.outPath, fileStr);
   }
 
   apply: WebpackPluginFunction = (compiler) => {
