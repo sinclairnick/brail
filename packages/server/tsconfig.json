@@ -8,6 +8,7 @@
     "allowJs": true,
     "downlevelIteration": true,
     "jsx": "react",
-    "moduleResolution": "nodenext"
+    "moduleResolution": "nodenext",
+    "isolatedModules": true
   }
 }

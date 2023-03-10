@@ -1,5 +1,11 @@
 # brail
 
+## 1.0.0-beta.17
+
+### Patch Changes
+
+- Split nextjs webpack plugins, improve reliability
+
 ## 1.0.0-beta.15
 
 ### Patch Changes

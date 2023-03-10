@@ -2,7 +2,10 @@ import type { NextConfig } from "next";
 import type { Configuration } from "webpack";
 import { BrailOptions } from "@brail/types";
 import { optionsToConfig, DEFAULT_PAGE_EXTENSIONS } from "../util/brail.util";
-import { BrailEmitTemplatesPlugin } from "./webpack/plugins/emit-templates.plugin";
+import {
+  BrailCollectTemplatesPlugin,
+  BrailEmitTemplatesPlugin,
+} from "./webpack/plugins";
 
 export type WithBrailFn = (
   opts: BrailOptions
@@ -44,6 +47,8 @@ export const withBrail: WithBrailFn =
       if (brailConfig.emitTemplates) {
         plugins.push(new BrailEmitTemplatesPlugin(brailConfig));
       }
+
+      plugins.push(new BrailCollectTemplatesPlugin(brailConfig));
 
       return {
         ...wpConfig,

@@ -1,6 +1,6 @@
 {
   "name": "brail",
-  "version": "1.0.0-beta.16",
+  "version": "1.0.0-beta.17",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -96,6 +96,7 @@
   },
   "dependencies": {
     "@brail/devtools": "workspace:*",
+    "chalk": "^4.0.0",
     "zod": "^3.20.6"
   }
 }

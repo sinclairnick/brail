@@ -3,8 +3,8 @@ export type BrailConfig = {
   paths: {
     brailDir: string;
     templatesFile: string;
-    rootDir: string
+    rootDir: string;
   };
   lang: "ts" | "js";
-	emitTemplates: boolean;
+  emitTemplates: boolean;
 };
