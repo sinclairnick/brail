@@ -1,17 +1,33 @@
-import { INDEX_SANDBOX_EMBED } from "../constants";
+import { INDEX_SANDBOX_EMBED, PLAYGROUND_SANDBOX_EMBED } from "../constants";
 
 export const IndexSandbox = () => {
   return (
     <iframe
       style={{
         boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
-				overflow: "hidden",
-				borderRadius: 8,
-				height: "80vh",
-				minHeight: 400
+        overflow: "hidden",
+        borderRadius: 8,
+        height: "80vh",
+        minHeight: 400,
       }}
       width="100%"
       src={INDEX_SANDBOX_EMBED}
+    />
+  );
+};
+
+export const PlaygroundSandbox = () => {
+  return (
+    <iframe
+      style={{
+        boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+        overflow: "hidden",
+        borderRadius: 8,
+        height: "90vh",
+        minHeight: 400,
+      }}
+      width="100%"
+      src={PLAYGROUND_SANDBOX_EMBED}
     />
   );
 };

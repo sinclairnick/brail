@@ -10,5 +10,12 @@
   "docs": {
     "title": "Docs",
     "type": "page"
+  },
+  "playground": {
+    "title": "Playground",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
   }
 }
