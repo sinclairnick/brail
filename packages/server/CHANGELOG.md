@@ -1,5 +1,13 @@
 # brail
 
+## 1.0.0-beta.19
+
+### Patch Changes
+
+- a2b8854: Use next/compat/router to fix importing errors
+- Updated dependencies [a2b8854]
+  - @brail/devtools@1.0.0-beta.16
+
 ## 1.0.0-beta.17
 
 ### Patch Changes
