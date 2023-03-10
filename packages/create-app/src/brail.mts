@@ -8,15 +8,15 @@ const GH_REPO =
 
 program
   .argument("[dirName]", "Directory name", ".")
-  .option("--use-pnpm", "Use pnpm")
+  .option("--use-yarn", "Use yarn")
   .option("--use-npm", "Use npm")
   .action((dirName, opts) => {
     if (opts.useNpm) {
       $`npx create-next-app ${dirName} --example "${GH_REPO}"`;
-    } else if (opts.usePnpm) {
-      $`pnpx create next-app ${dirName} --example "${GH_REPO}"`;
-    } else {
+    } else if (opts.useYarn) {
       $`yarn create next-app ${dirName} --example "${GH_REPO}"`;
+    } else {
+      $`pnpm create next-app ${dirName} --example "${GH_REPO}"`;
     }
   });
 
