@@ -7,10 +7,11 @@ import {
 } from "../../styles";
 import { TypographyProviderProps } from "../typography";
 import { PaddingProps, BackgroundColorProps, BorderProps } from "../../styles";
+import { ReactNode } from "react";
 
 export type RowProps = Expand<
   {
-    children: (JSX.Element | null) | (JSX.Element | null)[];
+    children: ReactNode | ReactNode[];
     align?: AlignValue;
     verticalAlign?: VerticalAlignValue;
     /**

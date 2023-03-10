@@ -8,6 +8,7 @@ import {
 } from "../../styles";
 import { useParentDimensions } from "../../util/parent-provider";
 import { RowContext, RowProviderProps } from "./row.types";
+import { Children } from "react";
 
 const RowContext = React.createContext<RowContext | null>(null);
 
@@ -29,7 +30,7 @@ export const RowProvider = (props: RowProviderProps) => {
   const children = Array.isArray(props.children)
     ? props.children
     : [props.children];
-  const specifiedWidths = children
+  const specifiedWidths = Children.toArray(children)
     .filter((x): x is JSX.Element => x != null)
     .map((child) => {
       const width = getPxValue(child.props.width, totalWidth);

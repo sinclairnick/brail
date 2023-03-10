@@ -8,7 +8,7 @@ import {
   PaddingProps,
 } from "../../styles";
 import { TypographyProviderProps } from "../typography";
-import { SpacingProps, BackgroundColorProps } from "../../styles";
+import { BackgroundColorProps } from "../../styles";
 
 export type ColumnProps = Expand<
   {
