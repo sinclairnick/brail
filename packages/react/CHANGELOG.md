@@ -1,5 +1,11 @@
 # @brail/react
 
+## 1.0.0-beta.15
+
+### Patch Changes
+
+- Restrict props and meta to zod objects
+
 ## 1.0.0-beta.14
 
 ### Patch Changes

@@ -6,6 +6,7 @@ import {
   SchemaOf,
   RenderResult,
 } from "@brail/types";
+import z, { AnyZodObject } from "zod";
 
 export type AnyTemplateBuilder = TemplateBuilder<any, any, any>;
 
@@ -54,17 +55,15 @@ export class TemplateBuilder<
     } as any);
   }
 
-  public props<TNewProps extends AnyTemplateProps = AnyTemplateProps>(
-    propSchema: SchemaOf<TNewProps>
-  ) {
-    return createNewBuilder<TNewProps, TMeta, TRes>({
+  public props<TSchema extends AnyZodObject>(propSchema: TSchema) {
+    return createNewBuilder<z.infer<TSchema>, TMeta, TRes>({
       ...this._config,
       schema: { ...this._config.schema, Props: propSchema },
     } as any);
   }
 
-  public meta<TNewMeta extends AnyMeta>(metaSchema: SchemaOf<TNewMeta>) {
-    return createNewBuilder<TProps, TNewMeta, TRes>({
+  public meta<TSchema extends AnyZodObject>(metaSchema: TSchema) {
+    return createNewBuilder<TProps, z.infer<TSchema>, TRes>({
       ...this._config,
       schema: { ...this._config.schema, Meta: metaSchema },
     } as any);
