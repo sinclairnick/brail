@@ -1,5 +1,4 @@
-import "zx";
-import { glob, fs, chalk } from "zx";
+import "zx/globals";
 
 const baseConfig = {
   author: {
