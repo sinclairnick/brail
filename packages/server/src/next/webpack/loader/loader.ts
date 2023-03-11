@@ -12,6 +12,7 @@ import { TemplateProperties } from "@brail/types";
 
 const TEMPLATE_VARNAME = "__brailTemplate";
 const PATH_PROPERTY_NAME: keyof Pick<TemplateProperties, "__path"> = "__path";
+const EXPORT_DEFAULT_REGEX = /^\s?export\s+default/im;
 
 const loader: LoaderDefinitionFunction<BrailConfig> = function (this, content) {
   const config = this.getOptions();
@@ -23,6 +24,11 @@ const loader: LoaderDefinitionFunction<BrailConfig> = function (this, content) {
     return content;
   }
 
+  if (!EXPORT_DEFAULT_REGEX.test(content)) {
+    // Bail early if no default export
+    return content;
+  }
+
   const pagesDir = path.join(config.paths.rootDir, "pages");
   let urlPath = fPath.replace(pagesDir, "");
   urlPath = stripExt(urlPath, config.templateExtensions);
@@ -30,7 +36,7 @@ const loader: LoaderDefinitionFunction<BrailConfig> = function (this, content) {
 
   // Replace default export with variable
   const originalContent = content.replace(
-    /^\s?export\s+default/im, // 'export default' with lenient spacing
+    EXPORT_DEFAULT_REGEX, // 'export default' with lenient spacing
     `const ${TEMPLATE_VARNAME} = `
   );
 
