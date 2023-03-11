@@ -1,5 +1,13 @@
 # @brail/react
 
+## 1.0.0-beta.25
+
+### Patch Changes
+
+- Simplify types to enable serialization
+- Updated dependencies
+  - @brail/types@1.0.0-beta.18
+
 ## 1.0.0-beta.23
 
 ### Patch Changes

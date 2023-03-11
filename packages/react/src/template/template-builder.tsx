@@ -5,10 +5,10 @@ import {
   TemplateConfig,
   SchemaOf,
   RenderResult,
+  CreateTemplateReturn,
 } from "@brail/types";
-import z, { AnyZodObject } from "zod";
-
-export type AnyTemplateBuilder = TemplateBuilder<any, any, any>;
+import z from "zod";
+import { InferZodSchema, ITemplateBuilder } from ".";
 
 function createNewBuilder<
   TProps extends AnyTemplateProps,
@@ -22,7 +22,8 @@ export class TemplateBuilder<
   TProps extends AnyTemplateProps,
   TMeta extends AnyMeta,
   TRes extends any
-> {
+> implements ITemplateBuilder<TProps, TMeta, TRes>
+{
   public readonly _config: TemplateConfig<TProps, TMeta, TRes> = {
     _def: {
       _meta: undefined as any,
@@ -41,46 +42,57 @@ export class TemplateBuilder<
     }
   }
 
-  public title(title: string) {
+  public title: (title: string) => ITemplateBuilder<TProps, TMeta, TRes> = (
+    title
+  ) => {
+    return createNewBuilder({ ...this._config, title });
+  };
+
+  public preview: <TNewProps extends TProps>(
+    props: TNewProps
+  ) => ITemplateBuilder<TNewProps, TMeta, TRes> = (props) => {
     return createNewBuilder({
       ...this._config,
-      title,
-    });
-  }
-
-  public preview<TNewProps extends TProps>(data: TNewProps) {
-    return createNewBuilder<TNewProps, TMeta, TRes>({
-      ...this._config,
-      previewProps: data,
+      previewProps: props,
     } as any);
-  }
+  };
 
-  public props<TSchema extends AnyZodObject>(propSchema: TSchema) {
-    return createNewBuilder<z.infer<TSchema>, TMeta, TRes>({
+  public props: <TSchema extends z.AnyZodObject>(
+    propSchema: TSchema
+  ) => ITemplateBuilder<InferZodSchema<TSchema>, TMeta, TRes> = (
+    propSchema
+  ) => {
+    return createNewBuilder({
       ...this._config,
       schema: { ...this._config.schema, Props: propSchema },
     } as any);
-  }
+  };
 
-  public meta<TSchema extends AnyZodObject>(metaSchema: TSchema) {
-    return createNewBuilder<TProps, z.infer<TSchema>, TRes>({
+  public meta: <TSchema extends z.AnyZodObject>(
+    metaSchema: TSchema
+  ) => ITemplateBuilder<TProps, InferZodSchema<TSchema>, TRes> = (
+    metaSchema
+  ) => {
+    return createNewBuilder({
       ...this._config,
       schema: { ...this._config.schema, Meta: metaSchema },
     } as any);
-  }
+  };
 
-  public metaDefault(defaultMeta: (props: TProps) => Partial<TMeta>) {
+  public metaDefault: (
+    defaultMeta: (props: TProps) => Partial<TMeta>
+  ) => ITemplateBuilder<TProps, TMeta, TRes> = (defaultMeta) => {
     return createNewBuilder({
       ...this._config,
       defaultMeta,
     });
-  }
+  };
 
-  public onSend<TNewRes extends any>(
+  public onSend: <TNewRes extends unknown>(
     onSend: (args: RenderResult<TMeta>) => TNewRes | Promise<TNewRes>,
-    schema?: SchemaOf<TNewRes>
-  ) {
-    return createNewBuilder<TProps, TMeta, TNewRes>({
+    schema?: SchemaOf<TNewRes> | undefined
+  ) => ITemplateBuilder<TProps, TMeta, TNewRes> = (onSend, schema) => {
+    return createNewBuilder({
       ...this._config,
       onSend: onSend,
       schema: {
@@ -88,9 +100,11 @@ export class TemplateBuilder<
         SendResponse: schema,
       },
     } as any);
-  }
+  };
 
-  public view(view: (props: TProps) => JSX.Element) {
+  public view: (
+    view: (props: TProps) => JSX.Element
+  ) => CreateTemplateReturn<TProps, TMeta, TRes> = (view) => {
     return createTemplate({
       view,
       defaultMeta: this._config.defaultMeta,
@@ -101,7 +115,7 @@ export class TemplateBuilder<
       title: this._config.title,
       previewProps: this._config.previewProps,
     });
-  }
+  };
 }
 
 export const createTemplateBuilder = () => {

@@ -1,5 +1,11 @@
 # @brail/types
 
+## 1.0.0-beta.18
+
+### Patch Changes
+
+- Simplify types to enable serialization
+
 ## 1.0.0-beta.16
 
 ### Patch Changes

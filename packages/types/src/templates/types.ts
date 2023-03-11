@@ -1,4 +1,3 @@
-import { FC, PropsWithChildren } from "react";
 import type { z } from "zod";
 
 export type AnyTemplateMap = {
@@ -43,47 +42,66 @@ export type CreateTemplateArgs<
 
 export type TemplatePreview = () => JSX.Element;
 
+export type TemplateConfigSchema<TProps, TMeta, TRes> = {
+  Props: SchemaOf<TProps> | undefined;
+  Meta: SchemaOf<TMeta> | undefined;
+  SendResponse: SchemaOf<TRes> | undefined;
+};
+
+export type TemplateViewFn<TProps> = (props: TProps) => JSX.Element;
+
+export type TemplateDefaultMetaFn<TProps, TMeta> = (
+  props: TProps
+) => Partial<TMeta>;
+
+export interface TemplateConfigDef<TProps, TMeta, TRes> {
+  _props: TProps;
+  _meta: TMeta;
+  _res: TRes;
+}
+
 export type TemplateConfig<
   TProps extends AnyTemplateProps,
   TMeta extends AnyMeta,
   TRes extends any = void
 > = {
-  _def: {
-    _props: TProps;
-    _meta: TMeta;
-    _res: TRes;
-  };
-  schema: {
-    Props: SchemaOf<TProps> | undefined;
-    Meta: SchemaOf<TMeta> | undefined;
-    SendResponse: SchemaOf<TRes> | undefined;
-  };
+  _def: TemplateConfigDef<TProps, TMeta, TRes>;
+  schema: TemplateConfigSchema<TProps, TMeta, TRes>;
   title: string | undefined;
-  view: (props: TProps) => JSX.Element;
-  defaultMeta?: (props: TProps) => Partial<TMeta>;
+  view: TemplateViewFn<TProps>;
+  defaultMeta?: TemplateDefaultMetaFn<TProps, TMeta>;
   onSend?: OnSendFn<TMeta, TRes>;
   previewProps?: TProps;
 };
 
 export type AnyTemplateConfig = TemplateConfig<any, any, any>;
 
+export type TemplateRenderFn<TProps> = (props: TProps) => Promise<string>;
+export type TemplateSendFn<TProps, TMeta, TRes> = (input: {
+  data: TProps;
+  meta: TMeta;
+}) => Promise<TRes>;
+export type TemplatePreviewFn<TProps> = (props?: TProps) => JSX.Element;
+
 export type TemplateProperties<
   TProps extends AnyTemplateProps = AnyTemplateProps,
   TMeta extends AnyMeta = AnyMeta,
   TRes extends any = void
 > = TemplateConfig<TProps, TMeta, TRes> & {
-  render: (props: TProps) => Promise<string>;
-  send: (input: { data: TProps; meta: TMeta }) => Promise<TRes>;
-  preview: (props?: TProps | undefined) => JSX.Element;
+  render: TemplateRenderFn<TProps>;
+  send: TemplateSendFn<TProps, TMeta, TRes>;
+  preview: TemplatePreviewFn<TProps>;
 
   // Below are set by framework/webpack loader
   __path?: string;
 };
 
+export type TemplatePreviewComponent = () => JSX.Element;
+
 export type CreateTemplateReturn<
   TProps extends AnyTemplateProps = AnyTemplateProps,
   TMeta extends AnyMeta = AnyMeta,
   TRes extends any = void
-> = (() => JSX.Element) & TemplateProperties<TProps, TMeta, TRes>;
+> = TemplatePreviewComponent & TemplateProperties<TProps, TMeta, TRes>;
 
 export type AnyCreateTemplateReturn = CreateTemplateReturn<any, any, any>;

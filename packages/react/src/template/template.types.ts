@@ -1,10 +1,38 @@
 import type {
   CreateTemplateReturn,
-  AnyCreateTemplateReturn,
+  AnyMeta,
+  RenderResult,
+  SchemaOf,
 } from "@brail/types";
+import { AnyZodObject, z, ZodTypeAny } from "zod";
+import { AnyProps, TemplateBuilder } from "..";
 
-export type InferTemplateProps<T extends AnyCreateTemplateReturn> =
-  T extends CreateTemplateReturn<infer TProps> ? TProps : never;
+export type AnyTemplateBuilder = TemplateBuilder<any, any, any>;
+export type InferZodSchema<T extends ZodTypeAny> = z.infer<T>;
 
-export type InferTemplateMeta<T extends AnyCreateTemplateReturn> =
-  T extends CreateTemplateReturn<any, infer TMeta> ? TMeta : never;
+export interface ITemplateBuilder<
+  TProps extends AnyProps,
+  TMeta extends AnyMeta,
+  TRes extends any
+> {
+  title: (title: string) => ITemplateBuilder<TProps, TMeta, TRes>;
+  preview: <TNewProps extends TProps>(
+    props: TNewProps
+  ) => ITemplateBuilder<TNewProps, TMeta, TRes>;
+  props: <TSchema extends AnyZodObject>(
+    propSchema: TSchema
+  ) => ITemplateBuilder<InferZodSchema<TSchema>, TMeta, TRes>;
+  meta: <TSchema extends AnyZodObject>(
+    metaSchema: TSchema
+  ) => ITemplateBuilder<TProps, InferZodSchema<TSchema>, TRes>;
+  metaDefault: (
+    defaultMeta: (props: TProps) => Partial<TMeta>
+  ) => ITemplateBuilder<TProps, TMeta, TRes>;
+  onSend: <TNewRes extends any>(
+    onSend: (args: RenderResult<TMeta>) => TNewRes | Promise<TNewRes>,
+    schema?: SchemaOf<TNewRes>
+  ) => ITemplateBuilder<TProps, TMeta, TNewRes>;
+  view: (
+    view: (props: TProps) => JSX.Element
+  ) => CreateTemplateReturn<TProps, TMeta, TRes>;
+}
