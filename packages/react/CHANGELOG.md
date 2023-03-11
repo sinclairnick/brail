@@ -1,5 +1,11 @@
 # @brail/react
 
+## 1.0.0-beta.22
+
+### Patch Changes
+
+- Fix type portability issue with templates
+
 ## 1.0.0-beta.15
 
 ### Patch Changes

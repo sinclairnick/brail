@@ -1,17 +1,13 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "declaration": false,
+    "declaration": true,
+    "noEmit": false,
     "declarationMap": false,
     "noErrorTruncation": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "preserveSymlinks": true
   }
 }
