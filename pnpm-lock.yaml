@@ -21,7 +21,7 @@ importers:
     specifiers:
       '@babel/core': ^7.0.0
       '@brail/eslint-plugin': workspace:*
-      '@brail/react': workspace:1.0.0-beta.13
+      '@brail/react': workspace:*
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
@@ -193,9 +193,10 @@ importers:
       tsconfig: workspace:*
       typescript: ^4.9.5
       zod: ^3.20.6
+    dependencies:
+      '@brail/types': link:../types
     devDependencies:
       '@brail/eslint-plugin': link:../eslint-plugin-brail
-      '@brail/types': link:../types
       '@types/jest': 29.4.0
       '@types/node': 18.14.6
       '@types/react': 18.0.28
@@ -235,11 +236,11 @@ importers:
       zod: ^3.20.6
     dependencies:
       '@brail/devtools': link:../devtools
+      '@brail/types': link:../types
       chalk: 4.1.2
       zod: 3.21.4
     devDependencies:
       '@brail/react': link:../react
-      '@brail/types': link:../types
       '@trpc/client': 10.14.1_@trpc+server@10.14.1
       '@trpc/server': 10.14.1
       '@types/jest': 29.4.0
@@ -268,11 +269,10 @@ importers:
       tsconfig: workspace:*
       typescript: ^4.9.5
       zod: ^3.20.6
-    dependencies:
-      tsconfig: link:../tsconfig
     devDependencies:
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
+      tsconfig: link:../tsconfig
       typescript: 4.9.5
       zod: 3.21.4
 
