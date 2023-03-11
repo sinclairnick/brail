@@ -1,6 +1,6 @@
 {
   "name": "@brail/devtools",
-  "version": "1.0.0-beta.17",
+  "version": "1.0.0-beta.18",
   "description": "",
   "private": false,
   "main": "dist/index.js",
@@ -20,11 +20,11 @@
     "dev": "tsup-node --watch",
     "check": "tsc --noEmit"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "optionalDependencies": {
     "next": "^13.2.1"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.4.6",
@@ -36,18 +36,37 @@
     "@trpc/react-query": "^10.12.0",
     "@trpc/server": "^10.11.1",
     "framer-motion": "^9.0.7",
+    "monaco-editor": "^0.36.1",
     "ts-pattern": "^4.2.1",
-    "zod": "^3.20.6",
+    "zod": "^3.20.0",
     "zod-to-json-schema": "^3.20.4"
   },
   "devDependencies": {
     "@brail/react": "workspace:*",
     "@brail/types": "workspace:*",
-    "@types/react": "^18.0.28",
-    "monaco-editor": "^0.36.1",
-    "next": "^13.2.1",
-    "react": "link:@types/@heroicons/react",
+    "@types/react": "^18.0.0",
+    "next": "^13.2.0",
+    "react": "^18.0.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.9.5"
+  },
+  "author": {
+    "name": "Nick Sinclair",
+    "url": "https://github.com/sinclairnick"
+  },
+  "keywords": [
+    "brail",
+    "email",
+    "react",
+    "trpc",
+    "api",
+    "html",
+    "responsive",
+    "mjml"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinclairnick/brail"
   }
 }

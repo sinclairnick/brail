@@ -1,5 +1,13 @@
 # docs
 
+## 0.0.1-beta.14
+
+### Patch Changes
+
+- Normalize deps and peer deps, improve package.json meta
+- Updated dependencies
+  - @brail/react@1.0.0-beta.23
+
 ## 0.0.1-beta.13
 
 ### Patch Changes

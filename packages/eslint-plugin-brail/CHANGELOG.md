@@ -1,5 +1,11 @@
 # @brail/eslint-plugin
 
+## 1.0.0-beta.14
+
+### Patch Changes
+
+- Normalize deps and peer deps, improve package.json meta
+
 ## 1.0.0-beta.13
 
 ### Patch Changes

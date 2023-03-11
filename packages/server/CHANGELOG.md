@@ -1,5 +1,14 @@
 # brail
 
+## 1.0.0-beta.23
+
+### Patch Changes
+
+- Normalize deps and peer deps, improve package.json meta
+- Updated dependencies
+  - @brail/devtools@1.0.0-beta.18
+  - @brail/types@1.0.0-beta.16
+
 ## 1.0.0-beta.20
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @brail/devtools
 
+## 1.0.0-beta.18
+
+### Patch Changes
+
+- Normalize deps and peer deps, improve package.json meta
+
 ## 1.0.0-beta.17
 
 ### Patch Changes

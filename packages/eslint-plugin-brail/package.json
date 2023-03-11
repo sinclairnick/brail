@@ -1,6 +1,6 @@
 {
   "name": "@brail/eslint-plugin",
-  "version": "1.0.0-beta.13",
+  "version": "1.0.0-beta.14",
   "description": "",
   "main": "dist/src/index.js",
   "private": false,
@@ -10,9 +10,6 @@
     "dev": "tsc -w",
     "check": "tsc --noEmit"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "files": [
     "dist/",
     "data/"
@@ -30,5 +27,24 @@
     "@typescript-eslint/parser": "^5.51.0",
     "chalk": "^4.1.2",
     "table": "^6.8.1"
+  },
+  "author": {
+    "name": "Nick Sinclair",
+    "url": "https://github.com/sinclairnick"
+  },
+  "keywords": [
+    "brail",
+    "email",
+    "react",
+    "trpc",
+    "api",
+    "html",
+    "responsive",
+    "mjml"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinclairnick/brail"
   }
 }

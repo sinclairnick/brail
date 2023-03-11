@@ -1,5 +1,11 @@
 # tsconfig
 
+## 0.0.1-beta.12
+
+### Patch Changes
+
+- Normalize deps and peer deps, improve package.json meta
+
 ## 0.0.1-beta.11
 
 ### Patch Changes
