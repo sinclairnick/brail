@@ -1,11 +1,9 @@
+import { AnyTemplateBuilder } from ".";
 import {
   AnyThemeBuilder,
   createThemeBuilder,
 } from "./styles/theme/theme-builder";
-import {
-  AnyTemplateBuilder,
-  createTemplateBuilder,
-} from "./template/template-builder";
+import { createTemplateBuilder } from "./template/template-builder";
 
 export type InitBrail = {
   template: AnyTemplateBuilder;
