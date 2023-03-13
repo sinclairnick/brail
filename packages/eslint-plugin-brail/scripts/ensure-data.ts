@@ -1,4 +1,3 @@
-import { fetch } from "zx/.";
 import "zx/globals";
 import { fetchData } from "../src/util/fetch/fetch-caniemail-data";
 import { hasFeatureDir, hasRootDir, listRootDir } from "../src/util/fetch/util";
