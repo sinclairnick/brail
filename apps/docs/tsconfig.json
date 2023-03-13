@@ -5,6 +5,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ES2017",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "declaration": false,
     "declarationMap": false,
