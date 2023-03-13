@@ -1,5 +1,13 @@
 # @brail/react
 
+## 1.0.0-beta.26
+
+### Patch Changes
+
+- Expose more types to user-land
+- Updated dependencies
+  - @brail/types@1.0.0-beta.19
+
 ## 1.0.0-beta.25
 
 ### Patch Changes

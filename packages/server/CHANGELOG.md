@@ -1,5 +1,14 @@
 # brail
 
+## 1.0.0-beta.25
+
+### Patch Changes
+
+- Expose more types to user-land
+- Updated dependencies
+  - @brail/types@1.0.0-beta.19
+  - @brail/devtools@1.0.0-beta.18
+
 ## 1.0.0-beta.24
 
 ### Patch Changes

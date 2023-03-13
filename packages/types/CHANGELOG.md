@@ -1,5 +1,11 @@
 # @brail/types
 
+## 1.0.0-beta.19
+
+### Patch Changes
+
+- Expose more types to user-land
+
 ## 1.0.0-beta.18
 
 ### Patch Changes
