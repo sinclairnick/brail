@@ -19,7 +19,6 @@ import { IndexSandbox } from "@components/embeds";
 
 <br />
 
-<CenterContainer>
 
 <br />
 
@@ -47,7 +46,6 @@ Brail provides batteries-included tooling for creating, generating and deliverin
 	</Tab>
 </Tabs>
 
-</CenterContainer>
 
 <br />
 
@@ -63,98 +61,94 @@ Brail provides batteries-included tooling for creating, generating and deliverin
 <br />
 <br />
 
-<CenterContainer>{<Features />}</CenterContainer>
+{<Features />}
 
-
-<CenterContainer maxWidth={1400}>
 
 ## Overview
 
-<div style={{ display: "flex", gap: 8, marginTop: 8, width: "100%", overflow: "hidden", flexWrap: "wrap" }}>
-	<div style={{ minWidth: 400, flex: 1 }}>
-		#### Create a template
-		Define a template using zod and React.
+### Create a template
 
-    ```tsx
-    /* 📄 my-template.tsx */
-    import Brail from "@brail/react";
-    import z from "zod";
+1. Create a template view using idiomatic React.
 
-    const b = Brail.init();
+```tsx
+/* 📄 my-template.tsx */
+import Brail from "@brail/react";
+import z from "zod";
 
-    	/** 👇 Create your template */
-    const MyTemplateView = (props) => {
-    	return <Email>
-    		<Container>
-    			<Row>
-    				<Column>
-    					<Typography>Welcome, {props.name}</Typography>
-    				</Column>
-    			</Row>
-    		</Container>
-    	</Email>
-    }
+const b = Brail.init();
 
-    export default b.template
-    	 /** 👇 Define meta schema (optional) */
-    	.meta(z.object({ to: z.string(), sendGridApiKey: z.string() }))
-    	 /** 👇 Define props schema (optional) */
-    	.props(z.object({ name: z.string() }))
-    	/** 👇 Define a send function (optional) */
-    	.onSend(async (args) => {
-    		const { meta, html } = args;
-    		const res = await sendGrid.send(html, {
-    			to: meta.to,
-    			apiKey: meta.sendGridApiKey,
-    		});
-    		return { ok: res.status === 200 };
-    	})
-    	.view(MyTemplateView); /** 👈 Register template view */
-    ```
-    </div>
+	/** 👇 Create your template */
+const MyTemplateView = (props) => {
+	return <Email>
+		<Container>
+			<Row>
+				<Column>
+					<Typography>Welcome, {props.name}</Typography>
+				</Column>
+			</Row>
+		</Container>
+	</Email>
+}
+```
 
-    <div style={{ minWidth: 400, flex: 1 }}>
-    #### Use your template
-    Expose your templates via type-safe APIs, including tRPC.
+2. Define validation schema and sending logic (optional).
 
-    ```tsx
-    /* 📄 lib/trpc.ts */
-    import { createTrpcRouter } from "brail/trpc";
-    import { initTrpc } from "@trpc/server";
+```tsx
+export default b.template
+		/** 👇 Define meta schema (optional) */
+	.meta(z.object({ to: z.string(), sendGridApiKey: z.string() }))
+		/** 👇 Define props schema (optional) */
+	.props(z.object({ name: z.string() }))
+	/** 👇 Define a send function (optional) */
+	.onSend(async (args) => {
+		const { meta, html } = args;
+		const res = await sendGrid.send(html, {
+			to: meta.to,
+			apiKey: meta.sendGridApiKey,
+		});
+		return { ok: res.status === 200 };
+	})
+	.view(MyTemplateView); /** 👈 Register template view */
+```
 
-    // Use your template directly
-    const html = myTemplate.render({/** Props */})
-    const sendResponse = await myTemplate.send({/** data: {}, meta: {} */})
+### Use your template
 
-    /** 👇 Or create tRPC router based on your templates */
-    const appRouter = createTrpcRouter({
-    	templates: { myTemplate },
-    	t: initTrpc.create()
-    });
-    ```
-    ```tsx
-    /* 📄 pages/api/trpc/[trpc].ts */
-    import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+You can now generate templates directly...
 
-    // Serve templates via edge runtime function
-    export default async function handler(req: NextRequest) {
-    return fetchRequestHandler({
-    	endpoint: "/api/trpc",
-    	router: appRouter,
-    	req,
-    	createContext: () => ({}),
-    });
-    }
-    ````
-    </div>
+```tsx
+// Use your template directly
+const html = myTemplate.render({/** Props */})
+const sendResponse = await myTemplate.send({/** data: {}, meta: {} */})
+```
 
-</div>
+Or serve them via a [**tRPC**](https://trpc.io) API.
 
-</CenterContainer>
+```tsx
+/* 📄 lib/trpc.ts */
+import { createTrpcRouter } from "brail/trpc";
+import { initTrpc } from "@trpc/server";
 
-<CenterContainer>
+const appRouter = createTrpcRouter({
+	templates: { myTemplate },
+	t: initTrpc.create()
+});
+```
+```tsx
+/* 📄 pages/api/trpc/[trpc].ts */
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
-### Works with your favourite tools
+// Serve templates via edge runtime function
+export default async function handler(req: NextRequest) {
+	return fetchRequestHandler({
+		endpoint: "/api/trpc",
+		router: appRouter,
+		req,
+		createContext: () => ({}),
+	});
+}
+```
+
+### Keep working with your favourite tools
 
 Brail sits on top of your favourite meta-frameworks and uses tools you already know, including [**Zod**](https://zod.dev/) and [**tRPC**](https://trpc.io).
 
@@ -185,4 +179,3 @@ Brail sits on top of your favourite meta-frameworks and uses tools you already k
   feedback and contributions.
 </Callout>
 
-</CenterContainer>
