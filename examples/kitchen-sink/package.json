@@ -9,7 +9,7 @@
     "lint": "eslint \"./pages/**/*.{tsx,ts}\"",
     "maildev": "docker run -p 1080:1080 -p 1025:1025 maildev/maildev",
     "ngrok": "ngrok http 3000",
-    "check": "tsx --noEmit",
+    "check": "tsc --noEmit",
     "check:emitable": "tsc --noEmit false --emitDeclarationOnly --outDir dist --declaration"
   },
   "dependencies": {
