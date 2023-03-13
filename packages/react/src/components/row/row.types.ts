@@ -28,7 +28,7 @@ export type RowProps = Expand<
     TypographyProviderProps
 >;
 
-type RowDimensions<T extends WidthValue> = {
+export type RowDimensions<T extends WidthValue> = {
   // "Free" width
   remaining: T;
   // Fixed, predefined width

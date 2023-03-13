@@ -30,4 +30,12 @@ export type {
   TemplateConfig,
   TemplatePreview,
   TemplateProperties,
+  TemplateConfigDef,
+  TemplateConfigSchema,
+  TemplateDefaultMetaFn,
+  TemplatePreviewComponent,
+  TemplatePreviewFn,
+  TemplateRenderFn,
+  TemplateSendFn,
+  TemplateViewFn,
 } from "@brail/types";

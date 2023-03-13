@@ -15,7 +15,7 @@ import {
   ShadowProps,
 } from "../attr";
 
-type ErrorMessage<T extends string> = `Error: ${T}`;
+export type ErrorMessage<T extends string> = `Error: ${T}`;
 
 export type ThemeTokenIn = string | number;
 export type ThemeTokenRef<T extends ThemeTokenIn> = `$${T}` & string;

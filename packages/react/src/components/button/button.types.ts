@@ -10,7 +10,7 @@ import {
 } from "../../styles";
 import { Expand } from "../../util/types.util";
 
-type BaseProps = {
+export type ButtonBaseProps = {
   href: string;
   children: React.ReactNode;
   rel?: string | null;
@@ -18,7 +18,7 @@ type BaseProps = {
 };
 
 export type ButtonProps = Expand<
-  BaseProps &
+  ButtonBaseProps &
     Partial<
       SpacingProps<UnitlessValue | PixelValue> &
         ColorProps &

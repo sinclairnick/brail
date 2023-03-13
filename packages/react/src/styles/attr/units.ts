@@ -1,5 +1,3 @@
-export type { CSSProperties } from "react";
-
 export type UnitlessValue = number | `${number}`;
 export type PixelValue = `${number}px`;
 export type PercentValue = `${number}%`;
