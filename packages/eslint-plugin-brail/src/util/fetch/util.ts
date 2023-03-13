@@ -1,5 +1,6 @@
 import path from "node:path";
-import fs from "fs-extra";
+import fs from "node:fs/promises";
+import _fs from "node:fs";
 
 const ROOT_DIR = "data";
 const FEATURE_OUTDIR = path.join(ROOT_DIR, "features");
@@ -9,7 +10,7 @@ export const getRootDir = () => {
 };
 
 export const hasRootDir = async () => {
-  return await fs.exists(ROOT_DIR);
+  return _fs.existsSync(ROOT_DIR);
 };
 
 export const createRootDir = async () => {
@@ -26,7 +27,7 @@ export const getFeatureDir = () => {
 };
 
 export const hasFeatureDir = async () => {
-  return await fs.exists(FEATURE_OUTDIR);
+  return _fs.existsSync(FEATURE_OUTDIR);
 };
 
 export const createFeatureDir = async () => {
