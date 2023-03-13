@@ -121,11 +121,13 @@ export const Sending = (props: SendingProps) => {
           Checking if sending is enabled...
         </Typography>
       ) : isSendingEnabled ? (
-        <Stack css={{ paddingTop: 8 }}>
+        <Stack>
           {!activeTemplate && (
-            <Typography css={{ px: 4, pt: 2, color: "DarkGray" }}>
-              Please select a template to send/generate emails
-            </Typography>
+            <Stack css={{ p: 4 }}>
+              <Typography css={{ color: "$gray11", fontSize: 16 }}>
+                Select a template to send test emails.
+              </Typography>
+            </Stack>
           )}
           {activeTemplate && (
             <>

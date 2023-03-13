@@ -1,6 +1,6 @@
 {
   "name": "@brail/devtools",
-  "version": "1.0.0-beta.18",
+  "version": "1.0.0-beta.19",
   "description": "",
   "private": false,
   "main": "dist/index.js",
@@ -37,6 +37,7 @@
     "@trpc/server": "^10.11.1",
     "framer-motion": "^9.0.7",
     "monaco-editor": "^0.36.1",
+    "prettier": "^2.8.4",
     "ts-pattern": "^4.2.1",
     "zod": "^3.20.0",
     "zod-to-json-schema": "^3.20.4"
