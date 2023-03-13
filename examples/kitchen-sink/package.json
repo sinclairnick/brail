@@ -9,7 +9,8 @@
     "lint": "eslint \"./pages/**/*.{tsx,ts}\"",
     "maildev": "docker run -p 1080:1080 -p 1025:1025 maildev/maildev",
     "ngrok": "ngrok http 3000",
-    "check": "tsc --noEmit false --emitDeclarationOnly --outDir dist --declaration"
+    "check": "tsx --noEmit",
+    "check:emitable": "tsc --noEmit false --emitDeclarationOnly --outDir dist --declaration"
   },
   "dependencies": {
     "@brail/react": "workspace:*",
