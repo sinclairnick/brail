@@ -6,8 +6,6 @@ import {
   useState,
 } from "react";
 import { Colors } from "../constants";
-import { Html } from "@brail/react";
-import Head from "next/head";
 import { createTemplate } from "@brail/react";
 
 type DivProps = DetailedHTMLProps<
@@ -27,15 +25,15 @@ export const Demo = (props: DemoProps) => {
 
   const childrenAsTemplate = createTemplate({
     view: () => <>{props.children}</>,
-		previewProps: {}
+    previewProps: {},
   });
 
   useEffect(() => {
-    if (!html) {
-      childrenAsTemplate.render({}).then((html) => {
-        setHtml(html);
-      });
-    }
+    childrenAsTemplate.render({}).then((newHtml) => {
+      if (newHtml !== html) {
+        setHtml(newHtml);
+      }
+    });
   }, [html, childrenAsTemplate]);
 
   return (
@@ -44,7 +42,7 @@ export const Demo = (props: DemoProps) => {
         <div
           className="demo"
           style={{
-						boxSizing: "border-box",
+            boxSizing: "border-box",
             width: "100%",
             backgroundColor: Colors.grey100,
             marginTop: 16,
@@ -54,7 +52,14 @@ export const Demo = (props: DemoProps) => {
             ...props.style,
           }}
         >
-          {<iframe scrolling="no" srcDoc={html} width="100%" height={props.style?.height} />}
+          {
+            <iframe
+              scrolling="no"
+              srcDoc={html}
+              width="100%"
+              height={props.style?.height}
+            />
+          }
         </div>
       )}
     </>

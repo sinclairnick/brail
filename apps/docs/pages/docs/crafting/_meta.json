@@ -1,7 +1,8 @@
 {
   "html-emails": "HTML Email Primer",
   "templates": "Email Templates",
-	"components": "Components",
+  "components": "Components",
+  "responsiveness": "Responsiveness",
   "theming": "Theming",
   "devtools": "Devtools",
   "linting": "Linting",

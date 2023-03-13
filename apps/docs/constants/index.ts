@@ -1,6 +1,7 @@
 export const Colors = {
   grey100: "#F6F6F6",
   brail: "#1B448D",
+	brailLight: "hsl(219, 65%, 92%)"
 };
 
 export const BASE_URL = process.env.VERCEL_URL || "http://localhost:3001";
