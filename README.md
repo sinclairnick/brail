@@ -10,7 +10,7 @@
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://brail.dev">Docs</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://github.com/brail/apps/examples">Examples</a>
+  <a href="https://github.com/sinclairnick/brail/tree/main/examples">Examples</a>
   <br />
   <br />
 </div>
@@ -19,21 +19,29 @@ Brail provides batteries-included tooling for creating, generating and deliverin
 
 ## What is Brail?
 
-Brail consists of several tools which aid crafting and delivering emails:
+Brail consists of several tools which aid crafting and delivering emails, across the full-stack:
 
-- [**UI Library**](): Responsive email-safe React component library
-- [**Brail Core**](): Tools for creating type-safe APIs or SDKs
-- [**Devtools**](): Tools for making developing, debugging and testing emails easier
-- [**Linting**](): ESLint plugin warnings for common email-specific HTML pitfalls
+- [**React Library**](https://www.brail.dev/docs/crafting): Responsive email component library. Compiles to email-compatible HTML
+- [**Brail Core**](https://www.brail.dev/docs/using/trpc): Tools for serving emails via type-safe APIs or SDKs
+- [**Devtools**](https://www.brail.dev/docs/crafting/devtools): Make email development, debugging and testing easier
+- [**Linting**](https://www.brail.dev/docs/crafting/linting): Identify and fix common HTML email pitfalls
+
+## Features
+
+Brail comes packed with many helpful features including:
+
+- 🌈 Theming out-of-the-box
+- 📱 Automatic mobile-responsiveness
+- 💻 Devtools and live-previews
+- ⚠️ Linting
+- 🧢 First-class tRPC, Zod integrations
+- 🔒 End-to-end type-safety
 
 ## Getting started
 
-To get started with Brail, check out the [**Quickstart**]() guide.
+To get started with Brail, check out the [**Quickstart**](https://www.brail.dev/docs/quick-start) guide.
 
-Alternatively, you can [**check out the Docs**](), try Brail out in a codesandbox or use one of the [**Brail starter projects**]():
-
-- [Brail + Nextjs]()
-- [Brail + Turborepo + Nextjs]()
+Alternatively, you can [**check out the Docs**](https://www.brail.dev), try Brail out in a codesandbox or use one of the [**Brail starter projects**](https://github.com/sinclairnick/brail/tree/main/starters):
 
 <br/>
 
