@@ -2,7 +2,7 @@ import { AnyCreateTemplateReturn } from "@brail/types";
 import Editor from "@monaco-editor/react";
 import { useEffect, useState } from "react";
 import prettier from "prettier";
-import HtmlParser from "prettier/parser-html";
+import HtmlParser from "prettier/parser-html.js";
 import { Stack, Typography } from "../../../theme/theme";
 import { SplitState } from "../../shell.component";
 
