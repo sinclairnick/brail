@@ -105,3 +105,25 @@ export type CreateTemplateReturn<
 > = TemplatePreviewComponent & TemplateProperties<TProps, TMeta, TRes>;
 
 export type AnyCreateTemplateReturn = CreateTemplateReturn<any, any, any>;
+
+export type InferTemplateProps<T extends AnyCreateTemplateReturn> =
+  T extends CreateTemplateReturn<infer TProps, any, any> ? TProps : never;
+
+export type InferTemplatePropsSchema<T extends AnyCreateTemplateReturn> =
+  T extends CreateTemplateReturn<infer TProps, any, any>
+    ? SchemaOf<TProps>
+    : never;
+
+export type InferTemplateMeta<T extends AnyCreateTemplateReturn> =
+  T extends CreateTemplateReturn<any, infer TMeta, any> ? TMeta : never;
+
+export type InferTemplateMetaSchema<T extends AnyCreateTemplateReturn> =
+  T extends CreateTemplateReturn<any, infer TMeta, any>
+    ? SchemaOf<TMeta>
+    : never;
+
+export type InferTemplateResponse<T extends AnyCreateTemplateReturn> =
+  T extends CreateTemplateReturn<any, any, infer TRes> ? TRes : never;
+
+export type InferTemplateResponseSchema<T extends AnyCreateTemplateReturn> =
+  T extends CreateTemplateReturn<any, any, infer TRes> ? SchemaOf<TRes> : never;

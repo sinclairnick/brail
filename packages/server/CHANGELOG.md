@@ -1,5 +1,14 @@
 # brail
 
+## 1.0.0-beta.26
+
+### Patch Changes
+
+- Export helpful inference types
+- Updated dependencies
+  - @brail/types@1.0.0-beta.20
+  - @brail/devtools@1.0.0-beta.18
+
 ## 1.0.0-beta.25
 
 ### Patch Changes

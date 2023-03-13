@@ -1,5 +1,13 @@
 # @brail/react
 
+## 1.0.0-beta.27
+
+### Patch Changes
+
+- Export helpful inference types
+- Updated dependencies
+  - @brail/types@1.0.0-beta.20
+
 ## 1.0.0-beta.26
 
 ### Patch Changes
