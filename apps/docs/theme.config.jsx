@@ -1,7 +1,5 @@
-const { useRouter } = require("next/router");
-
 /** @type {import("nextra").ThemeConfig} */
-const config = {
+export default {
   logo: (
     <div
       style={{
@@ -36,6 +34,12 @@ const config = {
       </span>
     ),
   },
+  banner: {
+    key: "beta-release",
+    text: (
+      <a href="http://localhost:3001/docs/introduction">
+        🎉 Brail Beta has been released. Read more →
+      </a>
+    ),
+  },
 };
-
-export default config;
