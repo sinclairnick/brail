@@ -130,6 +130,7 @@ importers:
       framer-motion: ^9.0.7
       monaco-editor: ^0.36.1
       next: ^13.2.1
+      prettier: ^2.8.4
       react: ^18.0.0
       ts-pattern: ^4.2.1
       tsconfig: workspace:*
@@ -147,6 +148,7 @@ importers:
       '@trpc/server': 10.14.1
       framer-motion: 9.1.7_react@18.2.0
       monaco-editor: 0.36.1
+      prettier: 2.8.4
       ts-pattern: 4.2.1
       zod: 3.21.4
       zod-to-json-schema: 3.20.4_zod@3.21.4
@@ -6178,6 +6180,7 @@ packages:
     resolution: {integrity: sha512-g1I30317cThkEpvzfXujf0O4wtaQHtDCLhlivwlTJ885Ld+eOgcz7r3TGQzeU+cSRoNHtD8tsJgzxVdYojFssw==}
     engines: {node: '>=14.6.0'}
     hasBin: true
+    requiresBuild: true
     peerDependencies:
       '@opentelemetry/api': ^1.4.0
       fibers: '>= 3.1.0'
@@ -6686,7 +6689,6 @@ packages:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
   /pretty-format/29.5.0:
     resolution: {integrity: sha512-V2mGkI31qdttvTFX7Mt4efOqHXqJWMu4/r66Xh3Z3BwZaPfPJgp6/gbwoujRpPUtfEF6AUUWx3Jim3GCw5g/Qw==}

@@ -7,6 +7,7 @@ import {
   ArrowTopRightIcon,
   DoubleArrowRightIcon,
   DoubleArrowLeftIcon,
+  CodeIcon,
 } from "@radix-ui/react-icons";
 import { mediaQuery } from "../../util/breakpoints.util";
 
@@ -14,6 +15,7 @@ const Tabs = [
   { label: "Templates", icon: FileIcon, key: "templates" },
   // { label: "Playground", icon: BeakerIcon, key: "playground" },
   { label: "Send", icon: EnvelopeClosedIcon, key: "send" },
+  { label: "HTML", icon: CodeIcon, key: "html" },
   {
     label: "View",
     icon: ArrowTopRightIcon,
@@ -132,13 +134,13 @@ export const LeftToolbar = (props: LeftToolbarProps) => {
             <DoubleArrowLeftIcon
               width={20}
               height={20}
-              color={theme.colors.gray10.value}
+              color={theme.colors.gray11.value}
             />
           ) : (
             <DoubleArrowRightIcon
               width={20}
               height={20}
-              color={theme.colors.gray10.value}
+              color={theme.colors.gray11.value}
             />
           )}
         </ToolbarButton>

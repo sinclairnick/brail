@@ -1,5 +1,11 @@
 # @brail/devtools
 
+## 1.0.0-beta.19
+
+### Patch Changes
+
+- Add HTML viewer to devtools
+
 ## 1.0.0-beta.18
 
 ### Patch Changes

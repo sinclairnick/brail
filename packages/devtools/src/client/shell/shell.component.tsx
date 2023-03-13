@@ -1,5 +1,5 @@
 import { reset, Stack } from "../theme/theme.js";
-import { PropsWithChildren, useEffect, useLayoutEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { LeftToolbar } from "./left-toolbar/left-toolbar.component";
 import { LeftPanel } from "./left-panel/left-panel.component";
 import { TopToolbar } from "./top-toolbar/top-toolbar.component";
@@ -13,26 +13,13 @@ import { FileTree } from "./left-panel/file-tree/file-tree.component";
 import { Sending } from "./left-panel/sending/sending.component";
 import { useIsMounted } from "../util/is-mounted.hook";
 import { Breakpoints } from "../util/breakpoints.util.js";
+import { HtmlCodePanel } from "./left-panel/html-code/html-code.component.js";
 
 export type AppShellProps = PropsWithChildren<{
   templates: AnyTemplateMap;
 }>;
 
-const getObjectPath = <T extends { [key: string]: any }, P extends string>(
-  obj: T,
-  path: P | undefined
-): T[P] | undefined => {
-  if (path == null) return;
-  const parts = path.split(".");
-  let temp = obj as any;
-  for (const part of parts) {
-    temp = temp[part];
-    if (temp == null) return;
-  }
-  return temp;
-};
-
-export type TabKey = "templates" | "playground" | "send" | "view";
+export type TabKey = "templates" | "playground" | "send" | "view" | "html";
 export type SplitState = "even" | "content" | "minimized";
 
 const getSplitWidths = (split: SplitState) => {
@@ -40,7 +27,7 @@ const getSplitWidths = (split: SplitState) => {
     case "even":
       return { content: "50%", panel: "50%" };
     case "content":
-      return { content: "auto", panel: 300 };
+      return { content: "auto", panel: 350 };
     case "minimized":
       return { content: "auto", panel: 0 };
   }
@@ -109,11 +96,14 @@ export const AppShell = (props: AppShellProps) => {
                     display: selectedTab === "send" ? "flex" : "none",
                   }}
                 >
-                  <Sending
-                    activeTemplate={activeTemplate}
-                    width={splitWidths.panel}
-                  />
+                  <Sending activeTemplate={activeTemplate} />
                 </Stack>
+              )}
+              {isMounted && selectedTab === "html" && (
+                <HtmlCodePanel
+                  activeTemplate={activeTemplate}
+                  splitState={splitState}
+                />
               )}
             </LeftPanel>
           </>

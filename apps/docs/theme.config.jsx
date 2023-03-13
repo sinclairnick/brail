@@ -37,7 +37,7 @@ export default {
   banner: {
     key: "beta-release",
     text: (
-      <a href="http://localhost:3001/docs/introduction">
+      <a href="/docs/introduction">
         🎉 Brail Beta has been released. Read more →
       </a>
     ),
