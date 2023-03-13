@@ -6,9 +6,9 @@
   <br />
   <br />
   <h1>Brail</h1>
-  <a href="https://www.prisma.io/docs/getting-started/quickstart">Quickstart</a>
+  <a href="https://brail.dev/docs/quick-start">Quickstart</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://brail.vercel.app">Docs</a>
+  <a href="https://brail.dev">Docs</a>
   <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   <a href="https://github.com/brail/apps/examples">Examples</a>
   <br />
@@ -51,6 +51,6 @@ Brail abstracts away that complexity and aims to provide a web-like experience t
 
 <br/>
 
-##  Why not use a drag-and-drop editor?
+## Why not use a drag-and-drop editor?
 
 Drag and drop editors make it easy to create email-safe templates, but lack many features we're used to in code-world like theming, abstraction, formatting, maths, version control, PRs and types. By providing a full-proof in-code solution to HTML emails, we regain the control, flexibility and power of code, which makes creating (and refactoring) emails much faster, easier and more fun.
