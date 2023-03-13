@@ -29,6 +29,7 @@ importers:
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
+      '@vercel/analytics': ^0.1.11
       next: ^13.1.1
       nextra: ^2.2.16
       nextra-theme-docs: ^2.2.16
@@ -40,6 +41,7 @@ importers:
       zx: ^7.2.0
     dependencies:
       '@brail/react': link:../../packages/react
+      '@vercel/analytics': 0.1.11_react@18.2.0
       next: 13.2.3_6m24vuloj5ihw4zc5lbsktc4fu
       nextra: 2.2.18_nvzgbose6yf6w7ijjprgspqefi
       nextra-theme-docs: 2.2.18_eabglq5mx25htemwufj5jyllhe
@@ -2427,6 +2429,14 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.54.1
       eslint-visitor-keys: 3.3.0
+
+  /@vercel/analytics/0.1.11_react@18.2.0:
+    resolution: {integrity: sha512-mj5CPR02y0BRs1tN3oZcBNAX9a8NxsIUl9vElDPcqxnMfP0RbRc9fI9Ud7+QDg/1Izvt5uMumsr+6YsmVHcyuw==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}

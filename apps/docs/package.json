@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@brail/react": "workspace:*",
+    "@vercel/analytics": "^0.1.11",
     "next": "^13.1.1",
     "nextra": "^2.2.16",
     "nextra-theme-docs": "^2.2.16",
