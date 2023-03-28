@@ -1,5 +1,12 @@
 # docs
 
+## 0.0.1-beta.18
+
+### Patch Changes
+
+- Updated dependencies
+  - @brail/react@1.0.0-beta.28
+
 ## 0.0.1-beta.17
 
 ### Patch Changes

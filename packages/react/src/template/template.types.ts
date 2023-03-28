@@ -16,9 +16,7 @@ export interface ITemplateBuilder<
   TRes extends any
 > {
   title: (title: string) => ITemplateBuilder<TProps, TMeta, TRes>;
-  preview: <TNewProps extends TProps>(
-    props: TNewProps
-  ) => ITemplateBuilder<TNewProps, TMeta, TRes>;
+  preview: (props: TProps) => ITemplateBuilder<TProps, TMeta, TRes>;
   props: <TSchema extends AnyZodObject>(
     propSchema: TSchema
   ) => ITemplateBuilder<InferZodSchema<TSchema>, TMeta, TRes>;

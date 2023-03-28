@@ -31,7 +31,7 @@ export default template
   .view((props) => {
     return (
       <Email>
-        <Title>{props.title}</Title>
+        <Title>{props.title ?? ""}</Title>
         <Container px={20} py={20}>
           <Row>
             <Column>

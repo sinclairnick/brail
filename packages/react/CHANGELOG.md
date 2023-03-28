@@ -1,5 +1,11 @@
 # @brail/react
 
+## 1.0.0-beta.28
+
+### Patch Changes
+
+- Prevent .preview() from unhelpfully narrowing TProps type
+
 ## 1.0.0-beta.27
 
 ### Patch Changes
