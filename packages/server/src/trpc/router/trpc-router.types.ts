@@ -1,4 +1,5 @@
 import {
+  AnyCreateTemplateReturn,
   AnyMeta,
   AnyTemplateMap,
   AnyTemplateProps,
@@ -32,13 +33,8 @@ export type InferTemplateMap<
 > = CreateRouterInner<
   TConfig,
   {
-    [key in keyof TMap]: TMap[key] extends CreateTemplateReturn<
-      infer TProps,
-      infer TMeta,
-      infer TDefaultMeta,
-      infer TRes
-    >
-      ? CreateTemplateProcedures<TProps, TMeta, TDefaultMeta, TConfig, TRes>
+    [key in keyof TMap]: TMap[key] extends AnyCreateTemplateReturn
+      ? CreateTemplateProcedures<TMap[key], TConfig>
       : TMap[key] extends AnyTemplateMap
       ? InferTemplateMap<TMap[key], TConfig>
       : never;
@@ -51,15 +47,12 @@ export type InferTemplateMap<
 // > =
 
 export type CreateTemplateProcedures<
-  TProps extends AnyTemplateProps,
-  TMeta extends AnyMeta,
-  TDefaultMeta extends Partial<AnyMeta>,
-  TConfig extends AnyRootConfig,
-  TResponse extends any = void
+  TTemplate extends AnyCreateTemplateReturn,
+  TConfig extends AnyRootConfig
 > = CreateRouterInner<
   TConfig,
   {
-    html: CreateTrpcQueryReturn<TProps, TDefaultMeta>;
-    send: CreateTrpcMutationReturn<TProps, TMeta, TResponse>;
+    html: CreateTrpcQueryReturn<TTemplate>;
+    send: CreateTrpcMutationReturn<TTemplate>;
   }
 >;

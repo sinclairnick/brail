@@ -1,7 +1,6 @@
 import {
   AnyCreateTemplateReturn,
-  AnyMeta,
-  AnyTemplateProps,
+  CreateTemplateReturn,
   RenderResult,
 } from "@brail/types";
 import { BuildProcedure, ProcedureParams } from "@trpc/server";
@@ -14,21 +13,26 @@ export type CreateTrpcProcedureArgs<TTemplate extends AnyCreateTemplateReturn> =
     pathName: string;
   };
 
-export type CreateTrpcQueryReturn<
-  TProps extends AnyTemplateProps = AnyTemplateProps,
-  TDefaultMeta extends Partial<AnyMeta> = Partial<AnyMeta>
-> = BuildProcedure<
-  "query",
-  ProcedureParams<
-    any,
-    unknown,
-    TProps,
-    TProps,
-    RenderResult<TDefaultMeta>,
-    RenderResult<TDefaultMeta>
-  >,
-  RenderResult<TDefaultMeta>
->;
+export type CreateTrpcQueryReturn<TTemplate extends AnyCreateTemplateReturn> =
+  TTemplate extends CreateTemplateReturn<
+    infer TProps,
+    infer TMeta,
+    infer TDefaultMeta,
+    any
+  >
+    ? BuildProcedure<
+        "query",
+        ProcedureParams<
+          any,
+          unknown,
+          TProps,
+          TProps,
+          RenderResult<TDefaultMeta>,
+          RenderResult<TDefaultMeta>
+        >,
+        RenderResult<TDefaultMeta>
+      >
+    : never;
 
 export type CreateTrpcMutationArgs<TTemplate extends AnyCreateTemplateReturn> =
   CreateTrpcProcedureArgs<TTemplate>;
@@ -39,18 +43,23 @@ export type MutationArgs<TProps, TMeta> = {
 };
 
 export type CreateTrpcMutationReturn<
-  TProps extends AnyTemplateProps = AnyTemplateProps,
-  TMeta extends AnyMeta = AnyMeta,
-  TResponse extends any = void
-> = BuildProcedure<
-  "mutation",
-  ProcedureParams<
-    any,
-    unknown,
-    MutationArgs<TProps, TMeta>,
-    MutationArgs<TProps, TMeta>,
-    TResponse,
-    TResponse
-  >,
-  TResponse
->;
+  TTemplate extends AnyCreateTemplateReturn
+> = TTemplate extends CreateTemplateReturn<
+  infer TProps,
+  infer TMeta,
+  infer TDefaultMeta,
+  infer TResponse
+>
+  ? BuildProcedure<
+      "mutation",
+      ProcedureParams<
+        any,
+        unknown,
+        MutationArgs<TProps, TMeta>,
+        MutationArgs<TProps, TMeta>,
+        TResponse,
+        TResponse
+      >,
+      TResponse
+    >
+  : never;

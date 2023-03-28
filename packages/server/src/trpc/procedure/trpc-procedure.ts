@@ -1,4 +1,4 @@
-import { AnyCreateTemplateReturn } from "@brail/types";
+import { AnyCreateTemplateReturn, RenderResult } from "@brail/types";
 import type { OpenApiMeta } from "trpc-openapi";
 import {
   CreateTrpcMutationArgs,
@@ -13,10 +13,7 @@ import z from "zod";
  */
 export const createTrpcQuery = <TTemplate extends AnyCreateTemplateReturn>(
   args: CreateTrpcProcedureArgs<TTemplate>
-): CreateTrpcQueryReturn<
-  TTemplate["_def"]["_props"],
-  TTemplate["_def"]["_meta"]
-> => {
+): CreateTrpcQueryReturn<TTemplate> => {
   const { t, template, pathName } = args;
 
   let proc = t.procedure.meta(<OpenApiMeta>{
@@ -41,7 +38,7 @@ export const createTrpcQuery = <TTemplate extends AnyCreateTemplateReturn>(
     const defaultMeta = template.defaultMeta?.(input);
 
     return { html, defaultMeta };
-  });
+  }) as any;
 };
 
 /**
@@ -49,11 +46,7 @@ export const createTrpcQuery = <TTemplate extends AnyCreateTemplateReturn>(
  */
 export const createTrpcMutation = <TTemplate extends AnyCreateTemplateReturn>(
   args: CreateTrpcMutationArgs<TTemplate>
-): CreateTrpcMutationReturn<
-  TTemplate["_def"]["_props"],
-  TTemplate["_def"]["_meta"],
-  TTemplate["_def"]["_res"]
-> => {
+): CreateTrpcMutationReturn<TTemplate> => {
   const { t, template, pathName } = args;
 
   let proc = t.procedure.meta(<OpenApiMeta>{
@@ -77,5 +70,5 @@ export const createTrpcMutation = <TTemplate extends AnyCreateTemplateReturn>(
 
   return proc.mutation(async ({ ctx, input }) => {
     return template.send(input);
-  });
+  }) as any;
 };
