@@ -38,9 +38,9 @@ export const createTrpcQuery = <TTemplate extends AnyCreateTemplateReturn>(
 
   return proc.query(async ({ ctx, input }) => {
     const html = await template.render(input);
-    const meta = template.defaultMeta?.(input);
+    const defaultMeta = template.defaultMeta?.(input);
 
-    return { html, meta };
+    return { html, defaultMeta };
   });
 };
 
