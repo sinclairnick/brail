@@ -5,29 +5,27 @@
   "types": "./dist/index.d.ts",
   "private": false,
   "scripts": {
-    "test": "jest spec",
+    "test": "vitest spec",
     "lint": "eslint *.ts*",
     "build": "tsup-node",
     "dev": "tsup-node --watch",
-    "check": "tsc --noEmit"
+    "check": "vitest typecheck"
   },
   "peerDependencies": {
     "react": "^18.0.0"
   },
   "dependencies": {
-    "@brail/types": "workspace:*"
+    "@brail/types": "workspace:*",
+    "vitest": "^0.29.7"
   },
   "devDependencies": {
     "@brail/eslint-plugin": "workspace:*",
-    "@types/jest": "^29.4.0",
     "@types/node": "^18.14.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "eslint": "^7.32.0",
-    "jest": "^29.4.2",
     "next": "^13.2.0",
     "react": "^18.0.0",
-    "ts-jest": "^29.0.5",
     "tsconfig": "workspace:*",
     "typescript": "^4.9.5",
     "zod": "^3.20.0"

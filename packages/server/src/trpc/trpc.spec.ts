@@ -7,6 +7,7 @@ import {
 } from "./procedure/trpc-procedure";
 import { createTrpcRouter } from "./router/trpc-router";
 import z from "zod";
+import { describe, it, expect, vi } from "vitest";
 
 describe("trpc", () => {
   const t = initTRPC.create();
@@ -34,7 +35,7 @@ describe("trpc", () => {
   });
 
   it("Creates mutation procs", async () => {
-    const sendFn = jest.fn().mockImplementation(() => ({ hi: 1 }));
+    const sendFn = vi.fn().mockImplementation(() => ({ hi: 1 }));
     const m = createTrpcMutation({
       t,
       pathName: "",

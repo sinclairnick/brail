@@ -2,6 +2,7 @@ import React from "react";
 import { createTemplate } from "./template";
 import z from "zod";
 import { createTemplateBuilder } from "./template-builder";
+import { describe, it, expect } from "vitest";
 
 describe("Template", () => {
   it("Works with functional style", () => {
