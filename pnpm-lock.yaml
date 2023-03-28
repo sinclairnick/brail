@@ -126,6 +126,7 @@ importers:
       '@trpc/client': ^10.11.1
       '@trpc/react-query': ^10.12.0
       '@trpc/server': ^10.11.1
+      '@types/prettier': ^2.7.2
       '@types/react': ^18.0.0
       framer-motion: ^9.0.7
       monaco-editor: ^0.36.1
@@ -157,6 +158,7 @@ importers:
     devDependencies:
       '@brail/react': link:../react
       '@brail/types': link:../types
+      '@types/prettier': 2.7.2
       '@types/react': 18.0.28
       react: 18.2.0
       tsconfig: link:../tsconfig
@@ -1848,6 +1850,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/prettier/2.7.2:
+    resolution: {integrity: sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==}
     dev: true
 
   /@types/prop-types/15.7.5:

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "nodenext",
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist",
+    "lib": [
+      "ES2015",
+      "DOM"
+    ],
+    "noErrorTruncation": true,
+    "allowJs": true,
+    "downlevelIteration": true,
+    "jsx": "react",
+    "emitDeclarationOnly": false,
+    "incremental": true,
+    "tsBuildInfoFile": "/Users/nick/Documents/code/brail/node_modules/.pnpm/vitest@0.29.7/node_modules/vitest/dist/tsconfig.tmp.tsbuildinfo"
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "./src"
+  ]
+}

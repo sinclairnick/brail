@@ -11,7 +11,7 @@ export const BASE_URL =
 export const template = b.template
   .meta(z.object({ to: z.string().email(), subject: z.string() }))
   .onSend(async (args) => {
-    await sendMail(args.meta.to, args.meta.subject, args.html);
+    await sendMail(args.defaultMeta.to, args.defaultMeta.subject, args.html);
     return { ok: true };
   });
 

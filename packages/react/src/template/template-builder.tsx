@@ -13,18 +13,20 @@ import { InferZodSchema, ITemplateBuilder } from ".";
 function createNewBuilder<
   TProps extends AnyTemplateProps,
   TMeta extends AnyMeta,
+  TDefaultMeta extends Partial<AnyMeta>,
   TRes extends any
->(config: TemplateConfig<TProps, TMeta, TRes>) {
+>(config: TemplateConfig<TProps, TMeta, TDefaultMeta, TRes>) {
   return new TemplateBuilder(config);
 }
 
 export class TemplateBuilder<
   TProps extends AnyTemplateProps,
   TMeta extends AnyMeta,
+  TDefaultMeta extends Partial<AnyMeta>,
   TRes extends any
-> implements ITemplateBuilder<TProps, TMeta, TRes>
+> implements ITemplateBuilder<TProps, TMeta, TDefaultMeta, TRes>
 {
-  public readonly _config: TemplateConfig<TProps, TMeta, TRes> = {
+  public readonly _config: TemplateConfig<TProps, TMeta, TDefaultMeta, TRes> = {
     _def: {
       _meta: undefined as any,
       _props: undefined as any,
@@ -36,21 +38,21 @@ export class TemplateBuilder<
     defaultMeta: undefined,
   };
 
-  constructor(config?: TemplateConfig<TProps, TMeta, TRes>) {
+  constructor(config?: TemplateConfig<TProps, TMeta, TDefaultMeta, TRes>) {
     if (config) {
       this._config = config;
     }
   }
 
-  public title: (title: string) => ITemplateBuilder<TProps, TMeta, TRes> = (
-    title
-  ) => {
+  public title: (
+    title: string
+  ) => ITemplateBuilder<TProps, TMeta, TDefaultMeta, TRes> = (title) => {
     return createNewBuilder({ ...this._config, title });
   };
 
   public preview: <TNewProps extends TProps>(
     props: TNewProps
-  ) => ITemplateBuilder<TNewProps, TMeta, TRes> = (props) => {
+  ) => ITemplateBuilder<TNewProps, TMeta, TDefaultMeta, TRes> = (props) => {
     return createNewBuilder({
       ...this._config,
       previewProps: props,
@@ -59,7 +61,7 @@ export class TemplateBuilder<
 
   public props: <TSchema extends z.AnyZodObject>(
     propSchema: TSchema
-  ) => ITemplateBuilder<InferZodSchema<TSchema>, TMeta, TRes> = (
+  ) => ITemplateBuilder<InferZodSchema<TSchema>, TMeta, TDefaultMeta, TRes> = (
     propSchema
   ) => {
     return createNewBuilder({
@@ -70,7 +72,7 @@ export class TemplateBuilder<
 
   public meta: <TSchema extends z.AnyZodObject>(
     metaSchema: TSchema
-  ) => ITemplateBuilder<TProps, InferZodSchema<TSchema>, TRes> = (
+  ) => ITemplateBuilder<TProps, InferZodSchema<TSchema>, TDefaultMeta, TRes> = (
     metaSchema
   ) => {
     return createNewBuilder({
@@ -79,19 +81,24 @@ export class TemplateBuilder<
     } as any);
   };
 
-  public metaDefault: (
-    defaultMeta: (props: TProps) => Partial<TMeta>
-  ) => ITemplateBuilder<TProps, TMeta, TRes> = (defaultMeta) => {
+  public metaDefault: <TNewDefaultMeta extends TDefaultMeta>(
+    defaultMeta: (props: TProps) => TNewDefaultMeta
+  ) => ITemplateBuilder<TProps, TMeta, TNewDefaultMeta, TRes> = (
+    defaultMeta
+  ) => {
     return createNewBuilder({
       ...this._config,
       defaultMeta,
-    });
+    } as any);
   };
 
   public onSend: <TNewRes extends unknown>(
     onSend: (args: RenderResult<TMeta>) => TNewRes | Promise<TNewRes>,
     schema?: SchemaOf<TNewRes> | undefined
-  ) => ITemplateBuilder<TProps, TMeta, TNewRes> = (onSend, schema) => {
+  ) => ITemplateBuilder<TProps, TMeta, TDefaultMeta, TNewRes> = (
+    onSend,
+    schema
+  ) => {
     return createNewBuilder({
       ...this._config,
       onSend: onSend,
@@ -104,7 +111,7 @@ export class TemplateBuilder<
 
   public view: (
     view: (props: TProps) => JSX.Element
-  ) => CreateTemplateReturn<TProps, TMeta, TRes> = (view) => {
+  ) => CreateTemplateReturn<TProps, TMeta, TDefaultMeta, TRes> = (view) => {
     return createTemplate({
       view,
       defaultMeta: this._config.defaultMeta,

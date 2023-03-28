@@ -12,10 +12,11 @@ import Head from "next/head";
 export const createTemplate = <
   TProps extends AnyTemplateProps = AnyTemplateProps,
   TMeta extends AnyMeta = AnyMeta,
+  TDefaultMeta extends Partial<AnyMeta> = Partial<AnyMeta>,
   TRes extends any = void
 >(
-  args: CreateTemplateArgs<TProps, TMeta, TRes>
-): CreateTemplateReturn<TProps, TMeta, TRes> => {
+  args: CreateTemplateArgs<TProps, TMeta, TDefaultMeta, TRes>
+): CreateTemplateReturn<TProps, TMeta, TDefaultMeta, TRes> => {
   let previewProps: TProps | undefined;
 
   if (args.previewProps) previewProps = args.previewProps;
@@ -40,7 +41,7 @@ export const createTemplate = <
     return <Element />;
   };
 
-  const methods: TemplateProperties<TProps, TMeta, TRes> = {
+  const methods: TemplateProperties<TProps, TMeta, TDefaultMeta, TRes> = {
     _def: {
       _meta: undefined as any,
       _props: undefined as any,
@@ -63,7 +64,7 @@ export const createTemplate = <
       const defaultMeta = args.defaultMeta?.(input.data);
       const meta = Object.assign({}, defaultMeta ?? {}, input.meta ?? {});
 
-      return args.onSend?.({ html, meta }) as Promise<TRes>;
+      return args.onSend?.({ html, defaultMeta: meta }) as Promise<TRes>;
     },
     previewProps: args.previewProps,
     preview: Preview,

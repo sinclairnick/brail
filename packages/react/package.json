@@ -1,6 +1,6 @@
 {
   "name": "@brail/react",
-  "version": "1.0.0-beta.28",
+  "version": "1.0.0-beta.29",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "private": false,
@@ -9,7 +9,7 @@
     "lint": "eslint *.ts*",
     "build": "tsup-node",
     "dev": "tsup-node --watch",
-    "check": "vitest typecheck"
+    "check": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^18.0.0"

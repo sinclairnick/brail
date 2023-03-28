@@ -12,7 +12,7 @@ export type AnyMeta = { [key: string]: any };
 
 export type RenderResult<T extends AnyMeta> = {
   html: string;
-  meta: T;
+  defaultMeta: T;
 };
 
 export type OnSendFn<TMeta extends AnyMeta, TRes extends any = void> = (
@@ -24,13 +24,14 @@ export type AnyOnSendFn = OnSendFn<any>;
 export type CreateTemplateArgs<
   TProps extends AnyTemplateProps = AnyTemplateProps,
   TMeta extends AnyMeta = AnyMeta,
+  TDefaultMeta extends Partial<AnyMeta> = Partial<AnyMeta>,
   TRes extends any = void
 > = {
   // Can't use property 'name' for when Object.assign() is later used
   // because it will overwrite the name property of the function
   title?: string;
   view: (props: TProps) => JSX.Element;
-  defaultMeta?: (props: TProps) => Partial<TMeta>;
+  defaultMeta?: (props: TProps) => TDefaultMeta;
   onSend?: OnSendFn<TMeta, TRes>;
   previewProps?: TProps;
 
@@ -50,9 +51,9 @@ export type TemplateConfigSchema<TProps, TMeta, TRes> = {
 
 export type TemplateViewFn<TProps> = (props: TProps) => JSX.Element;
 
-export type TemplateDefaultMetaFn<TProps, TMeta> = (
+export type TemplateDefaultMetaFn<TProps, TDefaultMeta> = (
   props: TProps
-) => Partial<TMeta>;
+) => Partial<TDefaultMeta>;
 
 export interface TemplateConfigDef<TProps, TMeta, TRes> {
   _props: TProps;
@@ -63,13 +64,14 @@ export interface TemplateConfigDef<TProps, TMeta, TRes> {
 export type TemplateConfig<
   TProps extends AnyTemplateProps,
   TMeta extends AnyMeta,
+  TDefaultMeta extends Partial<AnyMeta>,
   TRes extends any = void
 > = {
   _def: TemplateConfigDef<TProps, TMeta, TRes>;
   schema: TemplateConfigSchema<TProps, TMeta, TRes>;
   title: string | undefined;
   view: TemplateViewFn<TProps>;
-  defaultMeta?: TemplateDefaultMetaFn<TProps, TMeta>;
+  defaultMeta?: TemplateDefaultMetaFn<TProps, TDefaultMeta>;
   onSend?: OnSendFn<TMeta, TRes>;
   previewProps?: TProps;
 };
@@ -86,8 +88,9 @@ export type TemplatePreviewFn<TProps> = (props?: TProps) => JSX.Element;
 export type TemplateProperties<
   TProps extends AnyTemplateProps = AnyTemplateProps,
   TMeta extends AnyMeta = AnyMeta,
+  TDefaultMeta extends Partial<AnyMeta> = Partial<AnyMeta>,
   TRes extends any = void
-> = TemplateConfig<TProps, TMeta, TRes> & {
+> = TemplateConfig<TProps, TMeta, TDefaultMeta, TRes> & {
   render: TemplateRenderFn<TProps>;
   send: TemplateSendFn<TProps, TMeta, TRes>;
   preview: TemplatePreviewFn<TProps>;
@@ -101,10 +104,12 @@ export type TemplatePreviewComponent = () => JSX.Element;
 export type CreateTemplateReturn<
   TProps extends AnyTemplateProps = AnyTemplateProps,
   TMeta extends AnyMeta = AnyMeta,
+  TDefaultMeta extends Partial<AnyMeta> = Partial<AnyMeta>,
   TRes extends any = void
-> = TemplatePreviewComponent & TemplateProperties<TProps, TMeta, TRes>;
+> = TemplatePreviewComponent &
+  TemplateProperties<TProps, TMeta, TDefaultMeta, TRes>;
 
-export type AnyCreateTemplateReturn = CreateTemplateReturn<any, any, any>;
+export type AnyCreateTemplateReturn = CreateTemplateReturn<any, any, any, any>;
 
 export type InferTemplateProps<T extends AnyCreateTemplateReturn> =
   T extends CreateTemplateReturn<infer TProps, any, any> ? TProps : never;

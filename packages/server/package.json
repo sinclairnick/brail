@@ -1,6 +1,6 @@
 {
   "name": "brail",
-  "version": "1.0.0-beta.28",
+  "version": "1.0.0-beta.29",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -67,7 +67,7 @@
     "test": "vitest spec",
     "build": "tsup-node",
     "dev": "tsup-node --watch",
-    "check": "vitest typecheck",
+    "check": "tsc --noEmit",
     "entrypoints": "tsx scripts/generate-entrypoints.ts"
   },
   "optionalDependencies": {

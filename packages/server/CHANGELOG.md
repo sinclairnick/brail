@@ -1,5 +1,14 @@
 # brail
 
+## 1.0.0-beta.29
+
+### Patch Changes
+
+- Clarify RenderResult meta to defaultMeta and correct types, according to passed default meta value
+- Updated dependencies
+  - @brail/devtools@1.0.0-beta.21
+  - @brail/types@1.0.0-beta.21
+
 ## 1.0.0-beta.27
 
 ### Patch Changes
