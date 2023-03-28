@@ -1,10 +1,16 @@
-import { AnyCreateTemplateReturn, RenderResult } from "@brail/types";
+import {
+  AnyCreateTemplateReturn,
+  OnSendArgs,
+  RenderResult,
+  SchemaOf,
+} from "@brail/types";
 import type { OpenApiMeta } from "trpc-openapi";
 import {
   CreateTrpcMutationArgs,
   CreateTrpcMutationReturn,
   CreateTrpcProcedureArgs,
   CreateTrpcQueryReturn,
+  MutationArgs,
 } from "./trpc-procedure.types";
 import z from "zod";
 
@@ -29,8 +35,9 @@ export const createTrpcQuery = <TTemplate extends AnyCreateTemplateReturn>(
   proc = proc.input(template.schema.Props ?? z.any()).output(
     z.object({
       html: z.string(),
-      meta: (template.schema.Meta as z.AnyZodObject)?.partial() ?? z.any(),
-    })
+      defaultMeta:
+        (template.schema.Meta as z.AnyZodObject)?.partial() ?? z.any(),
+    }) satisfies SchemaOf<RenderResult<any>>
   );
 
   return proc.query(async ({ ctx, input }) => {

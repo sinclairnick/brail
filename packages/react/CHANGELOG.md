@@ -1,5 +1,11 @@
 # @brail/react
 
+## 1.0.0-beta.34
+
+### Patch Changes
+
+- Update output schema shape, add satisfy type for enforcement
+
 ## 1.0.0-beta.32
 
 ### Patch Changes
