@@ -15,8 +15,13 @@ export type RenderResult<T extends AnyMeta> = {
   defaultMeta: T;
 };
 
+export type OnSendArgs<TMeta extends AnyMeta> = {
+  html: string;
+  meta: TMeta;
+};
+
 export type OnSendFn<TMeta extends AnyMeta, TRes extends any = void> = (
-  args: RenderResult<TMeta>
+  args: OnSendArgs<TMeta>
 ) => TRes;
 
 export type AnyOnSendFn = OnSendFn<any>;

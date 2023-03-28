@@ -64,7 +64,7 @@ export const createTemplate = <
       const defaultMeta = args.defaultMeta?.(input.data);
       const meta = Object.assign({}, defaultMeta ?? {}, input.meta ?? {});
 
-      return args.onSend?.({ html, defaultMeta: meta }) as Promise<TRes>;
+      return args.onSend?.({ html, meta }) as Promise<TRes>;
     },
     previewProps: args.previewProps,
     preview: Preview,
