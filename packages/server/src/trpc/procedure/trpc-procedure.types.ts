@@ -16,7 +16,7 @@ export type CreateTrpcProcedureArgs<TTemplate extends AnyCreateTemplateReturn> =
 
 export type CreateTrpcQueryReturn<
   TProps extends AnyTemplateProps = AnyTemplateProps,
-  TMeta extends AnyMeta = AnyMeta
+  TDefaultMeta extends Partial<AnyMeta> = Partial<AnyMeta>
 > = BuildProcedure<
   "query",
   ProcedureParams<
@@ -24,10 +24,10 @@ export type CreateTrpcQueryReturn<
     unknown,
     TProps,
     TProps,
-    RenderResult<TMeta>,
-    RenderResult<TMeta>
+    RenderResult<TDefaultMeta>,
+    RenderResult<TDefaultMeta>
   >,
-  RenderResult<TMeta>
+  RenderResult<TDefaultMeta>
 >;
 
 export type CreateTrpcMutationArgs<TTemplate extends AnyCreateTemplateReturn> =
