@@ -1,5 +1,14 @@
 # brail
 
+## 1.0.0-beta.30
+
+### Patch Changes
+
+- Fix onSend type error
+- Updated dependencies
+  - @brail/devtools@1.0.0-beta.22
+  - @brail/types@1.0.0-beta.22
+
 ## 1.0.0-beta.29
 
 ### Patch Changes
