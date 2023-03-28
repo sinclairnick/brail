@@ -1,5 +1,13 @@
 # @brail/react
 
+## 1.0.0-beta.32
+
+### Patch Changes
+
+- Make zod peer dep
+- Updated dependencies
+  - @brail/types@1.0.0-beta.23
+
 ## 1.0.0-beta.30
 
 ### Patch Changes

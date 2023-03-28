@@ -1,5 +1,11 @@
 # @brail/types
 
+## 1.0.0-beta.23
+
+### Patch Changes
+
+- Make zod peer dep
+
 ## 1.0.0-beta.22
 
 ### Patch Changes

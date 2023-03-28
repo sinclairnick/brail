@@ -1,6 +1,6 @@
 {
   "name": "brail",
-  "version": "1.0.0-beta.30",
+  "version": "1.0.0-beta.31",
   "description": "",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -73,12 +73,14 @@
   "optionalDependencies": {
     "next": "^13.2.0"
   },
+  "peerDependencies": {
+    "zod": "^3.20.0"
+  },
   "dependencies": {
     "@brail/devtools": "workspace:*",
     "@brail/types": "workspace:*",
     "chalk": "^4.0.0",
-    "vitest": "^0.29.7",
-    "zod": "^3.20.0"
+    "vitest": "^0.29.7"
   },
   "devDependencies": {
     "@brail/react": "workspace:*",
@@ -95,7 +97,8 @@
     "tsconfig": "workspace:*",
     "tsx": "^3.12.3",
     "typescript": "^4.9.5",
-    "webpack": "^5.75.0"
+    "webpack": "^5.75.0",
+    "zod": "^3.20.0"
   },
   "author": {
     "name": "Nick Sinclair",
