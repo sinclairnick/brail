@@ -1,8 +1,8 @@
 import type {
   CreateTemplateReturn,
   AnyMeta,
-  RenderResult,
   SchemaOf,
+  OnSendArgs,
 } from "@brail/types";
 import { AnyZodObject, z, ZodTypeAny } from "zod";
 import { AnyProps, TemplateBuilder } from "..";
@@ -30,7 +30,7 @@ export interface ITemplateBuilder<
     defaultMeta: (props: TProps) => TNewDefaultMeta
   ) => ITemplateBuilder<TProps, TMeta, TNewDefaultMeta, TRes>;
   onSend: <TNewRes extends any>(
-    onSend: (args: RenderResult<TMeta>) => TNewRes | Promise<TNewRes>,
+    onSend: (args: OnSendArgs<TMeta>) => TNewRes | Promise<TNewRes>,
     schema?: SchemaOf<TNewRes>
   ) => ITemplateBuilder<TProps, TMeta, TDefaultMeta, TNewRes>;
   view: (

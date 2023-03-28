@@ -6,6 +6,7 @@ import {
   SchemaOf,
   RenderResult,
   CreateTemplateReturn,
+  OnSendArgs,
 } from "@brail/types";
 import z from "zod";
 import { InferZodSchema, ITemplateBuilder } from ".";
@@ -93,7 +94,7 @@ export class TemplateBuilder<
   };
 
   public onSend: <TNewRes extends unknown>(
-    onSend: (args: RenderResult<TMeta>) => TNewRes | Promise<TNewRes>,
+    onSend: (args: OnSendArgs<TMeta>) => TNewRes | Promise<TNewRes>,
     schema?: SchemaOf<TNewRes> | undefined
   ) => ITemplateBuilder<TProps, TMeta, TDefaultMeta, TNewRes> = (
     onSend,
