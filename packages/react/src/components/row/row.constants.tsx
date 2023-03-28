@@ -33,7 +33,6 @@ export const RowProvider = (props: RowProviderProps) => {
   const specifiedWidths = Children.toArray(children)
     .filter((x): x is JSX.Element => Boolean(x))
     .map((child) => {
-      console.log(child);
       const width = getPxValue(child.props.width, totalWidth);
       if (width == null) return;
       const margin = normalizeMarginStyle(child.props);

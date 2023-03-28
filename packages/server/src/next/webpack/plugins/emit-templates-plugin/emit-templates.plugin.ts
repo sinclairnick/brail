@@ -13,6 +13,8 @@ import chalk from "chalk";
 
 const PLUGIN_NAME = "BrailEmitTemplatesPlugin";
 
+let hasLogged = false;
+
 export class BrailEmitTemplatesPlugin {
   private outPath: string;
   private outDir: string;
@@ -21,7 +23,12 @@ export class BrailEmitTemplatesPlugin {
     this.outPath = this.config.paths.templatesFile;
     this.outDir = path.dirname(this.outPath);
 
-    console.log(`💌 - Templates will be written to ${chalk.green(this.outPath)}`);
+    if (!hasLogged) {
+      console.log(
+        `💌 - Templates will be written to ${chalk.green(this.outPath)}`
+      );
+      hasLogged = true;
+    }
   }
 
   private lastEmitFile: string | undefined;
